@@ -1,6 +1,4 @@
-import Image from "next/image";
-import Card from "../components/langCard.js";
-import Layout from "../components/Layout/main.js";
+import { useState, useEffect } from "react";
 import {
   SiRust,
   SiJavascript,
@@ -13,36 +11,36 @@ import {
   GitHubLogoIcon,
   InstagramLogoIcon,
 } from "@radix-ui/react-icons";
-import { MdOutlineTouchApp } from "react-icons/md";
+import { useSection } from "../utils/useSection.js";
+import TextTransition, { presets } from "react-text-transition";
 import ProjectCard from "../components/project.js";
-import { InView } from "react-intersection-observer";
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import Card from "../components/miniCard.js";
+import Layout from "../components/Layout/main.js";
 import Sparkles from "../components/AnimatedText.js";
 import Social from "../components/social.js";
-import TextTransition, { presets } from "react-text-transition";
 
 const Home = () => {
   const [inview, setinview] = useState("about");
   const [index, setindex] = useState(0);
+  const inView = useSection();
 
   useEffect(() => {
+    setinview(inView);
     const interval = setInterval(() => {
       setindex((index) => (index + 1) % TEXTS.length);
-    }, 3000);
+    }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [inView]);
   return (
     <Layout inView={inview}>
-      <InView
-        className="flex items-center min-h-screen m-6 p-0 relative"
+      <section
+        className="flex items-center min-h-screen m-6 relative"
         id="about"
-        as="section"
-        onChange={(inView) => setinview(inView && "about")}
-        threshold={0.5}
       >
         <div>
           <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl md:text-left">
-            <span className="font-semibold bg-gradient-to-r bg-clip-text  text-transparent from-cyan-200 via-sky-500 to-blue-600 animate-text">
+            <span className="font-semibold bg-gradient-to-r bg-clip-text text-transparent from-cyan-200 via-sky-500 to-sky-300 animate-text">
               Hello
             </span>
             <br />I am <Sparkles>Timmy</Sparkles>
@@ -58,7 +56,7 @@ const Home = () => {
           />
         </div>
         <div className="flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center">
+          <button className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center">
             <svg
               className="w-6 h-6 text-blue-500"
               fill="none"
@@ -70,14 +68,12 @@ const Home = () => {
             >
               <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
-          </div>
+          </button>
         </div>
-      </InView>
-      <InView
+      </section>
+      <section
         className="md:flex md:items-center min-h-screen m-2 relative"
-        as="section"
-        onChange={(inView) => setinview(inView && "about")}
-        threshold={0.5}
+        id="about"
       >
         <div className="md:flex md:w-full md:justify-center md:items-center md:flex-col md:p-6">
           <h1 className="font-bold text-3xl">About me</h1>
@@ -85,30 +81,32 @@ const Home = () => {
           <strong>Your life is not undefined.</strong>
         </div>
         <div className="md:flex md:w-full md:justify-center md:items-center mt-2">
-          <p className="font-normal text-gray-600 dark:text-gray-300">
-            Hello, I am a student come from Hong Kong.I am learning web
-            development.
+          <div className="font-normal text-gray-600 dark:text-gray-300">
+            <p>
+              Hello, I am a student come from Hong Kong. I am learning web
+              development.
+            </p>
             <br />
-            <br />
-            You may visit GitHub if you are interested in my ongoing and
-            upcoming projects. I have developed some works like Discord bot,
-            profile website and meme generator. I am glad if you appreciate
-            them. Please feel free to tell me if you have advice or questions.
-            My contact information is in the <a href="#social">social media</a>
-          </p>
+            <p>
+              You may visit GitHub if you are interested in my ongoing and
+              upcoming projects. I have developed some works like Discord bot,
+              profile website and meme generator. I am glad if you appreciate
+              them. Please feel free to tell me if you have advice or questions.
+              <br />
+              <span className="font-bold text-gray-500 inline-flex mb-8">
+                Find me on
+                <TextTransition springConfig={presets.gentle}>
+                  <a href={SocialLinks[index]} className="text-blue-400 ml-1">
+                    {TEXTS[index]}
+                  </a>
+                </TextTransition>
+              </span>
+            </p>
+          </div>
         </div>
-      </InView>
-      <InView
-        className="min-h-screen p-6"
-        id="lang"
-        as="section"
-        onChange={(inView) => setinview(inView && "lang")}
-        threshold={0.5}
-      >
+      </section>
+      <section className="min-h-screen md:p-6" id="lang">
         <h1 className="font-bold text-2xl">📦 Languages & Skills</h1>
-        <Social icon={<MdOutlineTouchApp />} isLink={false}>
-          Click them
-        </Social>
         <br />
         <div className="grid gap-5 md:grid-flow-col md:grid-rows-3 md:gap-8 mt-8">
           <div>
@@ -147,14 +145,8 @@ const Home = () => {
             />
           </div>
         </div>
-      </InView>
-      <InView
-        className="min-h-screen p-6"
-        id="projects"
-        as="section"
-        onChange={(inView) => setinview(inView && "projects")}
-        threshold={0.5}
-      >
+      </section>
+      <section className="min-h-screen md:p-6" id="projects">
         <h1 className="font-bold text-2xl">📁 Projects</h1>
         <br />
         <div className="flex flex-col md:flex-row items-baseline">
@@ -165,25 +157,19 @@ const Home = () => {
             #Meme generator
           </ProjectCard>
         </div>
-      </InView>
-      <InView
-        className="min-h-screen p-6"
+      </section>
+      <section
+        className="min-h-screen md:p-6"
         id="social"
         as="section"
         threshold={0.5}
-        onChange={(inView) => setinview(inView && "social")}
+        onChange={(inView) => setinview(inView ? "social" : "monit-1")}
       >
-        <h1 className="font-bold text-2xl">📱 Social Media</h1>
+        <h1 className="font-bold text-2xl flex items-center justify-center">
+          📱 Social Media
+        </h1>
         <br />
-        <h3 className="text-xl font-bold text-gray-500 inline-flex mb-8">
-          Find me on
-          <TextTransition springConfig={presets.gentle}>
-            <a href={SocialLinks[index]} className="text-blue-400 ml-3">
-              {TEXTS[index]}
-            </a>
-          </TextTransition>
-        </h3>
-        <div className="grid gap-8 md:grid-flow-col md:grid-rows-3 md:gap-15">
+        <div className="grid gap-10 justify-center items-center mt-14 md:grid-flow-col md:gap-40">
           <Social
             icon={<GitHubLogoIcon />}
             url="https://github.com/TIMMLOPK"
@@ -202,7 +188,7 @@ const Home = () => {
             tw_wu_as_tim
           </Social>
         </div>
-      </InView>
+      </section>
     </Layout>
   );
 };

@@ -12,18 +12,17 @@
   "dependencies": {
     "@headlessui/react": "^1.7.0",
     "@radix-ui/react-icons": "^1.1.1",
-    "framer-motion": "^7.2.1",
+    "framer-motion": "^7.2.2",
     "next": "12.3.0",
-    "next-themes": "^0.2.0",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "react-intersection-observer": "^9.4.0",
     "react-text-transition": "^3.0.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "eslint": "8.23.0",
+    "autoprefixer": "^10.4.9",
+    "eslint": "8.23.1",
     "eslint-config-next": "12.3.0",
     "postcss": "^8.4.16",
     "prettier": "2.7.1",

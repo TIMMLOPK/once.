@@ -11,12 +11,12 @@ const Layout = ({ children, inView }) => {
   }, [scrolling]);
 
   useEffect(() => {
-    if (scrolling > 5) {
+    if (scrolling > 8) {
       setShow(false);
     }
     setTimeout(() => {
       setShow(true);
-    }, 2500);
+    }, 2600);
 
     window.addEventListener("scroll", handleScroll);
     return () => {

@@ -66,9 +66,10 @@ const Navbar = ({ show, inView }) => {
                 onClick={() => {
                   scrollTo("about");
                 }}
+                defaultValue={active === "about"}
                 className={`${
-                  active === "about" ? "bg-yellow-500" : "bg-transparent"
-                } p-2 rounded-md hover:bg-hoverbg`}
+                  active === "about" ? "bg-hoverbg" : "bg-transparent"
+                } p-2 rounded-md `}
               >
                 <SiAboutdotme />
               </button>
@@ -81,8 +82,8 @@ const Navbar = ({ show, inView }) => {
                   scrollTo("lang");
                 }}
                 className={`${
-                  active === "lang" ? "bg-yellow-500" : "bg-transparent"
-                } p-2 rounded-md hover:bg-hoverbg`}
+                  active === "lang" ? "bg-hoverbg" : "bg-transparent"
+                } p-2 rounded-md `}
               >
                 <FcSettings />
               </button>
@@ -96,8 +97,8 @@ const Navbar = ({ show, inView }) => {
                   scrollTo("projects");
                 }}
                 className={`${
-                  active === "projects" ? "bg-yellow-500" : "bg-transparent"
-                } p-2 rounded-md hover:bg-hoverbg`}
+                  active === "projects" ? "bg-hoverbg" : "bg-transparent"
+                } p-2 rounded-md `}
               >
                 <AiOutlineFolder />
               </button>
@@ -111,8 +112,8 @@ const Navbar = ({ show, inView }) => {
                   scrollTo("social");
                 }}
                 className={`${
-                  active === "social" ? "bg-yellow-500" : "bg-transparent"
-                } p-2 rounded-md hover:bg-hoverbg`}
+                  active === "social" ? "bg-hoverbg" : "bg-transparent"
+                } p-2 rounded-md `}
               >
                 <FcContacts />
               </button>
