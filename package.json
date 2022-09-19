@@ -10,9 +10,9 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.0",
+    "@headlessui/react": "^1.7.2",
     "@radix-ui/react-icons": "^1.1.1",
-    "framer-motion": "^7.2.2",
+    "framer-motion": "^7.3.5",
     "next": "12.3.0",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
@@ -21,7 +21,7 @@
     "react-text-transition": "^3.0.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.9",
+    "autoprefixer": "^10.4.11",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.0",
     "postcss": "^8.4.16",
