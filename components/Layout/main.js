@@ -1,28 +1,20 @@
 import { useEffect, useState, useCallback } from "react";
 import Navbar from "../navbar";
 import Footer from "../footer";
+import useScroll from "../../utils/useScroll";
 
 const Layout = ({ children, inView }) => {
-  const [scrolling, setScrolling] = useState(0);
   const [show, setShow] = useState(true);
+  const scrolled = useScroll()
 
-  const handleScroll = useCallback(() => {
-    setScrolling(scrolling++);
-  }, [scrolling]);
 
   useEffect(() => {
-    if (scrolling > 8) {
+    if (scrolled) {
       setShow(false);
-    }
-    setTimeout(() => {
+    } else {
       setShow(true);
-    }, 2600);
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll, scrolling]);
+    }
+  }, [scrolled]);
 
   return (
     <main className="container mx-auto px-4">

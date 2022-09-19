@@ -87,7 +87,7 @@ const Home = () => {
               development.
             </p>
             <br />
-            <p>
+            <div>
               You may visit GitHub if you are interested in my ongoing and
               upcoming projects. I have developed some works like Discord bot,
               profile website and meme generator. I am glad if you appreciate
@@ -101,7 +101,7 @@ const Home = () => {
                   </a>
                 </TextTransition>
               </span>
-            </p>
+            </div>
           </div>
         </div>
       </section>

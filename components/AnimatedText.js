@@ -4,18 +4,6 @@ import useRandomInterval from "../utils/useRandomInterval";
 const DEFAULT_COLOR = "hsl(50deg, 100%, 50%)";
 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-const range = (start, end, step = 1) => {
-  let output = [];
-  if (typeof end === "undefined") {
-    end = start;
-    start = 0;
-  }
-  for (let i = start; i < end; i += step) {
-    output.push(i);
-  }
-  return output;
-};
-
 const generateSparkle = (color) => {
   const sparkle = {
     id: String(random(10000, 99999)),
@@ -30,9 +18,8 @@ const generateSparkle = (color) => {
   return sparkle;
 };
 const Sparkles = ({ color = DEFAULT_COLOR, children, ...delegated }) => {
-  const [sparkles, setSparkles] = useState(() => {
-    return range(4).map(() => generateSparkle(color));
-  });
+  const [sparkles, setSparkles] = useState([]);
+
   useRandomInterval(
     () => {
       const sparkle = generateSparkle(color);
@@ -47,6 +34,7 @@ const Sparkles = ({ color = DEFAULT_COLOR, children, ...delegated }) => {
     50,
     600
   );
+
   return (
     <span {...delegated} className="inline-block relative">
       {sparkles.map((sparkle) => (
