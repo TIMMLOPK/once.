@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../navbar";
 import Footer from "../footer";
 import useScroll from "../../utils/useScroll";
