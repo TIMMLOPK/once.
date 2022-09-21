@@ -22,7 +22,6 @@ const Navbar = ({ show, inView }) => {
 
   const { theme, setTheme } = useTheme();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!inView) {
       setActive("about");
@@ -54,8 +53,9 @@ const Navbar = ({ show, inView }) => {
 
   return (
     <nav
-      className={`fixed top-1/4 ${showNav ? "right-2" : "right-[-30px]"
-        } z-10 transition-all duration-200 ease-in-out`}
+      className={`fixed top-1/4 ${
+        showNav ? "right-2" : "right-[-30px]"
+      } z-10 transition-all duration-200 ease-in-out`}
       ref={navbar}
     >
       <div className="h-[400px] w-10 bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
@@ -67,8 +67,9 @@ const Navbar = ({ show, inView }) => {
                   scrollTo("about");
                 }}
                 defaultValue={active === "about"}
-                className={`${active === "about" ? "bg-hoverbg" : "bg-transparent"
-                  } p-2 rounded-md `}
+                className={`${
+                  active === "about" ? "bg-hoverbg" : "bg-transparent"
+                } p-2 rounded-md `}
               >
                 <SiAboutdotme />
               </button>
@@ -80,8 +81,9 @@ const Navbar = ({ show, inView }) => {
                 onClick={() => {
                   scrollTo("lang");
                 }}
-                className={`${active === "lang" ? "bg-hoverbg" : "bg-transparent"
-                  } p-2 rounded-md `}
+                className={`${
+                  active === "lang" ? "bg-hoverbg" : "bg-transparent"
+                } p-2 rounded-md `}
               >
                 <FcSettings />
               </button>
@@ -94,8 +96,9 @@ const Navbar = ({ show, inView }) => {
                 onClick={() => {
                   scrollTo("projects");
                 }}
-                className={`${active === "projects" ? "bg-hoverbg" : "bg-transparent"
-                  } p-2 rounded-md `}
+                className={`${
+                  active === "projects" ? "bg-hoverbg" : "bg-transparent"
+                } p-2 rounded-md `}
               >
                 <AiOutlineFolder />
               </button>
@@ -108,8 +111,9 @@ const Navbar = ({ show, inView }) => {
                 onClick={() => {
                   scrollTo("social");
                 }}
-                className={`${active === "social" ? "bg-hoverbg" : "bg-transparent"
-                  } p-2 rounded-md `}
+                className={`${
+                  active === "social" ? "bg-hoverbg" : "bg-transparent"
+                } p-2 rounded-md `}
               >
                 <FcContacts />
               </button>

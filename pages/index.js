@@ -63,7 +63,10 @@ const Home = () => {
           />
         </div>
         <div className="flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center" onClick={scrollDown}>
+          <button
+            className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center"
+            onClick={scrollDown}
+          >
             <svg
               className="w-6 h-6 text-blue-500"
               fill="none"
@@ -163,13 +166,19 @@ const Home = () => {
           <ProjectCard title="Meme Generator" link="https://meme.lionceu.live/">
             #Meme generator
           </ProjectCard>
-          <ProjectCard title="npm outdated.rs" link="https://github.com/TIMMLOPK/npm-outdated-rs">
+          <ProjectCard
+            title="npm outdated.rs"
+            link="https://github.com/TIMMLOPK/npm-outdated-rs"
+          >
             npm outdated checker
           </ProjectCard>
           <ProjectCard title="Profile" link="https://lionceu.live/">
             My profile website
           </ProjectCard>
-          <ProjectCard title="CSS Website" link="https://github.com/TIMMLOPK/once">
+          <ProjectCard
+            title="CSS Website"
+            link="https://github.com/TIMMLOPK/once"
+          >
             CSS website
           </ProjectCard>
         </div>
@@ -181,9 +190,7 @@ const Home = () => {
         threshold={0.5}
         onChange={(inView) => setinview(inView ? "social" : "monit-1")}
       >
-        <h1 className="font-bold text-2xl">
-          📱 Social Media
-        </h1>
+        <h1 className="font-bold text-2xl">📱 Social Media</h1>
         <br />
         <div className="grid gap-10 justify-center items-center mt-14 md:grid-flow-col md:gap-40">
           <Social

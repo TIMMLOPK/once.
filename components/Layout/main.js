@@ -5,8 +5,7 @@ import useScroll from "../../utils/useScroll";
 
 const Layout = ({ children, inView }) => {
   const [show, setShow] = useState(true);
-  const scrolled = useScroll()
-
+  const scrolled = useScroll();
 
   useEffect(() => {
     if (scrolled) {
