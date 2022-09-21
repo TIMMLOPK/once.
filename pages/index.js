@@ -32,6 +32,13 @@ const Home = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, [inView]);
+
+  const scrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
   return (
     <Layout inView={inview}>
       <section
@@ -56,7 +63,7 @@ const Home = () => {
           />
         </div>
         <div className="flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center">
+          <button className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center" onClick={scrollDown}>
             <svg
               className="w-6 h-6 text-blue-500"
               fill="none"
@@ -149,12 +156,21 @@ const Home = () => {
       <section className="min-h-screen md:p-6" id="projects">
         <h1 className="font-bold text-2xl">📁 Projects</h1>
         <br />
-        <div className="flex flex-col md:flex-row items-baseline">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <ProjectCard title="ONCE" link="https://discord.lionceu.live/">
             ONCE is a powerful multi-purpose Discord bot.
           </ProjectCard>
           <ProjectCard title="Meme Generator" link="https://meme.lionceu.live/">
             #Meme generator
+          </ProjectCard>
+          <ProjectCard title="npm outdated.rs" link="https://github.com/TIMMLOPK/npm-outdated-rs">
+            npm outdated checker
+          </ProjectCard>
+          <ProjectCard title="Profile" link="https://lionceu.live/">
+            My profile website
+          </ProjectCard>
+          <ProjectCard title="CSS Website" link="https://github.com/TIMMLOPK/once">
+            CSS website
           </ProjectCard>
         </div>
       </section>
@@ -165,7 +181,7 @@ const Home = () => {
         threshold={0.5}
         onChange={(inView) => setinview(inView ? "social" : "monit-1")}
       >
-        <h1 className="font-bold text-2xl flex items-center justify-center">
+        <h1 className="font-bold text-2xl">
           📱 Social Media
         </h1>
         <br />
@@ -189,6 +205,11 @@ const Home = () => {
           </Social>
         </div>
       </section>
+      <div className="relative flex text-center justify-center font-extralight">
+        <h4>
+          Our journey is not defined by the destination, but by the moments
+        </h4>
+      </div>
     </Layout>
   );
 };
