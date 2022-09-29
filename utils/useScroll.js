@@ -10,7 +10,7 @@ const useScroll = () => {
       clearTimeout(timer);
       timer = setTimeout(() => {
         setScroll(false);
-      }, 2000);
+      }, 800);
     };
     window.addEventListener("scroll", handleScroll);
     return () => {

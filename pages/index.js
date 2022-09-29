@@ -39,10 +39,12 @@ const Home = () => {
       behavior: "smooth",
     });
   };
+
+  const projectInview = (i) => (i === "projects" ? true : false);
   return (
     <Layout inView={inview}>
       <section
-        className="flex items-center min-h-screen m-6 relative"
+        className="flex items-center min-h-screen m-6 relative w-full"
         id="about"
       >
         <div>
@@ -90,8 +92,8 @@ const Home = () => {
           <br />
           <strong>Your life is not undefined.</strong>
         </div>
-        <div className="md:flex md:w-full md:justify-center md:items-center mt-2">
-          <div className="font-normal text-gray-600 dark:text-gray-300">
+        <div className="md:flex md:w-full md:justify-center md:items-center mt-4">
+          <div className="font-normal text-gray-700 dark:text-gray-300">
             <p>
               Hello, I am a student come from Hong Kong. I am learning web
               development.
@@ -103,7 +105,7 @@ const Home = () => {
               profile website and meme generator. I am glad if you appreciate
               them. Please feel free to tell me if you have advice or questions.
               <br />
-              <span className="font-bold text-gray-500 inline-flex mb-8">
+              <span className="font-bold text-gray-500 inline-flex mb-8 mt-5">
                 Find me on
                 <TextTransition springConfig={presets.gentle}>
                   <a href={SocialLinks[index]} className="text-blue-400 ml-1">
@@ -137,14 +139,14 @@ const Home = () => {
             <Card
               icons={<SiPython />}
               name="Python"
-              description="📦 Coming soon."
+              description="A language I am learning."
             />
           </div>
           <div>
             <Card
               icons={<SiReact />}
               name="React"
-              description="📦 Coming soon."
+              description="I use it to build this website."
             />
           </div>
           <div>
@@ -160,31 +162,45 @@ const Home = () => {
         <h1 className="font-bold text-2xl">📁 Projects</h1>
         <br />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <ProjectCard title="ONCE" link="https://discord.lionceu.live/">
+          <ProjectCard
+            title="ONCE"
+            link="https://discord.lionceu.live/"
+            inview={projectInview(inView)}
+          >
             ONCE is a powerful multi-purpose Discord bot.
           </ProjectCard>
-          <ProjectCard title="Meme Generator" link="https://meme.lionceu.live/">
+          <ProjectCard
+            title="Meme Generator"
+            link="https://meme.lionceu.live/"
+            inview={projectInview(inView)}
+          >
             #Meme generator
           </ProjectCard>
           <ProjectCard
             title="npm outdated.rs"
             link="https://github.com/TIMMLOPK/npm-outdated-rs"
+            inview={projectInview(inView)}
           >
             npm outdated checker
           </ProjectCard>
-          <ProjectCard title="Profile" link="https://lionceu.live/">
+          <ProjectCard
+            title="Profile"
+            link="https://lionceu.live/"
+            inview={projectInview(inView)}
+          >
             My profile website
           </ProjectCard>
           <ProjectCard
             title="CSS Website"
             link="https://github.com/TIMMLOPK/once"
+            inview={projectInview(inView)}
           >
             CSS website
           </ProjectCard>
         </div>
       </section>
       <section
-        className="min-h-screen md:p-6"
+        className="min-h-screen md:p-6 relative"
         id="social"
         as="section"
         threshold={0.5}
@@ -211,12 +227,12 @@ const Home = () => {
             tw_wu_as_tim
           </Social>
         </div>
+        <div className="bottom-1/4 absolute text-gray-500 dark:text-gray-300 text-center inset-x-1/2 w-1/2 transform -translate-x-1/2 animate-pulse">
+          <Sparkles>
+            Our journey is not defined by the destination, but by the moments
+          </Sparkles>
+        </div>
       </section>
-      <div className="relative flex text-center justify-center font-extralight">
-        <h4>
-          Our journey is not defined by the destination, but by the moments
-        </h4>
-      </div>
     </Layout>
   );
 };

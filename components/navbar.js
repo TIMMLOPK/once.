@@ -14,6 +14,12 @@ function scrollTo(id) {
   });
 }
 
+const ActiveLine = () => {
+  return (
+    <span className="absolute w-[2px] h-full bg-white rounded-full -right-1 transform -translate-x-1/2" />
+  );
+};
+
 const Navbar = ({ show, inView }) => {
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState("about");
@@ -53,12 +59,12 @@ const Navbar = ({ show, inView }) => {
 
   return (
     <nav
-      className={`fixed top-1/4 ${
+      className={`fixed top-[7rem] ${
         showNav ? "right-2" : "right-[-30px]"
-      } z-10 transition-all duration-200 ease-in-out`}
+      } z-10 transition-all duration-300 ease-in-out`}
       ref={navbar}
     >
-      <div className="h-[400px] w-10 bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
+      <div className="h-[400px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
         <div className="mt-6 flex flex-col items-center">
           <div>
             <Tooltip message="About">
@@ -66,13 +72,11 @@ const Navbar = ({ show, inView }) => {
                 onClick={() => {
                   scrollTo("about");
                 }}
-                defaultValue={active === "about"}
-                className={`${
-                  active === "about" ? "bg-hoverbg" : "bg-transparent"
-                } p-2 rounded-md `}
+                className="hover:bg-hoverbg p-2 rounded-md"
               >
                 <SiAboutdotme />
               </button>
+              {active === "about" && <ActiveLine />}
             </Tooltip>
           </div>
           <div className="mt-8">
@@ -81,12 +85,11 @@ const Navbar = ({ show, inView }) => {
                 onClick={() => {
                   scrollTo("lang");
                 }}
-                className={`${
-                  active === "lang" ? "bg-hoverbg" : "bg-transparent"
-                } p-2 rounded-md `}
+                className="hover:bg-hoverbg p-2 rounded-md"
               >
                 <FcSettings />
               </button>
+              {active === "lang" && <ActiveLine />}
             </Tooltip>
           </div>
 
@@ -96,12 +99,11 @@ const Navbar = ({ show, inView }) => {
                 onClick={() => {
                   scrollTo("projects");
                 }}
-                className={`${
-                  active === "projects" ? "bg-hoverbg" : "bg-transparent"
-                } p-2 rounded-md `}
+                className="hover:bg-hoverbg p-2 rounded-md"
               >
                 <AiOutlineFolder />
               </button>
+              {active === "projects" && <ActiveLine />}
             </Tooltip>
           </div>
 
@@ -111,12 +113,11 @@ const Navbar = ({ show, inView }) => {
                 onClick={() => {
                   scrollTo("social");
                 }}
-                className={`${
-                  active === "social" ? "bg-hoverbg" : "bg-transparent"
-                } p-2 rounded-md `}
+                className="hover:bg-hoverbg p-2 rounded-md"
               >
                 <FcContacts />
               </button>
+              {active === "social" && <ActiveLine />}
             </Tooltip>
           </div>
 
