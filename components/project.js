@@ -1,11 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
+import { useState,useEffect } from "react";
 
 const ProjectCard = ({ title, children, link, inview }) => {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    if (inview) {
+      setShow(true);
+    }
+  }, [inview]);
+
   return (
     <Transition
-      show={inview ? true : false}
+      show={show}
       enter="transition ease-out duration-300"
       enterFrom="transform scale-0"
       enterTo="transform scale-100"

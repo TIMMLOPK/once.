@@ -59,7 +59,7 @@ const Navbar = ({ show, inView }) => {
 
   return (
     <nav
-      className={`fixed top-[7rem] ${
+      className={`fixed top-1/4 ${
         showNav ? "right-2" : "right-[-30px]"
       } z-10 transition-all duration-300 ease-in-out`}
       ref={navbar}

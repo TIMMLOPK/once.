@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <Layout inView={inview}>
       <section
-        className="flex items-center min-h-screen m-6 relative w-full"
+        className="flex items-center min-h-screen m-6 relative"
         id="about"
       >
         <div>
@@ -95,7 +95,7 @@ const Home = () => {
         <div className="md:flex md:w-full md:justify-center md:items-center mt-4">
           <div className="font-normal text-gray-700 dark:text-gray-300">
             <p>
-              Hello, I am a student come from Hong Kong. I am learning web
+              Hello, I am student come from Hong Kong. I am learning web
               development.
             </p>
             <br />
@@ -103,7 +103,7 @@ const Home = () => {
               You may visit GitHub if you are interested in my ongoing and
               upcoming projects. I have developed some works like Discord bot,
               profile website and meme generator. I am glad if you appreciate
-              them. Please feel free to tell me if you have advice or questions.
+              them. Please feel free to tell me if you have advice or questions:
               <br />
               <span className="font-bold text-gray-500 inline-flex mb-8 mt-5">
                 Find me on
