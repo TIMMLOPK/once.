@@ -21,7 +21,7 @@ const ProjectCard = ({ title, children, link, inview }) => {
       leaveFrom="transform scale-100"
       leaveTo="transform scale-0"
     >
-      <div className="dark:text-white m-6 relative text-center">
+      <div className="dark:text-white m-6 relative">
         <Link href={link} passHref>
           <Image
             src="/card.png"

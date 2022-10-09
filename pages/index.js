@@ -95,8 +95,8 @@ const Home = () => {
         <div className="md:flex md:w-full md:justify-center md:items-center mt-4">
           <div className="font-normal text-gray-700 dark:text-gray-300">
             <p>
-              Hello, I am student come from Hong Kong. I am learning web
-              development.
+              Hello, I am student from Hong Kong. I am insterested in programming
+              and I am currently learning Rust.
             </p>
             <br />
             <div>
@@ -106,7 +106,7 @@ const Home = () => {
               them. Please feel free to tell me if you have advice or questions:
               <br />
               <span className="font-bold text-gray-500 inline-flex mb-8 mt-5">
-                Find me on
+                You can find me on
                 <TextTransition springConfig={presets.gentle}>
                   <a href={SocialLinks[index]} className="text-blue-400 ml-1">
                     {TEXTS[index]}
@@ -174,7 +174,7 @@ const Home = () => {
             link="https://meme.lionceu.live/"
             inview={projectInview(inView)}
           >
-            #Meme generator
+            Generate memes with your own text.
           </ProjectCard>
           <ProjectCard
             title="npm outdated.rs"
@@ -188,7 +188,7 @@ const Home = () => {
             link="https://lionceu.live/"
             inview={projectInview(inView)}
           >
-            My profile website
+            A profile website
           </ProjectCard>
           <ProjectCard
             title="CSS Website"
@@ -216,7 +216,7 @@ const Home = () => {
           >
             TIMMLOPK
           </Social>
-          <Social icon={<DiscordLogoIcon />} url="https://discord.com" isLink>
+          <Social icon={<DiscordLogoIcon />}>
             Timmy#2600
           </Social>
           <Social
