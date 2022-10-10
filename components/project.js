@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
-import { useState,useEffect } from "react";
+import { MdOpenInNew } from "react-icons/md";
+import { useState, useEffect } from "react";
 
 const ProjectCard = ({ title, children, link, inview }) => {
   const [show, setShow] = useState(false);
@@ -22,19 +23,23 @@ const ProjectCard = ({ title, children, link, inview }) => {
       leaveTo="transform scale-0"
     >
       <div className="dark:text-white m-6 relative">
-        <Link href={link} passHref>
-          <Image
-            src="/card.png"
-            className="rounded-lg"
-            width={460 * 0.5}
-            height={240 * 0.5}
-            alt="card"
-          />
-        </Link>
-        <div className="mt-4">
-          <span className="font-mono tracking-wide text-lg">{title}</span>
+        <Image
+          src="/card.png"
+          className="rounded-lg"
+          width={460 * 0.5}
+          height={240 * 0.5}
+          alt="card"
+        />
+        <div className="mt-4 cursor-pointer">
+          <Link href={link} passHref>
+            <span className="font-mono tracking-wide text-lg hover:text-blue-500 active:text-blue-500">
+              {title} <MdOpenInNew className="inline-block" />
+            </span>
+          </Link>
         </div>
-        <div className="mt-2 opacity-70 text-sm font-mono">{children}</div>
+        <div className="mt-2 opacity-70 text-sm font-mono max-w-[230px]">
+          {children}
+        </div>
       </div>
     </Transition>
   );

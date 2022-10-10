@@ -1,4 +1,3 @@
-import Tooltip from "./tooltip";
 import { AiOutlineFolder } from "react-icons/ai";
 import { SiAboutdotme } from "react-icons/si";
 import { FcContacts, FcSettings } from "react-icons/fc";
@@ -6,6 +5,7 @@ import { BsArrowBarRight } from "react-icons/bs";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 
 function scrollTo(id) {
   const element = document.getElementById(id);
@@ -14,9 +14,35 @@ function scrollTo(id) {
   });
 }
 
-const ActiveLine = () => {
+const NavItem = ({ children, active, id }) => {
+  const variants = {
+    active: {
+      scale: 1.2,
+      transition: {
+        duration: 0.2,
+      },
+    },
+    inactive: {
+      scale: 1,
+    },
+  };
   return (
-    <span className="absolute w-[2px] h-full bg-white rounded-full -right-1 transform -translate-x-1/2" />
+    <motion.li
+      className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
+      onClick={() => {
+        scrollTo(id);
+      }}
+      whileHover={{
+        scale: 1.1,
+        transition: { duration: 0.2 },
+      }}
+      whileTap={{ scale: 0.9 }}
+      variants={variants}
+      initial="inactive"
+      animate={active === id ? "active" : "inactive"}
+    >
+      {children}
+    </motion.li>
   );
 };
 
@@ -29,33 +55,30 @@ const Navbar = ({ show, inView }) => {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
+    const navRef = navbar.current;
     if (!inView) {
       setActive("about");
     } else {
       setActive(inView);
     }
-    if (navbar.current) {
-      navbar.current.addEventListener("mouseenter", () => {
+    if (navRef) {
+      navRef.addEventListener("mouseenter", () => {
         setShowNav(true);
       });
     }
     setShowNav(show);
     return () => {
-      if (navbar.current) {
-        navbar.current.removeEventListener("mouseenter", () => {
+      if (navRef) {
+        navRef.removeEventListener("mouseenter", () => {
           setShowNav(true);
         });
       }
     };
   }, [show, inView]);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   return (
     <nav
@@ -67,74 +90,42 @@ const Navbar = ({ show, inView }) => {
       <div className="h-[400px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
         <div className="mt-6 flex flex-col items-center">
           <div>
-            <Tooltip message="About">
-              <button
-                onClick={() => {
-                  scrollTo("about");
-                }}
-                className="hover:bg-hoverbg p-2 rounded-md"
-              >
-                <SiAboutdotme />
-              </button>
-              {active === "about" && <ActiveLine />}
-            </Tooltip>
-          </div>
-          <div className="mt-8">
-            <Tooltip message="Language & Skills">
-              <button
-                onClick={() => {
-                  scrollTo("lang");
-                }}
-                className="hover:bg-hoverbg p-2 rounded-md"
-              >
-                <FcSettings />
-              </button>
-              {active === "lang" && <ActiveLine />}
-            </Tooltip>
+            <NavItem active={active} id="about">
+              <SiAboutdotme />
+            </NavItem>
           </div>
 
           <div className="mt-8">
-            <Tooltip message="Projects">
-              <button
-                onClick={() => {
-                  scrollTo("projects");
-                }}
-                className="hover:bg-hoverbg p-2 rounded-md"
-              >
-                <AiOutlineFolder />
-              </button>
-              {active === "projects" && <ActiveLine />}
-            </Tooltip>
+            <NavItem active={active} id="lang">
+              <FcSettings />
+            </NavItem>
           </div>
 
           <div className="mt-8">
-            <Tooltip message="Social">
-              <button
-                onClick={() => {
-                  scrollTo("social");
-                }}
-                className="hover:bg-hoverbg p-2 rounded-md"
-              >
-                <FcContacts />
-              </button>
-              {active === "social" && <ActiveLine />}
-            </Tooltip>
+            <NavItem active={active} id="projects">
+              <AiOutlineFolder />
+            </NavItem>
+          </div>
+
+          <div className="mt-8">
+            <NavItem active={active} id="social">
+              <FcContacts />
+            </NavItem>
           </div>
 
           <div className="mt-8">
             <button
-              onClick={() => {
-                setTheme(theme === "dark" ? "light" : "dark");
-              }}
-              className="p-2 rounded-md hover:bg-hoverbg"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
             >
               {theme === "dark" ? <FiMoon /> : <FiSun />}
             </button>
           </div>
+
           <div className="mt-8">
             <button
-              onClick={() => (showNav ? setShowNav(false) : setShowNav(true))}
-              className="p-2 rounded-md hover:bg-hoverbg"
+              onClick={() => setShowNav(!showNav)}
+              className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
             >
               <BsArrowBarRight />
             </button>
