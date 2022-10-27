@@ -85,7 +85,7 @@ const Home = () => {
         </div>
       </section>
       <section
-        className="md:flex md:items-center min-h-screen m-2 relative"
+        className="md:flex md:items-center min-h-screen m-2 relative px-6"
         id="about"
       >
         <div className="md:flex md:w-full md:justify-center md:items-center md:flex-col md:p-6">
@@ -93,7 +93,7 @@ const Home = () => {
           <br />
           <GithubStats />
         </div>
-        <div className="md:flex md:w-full md:justify-center md:items-center mt-8">
+        <div className="md:flex md:w-full md:justify-center md:items-center mt-8 mr-5">
           <div className="font-normal text-gray-700 dark:text-gray-300 leading-relaxed tracking-wide">
             <p>
               Hello, I am student from Hong Kong. I am insterested in
@@ -121,12 +121,12 @@ const Home = () => {
       <section className="min-h-screen md:p-6" id="lang">
         <h1 className="font-bold text-2xl">📦 Languages & Skills</h1>
         <br />
-        <div className="grid gap-5 md:grid-flow-col md:grid-rows-3 md:gap-8 mt-8">
+        <div className="grid gap-5 md:grid-flow-col md:grid-rows-3 md:gap-8 mt-12">
           <div>
             <Card
               icons={<SiRust />}
               name="Rust"
-              description="🪄I use it to build npm outdated checker."
+              description="I use it to build npm outdated checker."
             />
           </div>
           <div>
@@ -162,7 +162,7 @@ const Home = () => {
       <section className="min-h-screen md:p-6 mb-12" id="projects">
         <h1 className="font-bold text-2xl">📁 Projects</h1>
         <br />
-        <div className="grid gap-6 md:gap-12 md:grid-cols-3 mt-8 justify-center">
+        <div className="grid gap-6 md:gap-12 md:grid-cols-3 mt-10 justify-center">
           <ProjectCard
             title="ONCE"
             link="https://discord.lionceu.live/"
@@ -225,9 +225,6 @@ const Home = () => {
           >
             tw_wu_as_tim
           </Social>
-        </div>
-        <div className="flex justify-center absolute bottom-20 left-0 right-0 animate-bounce text-center">
-          Our journey is not defined by the destination, but by the moments
         </div>
       </section>
     </Layout>

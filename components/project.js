@@ -31,11 +31,14 @@ const ProjectCard = ({ title, children, link, inview }) => {
           alt="card"
         />
         <div className="mt-4 cursor-pointer">
-          <Link href={link} passHref>
-            <span className="font-mono tracking-wide text-lg hover:text-blue-500 active:text-blue-500">
-              {title} <MdOpenInNew className="inline-block" />
+          <div className="flex items-center space-x-2">
+            <span className="font-mono tracking-wide text-lg font-semibold">
+              {title}
             </span>
-          </Link>
+            <Link href={link} passHref>
+              <MdOpenInNew className="text-gray-500 hover:text-blue-500 active:text-blue-500" />
+            </Link>
+          </div>
         </div>
         <div className="mt-2 opacity-70 text-sm font-mono max-w-[230px]">
           {children}

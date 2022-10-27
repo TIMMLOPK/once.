@@ -5,14 +5,16 @@ const Card = ({ icons, name, description }) => {
   const [showsescr, setshowDe] = useState(false);
   return (
     <motion.div
-      className={`p-4 max-w-sm mx-auto rounded-full flex items-center space-x-4 min-h-full cursor-pointer dark:text-white dark:hover:bg-wbg hover:opacity-75`}
+      className="p-4 max-w-sm rounded-full flex items-center space-x-2 dark:text-white dark:hover:bg-wbg"
       animate={{ scale: showsescr ? 1.1 : 1 }}
       transition={{ duration: 0.2 }}
+      onHoverStart={() => setshowDe(true)}
+      onHoverEnd={() => setshowDe(false)}
       onClick={() => setshowDe(!showsescr)}
     >
-      <div className="text-sm font-medium text-gray-900 dark:text-white flex">
-        <span className="flex items-center">{icons}</span>
-        <span className="ml-2">{name}</span>
+      <div className="text-sm text-gray-900 dark:text-white flex">
+        <span className="flex items-center text-md">{icons}</span>
+        <span className="ml-4">{name}</span>
       </div>
       <motion.div
         animate={{ opacity: showsescr ? 1 : 0 }}

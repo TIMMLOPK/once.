@@ -12,7 +12,6 @@ const GithubStats = () => {
   });
 
   useEffect(() => {
-    console.log(user);
     if (user) {
       setStats({
         followers: user.followers,
@@ -26,11 +25,11 @@ const GithubStats = () => {
       <div className="flex flex-col items-center justify-center">
         <div className="flex flex-row items-center justify-center mt-5">
           <div className="flex flex-col items-center justify-center mr-10">
-            <h3 className="text-xl font-bold">{stats.followers}</h3>
+          <h3 className="text-xl font-bold">{stats.public_repos}</h3>
             <p className="text-gray-500 text-sm">Repositories</p>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-xl font-bold">{stats.public_repos}</h3>
+            <h3 className="text-xl font-bold">{stats.followers}</h3>
             <p className="text-gray-500 text-sm">Followers</p>
           </div>
         </div>

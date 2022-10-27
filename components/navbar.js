@@ -26,6 +26,7 @@ const NavItem = ({ children, active, id }) => {
       scale: 1,
     },
   };
+  const isactive = active === id;
   return (
     <motion.li
       className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
@@ -39,7 +40,7 @@ const NavItem = ({ children, active, id }) => {
       whileTap={{ scale: 0.9 }}
       variants={variants}
       initial="inactive"
-      animate={active === id ? "active" : "inactive"}
+      animate={isactive ? "active" : "inactive"}
     >
       {children}
     </motion.li>
