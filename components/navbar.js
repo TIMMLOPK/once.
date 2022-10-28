@@ -1,6 +1,6 @@
 import { AiOutlineFolder } from "react-icons/ai";
 import { SiAboutdotme } from "react-icons/si";
-import { FcContacts, FcSettings } from "react-icons/fc";
+import { FcSettings } from "react-icons/fc";
 import { BsArrowBarRight } from "react-icons/bs";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
@@ -88,7 +88,7 @@ const Navbar = ({ show, inView }) => {
       } z-10 transition-all duration-300 ease-in-out`}
       ref={navbar}
     >
-      <div className="h-[400px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
+      <div className="h-[340px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
         <div className="mt-6 flex flex-col items-center">
           <div>
             <NavItem active={active} id="about">
@@ -105,12 +105,6 @@ const Navbar = ({ show, inView }) => {
           <div className="mt-8">
             <NavItem active={active} id="projects">
               <AiOutlineFolder />
-            </NavItem>
-          </div>
-
-          <div className="mt-8">
-            <NavItem active={active} id="social">
-              <FcContacts />
             </NavItem>
           </div>
 

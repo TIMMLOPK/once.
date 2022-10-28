@@ -1,88 +1,36 @@
 import { useState, useEffect } from "react";
-import {
-  SiRust,
-  SiJavascript,
-  SiPython,
-  SiReact,
-  SiNextdotjs,
-} from "react-icons/si";
-import {
-  DiscordLogoIcon,
-  GitHubLogoIcon,
-  InstagramLogoIcon,
-} from "@radix-ui/react-icons";
 import { useSection } from "../utils/useSection.js";
-import TextTransition, { presets } from "react-text-transition";
-import ProjectCard from "../components/project.js";
-import Image from "next/image";
-import Card from "../components/miniCard.js";
 import Layout from "../components/Layout/main.js";
-import Sparkles from "../components/AnimatedText.js";
-import Social from "../components/social.js";
+import About from "../components/sections/about.js";
+import Lang from "../components/sections/lang.js";
+import Project from "../components/sections/project.js";
 import GithubStats from "../components/githubStats.js";
+import { FiGithub, FiInstagram } from "react-icons/fi";
+import Link from "next/link";
+import { FaDiscord } from "react-icons/fa";
+import { Transition } from "@headlessui/react";
 
 const Home = () => {
   const [inview, setinview] = useState("about");
-  const [index, setindex] = useState(0);
+  const [projectInview, setprojectInview] = useState(false);
   const inView = useSection();
 
   useEffect(() => {
     setinview(inView);
-    const interval = setInterval(() => {
-      setindex((index) => (index + 1) % TEXTS.length);
-    }, 2000);
-    return () => clearInterval(interval);
+    if (inView === "projects") {
+      setprojectInview(true);
+    } else {
+      setprojectInview(false);
+    }
   }, [inView]);
 
-  const scrollDown = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
-  };
-
-  const projectInview = (i) => (i === "projects" ? true : false);
   return (
     <Layout inView={inview}>
       <section
         className="flex items-center min-h-screen m-6 relative"
         id="about"
       >
-        <div>
-          <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl md:text-left">
-            <span className="font-semibold bg-gradient-to-r bg-clip-text text-transparent from-cyan-200 via-sky-500 to-sky-300 animate-text">
-              Hello
-            </span>
-            <br />I am <Sparkles>Timmy</Sparkles>
-          </h1>
-        </div>
-        <div className="absolute md:right-1/4 md:inset-y-1/3 invisible md:visible">
-          <Image
-            className="inline-block rounded-full"
-            src="/icon.webp"
-            alt="Picture of the author"
-            width={200}
-            height={200}
-          />
-        </div>
-        <div className="flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button
-            className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center"
-            onClick={scrollDown}
-          >
-            <svg
-              className="w-6 h-6 text-blue-500"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </button>
-        </div>
+        <About />
       </section>
       <section
         className="md:flex md:items-center min-h-screen m-2 relative px-6"
@@ -106,137 +54,53 @@ const Home = () => {
               profile website and meme generator. I am glad if you appreciate
               them. Please feel free to tell me if you have advice or questions.
               <br />
-              <span className="font-bold text-gray-500 inline-flex">
-                You can find me on
-                <TextTransition springConfig={presets.gentle}>
-                  <a href={SocialLinks[index]} className="text-blue-400 ml-1">
-                    {TEXTS[index]}
-                  </a>
-                </TextTransition>
-              </span>
+              <div className="flex gap-4 mt-12">
+                <Link
+                  href="https://github.com/TIMMLOPK"
+                  aria-label="GitHub"
+                  passHref
+                >
+                  <span className="text-gray-400 hover:text-gray-500">
+                    <FiGithub className="w-6 h-6" />
+                  </span>
+                </Link>
+                <Link
+                  href="https://www.instagram.com/tw_wu_as_tim/"
+                  aria-label="Instagram"
+                  passHref
+                >
+                  <span className="text-gray-400 hover:text-gray-500">
+                    <FiInstagram className="w-6 h-6" />
+                  </span>
+                </Link>
+                <Link href="#" aria-label="Discord" passHref>
+                  <span className="text-gray-400 hover:text-gray-500">
+                    <FaDiscord className="w-6 h-6" />
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
       <section className="min-h-screen md:p-6" id="lang">
-        <h1 className="font-bold text-2xl">📦 Languages & Skills</h1>
-        <br />
-        <div className="grid gap-5 md:grid-flow-col md:grid-rows-3 md:gap-8 mt-12">
-          <div>
-            <Card
-              icons={<SiRust />}
-              name="Rust"
-              description="I use it to build npm outdated checker."
-            />
-          </div>
-          <div>
-            <Card
-              icons={<SiJavascript />}
-              name="Javascript"
-              description="My favorite language."
-            />
-          </div>
-          <div>
-            <Card
-              icons={<SiPython />}
-              name="Python"
-              description="A language I am learning."
-            />
-          </div>
-          <div>
-            <Card
-              icons={<SiReact />}
-              name="React"
-              description="I use it to build this website."
-            />
-          </div>
-          <div>
-            <Card
-              icons={<SiNextdotjs />}
-              name="Next.js"
-              description="This page is built with Next.js 💙🤍"
-            />
-          </div>
-        </div>
+        <Lang />
       </section>
       <section className="min-h-screen md:p-6 mb-12" id="projects">
-        <h1 className="font-bold text-2xl">📁 Projects</h1>
-        <br />
-        <div className="grid gap-6 md:gap-12 md:grid-cols-3 mt-10 justify-center">
-          <ProjectCard
-            title="ONCE"
-            link="https://discord.lionceu.live/"
-            inview={projectInview(inView)}
-          >
-            ONCE is a powerful multi-purpose Discord bot.
-          </ProjectCard>
-          <ProjectCard
-            title="Meme Generator"
-            link="https://meme.lionceu.live/"
-            inview={projectInview(inView)}
-          >
-            Generate memes with your own text.
-          </ProjectCard>
-          <ProjectCard
-            title="npm outdated.rs"
-            link="https://github.com/TIMMLOPK/npm-outdated-rs"
-            inview={projectInview(inView)}
-          >
-            npm outdated checker
-          </ProjectCard>
-          <ProjectCard
-            title="Profile"
-            link="https://lionceu.live/"
-            inview={projectInview(inView)}
-          >
-            A profile website
-          </ProjectCard>
-          <ProjectCard
-            title="CSS Website"
-            link="https://github.com/TIMMLOPK/once"
-            inview={projectInview(inView)}
-          >
-            CSS website
-          </ProjectCard>
-        </div>
-      </section>
-      <section
-        className="min-h-screen md:p-6 relative"
-        id="social"
-        as="section"
-        threshold={0.5}
-        onChange={(inView) => setinview(inView ? "social" : "monit-1")}
-      >
-        <h1 className="font-bold text-2xl">📱 Social Media</h1>
-        <br />
-        <div className="grid gap-10 justify-center items-center mt-14 md:grid-flow-col md:gap-40">
-          <Social
-            icon={<GitHubLogoIcon />}
-            url="https://github.com/TIMMLOPK"
-            isLink
-          >
-            TIMMLOPK
-          </Social>
-          <Social icon={<DiscordLogoIcon />}>Timmy#2600</Social>
-          <Social
-            icon={<InstagramLogoIcon />}
-            url="https://www.instagram.com/tw_wu_as_tim/"
-            isLink
-          >
-            tw_wu_as_tim
-          </Social>
-        </div>
+        <Transition
+          show={projectInview}
+          enter="transition ease-out duration-300"
+          enterFrom="transform scale-0"
+          enterTo="transform scale-100"
+          leave="transition ease-in duration-300"
+          leaveFrom="transform scale-100"
+          leaveTo="transform scale-0"
+        >
+          <Project />
+        </Transition>
       </section>
     </Layout>
   );
 };
-
-const TEXTS = ["Github", "Instagram", "Discord"];
-
-const SocialLinks = [
-  "https://github.com/TIMMLOPK/",
-  "https://www.instagram.com/tw_wu_as_tim/",
-  "https://discord.com",
-];
 
 export default Home;
