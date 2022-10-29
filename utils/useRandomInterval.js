@@ -9,7 +9,7 @@ const useRandomInterval = (callback, minDelay, maxDelay) => {
     savedCallback.current = callback;
   }, [callback]);
   useEffect(() => {
-    let isEnabled =
+    const isEnabled =
       typeof minDelay === "number" && typeof maxDelay === "number";
     if (isEnabled) {
       const handleTick = () => {
@@ -29,4 +29,4 @@ const useRandomInterval = (callback, minDelay, maxDelay) => {
   return cancel;
 };
 
-export default useRandomInterval;
+export { useRandomInterval , random };

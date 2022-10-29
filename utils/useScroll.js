@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const useScroll = () => {
   const [scroll, setScroll] = useState(false);
 
+  const handleScroll = useCallback((timer) => {
+    setScroll(true);
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      setScroll(false);
+    }, 800);
+  }, []);
+
   useEffect(() => {
     let timer;
-    const handleScroll = () => {
-      setScroll(true);
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        setScroll(false);
-      }, 800);
-    };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", () => handleScroll(timer));
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", () => handleScroll(timer));
     };
-  }, []);
+  }, [handleScroll]);
 
   return scroll;
 };

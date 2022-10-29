@@ -28,7 +28,7 @@ const NavItem = ({ children, active, id }) => {
   };
   const isactive = active === id;
   return (
-    <motion.li
+    <motion.span
       className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
       onClick={() => {
         scrollTo(id);
@@ -43,10 +43,27 @@ const NavItem = ({ children, active, id }) => {
       animate={isactive ? "active" : "inactive"}
     >
       {children}
-    </motion.li>
+    </motion.span>
   );
 };
 
+
+const variants = {
+  open: {
+    x: 0,
+    transition: {
+      delay: 0.2,
+      ease: "easeInOut",
+    },
+  },
+  closed: {
+    x: 40,
+    transition: {
+      delay: 0.1,
+      ease: "easeInOut",
+    },
+  },
+};
 const Navbar = ({ show, inView }) => {
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState("about");
@@ -82,11 +99,13 @@ const Navbar = ({ show, inView }) => {
   if (!mounted) return null;
 
   return (
-    <nav
-      className={`fixed top-1/4 ${
-        showNav ? "right-2" : "right-[-30px]"
-      } z-10 transition-all duration-300 ease-in-out`}
+    <motion.nav
+      className="fixed top-1/4 right-2 z-10"
       ref={navbar}
+      variants={variants}
+      initial="closed"
+      animate={showNav ? "open" : "closed"}
+      transition={{ duration: 0.5 }}
     >
       <div className="h-[340px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
         <div className="mt-6 flex flex-col items-center">
@@ -127,7 +146,7 @@ const Navbar = ({ show, inView }) => {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

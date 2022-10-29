@@ -1,35 +1,61 @@
 import ProjectCard from "../../components/project.js";
+import { motion } from "framer-motion";
 
-const Project = () => {
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+const Project = ({ inview }) => {
   return (
     <div>
       <h1 className="font-bold text-2xl">📁 Projects</h1>
       <br />
       <div className="grid gap-6 md:gap-12 md:grid-cols-3 mt-10 justify-center">
-        <ProjectCard title="ONCE" link="https://discord.lionceu.live/">
-          ONCE is a powerful multi-purpose Discord bot.
-        </ProjectCard>
-        <ProjectCard title="Meme Generator" link="https://meme.lionceu.live/">
-          Generate memes with your own text.
-        </ProjectCard>
-        <ProjectCard
-          title="npm outdated.rs"
-          link="https://github.com/TIMMLOPK/npm-outdated-rs"
-        >
-          npm outdated checker
-        </ProjectCard>
-        <ProjectCard title="Profile" link="https://lionceu.live/">
-          A profile website
-        </ProjectCard>
-        <ProjectCard
-          title="CSS Website"
-          link="https://github.com/TIMMLOPK/once"
-        >
-          CSS website
-        </ProjectCard>
+        {projects.map((project, index) => (
+          <motion.div
+            variants={variants}
+            initial="hidden"
+            animate={inview === "projects" ? "visible" : "hidden"}
+            transition={{ delay: index * 0.2 }}
+            key={index++}
+          >
+            <ProjectCard title={project.title} link={project.link}>
+              {project.children}
+            </ProjectCard>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
 };
+
+const projects = [
+  {
+    title: "ONCE",
+    children: "ONCE is a powerful multi-purpose Discord bot.",
+    link: "https://discord.lionceu.live/",
+  },
+  {
+    title: "Meme Generator",
+    children: "Generate memes with your own text.",
+    link: "https://meme.lionceu.live/",
+  },
+  {
+    title: "npm outdated.rs",
+    children: "npm outdated checker",
+    link: "https://github.com/TIMMLOPK/npm-outdated-rs",
+  },
+  {
+    title: "Profile",
+    children: "A profile website",
+    link: "https://lionceu.live/",
+  },
+  {
+    title: "CSS Website",
+    children: "CSS website",
+    link: "https://github.com/TIMMLOPK/once",
+  },
+];
 
 export default Project;

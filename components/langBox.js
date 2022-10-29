@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const Card = ({ icons, name, description }) => {
+const Card = ({ icon, name, description }) => {
   const [showsescr, setshowDe] = useState(false);
   return (
     <motion.div
@@ -13,7 +13,7 @@ const Card = ({ icons, name, description }) => {
       onClick={() => setshowDe(!showsescr)}
     >
       <div className="text-sm text-gray-900 dark:text-white flex">
-        <span className="flex items-center text-md">{icons}</span>
+        <span className="flex items-center text-md">{icon}</span>
         <span className="ml-4">{name}</span>
       </div>
       <motion.div

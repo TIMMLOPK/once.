@@ -1,5 +1,7 @@
 import Sparkles from "../../components/AnimatedText.js";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const scrollDown = () => {
   window.scrollTo({
@@ -9,6 +11,16 @@ const scrollDown = () => {
 };
 
 const About = () => {
+  const router = useRouter();
+  const { country } = router.query;
+
+  useEffect(() => {
+    if (country) {
+      console.log(country);
+    }
+  }, [country]);
+
+
   return (
     <div>
       <div>
@@ -32,6 +44,7 @@ const About = () => {
         <button
           className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center"
           onClick={scrollDown}
+          aria-label="Scroll down"
         >
           <svg
             className="w-6 h-6 text-blue-500"

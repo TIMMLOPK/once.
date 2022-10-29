@@ -1,15 +1,23 @@
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { useState, useEffect } from "react";
 
 const GithubStats = () => {
   const { data: user } = useSWR(
-    "https://api.github.com/users/TIMMLOPK",
+    "user",
     (url) => fetch(url).then((res) => res.json())
   );
   const [stats, setStats] = useState({
     followers: 0,
     public_repos: 0,
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      mutate("user", fetch("https://api.github.com/users/TIMMLOPK").then((res) =>
+      res.json()
+    ));
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     if (user) {

@@ -8,6 +8,10 @@
     margin: 0;
     height: 100%;
   }
+
+  ::selection {
+    background-color: #3d94ff42;
+  }
 }
 
 @layer components {

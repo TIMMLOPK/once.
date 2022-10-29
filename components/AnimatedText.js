@@ -1,12 +1,11 @@
 import { useState } from "react";
-import useRandomInterval from "../utils/useRandomInterval";
+import { useRandomInterval, random } from "../utils/useRandomInterval";
 
 const DEFAULT_COLOR = "hsl(50deg, 100%, 50%)";
-const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 const generateSparkle = (color) => {
   const sparkle = {
-    id: String(random(10000, 99999)),
+    id: random(10000, 99999),
     createdAt: Date.now(),
     color,
     size: random(10, 30),
@@ -17,6 +16,7 @@ const generateSparkle = (color) => {
   };
   return sparkle;
 };
+
 const Sparkles = ({ color = DEFAULT_COLOR, children, ...delegated }) => {
   const [sparkles, setSparkles] = useState([]);
 

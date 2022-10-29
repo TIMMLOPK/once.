@@ -8,20 +8,13 @@ import GithubStats from "../components/githubStats.js";
 import { FiGithub, FiInstagram } from "react-icons/fi";
 import Link from "next/link";
 import { FaDiscord } from "react-icons/fa";
-import { Transition } from "@headlessui/react";
 
 const Home = () => {
   const [inview, setinview] = useState("about");
-  const [projectInview, setprojectInview] = useState(false);
   const inView = useSection();
 
   useEffect(() => {
     setinview(inView);
-    if (inView === "projects") {
-      setprojectInview(true);
-    } else {
-      setprojectInview(false);
-    }
   }, [inView]);
 
   return (
@@ -54,7 +47,7 @@ const Home = () => {
               profile website and meme generator. I am glad if you appreciate
               them. Please feel free to tell me if you have advice or questions.
               <br />
-              <div className="flex gap-4 mt-12">
+              <div className="flex gap-4 mt-12 items-center">
                 <Link
                   href="https://github.com/TIMMLOPK"
                   aria-label="GitHub"
@@ -73,11 +66,10 @@ const Home = () => {
                     <FiInstagram className="w-6 h-6" />
                   </span>
                 </Link>
-                <Link href="#" aria-label="Discord" passHref>
-                  <span className="text-gray-400 hover:text-gray-500">
-                    <FaDiscord className="w-6 h-6" />
+                  <span className="inline-flex items-center text-gray-400 hover:text-gray-500">
+                    <FaDiscord className="w-6 h-6 mr-1" />
+                    <p className="text-sm">Timmy#2600</p>
                   </span>
-                </Link>
               </div>
             </div>
           </div>
@@ -87,17 +79,7 @@ const Home = () => {
         <Lang />
       </section>
       <section className="min-h-screen md:p-6 mb-12" id="projects">
-        <Transition
-          show={projectInview}
-          enter="transition ease-out duration-300"
-          enterFrom="transform scale-0"
-          enterTo="transform scale-100"
-          leave="transition ease-in duration-300"
-          leaveFrom="transform scale-100"
-          leaveTo="transform scale-0"
-        >
-          <Project />
-        </Transition>
+        <Project inview={inView} />
       </section>
     </Layout>
   );

@@ -1,11 +1,17 @@
+import Image from "next/image";
+
 const Payment = ({ icon, text }) => {
   return (
     <div className="flex items-center p-4">
-      <img
-        src={icon}
-        alt={text}
-        className="flex justify-center items-center w-10 h-10 mr-3 rounded-full transition"
-      />
+      <span className="flex justify-center items-center w-10 h-10 mr-3">
+        <Image
+          src={icon}
+          alt={text}
+          width={40}
+          height={40}
+          className="rounded-full"
+        />
+      </span>
       <p className="text-md font-semibold">{text}</p>
     </div>
   );
@@ -13,16 +19,18 @@ const Payment = ({ icon, text }) => {
 
 const Shop = () => {
   return (
-    <main className="m-auto p-6 max-w-4xl md:p-10 md:px-20">
+    <main className="m-auto max-w-4xl md:p-10 md:px-20">
       <section>
-        <div className="inline-block space-evenly py-8 md:flex">
-          <img
-            className="inline-block rounded-full md:m-12 md:mt-14 mt-8 w-[172px] h-[172px]"
-            src="https://lionceu-timmlopk.vercel.app/shopicon.jpg"
-            width={172}
-            height={172}
-            alt="murasaki_jpstore"
-          />
+        <div className="inline-block space-evenly py-8 md:flex md:space-x-10">
+          <div className="flex flex-col items-center justify-center mt-8">
+            <Image
+              src="https://lionceu-timmlopk.vercel.app/shopicon.jpg"
+              alt="murasaki_jpstore"
+              width={200}
+              height={200}
+              className="rounded-full"
+            />
+          </div>
           <section className="ml-1 mt-8">
             <h1 className="text-4xl font-semibold my-7">@murasaki_jpstore</h1>
             <p className="max-w-10 dark:text-zinc-300">
@@ -48,22 +56,24 @@ const Shop = () => {
             <p className="mb-4">
               本月匯率=0.07-0.075(視乎商品日元價格，每月匯率調整)
             </p>
-            商品日元價格連稅
-            <ul className="ml-4 py-2">
-              <li className="mb-4">5000日元，手續費=$10</li>
-              <li className="mb-4">5000-10000日元，手續費=$0</li>
-              <li className="mb-4">10000日元，手續費=$0</li>
-            </ul>
+            <div className="my-6">
+              <p className="mt-4 text-xl font-semibold">商品日元價格連稅</p>
+              <ul className="py-2 space-y-2">
+                <li>5000日元，手續費=$10</li>
+                <li>5000-10000日元，手續費=$0</li>
+                <li>10000日元，手續費=$0</li>
+              </ul>
+            </div>
           </div>
-          <div className="max-w-10 dark:text-zinc-300">
-            <ul className="list-disc ml-4 list-outside py-2">
-              <li className="mb-4">
+          <div className="max-w-10 dark:text-zinc-300 mt-4">
+            <ul className="list-disc ml-4 list-outside py-2 space-y-5">
+              <li>
                 商品日元價格連稅5000日元,會隨金額提供更優惠的收費匯率，歡迎查詢
               </li>
-              <li className="mb-4">以上價格計算以未包含日本國内運費作準</li>
-              <li className="mb-4">客人需提供商品網上link/商品名稱</li>
-              <li className="mb-4">如商品需在指定時間搶購則以匯率0.1收費</li>
-              <li className="mb-4">
+              <li>以上價格計算以未包含日本國内運費作準</li>
+              <li>客人需提供商品網上link/商品名稱</li>
+              <li>如商品需在指定時間搶購則以匯率0.1收費</li>
+              <li>
                 (本店有專業搶購經驗，15秒內售罄的商品都可搶購，不成功不收費)
               </li>
             </ul>
@@ -90,25 +100,21 @@ const Shop = () => {
           <h1 className="text-3xl mb-8">交收方式</h1>
           <div className="flex-col space-y-4">
             <p className="text-xl font-semibold">1.面交</p>
-            <ul className="list-disc list-inside">
-              <li className="mb-4">請與店主約時間</li>
-              <li className="mb-4">主要在太子,旺角,油麻地,尖沙咀站</li>
-              <li className="mb-4">客服中心位置(閘內/閘外皆可)</li>
-              <li className="mb-4">
+            <ul className="list-disc list-inside space-y-4">
+              <li>請與店主約時間</li>
+              <li>主要在太子,旺角,油麻地,尖沙咀站</li>
+              <li>客服中心位置(閘內/閘外皆可)</li>
+              <li>
                 ⚠ 如因個人問題無法交收，最遲於1hr前通知，否則下次交收可能有罰款
               </li>
             </ul>
           </div>
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-4 mt-6">
             <p className="text-xl font-semibold">2.順豐到付</p>
-            <ul className="list-disc list-inside">
-              <li className="mb-4">請提供名字,電話,地址/順豐網點代碼</li>
-              <li className="mb-4">
-                順豐網點目前只提供自寄自取, 不能上門送貨,詳情請參考:
-              </li>
-              <li className="mb-4">
-                順境疫境 與您同行｜網點自寄自取 取件零接觸
-              </li>
+            <ul className="list-disc list-inside space-y-4">
+              <li>請提供名字,電話,地址/順豐網點代碼</li>
+              <li>順豐網點目前只提供自寄自取, 不能上門送貨,詳情請參考:</li>
+              <li>順境疫境 與您同行｜網點自寄自取 取件零接觸</li>
             </ul>
           </div>
         </div>
@@ -144,19 +150,25 @@ const Shop = () => {
       </section>
       <section>
         <div className="inline-flex items-center justify-center">
-          <img
-            src="https://lionceu-timmlopk.vercel.app/shopicon.jpg"
-            className="w-10 h-10 rounded-full"
-            alt="murasaki_jpstore"
-          />
-          <h1 className="text-xl ml-4">:祝各位:購物,追星/追V愉快~</h1>
+          <div className="flex flex-col space-y-4 w-10 h-10">
+            <Image
+              src="https://lionceu-timmlopk.vercel.app/shopicon.jpg"
+              className="rounded-full"
+              alt="murasaki_jpstore"
+              width={100}
+              height={100}
+            />
+          </div>
+          <h1 className="text-xl ml-2">: 祝各位:購物,追星/追V愉快~</h1>
         </div>
       </section>
       <footer className="flex items-center justify-center mt-8">
-        <p className="text-sm text-zinc-200">
-          All reserved by @murasaki_jpstore
-        </p>
-        <p className="text-sm ml-3 text-zinc-400">Powered by once</p>
+        <div className="flex flex-col text-center">
+          <p className="text-md text-zinc-200">
+            All reserved by @murasaki_jpstore
+          </p>
+          <p className="text-md text-zinc-400 mt-2">Powered by once</p>
+        </div>
       </footer>
     </main>
   );
