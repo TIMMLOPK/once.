@@ -20,7 +20,6 @@ const About = () => {
     }
   }, [country]);
 
-
   return (
     <div>
       <div>

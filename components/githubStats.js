@@ -2,9 +2,8 @@ import useSWR, { mutate } from "swr";
 import { useState, useEffect } from "react";
 
 const GithubStats = () => {
-  const { data: user } = useSWR(
-    "user",
-    (url) => fetch(url).then((res) => res.json())
+  const { data: user } = useSWR("user", (url) =>
+    fetch(url).then((res) => res.json())
   );
   const [stats, setStats] = useState({
     followers: 0,
@@ -13,9 +12,10 @@ const GithubStats = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      mutate("user", fetch("https://api.github.com/users/TIMMLOPK").then((res) =>
-      res.json()
-    ));
+      mutate(
+        "user",
+        fetch("https://api.github.com/users/TIMMLOPK").then((res) => res.json())
+      );
     }, 1000);
   }, []);
 

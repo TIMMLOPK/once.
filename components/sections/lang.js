@@ -14,7 +14,7 @@ const Lang = () => {
       <br />
       <div className="grid gap-5 md:grid-flow-col md:grid-rows-3 md:gap-8 mt-12">
         {langs.map((lang, index) => (
-          <div>
+          <div key={index++}>
             <Card
               icon={lang.icons}
               name={lang.name}

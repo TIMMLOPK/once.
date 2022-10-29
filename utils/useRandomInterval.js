@@ -29,4 +29,4 @@ const useRandomInterval = (callback, minDelay, maxDelay) => {
   return cancel;
 };
 
-export { useRandomInterval , random };
+export { useRandomInterval, random };

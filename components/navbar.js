@@ -47,7 +47,6 @@ const NavItem = ({ children, active, id }) => {
   );
 };
 
-
 const variants = {
   open: {
     x: 0,
