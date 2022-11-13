@@ -47,7 +47,7 @@ const projects = [
     link: "https://github.com/TIMMLOPK/npm-outdated-rs",
   },
   {
-    title: "Profile",
+    title: "ONCE",
     children: "A profile website",
     link: "https://lionceu.live/",
   },

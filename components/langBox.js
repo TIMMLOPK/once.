@@ -12,9 +12,9 @@ const Card = ({ icon, name, description }) => {
       onHoverEnd={() => setshowDe(false)}
       onClick={() => setshowDe(!showsescr)}
     >
-      <div className="text-sm text-gray-900 dark:text-white flex">
-        <span className="flex items-center text-md">{icon}</span>
-        <span className="ml-4">{name}</span>
+      <div className="text-md text-gray-900 dark:text-white inline-flex place-items-center">
+        {icon}
+        <span className="ml-2">{name}</span>
       </div>
       <motion.div
         animate={{ opacity: showsescr ? 1 : 0 }}

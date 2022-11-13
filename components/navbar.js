@@ -14,36 +14,16 @@ function scrollTo(id) {
   });
 }
 
-const NavItem = ({ children, active, id }) => {
-  const variants = {
-    active: {
-      scale: 1.2,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    inactive: {
-      scale: 1,
-    },
-  };
-  const isactive = active === id;
+const NavItem = ({ children, id }) => {
   return (
-    <motion.span
+    <span
       className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
       onClick={() => {
         scrollTo(id);
       }}
-      whileHover={{
-        scale: 1.1,
-        transition: { duration: 0.2 },
-      }}
-      whileTap={{ scale: 0.9 }}
-      variants={variants}
-      initial="inactive"
-      animate={isactive ? "active" : "inactive"}
     >
       {children}
-    </motion.span>
+    </span>
   );
 };
 
@@ -52,17 +32,20 @@ const variants = {
     x: 0,
     transition: {
       delay: 0.2,
-      ease: "easeInOut",
+      type: "spring",
+      stiffness: 100,
     },
   },
   closed: {
     x: 40,
     transition: {
-      delay: 0.1,
-      ease: "easeInOut",
+      delay: 0,
+      type: "spring",
+      stiffness: 100,
     },
   },
 };
+
 const Navbar = ({ show, inView }) => {
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState("about");
@@ -99,7 +82,7 @@ const Navbar = ({ show, inView }) => {
 
   return (
     <motion.nav
-      className="fixed top-1/4 right-2 z-10"
+      className="fixed top-[27%] right-2 z-10"
       ref={navbar}
       variants={variants}
       initial="closed"
@@ -108,11 +91,9 @@ const Navbar = ({ show, inView }) => {
     >
       <div className="h-[340px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
         <div className="mt-6 flex flex-col items-center">
-          <div>
-            <NavItem active={active} id="about">
-              <SiAboutdotme />
-            </NavItem>
-          </div>
+          <NavItem active={active} id="about">
+            <SiAboutdotme />
+          </NavItem>
 
           <div className="mt-8">
             <NavItem active={active} id="lang">

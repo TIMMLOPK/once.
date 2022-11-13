@@ -2,9 +2,7 @@ import useSWR, { mutate } from "swr";
 import { useState, useEffect } from "react";
 
 const GithubStats = () => {
-  const { data: user } = useSWR("user", (url) =>
-    fetch(url).then((res) => res.json())
-  );
+  const { data: user } = useSWR("user");
   const [stats, setStats] = useState({
     followers: 0,
     public_repos: 0,

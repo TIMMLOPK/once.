@@ -66,16 +66,16 @@ const Home = () => {
                     <FiInstagram className="w-6 h-6" />
                   </span>
                 </Link>
-                <span className="inline-flex items-center text-gray-400 hover:text-gray-500">
+                <span className="inline-flex items-center text-gray-800">
                   <FaDiscord className="w-6 h-6 mr-1" />
-                  <p className="text-sm">Timmy#2600</p>
+                  <p className="text-sm font-normal">Timmy#2600</p>
                 </span>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="min-h-screen md:p-6" id="lang">
+      <section className="flex items-center min-h-screen relative" id="lang">
         <Lang />
       </section>
       <section className="min-h-screen md:p-6 mb-12" id="projects">
