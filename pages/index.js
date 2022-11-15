@@ -66,7 +66,7 @@ const Home = () => {
                     <FiInstagram className="w-6 h-6" />
                   </span>
                 </Link>
-                <span className="inline-flex items-center text-gray-800">
+                <span className="inline-flex items-center text-gray-400">
                   <FaDiscord className="w-6 h-6 mr-1" />
                   <p className="text-sm font-normal">Timmy#2600</p>
                 </span>
@@ -79,7 +79,7 @@ const Home = () => {
         <Lang />
       </section>
       <section className="min-h-screen md:p-6 mb-12" id="projects">
-        <Project inview={inView} />
+        <Project />
       </section>
     </Layout>
   );

@@ -6,7 +6,7 @@ const variants = {
   visible: { opacity: 1 },
 };
 
-const Project = ({ inview }) => {
+const Project = () => {
   return (
     <div>
       <h1 className="font-bold text-2xl">📁 Projects</h1>
@@ -16,9 +16,9 @@ const Project = ({ inview }) => {
           <motion.div
             variants={variants}
             initial="hidden"
-            animate={inview === "projects" ? "visible" : "hidden"}
             transition={{ delay: index * 0.2 }}
             key={index++}
+            whileInView="visible"
           >
             <ProjectCard title={project.title} link={project.link}>
               {project.children}

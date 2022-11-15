@@ -69,7 +69,7 @@ const Navbar = ({ show, inView }) => {
     setShowNav(show);
     return () => {
       if (navRef) {
-        navRef.removeEventListener("mouseenter", () => {
+        navRef.removeEventListener("mouseEnter", () => {
           setShowNav(true);
         });
       }
@@ -89,7 +89,7 @@ const Navbar = ({ show, inView }) => {
       animate={showNav ? "open" : "closed"}
       transition={{ duration: 0.5 }}
     >
-      <div className="h-[340px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1">
+      <div className="h-[340px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1 border dark:border-zinc-800">
         <div className="mt-6 flex flex-col items-center">
           <NavItem active={active} id="about">
             <SiAboutdotme />
