@@ -4,12 +4,12 @@ import { MdOpenInNew } from "react-icons/md";
 
 const ProjectCard = ({ title, children, link }) => {
   return (
-    <div className="dark:text-white m-6 relative">
+    <div className="dark:text-white m-6 relative w-auto h-auto">
       <Image
         src="/card.png"
         className="rounded-lg"
-        width={460 * 0.5}
-        height={240 * 0.5}
+        width={230}
+        height={120}
         alt="card"
       />
       <div className="mt-4 cursor-pointer">

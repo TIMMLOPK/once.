@@ -21,7 +21,7 @@ const Shop = () => {
   return (
     <main className="m-auto max-w-4xl md:px-20 p-6">
       <section>
-        <div className="inline-block space-evenly py-8 md:flex md:space-x-10">
+        <div className="inline-block py-8 md:flex md:space-x-10">
           <div className="flex flex-col items-center justify-center mt-8">
             <Image
               src="https://lionceu-timmlopk.vercel.app/shopicon.jpg"

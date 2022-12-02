@@ -26,6 +26,7 @@ const About = () => {
           alt="Picture of the author"
           width={200}
           height={200}
+          priority
         />
       </div>
       <div className="flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2">
