@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "next-themes";
+import Snowfall from 'react-snowfall'
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
@@ -16,7 +17,8 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:image" content="/card.png" />
         <title>once.</title>
       </Head>
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" defaultTheme="dark">
+        <Snowfall />
         <Component {...pageProps} />
       </ThemeProvider>
     </>

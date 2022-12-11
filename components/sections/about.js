@@ -1,4 +1,4 @@
-import Sparkles from "../../components/AnimatedText.js";
+import Sparkles from "../../components/animatedText.js";
 import Image from "next/image";
 
 const scrollDown = () => {
