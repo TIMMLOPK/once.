@@ -66,7 +66,6 @@ const Navbar = ({ show, inView }) => {
         setShowNav(true);
       });
     }
-    setShowNav(show);
     return () => {
       if (navRef) {
         navRef.removeEventListener("mouseEnter", () => {
@@ -74,7 +73,11 @@ const Navbar = ({ show, inView }) => {
         });
       }
     };
-  }, [show, inView]);
+  }, [inView]);
+
+  useEffect(() => {
+    setShowNav(show);
+  }, [show]);
 
   useEffect(() => setMounted(true), []);
 

@@ -1,21 +1,12 @@
-import useSWR, { mutate } from "swr";
+import useSWR from "swr";
 import { useState, useEffect } from "react";
 
 const GithubStats = () => {
-  const { data: user } = useSWR("user");
-  const [stats, setStats] = useState({
-    followers: 0,
-    public_repos: 0,
-  });
-
-  useEffect(() => {
-    setTimeout(() => {
-      mutate(
-        "user",
-        fetch("https://api.github.com/users/TIMMLOPK").then((res) => res.json())
-      );
-    }, 1000);
-  }, []);
+  const { data: user, isLoading } = useSWR(
+    "https://api.github.com/users/TIMMLOPK",
+    (...args) => fetch(...args).then((res) => res.json())
+  );
+  const [stats, setStats] = useState({});
 
   useEffect(() => {
     if (user) {
@@ -31,11 +22,19 @@ const GithubStats = () => {
       <div className="flex flex-col items-center justify-center">
         <div className="flex flex-row items-center justify-center mt-5">
           <div className="flex flex-col items-center justify-center mr-10">
-            <h3 className="text-xl font-bold">{stats.public_repos}</h3>
+            {isLoading ? (
+              <div className="rounded-full bg-gray-400 h-4 w-4 animate-pulse mb-3"></div>
+            ) : (
+              <h3 className="text-xl font-bold">{stats.public_repos}</h3>
+            )}
             <p className="text-gray-500 text-sm">Repositories</p>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-xl font-bold">{stats.followers}</h3>
+            {isLoading ? (
+              <div className="rounded-full bg-gray-400 h-4 w-4 animate-pulse mb-3"></div>
+            ) : (
+              <h3 className="text-xl font-bold">{stats.followers}</h3>
+            )}
             <p className="text-gray-500 text-sm">Followers</p>
           </div>
         </div>

@@ -4,14 +4,19 @@ import { MdOpenInNew } from "react-icons/md";
 
 const ProjectCard = ({ title, children, link }) => {
   return (
-    <div className="dark:text-white m-6 relative w-auto h-auto">
-      <Image
-        src="/card.png"
-        className="rounded-lg"
-        width={230}
-        height={120}
-        alt="card"
-      />
+    <div className="dark:text-white m-6 relative w-auto h-auto items-center">
+      <div className="after:content group relative after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight">
+        <Image
+          src={"/card.png"}
+          className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+          style={{ transform: "translate3d(0, 0, 0)" }}
+          placeholder="blur"
+          blurDataURL={"/card.png"}
+          width={250}
+          height={120}
+          alt="card"
+        />
+      </div>
       <div className="mt-4 cursor-pointer">
         <div className="flex items-center space-x-2">
           <span className="font-mono tracking-wide text-lg font-semibold">

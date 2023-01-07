@@ -35,7 +35,7 @@ const Home = () => {
           <GithubStats />
         </div>
         <div className="md:flex md:w-full md:justify-center md:items-center mt-8 mr-5">
-          <div className="font-normal text-gray-700 dark:text-gray-300 leading-relaxed tracking-wide">
+          <div className="text-gray-900 dark:text-gray-300 leading-relaxed tracking-wide">
             <p>
               Hello, I am student from Hong Kong. I am insterested in
               programming and I am currently learning Rust.
@@ -66,9 +66,11 @@ const Home = () => {
                     <FiInstagram className="w-6 h-6" />
                   </span>
                 </Link>
-                <span className="inline-flex items-center text-gray-400">
+                <span className="inline-flex items-center text-[#7289DA]">
                   <FaDiscord className="w-6 h-6 mr-1" />
-                  <p className="text-sm font-normal">Timmy#2600</p>
+                  <p className="text-sm font-normal text-gray-500">
+                    Timmy#2600
+                  </p>
                 </span>
               </div>
             </div>
@@ -79,7 +81,7 @@ const Home = () => {
         <Lang />
       </section>
       <section className="min-h-screen md:p-6 mb-12" id="projects">
-        <Project />
+        <Project inView={inview === "projects"} />
       </section>
     </Layout>
   );

@@ -57,7 +57,9 @@ const Shop = () => {
               本月匯率=0.058-0.065(視乎商品日元價格，每月匯率調整)
             </p>
             <div className="my-6">
-              <p className="mt-4 text-xl font-semibold dark:text-zinc-200">商品日元價格連稅</p>
+              <p className="mt-4 text-xl font-semibold dark:text-zinc-200">
+                商品日元價格連稅
+              </p>
               <ul className="py-2 space-y-2">
                 <li>5000日元，手續費=$10</li>
                 <li>5000-10000日元，手續費=$0</li>
@@ -66,15 +68,13 @@ const Shop = () => {
             </div>
           </div>
           <div className="max-w-10 dark:text-zinc-300 mt-4 space-y-3">
-              <p>
-                商品日元價格連稅5000日元,會隨金額提供更優惠的收費匯率，歡迎查詢
-              </p>
-              <p>以上價格計算以未包含日本國内運費作準</p>
-              <p>客人需提供商品網上link/商品名稱</p>
-              <p>如商品需在指定時間搶購則以匯率0.1收費</p>
-              <p>
-                (本店有專業搶購經驗，15秒內售罄的商品都可搶購，不成功不收費)
-              </p>
+            <p>
+              商品日元價格連稅5000日元,會隨金額提供更優惠的收費匯率，歡迎查詢
+            </p>
+            <p>以上價格計算以未包含日本國内運費作準</p>
+            <p>客人需提供商品網上link/商品名稱</p>
+            <p>如商品需在指定時間搶購則以匯率0.1收費</p>
+            <p>(本店有專業搶購經驗，15秒內售罄的商品都可搶購，不成功不收費)</p>
           </div>
         </div>
       </section>
@@ -155,7 +155,9 @@ const Shop = () => {
               height={100}
             />
           </div>
-          <h1 className="text-xl ml-2 dark:text-zinc-300">: 祝各位:購物,追星/追V愉快~</h1>
+          <h1 className="text-xl ml-2 dark:text-zinc-300">
+            : 祝各位:購物,追星/追V愉快~
+          </h1>
         </div>
       </section>
       <footer className="flex items-center justify-center mt-8">

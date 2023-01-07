@@ -21,6 +21,10 @@
     animation: comeInOut 700ms forwards;
   }
 
+  .bg-inherit {
+    background: inherit;
+  }
+
   .sparkle-svg {
     display: block;
     animation: spin 1000ms linear infinite;
