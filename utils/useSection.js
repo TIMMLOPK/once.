@@ -4,10 +4,9 @@ export const useSection = () => {
   const [inview, setinview] = useState("about");
   const observer = useRef(null);
 
-  let options = {
+  const options = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.5,
   };
 
   useEffect(() => {

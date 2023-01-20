@@ -6,7 +6,7 @@ const gradientLabelAfter =
 const Title = ({ children }) => {
   return (
     <div
-      className={`bg-gradient-to-r from-[#002585] to-[#209DEE] bg-no-repeat rounded-full relative border-0 py-2 w-24 md:py-2 md:w-36 ${gradientLabelBefore} ${gradientLabelAfter}`}
+      className={`bg-gradient-to-r from-[#002585] to-[#209DEE] bg-no-repeat rounded-full relative border-0 py-2 w-24 md:py-2 md:w-36 ${gradientLabelBefore} ${gradientLabelAfter} mb-8`}
     >
       <span className="relative block z-20 text-transparent font-semibold leading-tight text-center text-lg md:text-[1.75rem] bg-clip-text bg-inherit">
         {children}

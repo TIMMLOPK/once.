@@ -77,10 +77,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="flex items-center min-h-screen relative" id="lang">
+      <section className="md:flex items-center min-h-screen relative" id="lang">
         <Lang />
       </section>
-      <section className="min-h-screen md:p-6 mb-12" id="projects">
+      <section className="min-h-screen relative" id="projects">
         <Project inView={inview === "projects"} />
       </section>
     </Layout>

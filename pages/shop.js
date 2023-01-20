@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Icon from "../components/icon";
+import Title from "../components/title";
 
 const Payment = ({ icon, text }) => {
   return (
@@ -7,8 +9,8 @@ const Payment = ({ icon, text }) => {
         <Image
           src={icon}
           alt={text}
-          width={50}
-          height={50}
+          width={35}
+          height={35}
           className="rounded-full"
         />
       </span>
@@ -21,15 +23,9 @@ const Shop = () => {
   return (
     <main className="m-auto max-w-4xl md:px-20 p-6">
       <section>
-        <div className="inline-block py-8 md:flex md:space-x-10">
-          <div className="flex flex-col items-center justify-center mt-8">
-            <Image
-              src="https://lionceu-timmlopk.vercel.app/shopicon.jpg"
-              alt="murasaki_jpstore"
-              width={200}
-              height={200}
-              className="rounded-full"
-            />
+        <div className="py-8 md:flex md:space-x-10">
+          <div className="flex items-center justify-center mt-8 md:mt-0">
+            <Icon src="/shopicon.webp" />
           </div>
           <section className="ml-1 mt-8">
             <h1 className="text-4xl my-7 font-serif">@murasaki_jpstore</h1>
@@ -47,7 +43,7 @@ const Shop = () => {
       </section>
       <section>
         <div className="py-14">
-          <h1 className="text-3xl mb-8">代購須知</h1>
+          <Title>代購須知</Title>
           <h4 className="text-xl mb-4">收費</h4>
           <div className="max-w-10 dark:text-zinc-300">
             <p className="mb-4">
@@ -80,22 +76,16 @@ const Shop = () => {
       </section>
       <section>
         <div className="grid gap-2 grid-cols-1 my-5">
-          <h1 className="text-4xl mt-6 dark:text-white">付款方式</h1>
+          <Title>付款方式</Title>
           <p className="mb-4 dark:text-zinc-300">過數後請傳送永久保存截圖</p>
           <Payment icon="/alipayhk.png" text="Alipayhk" />
-          <Payment
-            icon="https://lionceu-timmlopk.vercel.app/shop/payme.svg"
-            text="PayMe"
-          />
-          <Payment
-            icon="https://lionceu-timmlopk.vercel.app/shop/fps.svg"
-            text="FPS"
-          />
+          <Payment icon="/payme.png" text="PayMe" />
+          <Payment icon="/fps.svg" text="FPS" />
         </div>
       </section>
       <section>
         <div className="py-14 place-items-center">
-          <h1 className="text-3xl mb-8">交收方式</h1>
+          <Title>交收方式</Title>
           <div className="flex-col space-y-4">
             <p className="text-xl font-semibold">1.面交</p>
             <ul className="list-disc list-inside space-y-4 dark:text-zinc-300">
@@ -117,7 +107,7 @@ const Shop = () => {
       </section>
       <section>
         <div className="py-14 place-items-center">
-          <h1 className="text-3xl mb-8">運送時效</h1>
+          <Title>運送時效</Title>
           <div className="flex flex-col space-y-4 text-md dark:text-zinc-300">
             <p>貨物運到日本倉後,於一至兩個禮拜內空運到港</p>
             <p>部分網站規管較嚴, 可能要先寄日本地址再轉運日本倉</p>
@@ -132,7 +122,7 @@ const Shop = () => {
       </section>
       <section>
         <div className="py-14 place-items-center">
-          <h1 className="text-3xl mb-8">風險披露</h1>
+          <Title>風險披露</Title>
           <div className="flex flex-col space-y-4 text-md dark:text-zinc-300">
             <p>所有運輸風險(如日運,國際空運,順豐)均由顧客承擔</p>
             <p>-如貨物在運送途中有任何損壞,本店恕不負責</p>
@@ -148,7 +138,7 @@ const Shop = () => {
         <div className="inline-flex items-center justify-center">
           <div className="flex flex-col space-y-4 w-10 h-10">
             <Image
-              src="https://lionceu-timmlopk.vercel.app/shopicon.jpg"
+              src="/shopicon.webp"
               className="rounded-full"
               alt="murasaki_jpstore"
               width={100}
@@ -162,10 +152,10 @@ const Shop = () => {
       </section>
       <footer className="flex items-center justify-center mt-8">
         <div className="flex flex-col text-center">
-          <p className="text-md text-zinc-200">
+          <p className="text-sm text-zinc-600">
             All reserved by @murasaki_jpstore
           </p>
-          <p className="text-md text-zinc-400 mt-2">Powered by once</p>
+          <p className="text-sm text-zinc-400 mt-2">Powered by once</p>
         </div>
       </footer>
     </main>
