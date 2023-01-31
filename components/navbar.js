@@ -102,6 +102,7 @@ const Navbar = ({ scrolled }) => {
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
+              aria-label="Toggle Dark Mode"
             >
               {theme === "dark" ? <FiMoon /> : <FiSun />}
             </button>
@@ -111,6 +112,7 @@ const Navbar = ({ scrolled }) => {
             <button
               onClick={() => setShowNav(!showNav)}
               className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
+              aria-label="Close"
             >
               <BsArrowBarRight />
             </button>

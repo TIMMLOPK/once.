@@ -22,7 +22,7 @@ const ProjectCard = ({ title, children, link }) => {
           <span className="font-mono tracking-wide text-lg font-semibold">
             {title}
           </span>
-          <Link href={link} passHref>
+          <Link href={link} passHref aria-label="Open in new tab">
             <MdOpenInNew className="text-gray-500 hover:text-blue-500 active:text-blue-500" />
           </Link>
         </div>
