@@ -2,6 +2,10 @@ import Image from "next/image";
 import Icon from "../components/icon";
 import Title from "../components/title";
 
+import AlipayHK from "../public/shop/alipayhk.png";
+import FPS from "../public/shop/fps.svg";
+import Payme from "../public/shop/payme.png";
+
 const Payment = ({ icon, text }) => {
   return (
     <div className="flex items-center p-4">
@@ -25,7 +29,7 @@ const Shop = () => {
       <section>
         <div className="py-8 md:flex md:space-x-10">
           <div className="flex items-center justify-center mt-8 md:mt-0">
-            <Icon src="/shopicon.webp" />
+            <Icon src="/shop/icon.webp" alt="murasaki" />
           </div>
           <section className="ml-1 mt-8">
             <h1 className="text-4xl my-7 font-serif">@murasaki_jpstore</h1>
@@ -50,7 +54,7 @@ const Shop = () => {
               (商品日元價格連稅＋日本國内運費(如有))*(本店匯率)+(手續費)+(國際運費)
             </p>
             <p className="mb-4">
-              本月匯率=0.058-0.065(視乎商品日元價格，每月匯率調整)
+              本月匯率=0.067-0.075(視乎商品日元價格，每月匯率調整)
             </p>
             <div className="my-6">
               <p className="mt-4 text-xl font-semibold dark:text-zinc-200">
@@ -78,9 +82,9 @@ const Shop = () => {
         <div className="grid gap-2 grid-cols-1 my-5">
           <Title>付款方式</Title>
           <p className="mb-4 dark:text-zinc-300">過數後請傳送永久保存截圖</p>
-          <Payment icon="/alipayhk.png" text="Alipayhk" />
-          <Payment icon="/payme.png" text="PayMe" />
-          <Payment icon="/fps.svg" text="FPS" />
+          <Payment icon={AlipayHK} text="Alipayhk" />
+          <Payment icon={Payme} text="PayMe" />
+          <Payment icon={FPS} text="FPS" />
         </div>
       </section>
       <section>

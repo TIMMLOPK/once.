@@ -1,5 +1,5 @@
 import Sparkles from "../../components/animatedText.js";
-import Image from "next/image";
+import Icon from "../icon.js";
 
 const scrollDown = () => {
   window.scrollTo({
@@ -20,14 +20,7 @@ const About = () => {
         </h1>
       </div>
       <div className="absolute md:right-1/4 md:inset-y-1/3 invisible md:visible">
-        <Image
-          className="inline-block rounded-full"
-          src="/icon.webp"
-          alt="Picture of the author"
-          width={200}
-          height={200}
-          priority
-        />
+        <Icon src="/icon.webp" />
       </div>
       <div className="flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <button

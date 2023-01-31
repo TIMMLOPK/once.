@@ -26,6 +26,7 @@ export const useSection = () => {
         observer.current.unobserve(section);
       });
     };
-  }, []);
+  }, [inview]);
+
   return inview;
 };

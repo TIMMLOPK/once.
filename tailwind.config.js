@@ -54,11 +54,11 @@ module.exports = {
         },
       },
       colors: {
-        wbg: "rgba(255, 255, 255, 0.2)",
         hoverbg: "rgba(255, 255, 255, 0.103)",
-        hoverbg2: "rgba(133, 132, 132, 0.05)",
         startRgba: "rgba(228, 232, 233, 1)",
         endRgba: "rgba(239, 245, 249, 1)",
+        startRgbaDark: "rgba(0, 0, 0, 1)",
+        endRgbaDark: "rgba(0, 0, 0, 1)",
       },
       dropShadow: {
         logo: "0 0 0.3rem #ffffff70",

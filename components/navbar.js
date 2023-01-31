@@ -1,6 +1,4 @@
-import { AiOutlineFolder } from "react-icons/ai";
 import { SiAboutdotme } from "react-icons/si";
-import { FcSettings } from "react-icons/fc";
 import { BsArrowBarRight } from "react-icons/bs";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
@@ -46,9 +44,8 @@ const variants = {
   },
 };
 
-const Navbar = ({ show, inView }) => {
+const Navbar = ({ scrolled }) => {
   const [mounted, setMounted] = useState(false);
-  const [active, setActive] = useState("about");
   const [showNav, setShowNav] = useState(false);
   const navbar = useRef(null);
 
@@ -56,11 +53,6 @@ const Navbar = ({ show, inView }) => {
 
   useEffect(() => {
     const navRef = navbar.current;
-    if (!inView) {
-      setActive("about");
-    } else {
-      setActive(inView);
-    }
     if (navRef) {
       navRef.addEventListener("mouseenter", () => {
         setShowNav(true);
@@ -73,11 +65,11 @@ const Navbar = ({ show, inView }) => {
         });
       }
     };
-  }, [inView]);
+  }, []);
 
   useEffect(() => {
-    setShowNav(show);
-  }, [show]);
+    setShowNav(!scrolled);
+  }, [scrolled]);
 
   useEffect(() => setMounted(true), []);
 
@@ -94,20 +86,16 @@ const Navbar = ({ show, inView }) => {
     >
       <div className="h-[340px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1 border dark:border-zinc-800">
         <div className="mt-6 flex flex-col items-center">
-          <NavItem active={active} id="about">
+          <NavItem id="about">
             <SiAboutdotme />
           </NavItem>
 
-          <div className="mt-8">
-            <NavItem active={active} id="lang">
-              <FcSettings />
-            </NavItem>
+          <div className="mt-8 text-xs">
+            <NavItem id="lang">🔧</NavItem>
           </div>
 
-          <div className="mt-8">
-            <NavItem active={active} id="projects">
-              <AiOutlineFolder />
-            </NavItem>
+          <div className="mt-8 text-xs">
+            <NavItem id="projects">🗂️</NavItem>
           </div>
 
           <div className="mt-8">

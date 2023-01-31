@@ -10,7 +10,7 @@ const Project = ({ inView }) => {
 
   return (
     <div>
-      <h1 className="font-bold text-2xl">📁 Projects</h1>
+      <h1 className="font-bold text-2xl">🗂️ Projects</h1>
       <br />
       <div className="grid gap-6 md:gap-12 md:grid-cols-3 mt-10 justify-center">
         {projects.map((project, index) => (
@@ -39,7 +39,7 @@ const projects = [
   },
   {
     title: "Meme Generator",
-    children: "Generate memes with your own text.",
+    children: "Generate an unique meme",
     link: "https://meme.lionceu.live/",
   },
   {
@@ -56,6 +56,11 @@ const projects = [
     title: "CSS Website",
     children: "CSS website",
     link: "https://github.com/TIMMLOPK/once",
+  },
+  {
+    title: "Discord RPC.rs",
+    children: "Discord RPC for Rust",
+    link: "https://github.com/TIMMLOPK/discord-RPC",
   },
 ];
 

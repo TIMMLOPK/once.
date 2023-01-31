@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useSection } from "../utils/useSection.js";
 import Layout from "../components/Layout/main.js";
 import About from "../components/sections/about.js";
@@ -10,15 +9,9 @@ import Link from "next/link";
 import { FaDiscord } from "react-icons/fa";
 
 const Home = () => {
-  const [inview, setinview] = useState("about");
-  const inView = useSection();
-
-  useEffect(() => {
-    setinview(inView);
-  }, [inView]);
-
+  const inview = useSection();
   return (
-    <Layout inView={inview}>
+    <Layout>
       <section
         className="flex items-center min-h-screen m-6 relative"
         id="about"
@@ -27,7 +20,7 @@ const Home = () => {
       </section>
       <section
         className="md:flex md:items-center min-h-screen m-2 relative px-6"
-        id="about"
+        id="about-2"
       >
         <div className="md:flex md:w-full md:justify-center md:items-center md:flex-col md:p-6">
           <h1 className="font-bold text-3xl">About me</h1>
@@ -47,13 +40,13 @@ const Home = () => {
               profile website and meme generator. I am glad if you appreciate
               them. Please feel free to tell me if you have advice or questions.
               <br />
-              <div className="flex gap-4 mt-12 items-center">
+              <div className="flex mt-12 items-center space-x-4">
                 <Link
                   href="https://github.com/TIMMLOPK"
                   aria-label="GitHub"
                   passHref
                 >
-                  <span className="text-gray-400 hover:text-gray-500">
+                  <span className="text-gray-400 hover:text-[#333] dark:hover:text-[#fff]">
                     <FiGithub className="w-6 h-6" />
                   </span>
                 </Link>
@@ -62,15 +55,13 @@ const Home = () => {
                   aria-label="Instagram"
                   passHref
                 >
-                  <span className="text-gray-400 hover:text-gray-500">
+                  <span className="text-gray-400 hover:text-[#c92bb7]">
                     <FiInstagram className="w-6 h-6" />
                   </span>
                 </Link>
-                <span className="inline-flex items-center text-[#7289DA]">
-                  <FaDiscord className="w-6 h-6 mr-1" />
-                  <p className="text-sm font-normal text-gray-500">
-                    Timmy#2600
-                  </p>
+                <span className="inline-flex items-center">
+                  <FaDiscord className="w-6 h-6 mr-1 hover:text-[#7289DA]" />
+                  <p className="text-xs text-gray-500">Timmy#2600</p>
                 </span>
               </div>
             </div>
