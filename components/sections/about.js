@@ -19,7 +19,7 @@ const About = () => {
           <br />I am <Sparkles>Timmy</Sparkles>
         </h1>
       </div>
-      <div className="absolute md:right-1/4 md:inset-y-1/3 invisible md:visible">
+      <div className="absolute md:left-[80%] md:inset-y-[30%] invisible md:visible">
         <Icon src="/icon.webp" />
       </div>
       <div className="flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2">

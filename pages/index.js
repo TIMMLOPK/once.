@@ -59,7 +59,7 @@ const Home = () => {
                     <FiInstagram className="w-6 h-6" />
                   </span>
                 </Link>
-                <span className="inline-flex items-center">
+                <span className="inline-flex items-center text-gray-400">
                   <FaDiscord className="w-6 h-6 mr-1 hover:text-[#7289DA]" />
                   <p className="text-xs text-gray-500">Timmy#2600</p>
                 </span>

@@ -1,7 +1,7 @@
 import { SiAboutdotme } from "react-icons/si";
 import { BsArrowBarRight } from "react-icons/bs";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 
@@ -47,25 +47,7 @@ const variants = {
 const Navbar = ({ scrolled }) => {
   const [mounted, setMounted] = useState(false);
   const [showNav, setShowNav] = useState(false);
-  const navbar = useRef(null);
-
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    const navRef = navbar.current;
-    if (navRef) {
-      navRef.addEventListener("mouseenter", () => {
-        setShowNav(true);
-      });
-    }
-    return () => {
-      if (navRef) {
-        navRef.removeEventListener("mouseEnter", () => {
-          setShowNav(true);
-        });
-      }
-    };
-  }, []);
 
   useEffect(() => {
     setShowNav(!scrolled);
@@ -78,11 +60,11 @@ const Navbar = ({ scrolled }) => {
   return (
     <motion.nav
       className="fixed top-[27%] right-2 z-10"
-      ref={navbar}
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}
       transition={{ duration: 0.5 }}
+      onMouseEnter={() => setShowNav(true)}
     >
       <div className="h-[340px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1 border dark:border-zinc-800">
         <div className="mt-6 flex flex-col items-center">

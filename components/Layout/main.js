@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   const scrolled = useScroll();
 
   return (
-    <main className="container mx-auto px-4">
+    <main className="container mx-auto px-5">
       <Navbar scrolled={scrolled} />
       {children}
       <Footer />

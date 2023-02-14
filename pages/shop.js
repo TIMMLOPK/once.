@@ -142,7 +142,7 @@ const Shop = () => {
         <div className="inline-flex items-center justify-center">
           <div className="flex flex-col space-y-4 w-10 h-10">
             <Image
-              src="/shopicon.webp"
+              src="/shop/icon.webp"
               className="rounded-full"
               alt="murasaki_jpstore"
               width={100}

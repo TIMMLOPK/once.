@@ -1,12 +1,50 @@
-import { useState } from "react";
-import ProjectCard from "../../components/project.js";
+import Image from "next/image";
+import Link from "next/link";
+import { MdOpenInNew } from "react-icons/md";
+import { BsGithub } from "react-icons/bs";
 
 const calDelay = (inView, index, list) => {
   return inView ? index * 200 : index === list.length - 1 ? 0 : index * 100;
 };
 
+const ProjectCard = ({ title, children, link }) => {
+  const isGithub = link.includes("github");
+  return (
+    <div className="dark:text-white m-6 relative w-auto h-auto items-center group">
+      <Image
+        src={"/card.png"}
+        className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+        style={{ transform: "translate3d(0, 0, 0)" }}
+        placeholder="blur"
+        blurDataURL={"/card.png"}
+        width={250}
+        height={120}
+        alt="card"
+      />
+      <div className="mt-4 cursor-pointer">
+        <div className="flex items-center space-x-2">
+          <span className="font-mono tracking-wide text-lg font-semibold">
+            {title}
+          </span>
+          <Link href={link} passHref aria-label="Open in new tab">
+            <MdOpenInNew className="text-gray-500 hover:text-blue-500 active:text-blue-500" />
+          </Link>
+          {isGithub && (
+            <Link href={link} passHref aria-label="Open in new tab">
+              <BsGithub className="text-gray-500 hover:text-blue-500 active:text-blue-500" />
+            </Link>
+          )}
+        </div>
+      </div>
+      <div className="mt-2 opacity-80 text-sm font-mono max-w-[230px]">
+        {children}
+      </div>
+    </div>
+  );
+};
+
 const Project = ({ inView }) => {
-  const [list] = useState([...projects]);
+  const list = [...projects];
 
   return (
     <div>
