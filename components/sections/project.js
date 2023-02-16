@@ -2,36 +2,45 @@ import Image from "next/image";
 import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
+import { ToolTip } from "../tooltip";
 
 const calDelay = (inView, index, list) => {
   return inView ? index * 200 : index === list.length - 1 ? 0 : index * 100;
 };
 
-const ProjectCard = ({ title, children, link }) => {
-  const isGithub = link.includes("github");
+const ProjectCard = ({ data }) => {
+  const { title, link, children, github } = data;
   return (
     <div className="dark:text-white m-6 relative w-auto h-auto items-center group">
-      <Image
-        src={"/card.png"}
-        className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-        style={{ transform: "translate3d(0, 0, 0)" }}
-        placeholder="blur"
-        blurDataURL={"/card.png"}
-        width={250}
-        height={120}
-        alt="card"
-      />
-      <div className="mt-4 cursor-pointer">
+      <div className="relative">
+        <Image
+          src={"/card.png"}
+          className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+          style={{ transform: "translate3d(0, 0, 0)" }}
+          placeholder="blur"
+          blurDataURL={"/card.png"}
+          width={250}
+          height={120}
+          alt="card"
+        />
+        {github && (
+          <Link href={github} passHref aria-label="Open in new tab">
+            <ToolTip text="Open Source">
+              <button className="absolute bottom-2 left-2 inline-flex items-center text-gray-400 hover:text-[#fff] bg-hoverbg rounded-full p-[6px] transition">
+                <BsGithub />
+              </button>
+            </ToolTip>
+          </Link>
+        )}
+      </div>
+      <div className="mt-4">
         <div className="flex items-center space-x-2">
           <span className="font-mono tracking-wide text-lg font-semibold">
             {title}
           </span>
-          <Link href={link} passHref aria-label="Open in new tab">
-            <MdOpenInNew className="text-gray-500 hover:text-blue-500 active:text-blue-500" />
-          </Link>
-          {isGithub && (
+          {link && (
             <Link href={link} passHref aria-label="Open in new tab">
-              <BsGithub className="text-gray-500 hover:text-blue-500 active:text-blue-500" />
+              <MdOpenInNew className="text-gray-500 hover:text-blue-500 active:text-blue-500" />
             </Link>
           )}
         </div>
@@ -59,7 +68,7 @@ const Project = ({ inView }) => {
             key={index++}
             style={{ animationDelay: `${calDelay(inView, index, list)}ms` }}
           >
-            <ProjectCard title={project.title} link={project.link}>
+            <ProjectCard data={project} key={index++}>
               {project.children}
             </ProjectCard>
           </div>
@@ -79,26 +88,29 @@ const projects = [
     title: "Meme Generator",
     children: "Generate an unique meme",
     link: "https://meme.lionceu.live/",
+    github: "https://github.com/TIMMLOPK/meme-generator",
   },
   {
     title: "npm outdated.rs",
     children: "npm outdated checker",
-    link: "https://github.com/TIMMLOPK/npm-outdated-rs",
+    github: "https://github.com/TIMMLOPK/npm-outdated-rs",
   },
   {
     title: "ONCE",
     children: "A profile website",
     link: "https://lionceu.live/",
+    github: "https://github.com/TIMMLOPK/once.",
   },
   {
     title: "CSS Website",
     children: "CSS website",
-    link: "https://github.com/TIMMLOPK/once",
+    github: "https://github.com/TIMMLOPK/once",
+    link: "https://timmlopk.github.io/once/",
   },
   {
     title: "Discord RPC.rs",
     children: "Discord RPC for Rust",
-    link: "https://github.com/TIMMLOPK/discord-RPC",
+    github: "https://github.com/TIMMLOPK/discord-RPC",
   },
 ];
 

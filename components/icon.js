@@ -1,11 +1,8 @@
 import Image from "next/image";
 
 const Icon = ({ src }) => {
-  const dark =
-    "conic-gradient(#ffffff80,#ffffff40,#ffffff30,#ffffff20,#ffffff10,#ffffff10,#ffffff80)";
-  const light =
-    "conic-gradient(#00000080,#00000040,#00000030,#00000020,#00000010,#00000010,#00000080)";
-  const before = `before:absolute before:z-[-1] before:animate-rotate before:w-[200%] before:h-[200%] before:content-[''] before:bg-[${light}] dark:before:bg-[${dark}]`;
+  const before =
+    "before:absolute before:z-[-1] before:animate-rotate before:w-[200%] before:h-[200%] before:content-[''] before:bg-[conic-gradient(#00000080,#00000040,#00000030,#00000020,#00000010,#00000010,#00000080)] dark:before:bg-[conic-gradient(#ffffff80,#ffffff40,#ffffff30,#ffffff20,#ffffff10,#ffffff10,#ffffff80)]";
   const after =
     "after:absolute after:z-[-1] after:inset-0 after:p-[1px] after:rounded-full after:bg-gradient-to-br after:from-startRgba after:to-endRgba after:content-[''] after:bg-clip-content dark:after:from-startRgbaDark dark:after:to-endRgbaDark";
   return (

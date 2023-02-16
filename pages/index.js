@@ -7,13 +7,15 @@ import GithubStats from "../components/githubStats.js";
 import { FiGithub, FiInstagram } from "react-icons/fi";
 import Link from "next/link";
 import { FaDiscord } from "react-icons/fa";
+import { Line } from "../components/icons/line.js";
+import { ToolTip } from "../components/tooltip.js";
 
 const Home = () => {
   const inview = useSection();
   return (
     <Layout>
       <section
-        className="flex items-center min-h-screen m-6 relative"
+        className="flex items-center min-h-screen m-2 relative"
         id="about"
       >
         <About />
@@ -60,13 +62,15 @@ const Home = () => {
                   </span>
                 </Link>
                 <span className="inline-flex items-center text-gray-400">
-                  <FaDiscord className="w-6 h-6 mr-1 hover:text-[#7289DA]" />
-                  <p className="text-xs text-gray-500">Timmy#2600</p>
+                  <ToolTip text="Timmy#2600" position="left" tigger="click">
+                    <FaDiscord className="w-6 h-6 mr-1 hover:text-[#7289DA]" />
+                  </ToolTip>
                 </span>
               </div>
             </div>
           </div>
         </div>
+        <Line />
       </section>
       <section className="md:flex items-center min-h-screen relative" id="lang">
         <Lang />
