@@ -1,6 +1,6 @@
 # LIONCEU - Personal Website
 
-[https://www.lionce.live/](https://www.lionceu.live/)
+[https://www.lionceu.live/](https://www.lionceu.live/)
 
 ## License
 
