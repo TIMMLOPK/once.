@@ -1,6 +1,5 @@
 import { SiPython, SiRust } from "react-icons/si";
 import { JavascriptIcon, ReactIcon, TSIcon } from "../icons/lang.js";
-import { Line } from "../icons/line.js";
 
 const LangBox = ({ icon, name }) => {
   return (
@@ -35,7 +34,6 @@ const Lang = () => {
           ))}
         </div>
       </div>
-      <Line />
     </div>
   );
 };

@@ -1,14 +1,15 @@
+import { useCallback } from "react";
 import Sparkles from "../../components/animatedText.js";
-import Icon from "../icon.js";
-
-const scrollDown = () => {
-  window.scrollTo({
-    top: window.innerHeight,
-    behavior: "smooth",
-  });
-};
+import Icon from "../avatar.js";
 
 const About = () => {
+  const scrollDown = useCallback(() => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <div>
       <div>

@@ -38,16 +38,19 @@ export const ToolTip = ({ children, text, position, tigger = "hover" }) => {
   };
 
   return (
-    <div
-      onMouseEnter={() => handleMouseEnter()}
-      onMouseLeave={() => handleMouseLeave()}
-      onClick={() => handleClick()}
-      className="relative"
-    >
+    <div className="relative">
+      <div
+        onMouseEnter={() => handleMouseEnter()}
+        onMouseLeave={() => handleMouseLeave()}
+        onClick={() => handleClick()}
+        className="relative"
+      >
+        {children}
+      </div>
       <motion.p
-        className={`z-[999] absolute ${transformTocss(
-          position
-        )} p-[8px] w-[100px] h-[25px] bg-black flex items-center justify-center text-gray-100 text-[10px] rounded-full`}
+        className={`absolute ${transformTocss(position)} ${
+          isHovered ? "z-[999]" : "-z-1"
+        } p-[8px] w-[100px] h-[25px] bg-black flex items-center justify-center text-gray-100 text-[10px] rounded-full`}
         initial="hidden"
         transition={{ duration: 0.3, easings: "easeInOut" }}
         exit={{ opacity: 0, y: 10 }}
@@ -59,7 +62,6 @@ export const ToolTip = ({ children, text, position, tigger = "hover" }) => {
       >
         {text}
       </motion.p>
-      {children}
     </div>
   );
 };

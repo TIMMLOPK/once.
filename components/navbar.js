@@ -1,18 +1,17 @@
 import { SiAboutdotme } from "react-icons/si";
 import { BsArrowBarRight } from "react-icons/bs";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-
-function scrollTo(id) {
-  const element = document.getElementById(id);
-  element.scrollIntoView({
-    behavior: "smooth",
-  });
-}
+import useScroll from "../utils/useScroll";
 
 const NavItem = ({ children, id }) => {
+  const scrollTo = useCallback((id) => {
+    const el = document.getElementById(id);
+    el.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
     <span
       className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
@@ -44,7 +43,8 @@ const variants = {
   },
 };
 
-const Navbar = ({ scrolled }) => {
+const Navbar = () => {
+  const scrolled = useScroll();
   const [mounted, setMounted] = useState(false);
   const [showNav, setShowNav] = useState(false);
   const { theme, setTheme } = useTheme();

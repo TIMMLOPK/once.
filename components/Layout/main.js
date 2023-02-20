@@ -1,13 +1,10 @@
 import Navbar from "../navbar";
 import Footer from "../footer";
-import useScroll from "../../utils/useScroll";
 
 const Layout = ({ children }) => {
-  const scrolled = useScroll();
-
   return (
     <main className="container mx-auto px-5">
-      <Navbar scrolled={scrolled} />
+      <Navbar />
       {children}
       <Footer />
     </main>

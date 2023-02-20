@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Icon from "../components/icon";
+import Icon from "../components/avatar";
 import Title from "../components/title";
 
 import AlipayHK from "../public/shop/alipayhk.png";

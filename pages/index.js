@@ -74,6 +74,7 @@ const Home = () => {
       </section>
       <section className="md:flex items-center min-h-screen relative" id="lang">
         <Lang />
+        <Line />
       </section>
       <section className="min-h-screen relative" id="projects">
         <Project inView={inview === "projects"} />

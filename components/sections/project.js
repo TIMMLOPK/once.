@@ -11,14 +11,14 @@ const calDelay = (inView, index, list) => {
 const ProjectCard = ({ data }) => {
   const { title, link, children, github } = data;
   return (
-    <div className="dark:text-white m-6 relative w-auto h-auto items-center group">
+    <div className="dark:text-white m-6 relative items-center group">
       <div className="relative">
         <Image
-          src={"/card.png"}
+          src="/card.png"
           className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
           style={{ transform: "translate3d(0, 0, 0)" }}
           placeholder="blur"
-          blurDataURL={"/card.png"}
+          blurDataURL="/card.png"
           width={250}
           height={120}
           alt="card"
@@ -26,14 +26,14 @@ const ProjectCard = ({ data }) => {
         {github && (
           <Link href={github} passHref aria-label="Open in new tab">
             <ToolTip text="Open Source">
-              <button className="absolute bottom-2 left-2 inline-flex items-center text-gray-400 hover:text-[#fff] bg-hoverbg rounded-full p-[6px] transition">
+              <button className="absolute bottom-2 left-2 inline-flex items-center text-gray-400 hover:text-white bg-hoverbg rounded-full p-[6px] transition">
                 <BsGithub />
               </button>
             </ToolTip>
           </Link>
         )}
       </div>
-      <div className="mt-4">
+      <div className="mt-4 relative">
         <div className="flex items-center space-x-2">
           <span className="font-mono tracking-wide text-lg font-semibold">
             {title}
