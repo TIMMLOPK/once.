@@ -1,4 +1,3 @@
-import { SiAboutdotme } from "react-icons/si";
 import { BsArrowBarRight } from "react-icons/bs";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useCallback, useEffect, useState } from "react";
@@ -14,13 +13,24 @@ const NavItem = ({ children, id }) => {
 
   return (
     <span
-      className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
+      className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg text-sm"
       onClick={() => {
         scrollTo(id);
       }}
     >
       {children}
     </span>
+  );
+};
+
+const Button = ({ children, onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
+    >
+      {children}
+    </button>
   );
 };
 
@@ -66,38 +76,21 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       onMouseEnter={() => setShowNav(true)}
     >
-      <div className="h-[340px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1 border dark:border-zinc-800">
-        <div className="mt-6 flex flex-col items-center">
-          <NavItem id="about">
-            <SiAboutdotme />
-          </NavItem>
-
-          <div className="mt-8 text-xs">
-            <NavItem id="lang">🔧</NavItem>
-          </div>
-
-          <div className="mt-8 text-xs">
-            <NavItem id="projects">🗂️</NavItem>
-          </div>
-
-          <div className="mt-8">
-            <button
+      <div className="h-[325px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1 border dark:border-zinc-800">
+        <div className="flex flex-col items-center space-y-6 pt-3">
+          <NavItem id="about">🏡</NavItem>
+          <NavItem id="tech">🔧</NavItem>
+          <NavItem id="projects">🗂️</NavItem>
+          <div className="mt-6 pt-6 border-t border-slate-600 dark:border-slate-800 space-y-6">
+            <Button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
-              aria-label="Toggle Dark Mode"
             >
               {theme === "dark" ? <FiMoon /> : <FiSun />}
-            </button>
-          </div>
+            </Button>
 
-          <div className="mt-8">
-            <button
-              onClick={() => setShowNav(!showNav)}
-              className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
-              aria-label="Close"
-            >
+            <Button onClick={() => setShowNav(!showNav)}>
               <BsArrowBarRight />
-            </button>
+            </Button>
           </div>
         </div>
       </div>

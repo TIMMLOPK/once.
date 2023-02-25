@@ -1,7 +1,7 @@
 import { SiPython, SiRust } from "react-icons/si";
 import { JavascriptIcon, ReactIcon, TSIcon } from "../icons/lang.js";
 
-const LangBox = ({ icon, name }) => {
+const TechBox = ({ icon, name }) => {
   return (
     <>
       <div className="text-md text-gray-900 dark:text-white inline-flex place-items-center mt-6 md:0">
@@ -14,20 +14,20 @@ const LangBox = ({ icon, name }) => {
   );
 };
 
-const Lang = () => {
+const TechStack = () => {
   return (
     <div className="md:flex items-center justify-center w-full">
       <div className="flex w-full justify-center items-center md:p-6">
-        <h1 className="font-bold text-2xl">🔧 Languages & Skills</h1>
+        <h1 className="font-bold text-2xl">🔧 Tech Stack</h1>
       </div>
       <div className="flex md:w-full md:justify-center md:items-center md:mt-0 mt-10 md:p-0 p-4">
         <div className="grid gap-4 md:grid-flow-col md:grid-rows-2 md:gap-10">
-          {langs.map((lang, index) => (
+          {techs.map((tech, index) => (
             <div key={index++}>
-              <LangBox
-                icon={lang.icons}
-                name={lang.name}
-                description={lang.description}
+              <TechBox
+                icon={tech.icons}
+                name={tech.name}
+                description={tech.description}
                 key={index++}
               />
             </div>
@@ -38,7 +38,7 @@ const Lang = () => {
   );
 };
 
-const langs = [
+const techs = [
   {
     icons: <SiRust />,
     name: "Rust",
@@ -61,4 +61,4 @@ const langs = [
   },
 ];
 
-export default Lang;
+export default TechStack;

@@ -8,9 +8,9 @@ function transformTocss(input) {
     case "bottom":
       return "bottom-6";
     case "left":
-      return "left-7";
+      return "left-7 top-0";
     case "right":
-      return "right-2";
+      return "right-2 top-0";
     default:
       return "top-2";
   }
@@ -43,14 +43,14 @@ export const ToolTip = ({ children, text, position, tigger = "hover" }) => {
         onMouseEnter={() => handleMouseEnter()}
         onMouseLeave={() => handleMouseLeave()}
         onClick={() => handleClick()}
-        className="relative"
       >
         {children}
       </div>
       <motion.p
         className={`absolute ${transformTocss(position)} ${
           isHovered ? "z-[999]" : "-z-1"
-        } p-[8px] w-[100px] h-[25px] bg-black flex items-center justify-center text-gray-100 text-[10px] rounded-full`}
+        } p-[8px] w-[100px] h-[25px] bg-black flex items-center justify-center text-gray-100 text-[10px] rounded-full backdrop-filter 
+        backdrop-blur-lg bg-opacity-80`}
         initial="hidden"
         transition={{ duration: 0.3, easings: "easeInOut" }}
         exit={{ opacity: 0, y: 10 }}

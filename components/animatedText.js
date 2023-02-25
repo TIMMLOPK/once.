@@ -1,28 +1,26 @@
 import { useState } from "react";
 import { useRandomInterval, random } from "../utils/useRandomInterval";
 
-const DEFAULT_COLOR = "hsl(50deg, 100%, 50%)";
-
 const generateSparkle = (color) => {
   const sparkle = {
     id: random(10000, 99999),
     createdAt: Date.now(),
-    color,
     size: random(10, 30),
+    color,
     style: {
-      top: random(0, 100) + "%",
-      left: random(0, 100) + "%",
+      top: `${random(0, 100)}%`,
+      left: `${random(0, 100)}%`,
     },
   };
   return sparkle;
 };
 
-const Sparkles = ({ color = DEFAULT_COLOR, children, ...delegated }) => {
+const Sparkles = ({ children }) => {
   const [sparkles, setSparkles] = useState([]);
 
   useRandomInterval(
     () => {
-      const sparkle = generateSparkle(color);
+      const sparkle = generateSparkle("hsl(50deg, 100%, 50%)");
       const now = Date.now();
       const nextSparkles = sparkles.filter((sp) => {
         const delta = now - sp.createdAt;
@@ -36,7 +34,7 @@ const Sparkles = ({ color = DEFAULT_COLOR, children, ...delegated }) => {
   );
 
   return (
-    <span {...delegated} className="inline-block relative">
+    <span className="inline-block relative">
       {sparkles.map((sparkle) => (
         <Sparkle
           key={sparkle.id}
