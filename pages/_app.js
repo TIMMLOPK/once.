@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from '@vercel/analytics/react';
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ThemeProvider attribute="class" defaultTheme="system">
         <Component {...pageProps} />
+        <Analytics />
       </ThemeProvider>
     </>
   );
