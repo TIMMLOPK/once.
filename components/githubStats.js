@@ -18,22 +18,22 @@ const GithubStats = () => {
   }, [user]);
 
   return (
-    <div className="flex flex-row items-center justify-center mt-5">
-      <div className="flex flex-col items-center justify-center mr-10">
+    <div className="mt-5 flex flex-row items-center justify-center">
+      <div className="mr-10 flex flex-col items-center justify-center">
         {isLoading ? (
-          <div className="rounded-full bg-gray-400 h-4 w-4 animate-pulse mb-3"></div>
+          <div className="mb-3 h-4 w-4 animate-pulse rounded-full bg-gray-400"></div>
         ) : (
           <h3 className="text-xl font-bold">{stats.public_repos}</h3>
         )}
-        <p className="text-gray-500 text-sm">Repositories</p>
+        <p className="text-sm text-gray-500">Repositories</p>
       </div>
       <div className="flex flex-col items-center justify-center">
         {isLoading ? (
-          <div className="rounded-full bg-gray-400 h-4 w-4 animate-pulse mb-3"></div>
+          <div className="mb-3 h-4 w-4 animate-pulse rounded-full bg-gray-400"></div>
         ) : (
           <h3 className="text-xl font-bold">{stats.followers}</h3>
         )}
-        <p className="text-gray-500 text-sm">Followers</p>
+        <p className="text-sm text-gray-500">Followers</p>
       </div>
     </div>
   );

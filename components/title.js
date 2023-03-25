@@ -6,9 +6,9 @@ const Title = ({ children }) => {
     "after:absolute after:z-10 after:inset-0 after:rounded-full after:border-transparent after:box-border after:border-[3px] after:bg-white after:dark:bg-[#121212] after:lg:border-4 after:bg-clip-content after:content-['']";
   return (
     <div
-      className={`bg-gradient-to-r from-[#002585] to-[#209DEE] bg-no-repeat rounded-full relative border-0 py-2 w-24 md:py-2 md:w-36 ${gradientLabelBefore} ${gradientLabelAfter} mb-8`}
+      className={`relative w-24 rounded-full border-0 bg-gradient-to-r from-[#002585] to-[#209DEE] bg-no-repeat py-2 md:w-36 md:py-2 ${gradientLabelBefore} ${gradientLabelAfter} mb-8`}
     >
-      <span className="relative block z-20 text-transparent font-semibold leading-tight text-center text-lg md:text-[1.75rem] bg-clip-text bg-inherit">
+      <span className="relative z-20 block bg-inherit bg-clip-text text-center text-lg font-semibold leading-tight text-transparent md:text-[1.75rem]">
         {children}
       </span>
     </div>

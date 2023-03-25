@@ -12,7 +12,7 @@ const NavItem = ({ children, id }) => {
 
   return (
     <span
-      className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg text-sm"
+      className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hoverbg"
       onClick={() => {
         scrollTo(id);
       }}
@@ -26,7 +26,7 @@ const Button = ({ children, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-hoverbg"
+      className="flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-hoverbg"
     >
       {children}
     </button>
@@ -88,7 +88,7 @@ const Navbar = () => {
 
   return (
     <m.nav
-      className="fixed top-[27%] h-[280px] right-2 z-10 bg-black text-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1 border dark:border-zinc-800"
+      className="fixed top-[27%] right-2 z-10 h-[280px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}
@@ -96,10 +96,8 @@ const Navbar = () => {
       onMouseEnter={() => setShowNav(true)}
     >
       <SectionController />
-      <div className="mt-6 pt-6 border-t border-slate-600 dark:border-slate-800 space-y-6">
-        <Button
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
+      <div className="mt-6 space-y-6 border-t border-slate-600 pt-6 dark:border-slate-800">
+        <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
           {theme === "dark" ? <FiMoon /> : <FiSun />}
         </Button>
       </div>

@@ -31,9 +31,9 @@ const About = () => {
   return (
     <div>
       <div>
-        <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl md:text-left space-y-4">
+        <h1 className="space-y-4 text-5xl font-bold md:text-left md:text-6xl lg:text-7xl">
           <span
-            className={`font-semibold bg-gradient-to-r bg-clip-text text-transparent ${
+            className={`bg-gradient-to-r bg-clip-text font-semibold text-transparent ${
               textColor().color
             } animate-text`}
           >
@@ -42,7 +42,7 @@ const About = () => {
           <br />I am <Sparkles>Timmy</Sparkles>
         </h1>
       </div>
-      <div className="absolute md:left-[80%] md:inset-y-[30%] invisible md:visible">
+      <div className="invisible absolute md:visible md:inset-y-[30%] md:left-[80%]">
         <Icon src="/icon.webp" />
       </div>
     </div>

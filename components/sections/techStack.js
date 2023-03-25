@@ -4,8 +4,8 @@ import { JavascriptIcon, ReactIcon, TSIcon } from "../icons/lang.js";
 const TechBox = ({ icon, name }) => {
   return (
     <>
-      <div className="text-md text-gray-900 dark:text-white inline-flex place-items-center mt-6 md:0">
-        <span className="flex justify-center items-center w-11 h-11 mr-3 rounded-full dark:bg-[#141517] dark:border-t dark:border-slate-700">
+      <div className="text-md md:0 mt-6 inline-flex place-items-center text-gray-900 dark:text-white">
+        <span className="mr-3 flex h-11 w-11 items-center justify-center rounded-full dark:border-t dark:border-slate-700 dark:bg-[#141517]">
           <span className="w-4">{icon}</span>
         </span>
         <span className="ml-2">{name}</span>
@@ -16,11 +16,11 @@ const TechBox = ({ icon, name }) => {
 
 const TechStack = () => {
   return (
-    <div className="md:flex items-center justify-center w-full">
-      <div className="flex w-full justify-center items-center md:p-6">
-        <h1 className="font-bold text-2xl">🔧 Tech Stack</h1>
+    <div className="w-full items-center justify-center md:flex">
+      <div className="flex w-full items-center justify-center md:p-6">
+        <h1 className="text-2xl font-bold">🔧 Tech Stack</h1>
       </div>
-      <div className="flex md:w-full md:justify-center md:items-center md:mt-0 mt-10 md:p-0 p-4">
+      <div className="mt-10 flex p-4 md:mt-0 md:w-full md:items-center md:justify-center md:p-0">
         <div className="grid gap-4 md:grid-flow-col md:grid-rows-2 md:gap-10">
           {techs.map((tech, index) => (
             <div key={index++}>

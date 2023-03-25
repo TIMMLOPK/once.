@@ -34,7 +34,7 @@ const Sparkles = ({ children }) => {
   );
 
   return (
-    <span className="inline-block relative">
+    <span className="relative inline-block">
       {sparkles.map((sparkle) => (
         <Sparkle
           key={sparkle.id}

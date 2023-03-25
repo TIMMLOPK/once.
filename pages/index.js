@@ -13,23 +13,23 @@ const Home = () => {
   return (
     <Layout>
       <section
-        className="flex items-center min-h-screen m-2 relative"
+        className="relative m-2 flex min-h-screen items-center"
         id="about"
       >
         <About />
         <Line />
       </section>
       <section
-        className="min-h-screen m-2 relative px-6 block md:flex md:items-center "
+        className="relative m-2 block min-h-screen px-6 md:flex md:items-center "
         id="about-2"
       >
-        <div className="md:flex md:w-full md:justify-center md:items-center md:flex-col md:p-6">
-          <h1 className="font-bold text-3xl">About me</h1>
+        <div className="md:flex md:w-full md:flex-col md:items-center md:justify-center md:p-6">
+          <h1 className="text-3xl font-bold">About me</h1>
           <br />
           <GithubStats />
         </div>
-        <div className="md:flex md:w-full md:justify-center md:items-center mt-8 mr-5">
-          <div className="text-gray-900 dark:text-gray-300 leading-relaxed tracking-wide">
+        <div className="mt-8 mr-5 md:flex md:w-full md:items-center md:justify-center">
+          <div className="leading-relaxed tracking-wide text-gray-900 dark:text-gray-300">
             <p>
               Hello, I am student from Hong Kong. I am insterested in
               web-development and programming.
@@ -41,14 +41,14 @@ const Home = () => {
               profile website and meme generator. I am glad if you appreciate
               them. Please feel free to tell me if you have advice or questions.
               <br />
-              <div className="flex mt-12 items-center space-x-4">
+              <div className="mt-12 flex items-center space-x-4">
                 <Link
                   href="https://github.com/TIMMLOPK"
                   aria-label="GitHub"
                   passHref
                 >
                   <span className="text-gray-400 hover:text-[#333] dark:hover:text-[#fff]">
-                    <FiGithub className="w-6 h-6" />
+                    <FiGithub className="h-6 w-6" />
                   </span>
                 </Link>
                 <Link
@@ -57,12 +57,12 @@ const Home = () => {
                   passHref
                 >
                   <span className="text-gray-400 hover:text-[#c92bb7]">
-                    <FiInstagram className="w-6 h-6" />
+                    <FiInstagram className="h-6 w-6" />
                   </span>
                 </Link>
                 <span className="inline-flex items-center text-gray-400">
                   <ToolTip text="Timmy#2600" position="left" tigger="click">
-                    <FaDiscord className="w-6 h-6 mr-1 hover:text-[#7289DA]" />
+                    <FaDiscord className="mr-1 h-6 w-6 hover:text-[#7289DA]" />
                   </ToolTip>
                 </span>
               </div>
@@ -71,11 +71,11 @@ const Home = () => {
         </div>
         <Line />
       </section>
-      <section className="md:flex items-center min-h-screen relative" id="tech">
+      <section className="relative min-h-screen items-center md:flex" id="tech">
         <TechStack />
         <Line />
       </section>
-      <section className="min-h-screen relative" id="projects">
+      <section className="relative min-h-screen" id="projects">
         <Project />
       </section>
     </Layout>

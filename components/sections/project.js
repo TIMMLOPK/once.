@@ -8,7 +8,7 @@ import { m } from "framer-motion";
 const ProjectCard = ({ data }) => {
   const { title, link, children, github } = data;
   return (
-    <div className="dark:text-white m-6 relative items-center group">
+    <div className="group relative m-6 items-center dark:text-white">
       <div className="relative">
         <Image
           src="/card.png"
@@ -23,16 +23,16 @@ const ProjectCard = ({ data }) => {
         {github && (
           <Link href={github} passHref aria-label="Open in new tab">
             <ToolTip text="Open Source">
-              <button className="absolute bottom-2 left-2 inline-flex items-center text-gray-400 hover:text-white bg-hoverbg rounded-full p-[6px] transition">
+              <button className="absolute bottom-2 left-2 inline-flex items-center rounded-full bg-hoverbg p-[6px] text-gray-400 transition hover:text-white">
                 <BsGithub />
               </button>
             </ToolTip>
           </Link>
         )}
       </div>
-      <div className="mt-4 relative">
+      <div className="relative mt-4">
         <div className="flex items-center space-x-2">
-          <span className="font-mono tracking-wide text-lg font-semibold">
+          <span className="font-mono text-lg font-semibold tracking-wide">
             {title}
           </span>
           {link && (
@@ -42,7 +42,7 @@ const ProjectCard = ({ data }) => {
           )}
         </div>
       </div>
-      <div className="mt-2 opacity-80 text-sm font-mono max-w-[230px]">
+      <div className="mt-2 max-w-[230px] font-mono text-sm opacity-80">
         {children}
       </div>
     </div>
@@ -52,9 +52,9 @@ const ProjectCard = ({ data }) => {
 const Project = () => {
   return (
     <div>
-      <h1 className="font-bold text-2xl">🗂️ Projects</h1>
+      <h1 className="text-2xl font-bold">🗂️ Projects</h1>
       <br />
-      <div className="grid gap-6 md:gap-10 md:grid-cols-3 mt-8 justify-center">
+      <div className="mt-8 grid justify-center gap-6 md:grid-cols-3 md:gap-10">
         {projects.map((project, index) => (
           <m.div
             initial={{ y: 100, opacity: 0 }}

@@ -18,7 +18,7 @@ export const Line = () => {
   const [inview, setInview] = useState(false);
   return (
     <motion.svg
-      className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
       viewBox="0 0 80 16"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

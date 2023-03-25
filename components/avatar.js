@@ -7,7 +7,7 @@ const Icon = ({ src }) => {
     "after:absolute after:z-[-1] after:inset-0 after:p-[1px] after:rounded-full after:bg-gradient-to-br after:from-startRgba after:to-endRgba after:content-[''] after:bg-clip-content dark:after:from-startRgbaDark dark:after:to-endRgbaDark";
   return (
     <div
-      className={`relative flex justify-center w-[240px] h-[240px] items-center rounded-full overflow-hidden shadow-logo ${after} ${before}`}
+      className={`relative flex h-[240px] w-[240px] items-center justify-center overflow-hidden rounded-full shadow-logo ${after} ${before}`}
       style={{ transform: "translateZ(0)" }}
     >
       <Image
