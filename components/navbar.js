@@ -42,8 +42,8 @@ const Emoji = {
 const SectionController = () => {
   return (
     <m.div className="flex flex-col items-center space-y-6 pt-3">
-      {Object.keys(Emoji).map((key) => (
-        <NavItem id={key}>{Emoji[key]}</NavItem>
+      {Object.keys(Emoji).map((key, index) => (
+        <NavItem id={key} key={index}>{Emoji[key]}</NavItem>
       ))}
     </m.div>
   );
