@@ -1,8 +1,7 @@
-import { BsArrowBarRight } from "react-icons/bs";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useCallback, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
 
 const NavItem = ({ children, id }) => {
@@ -34,6 +33,22 @@ const Button = ({ children, onClick }) => {
   );
 };
 
+const Emoji = {
+  about: "🏡",
+  tech: "🔧",
+  projects: "🗂️",
+};
+
+const SectionController = () => {
+  return (
+    <m.div className="flex flex-col items-center space-y-6 pt-3">
+      {Object.keys(Emoji).map((key) => (
+        <NavItem id={key}>{Emoji[key]}</NavItem>
+      ))}
+    </m.div>
+  );
+};
+
 const variants = {
   open: {
     x: 0,
@@ -54,47 +69,41 @@ const variants = {
 };
 
 const Navbar = () => {
-  const scrolled = useScroll();
+  const [showNav, setShowNav] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const [showNav, setShowNav] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setShowNav(!scrolled);
-  }, [scrolled]);
+  const scrolled = useScroll();
 
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    if (scrolled) {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+  }, [scrolled]);
 
   if (!mounted) return null;
 
   return (
-    <motion.nav
-      className="fixed top-[27%] right-2 z-10"
+    <m.nav
+      className="fixed top-[27%] h-[280px] right-2 z-10 bg-black text-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1 border dark:border-zinc-800"
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}
       transition={{ duration: 0.5 }}
       onMouseEnter={() => setShowNav(true)}
     >
-      <div className="h-[325px] bg-black text-white rounded-md shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-80 p-1 border dark:border-zinc-800">
-        <div className="flex flex-col items-center space-y-6 pt-3">
-          <NavItem id="about">🏡</NavItem>
-          <NavItem id="tech">🔧</NavItem>
-          <NavItem id="projects">🗂️</NavItem>
-          <div className="mt-6 pt-6 border-t border-slate-600 dark:border-slate-800 space-y-6">
-            <Button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? <FiMoon /> : <FiSun />}
-            </Button>
-
-            <Button onClick={() => setShowNav(!showNav)}>
-              <BsArrowBarRight />
-            </Button>
-          </div>
-        </div>
+      <SectionController />
+      <div className="mt-6 pt-6 border-t border-slate-600 dark:border-slate-800 space-y-6">
+        <Button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          {theme === "dark" ? <FiMoon /> : <FiSun />}
+        </Button>
       </div>
-    </motion.nav>
+    </m.nav>
   );
 };
 

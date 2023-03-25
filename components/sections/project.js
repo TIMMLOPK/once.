@@ -3,10 +3,7 @@ import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
 import { ToolTip } from "../tooltip";
-
-const calDelay = (inView, index, list) => {
-  return inView ? index * 200 : index === list.length - 1 ? 0 : index * 100;
-};
+import { m } from "framer-motion";
 
 const ProjectCard = ({ data }) => {
   const { title, link, children, github } = data;
@@ -52,26 +49,24 @@ const ProjectCard = ({ data }) => {
   );
 };
 
-const Project = ({ inView }) => {
-  const list = [...projects];
-
+const Project = () => {
   return (
     <div>
       <h1 className="font-bold text-2xl">🗂️ Projects</h1>
       <br />
-      <div className="grid gap-6 md:gap-12 md:grid-cols-3 mt-10 justify-center">
+      <div className="grid gap-6 md:gap-10 md:grid-cols-3 mt-8 justify-center">
         {projects.map((project, index) => (
-          <div
-            className={`${
-              inView ? "animate-fadeIn opacity-0" : "animate-fadeOut"
-            } duration-500`}
+          <m.div
+            initial={{ y: 100, opacity: 0 }}
+            transition={{ delay: index * 0.2, duration: 0.5 }}
+            whileInView={{ y: 0, opacity: 1 }}
             key={index++}
-            style={{ animationDelay: `${calDelay(inView, index, list)}ms` }}
+            viewport={{ once: true }}
           >
             <ProjectCard data={project} key={index++}>
               {project.children}
             </ProjectCard>
-          </div>
+          </m.div>
         ))}
       </div>
     </div>

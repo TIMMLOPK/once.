@@ -1,4 +1,3 @@
-import { useSection } from "../utils/useSection.js";
 import Layout from "../components/Layout/main.js";
 import About from "../components/sections/about.js";
 import TechStack from "../components/sections/techStack.js";
@@ -11,7 +10,6 @@ import { Line } from "../components/icons/line.js";
 import { ToolTip } from "../components/tooltip.js";
 
 const Home = () => {
-  const inview = useSection();
   return (
     <Layout>
       <section
@@ -19,6 +17,7 @@ const Home = () => {
         id="about"
       >
         <About />
+        <Line />
       </section>
       <section
         className="min-h-screen m-2 relative px-6 block md:flex md:items-center "
@@ -77,7 +76,7 @@ const Home = () => {
         <Line />
       </section>
       <section className="min-h-screen relative" id="projects">
-        <Project inView={inview === "projects"} />
+        <Project />
       </section>
     </Layout>
   );

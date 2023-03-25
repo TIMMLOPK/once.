@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useState } from "react";
 
 function transformTocss(input) {
@@ -46,7 +46,7 @@ export const ToolTip = ({ children, text, position, tigger = "hover" }) => {
       >
         {children}
       </div>
-      <motion.p
+      <m.p
         className={`absolute ${transformTocss(position)} ${
           isHovered ? "z-[999]" : "-z-1"
         } p-[8px] w-[100px] h-[25px] bg-black flex items-center justify-center text-gray-100 text-[10px] rounded-full backdrop-filter 
@@ -61,7 +61,7 @@ export const ToolTip = ({ children, text, position, tigger = "hover" }) => {
         }}
       >
         {text}
-      </motion.p>
+      </m.p>
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "next-themes";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -32,8 +33,10 @@ function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider attribute="class" defaultTheme="system">
-        <Component {...pageProps} />
-        <Analytics />
+        <LazyMotion features={domAnimation}>
+          <Component {...pageProps} />
+          <Analytics />
+        </LazyMotion>
       </ThemeProvider>
     </>
   );
