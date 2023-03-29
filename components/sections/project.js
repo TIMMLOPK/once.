@@ -23,7 +23,7 @@ const ProjectCard = ({ data }) => {
         {github && (
           <Link href={github} passHref aria-label="Open in new tab">
             <ToolTip text="Open Source">
-              <button className="absolute bottom-2 left-2 inline-flex items-center rounded-full bg-hoverbg p-[6px] text-gray-400 transition hover:text-white">
+              <button className="absolute bottom-2 left-2 inline-flex items-center rounded-full bg-hover p-[6px] text-gray-400 transition hover:text-white">
                 <BsGithub />
               </button>
             </ToolTip>
@@ -51,14 +51,14 @@ const ProjectCard = ({ data }) => {
 
 const Project = () => {
   return (
-    <div>
+    <div className="pb-[15%]">
       <h1 className="text-2xl font-bold">🗂️ Projects</h1>
       <br />
       <div className="mt-8 grid justify-center gap-6 md:grid-cols-3 md:gap-10">
         {projects.map((project, index) => (
           <m.div
             initial={{ y: 100, opacity: 0 }}
-            transition={{ delay: index * 0.2, duration: 0.5 }}
+            transition={{ delay: index * 0.2, duration: 0.5, ease: "easeOut" }}
             whileInView={{ y: 0, opacity: 1 }}
             key={index++}
             viewport={{ once: true }}

@@ -12,7 +12,7 @@ const NavItem = ({ children, id }) => {
 
   return (
     <span
-      className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hoverbg"
+      className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hover"
       onClick={() => {
         scrollTo(id);
       }}
@@ -26,7 +26,7 @@ const Button = ({ children, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-hoverbg"
+      className="flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-hover"
     >
       {children}
     </button>
@@ -43,7 +43,9 @@ const SectionController = () => {
   return (
     <m.div className="flex flex-col items-center space-y-6 pt-3">
       {Object.keys(Emoji).map((key, index) => (
-        <NavItem id={key} key={index}>{Emoji[key]}</NavItem>
+        <NavItem id={key} key={index}>
+          {Emoji[key]}
+        </NavItem>
       ))}
     </m.div>
   );
@@ -88,7 +90,7 @@ const Navbar = () => {
 
   return (
     <m.nav
-      className="fixed top-[27%] right-2 z-10 h-[280px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
+      className="fixed top-[27%] right-2 z-10 h-[270px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}

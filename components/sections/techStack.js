@@ -17,8 +17,12 @@ const TechBox = ({ icon, name }) => {
 const TechStack = () => {
   return (
     <div className="w-full items-center justify-center md:flex">
-      <div className="flex w-full items-center justify-center md:p-6">
+      <div className="md:flex md:w-full md:flex-col md:items-center md:justify-center md:p-6">
         <h1 className="text-2xl font-bold">🔧 Tech Stack</h1>
+        <br />
+        <p className="text-sm text-gray-600 dark:text-gray-400 md:ml-5">
+          The magic I use to create things.
+        </p>
       </div>
       <div className="mt-10 flex p-4 md:mt-0 md:w-full md:items-center md:justify-center md:p-0">
         <div className="grid gap-4 md:grid-flow-col md:grid-rows-2 md:gap-10">

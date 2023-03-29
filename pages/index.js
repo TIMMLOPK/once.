@@ -8,6 +8,7 @@ import Link from "next/link";
 import { FaDiscord } from "react-icons/fa";
 import { Line } from "../components/icons/line.js";
 import { ToolTip } from "../components/tooltip.js";
+import Blog from "../components/sections/blog.js";
 
 const Home = () => {
   return (
@@ -20,7 +21,7 @@ const Home = () => {
         <Line />
       </section>
       <section
-        className="relative m-2 block min-h-screen px-6 md:flex md:items-center "
+        className="relative m-2 min-h-screen px-6 md:flex md:items-center"
         id="about-2"
       >
         <div className="md:flex md:w-full md:flex-col md:items-center md:justify-center md:p-6">
@@ -77,6 +78,10 @@ const Home = () => {
       </section>
       <section className="relative min-h-screen" id="projects">
         <Project />
+        <Line />
+      </section>
+      <section className="relative min-h-screen md:flex" id="blog">
+        <Blog />
       </section>
     </Layout>
   );

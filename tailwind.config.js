@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -8,18 +10,10 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        text: "text 5s ease infinite",
         rotate: "rotate 6s linear infinite",
+        typing: "typing 5s steps(40, end) normal",
       },
       keyframes: {
-        rotate: {
-          from: {
-            transform: "rotate(360deg)",
-          },
-          to: {
-            transform: "rotate(0deg)",
-          },
-        },
         text: {
           "0%, 100%": {
             "background-size": "200% 200%",
@@ -30,13 +24,25 @@ module.exports = {
             "background-position": "right center",
           },
         },
+        typing: {
+          from: {
+            width: 0,
+            "border-right-color": "white",
+            "border-right-width": "2px",
+          },
+          "90%": {
+            "border-right-color": "white",
+            "border-right-width": "2px",
+          },
+          to: {
+            width: "100%",
+            "border-right-color": "transparent",
+            "border-right-width": "0px",
+          },
+        },
       },
       colors: {
-        hoverbg: "rgba(255, 255, 255, 0.103)",
-        startRgba: "rgba(228, 232, 233, 1)",
-        endRgba: "rgba(239, 245, 249, 1)",
-        startRgbaDark: "rgba(0, 0, 0, 1)",
-        endRgbaDark: "rgba(0, 0, 0, 1)",
+        hover: "rgba(255, 255, 255, 0.103)",
       },
       dropShadow: {
         logo: "0 0 0.3rem #ffffff70",
@@ -46,5 +52,20 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            };
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      );
+    }),
+  ],
 };
