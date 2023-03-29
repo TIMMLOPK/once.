@@ -58,10 +58,10 @@ const About = () => {
           </m.div>
         </div>
       </div>
-      <div className="invisible absolute md:visible md:inset-y-1/3 md:left-1/2">
+      <div className="invisible relative md:absolute md:visible md:inset-y-1/3 md:left-1/2">
         <AnimatedTextChar
           text="Everything is always once."
-          className={`${inter.className} m-4 p-10`}
+          className={`${inter.className} md:m-4 md:p-10`}
         />
       </div>
     </div>

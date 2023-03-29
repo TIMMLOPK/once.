@@ -43,7 +43,7 @@ const AnimatedTextChar = ({ text, className }) => {
       className={className}
     >
       {letters.map((letter, index) => (
-        <motion.span variants={child} key={index} className="text-[3rem]">
+        <motion.span variants={child} key={index} className="md:text-[3rem]">
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}
