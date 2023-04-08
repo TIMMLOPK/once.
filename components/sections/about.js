@@ -37,8 +37,8 @@ const variants = {
 
 const ChatBubble = ({ children }) => {
   return (
-    <div className="my-0 mx-auto flex max-w-[450px] flex-col items-center justify-center p-0">
-      <div className="relative min-w-[180px] rounded-[25px] bg-black py-[10px] px-[20px] leading-[24px] text-white">
+    <div className="flex max-w-[450px] flex-col items-center justify-center p-0">
+      <div className="relative min-w-[180px] rounded-3xl bg-black px-5 py-2.5 leading-6 text-white">
         {children}
       </div>
     </div>
@@ -50,7 +50,7 @@ const About = () => {
     <div>
       <div className="relative mb-16 md:ml-10">
         <Icon src="/icon.webp" />
-        <div className="absolute top-[10rem] left-[10rem]">
+        <div className="absolute left-40 top-40">
           <m.div initial="initial" animate="enter" variants={variants}>
             <ChatBubble>
               <TypeWriter />
@@ -58,10 +58,10 @@ const About = () => {
           </m.div>
         </div>
       </div>
-      <div className="invisible relative md:absolute md:visible md:inset-y-1/3 md:left-1/2">
+      <div className="invisible relative md:visible md:absolute md:inset-y-1/3 md:left-1/2">
         <AnimatedTextChar
           text="Everything is always once."
-          className={`${inter.className} md:m-4 md:p-10`}
+          className={`${inter.className} flex overflow-hidden text-[2rem] md:m-4 md:p-10`}
         />
       </div>
     </div>

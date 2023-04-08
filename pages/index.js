@@ -29,7 +29,7 @@ const Home = () => {
           <br />
           <GithubStats />
         </div>
-        <div className="mt-8 mr-5 md:flex md:w-full md:items-center md:justify-center">
+        <div className="mr-5 mt-8 md:flex md:w-full md:items-center md:justify-center">
           <div className="leading-relaxed tracking-wide text-gray-900 dark:text-gray-300">
             <p>
               Hello, I am student from Hong Kong. I am insterested in

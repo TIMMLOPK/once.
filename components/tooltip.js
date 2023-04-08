@@ -49,7 +49,7 @@ export const ToolTip = ({ children, text, position, tigger = "hover" }) => {
       <m.p
         className={`absolute ${transformTocss(position)} ${
           isHovered ? "z-[999]" : "-z-1"
-        } flex h-[25px] w-[100px] items-center justify-center rounded-full bg-black p-[8px] text-[10px] text-gray-100 opacity-30 
+        } flex h-7 w-24 items-center justify-center rounded-full bg-black p-2 text-xs text-gray-100 opacity-30 
         backdrop-blur-lg backdrop-filter`}
         initial="hidden"
         transition={{ duration: 0.2, easings: "easeInOut" }}

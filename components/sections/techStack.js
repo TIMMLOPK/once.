@@ -5,7 +5,7 @@ const TechBox = ({ icon, name }) => {
   return (
     <>
       <div className="text-md md:0 mt-6 inline-flex place-items-center text-gray-900 dark:text-white">
-        <span className="mr-3 flex h-11 w-11 items-center justify-center rounded-full dark:border-t dark:border-slate-700 dark:bg-[#141517]">
+        <span className="mr-3 flex h-11 w-11 items-center justify-center rounded-full dark:border-t dark:border-slate-700 dark:bg-stone-950">
           <span className="w-4">{icon}</span>
         </span>
         <span className="ml-2">{name}</span>

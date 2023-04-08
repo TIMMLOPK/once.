@@ -14,14 +14,12 @@ module.exports = {
         typing: "typing 5s steps(40, end) normal",
       },
       keyframes: {
-        text: {
-          "0%, 100%": {
-            "background-size": "200% 200%",
-            "background-position": "left center",
+        rotate: {
+          from: {
+            transform: "rotate(360deg)",
           },
-          "50%": {
-            "background-size": "200% 200%",
-            "background-position": "right center",
+          to: {
+            transform: "rotate(0deg)",
           },
         },
         typing: {

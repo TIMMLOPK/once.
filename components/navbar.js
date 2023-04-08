@@ -10,23 +10,17 @@ const NavItem = ({ children, id }) => {
     el.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  return (
-    <span
-      className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hover"
-      onClick={() => {
-        scrollTo(id);
-      }}
-    >
-      {children}
-    </span>
-  );
+  return <Button onClick={() => scrollTo(id)}>{children}</Button>;
 };
 
-const Button = ({ children, onClick }) => {
+const Button = ({ children, onClick, size }) => {
   return (
     <button
       onClick={onClick}
-      className="flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-hover"
+      // className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hover"
+      className={`flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-hover ${
+        size === "md" ? "text-md" : "text-sm"
+      }`}
     >
       {children}
     </button>
@@ -90,7 +84,7 @@ const Navbar = () => {
 
   return (
     <m.nav
-      className="fixed top-[27%] right-2 z-10 h-[270px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
+      className="fixed right-2 top-[27%] z-10 h-[270px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}
@@ -98,8 +92,11 @@ const Navbar = () => {
       onMouseEnter={() => setShowNav(true)}
     >
       <SectionController />
-      <div className="mt-6 space-y-6 border-t border-slate-600 pt-6 dark:border-slate-800">
-        <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+      <div className="mt-6 flex flex-col items-center border-t border-slate-600 pt-6 dark:border-slate-800 ">
+        <Button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          size="md"
+        >
           {theme === "dark" ? <FiMoon /> : <FiSun />}
         </Button>
       </div>
