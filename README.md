@@ -6,4 +6,4 @@
 
 MIT License.
 
-- Please delete my personal information and replace it with your own.
+- Please delete my information if you want to use this.

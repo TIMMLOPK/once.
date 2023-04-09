@@ -9,8 +9,9 @@ import { FaDiscord } from "react-icons/fa";
 import { Line } from "../components/icons/line.js";
 import { ToolTip } from "../components/tooltip.js";
 import Blog from "../components/sections/blog.js";
+import { getAllPosts } from "../utils/api.js";
 
-const Home = () => {
+const Home = ({ allPosts }) => {
   return (
     <Layout>
       <section
@@ -81,10 +82,25 @@ const Home = () => {
         <Line />
       </section>
       <section className="relative min-h-screen md:flex" id="blog">
-        <Blog />
+        <Blog posts={allPosts} />
       </section>
     </Layout>
   );
+};
+
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "coverImage",
+    "description",
+  ]);
+
+  return {
+    props: { allPosts },
+  };
 };
 
 export default Home;

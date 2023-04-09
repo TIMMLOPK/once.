@@ -47,6 +47,8 @@ module.exports = {
       },
       boxShadow: {
         logo: "0px 2px 8px -1px #0000001a",
+        small: "0 5px 10px rgba(0, 0, 0, 0.12)",
+        medium: "0 8px 30px rgba(0, 0, 0, 0.12)",
       },
     },
   },
