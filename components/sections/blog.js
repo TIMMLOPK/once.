@@ -1,19 +1,25 @@
-import Post from "../blog/posts";
+import { Post } from "../blog/posts";
 import HighlightPost from "../blog/highlightPost";
 import { useReducer } from "react";
 
 const Blog = ({ posts }) => {
-  const [state, dispatch] = useReducer((state, action) => {
-    switch (action.type) {
-      case "LOAD_MORE":
-        return {
-          ...state,
-          posts: [...state.posts, ...posts.slice(state.posts.length + 1, state.posts.length + 3)],
-        };
-      default:
-        return state;
-    }
-  }, { posts: posts.slice(1, 3) });
+  const [state, dispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "LOAD_MORE":
+          return {
+            ...state,
+            posts: [
+              ...state.posts,
+              ...posts.slice(state.posts.length + 1, state.posts.length + 3),
+            ],
+          };
+        default:
+          return state;
+      }
+    },
+    { posts: posts.slice(1, 3) }
+  );
 
   return (
     <div>
@@ -33,7 +39,7 @@ const Blog = ({ posts }) => {
             date={posts[0].date}
             description={posts[0].description}
           />
-          <hr className="mb-24 mt-28 w-full" />
+          <hr className="my-28 min-w-full border-gray-300 dark:border-gray-700" />
           <Post posts={state.posts} />
           {state.posts.length < posts.length - 1 && (
             <div className="flex justify-center">

@@ -13,7 +13,7 @@ const PostHeader = ({ title, coverImage, date }) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      <div className="hidden md:mb-12 md:mt-8 md:block">
+      <div className="mb-12 md:mt-8 md:block">
         <Image
           src={coverImage}
           alt={`Cover Image for ${title}`}
@@ -24,7 +24,7 @@ const PostHeader = ({ title, coverImage, date }) => {
       </div>
       <div className="mb-16 text-center md:mb-10 md:px-4">
         <Avatar name="Timmy" picture="/icon.webp" />
-        <h4 className="mb-4 mt-4 text-center text-lg md:text-left">{date}</h4>
+        <h4 className="mb-4 mt-4 text-left text-lg">{date}</h4>
       </div>
     </>
   );

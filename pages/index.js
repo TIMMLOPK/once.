@@ -63,7 +63,7 @@ const Home = ({ allPosts }) => {
                   </span>
                 </Link>
                 <span className="inline-flex items-center text-gray-400">
-                  <ToolTip text="Timmy#2600" position="left" tigger="click">
+                  <ToolTip text="Timmy#2600" position="right" tigger="click">
                     <FaDiscord className="mr-1 h-6 w-6 hover:text-[#7289DA]" />
                   </ToolTip>
                 </span>

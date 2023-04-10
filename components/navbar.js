@@ -3,24 +3,37 @@ import { useCallback, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
+import { useRouter } from "next/router";
+import { ToolTip } from "./tooltip";
 
 const NavItem = ({ children, id }) => {
+  const router = useRouter();
   const scrollTo = useCallback((id) => {
-    const el = document.getElementById(id);
-    el.scrollIntoView({ behavior: "smooth" });
+    if (router.pathname === "/") {
+      const el = document.getElementById(id.toLowerCase());
+      el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push(`/#${id}`);
+    }
   }, []);
 
-  return <Button onClick={() => scrollTo(id)}>{children}</Button>;
+  return (
+    <ToolTip text={id} position="left" tigger="hover">
+      <Button onClick={() => scrollTo(id)}>{children}</Button>
+    </ToolTip>
+  );
 };
 
 const Button = ({ children, onClick, size }) => {
   return (
     <button
       onClick={onClick}
-      // className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hover"
-      className={`flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-hover ${
-        size === "md" ? "text-md" : "text-sm"
-      }`}
+      className={
+        cn(
+          "flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-hover",
+          size === "md" ? "text-md" : "text-sm"
+        )
+      }
     >
       {children}
     </button>
@@ -28,9 +41,10 @@ const Button = ({ children, onClick, size }) => {
 };
 
 const Emoji = {
-  about: "🏡",
-  tech: "🔧",
-  projects: "🗂️",
+  About: "🏡",
+  Tech: "🔧",
+  Projects: "🗂️",
+  Blog: "📝",
 };
 
 const SectionController = () => {
@@ -84,7 +98,7 @@ const Navbar = () => {
 
   return (
     <m.nav
-      className="fixed right-2 top-[27%] z-10 h-[270px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
+      className="fixed right-2 top-[20%] z-10 h-[330px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}

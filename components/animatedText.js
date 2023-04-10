@@ -11,6 +11,7 @@ const AnimatedTextChar = ({ text, className }) => {
       transition: { staggerChildren: 0.03, delayChildren: 0.04 * i },
     }),
   };
+
   const child = {
     visible: {
       opacity: 1,
