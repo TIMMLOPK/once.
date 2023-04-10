@@ -5,6 +5,7 @@ import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
 import { useRouter } from "next/router";
 import { ToolTip } from "./tooltip";
+import { cn } from "../utils/cn";
 
 const NavItem = ({ children, id }) => {
   const router = useRouter();
