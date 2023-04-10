@@ -99,7 +99,7 @@ const Navbar = () => {
 
   return (
     <m.nav
-      className="fixed right-2 top-[20%] z-10 h-[330px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
+      className="fixed right-2 top-[25%] z-10 h-[330px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}
