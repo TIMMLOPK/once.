@@ -10,7 +10,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@vercel/analytics": "^0.1.11",
+    "@vercel/analytics": "^1.0.0",
     "clsx": "^1.2.1",
     "framer-motion": "^10.11.2",
     "gray-matter": "^4.0.3",
