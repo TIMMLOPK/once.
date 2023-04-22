@@ -9,7 +9,7 @@ const variants = {
   exit: { opacity: 0, x: -0, y: 20 },
 };
 
-const Layout = ({ children , className}) => {
+const Layout = ({ children, className }) => {
   return (
     <AnimatePresence mode="wait">
       <main className={cn("container mx-auto px-5", className)}>

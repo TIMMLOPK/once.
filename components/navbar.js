@@ -7,34 +7,36 @@ import { useRouter } from "next/router";
 import { ToolTip } from "./tooltip";
 import { cn } from "../utils/cn";
 
-const NavItem = ({ children, id }) => {
+const NavItem = ({ children, id, onHover }) => {
   const router = useRouter();
   const scrollTo = useCallback((id) => {
     if (router.pathname === "/") {
       const el = document.getElementById(id.toLowerCase());
       el.scrollIntoView({ behavior: "smooth" });
     } else {
-      router.push(`/#${id}`);
+      router.push(`/#${id.toLowerCase()}`);
     }
   }, []);
 
   return (
     <ToolTip text={id} position="left" tigger="hover">
-      <Button onClick={() => scrollTo(id)}>{children}</Button>
+      <Button onClick={() => scrollTo(id)} onHover={onHover}>
+        {children}
+      </Button>
     </ToolTip>
   );
 };
 
-const Button = ({ children, onClick, size }) => {
+const Button = ({ children, className, onClick, onHover }) => {
   return (
     <button
       onClick={onClick}
-      className={
-        cn(
-          "flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-hover",
-          size === "md" ? "text-md" : "text-sm"
-        )
-      }
+      onMouseEnter={onHover}
+      onTouchStart={onHover}
+      className={cn(
+        "flex cursor-pointer items-center justify-center rounded-full p-2 text-sm",
+        className
+      )}
     >
       {children}
     </button>
@@ -46,18 +48,6 @@ const Emoji = {
   Tech: "🔧",
   Projects: "🗂️",
   Blog: "📝",
-};
-
-const SectionController = () => {
-  return (
-    <m.div className="flex flex-col items-center space-y-6 pt-3">
-      {Object.keys(Emoji).map((key, index) => (
-        <NavItem id={key} key={index}>
-          {Emoji[key]}
-        </NavItem>
-      ))}
-    </m.div>
-  );
 };
 
 const variants = {
@@ -82,6 +72,7 @@ const variants = {
 const Navbar = () => {
   const [showNav, setShowNav] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [hoverItem, setHoverItem] = useState(null);
   const { theme, setTheme } = useTheme();
   const scrolled = useScroll();
 
@@ -106,11 +97,25 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       onMouseEnter={() => setShowNav(true)}
     >
-      <SectionController />
+      <div className="flex flex-col items-center space-y-6 pt-3">
+        {Object.keys(Emoji).map((key, index) => (
+          <NavItem id={key} key={index} onHover={() => setHoverItem(key)}>
+            {Emoji[key]}
+            {hoverItem === key && (
+              <m.span
+                layoutId="bubble"
+                className="absolute inset-0 z-10 bg-hover"
+                style={{ borderRadius: 9999 }}
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+          </NavItem>
+        ))}
+      </div>
       <div className="mt-6 flex flex-col items-center border-t border-slate-600 pt-6 dark:border-slate-800 ">
         <Button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          size="md"
+          className="text-sm hover:bg-hover"
         >
           {theme === "dark" ? <FiMoon /> : <FiSun />}
         </Button>

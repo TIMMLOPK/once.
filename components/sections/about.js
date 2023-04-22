@@ -38,7 +38,7 @@ const variants = {
 const ChatBubble = ({ children }) => {
   return (
     <div className="flex max-w-[450px] flex-col items-center justify-center p-0">
-      <div className="relative min-w-[180px] rounded-3xl bg-black px-5 py-2.5 leading-6 text-white">
+      <div className="relative min-w-[180px] rounded-3xl border border-zinc-500 bg-black pl-4 py-2.5 leading-6 text-white shadow-2xl dark:border-zinc-800">
         {children}
       </div>
     </div>

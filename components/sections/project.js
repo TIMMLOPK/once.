@@ -12,7 +12,7 @@ const ProjectCard = ({ data }) => {
       <div className="relative">
         <Image
           src="/card.png"
-          className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+          className="transform rounded-lg border brightness-90 transition will-change-auto group-hover:brightness-110 dark:border-zinc-700"
           style={{ transform: "translate3d(0, 0, 0)" }}
           placeholder="blur"
           blurDataURL="/card.png"

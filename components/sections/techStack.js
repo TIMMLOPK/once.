@@ -1,4 +1,4 @@
-import { SiPython, SiRust } from "react-icons/si";
+import { SiPostgresql, SiPython, SiRust } from "react-icons/si";
 import { JavascriptIcon, ReactIcon, TSIcon } from "../icons/lang.js";
 
 const TechBox = ({ icon, name }) => {
@@ -62,6 +62,10 @@ const techs = [
   {
     icons: <SiPython />,
     name: "Python",
+  },
+  {
+    icons: <SiPostgresql />,
+    name: "PostgreSQL",
   },
 ];
 

@@ -10,8 +10,17 @@ import { Line } from "../components/icons/line.js";
 import { ToolTip } from "../components/tooltip.js";
 import Blog from "../components/sections/blog.js";
 import { getAllPosts } from "../utils/api.js";
+import { useEffect } from "react";
+import { useRouter } from "next/router.js";
 
 const Home = ({ allPosts }) => {
+  const hash = useRouter().asPath.split("#")[1];
+  useEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash);
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [hash]);
   return (
     <Layout>
       <section
