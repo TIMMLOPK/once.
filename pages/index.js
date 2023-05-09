@@ -7,7 +7,7 @@ import { FiGithub, FiInstagram } from "react-icons/fi";
 import Link from "next/link";
 import { FaDiscord } from "react-icons/fa";
 import { Line } from "../components/icons/line.js";
-import { ToolTip } from "../components/tooltip.js";
+import ToolTip from "../components/shared/tooltip.js";
 import Blog from "../components/sections/blog.js";
 import { getAllPosts } from "../utils/api.js";
 import { useEffect } from "react";
@@ -71,11 +71,11 @@ const Home = ({ allPosts }) => {
                     <FiInstagram className="h-6 w-6" />
                   </span>
                 </Link>
-                <span className="inline-flex items-center text-gray-400">
-                  <ToolTip text="Timmy#2600" position="right" tigger="click">
+                <ToolTip text="Timmy#2600" position="right">
+                  <span className="inline-flex items-center text-gray-400">
                     <FaDiscord className="mr-1 h-6 w-6 hover:text-[#7289DA]" />
-                  </ToolTip>
-                </span>
+                  </span>
+                </ToolTip>
               </div>
             </div>
           </div>

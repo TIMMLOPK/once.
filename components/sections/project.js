@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
-import { ToolTip } from "../tooltip";
+import ToolTip from "../shared/tooltip";
 import { m } from "framer-motion";
 
 const ProjectCard = ({ data }) => {
@@ -22,7 +22,7 @@ const ProjectCard = ({ data }) => {
         />
         {github && (
           <Link href={github} passHref aria-label="Open in new tab">
-            <ToolTip text="Open Source">
+            <ToolTip text="Open Source" position="left">
               <button className="absolute bottom-2 left-2 inline-flex items-center rounded-full bg-hover p-1.5 text-gray-400 transition hover:text-white">
                 <BsGithub />
               </button>

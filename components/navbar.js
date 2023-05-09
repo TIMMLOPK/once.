@@ -4,10 +4,9 @@ import { useTheme } from "next-themes";
 import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
 import { useRouter } from "next/router";
-import { ToolTip } from "./tooltip";
-import { cn } from "../utils/cn";
+import ToolTip from "./shared/tooltip";
 
-const NavItem = ({ children, id, onHover }) => {
+const NavItem = ({ children, id }) => {
   const router = useRouter();
   const scrollTo = useCallback((id) => {
     if (router.pathname === "/") {
@@ -19,27 +18,14 @@ const NavItem = ({ children, id, onHover }) => {
   }, []);
 
   return (
-    <ToolTip text={id} position="left" tigger="hover">
-      <Button onClick={() => scrollTo(id)} onHover={onHover}>
+    <ToolTip text={id} position="left">
+      <button
+        onClick={() => scrollTo(id)}
+        className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hover"
+      >
         {children}
-      </Button>
+      </button>
     </ToolTip>
-  );
-};
-
-const Button = ({ children, className, onClick, onHover }) => {
-  return (
-    <button
-      onClick={onClick}
-      onMouseEnter={onHover}
-      onTouchStart={onHover}
-      className={cn(
-        "flex cursor-pointer items-center justify-center rounded-full p-2 text-sm",
-        className
-      )}
-    >
-      {children}
-    </button>
   );
 };
 
@@ -72,7 +58,6 @@ const variants = {
 const Navbar = () => {
   const [showNav, setShowNav] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const [hoverItem, setHoverItem] = useState(null);
   const { theme, setTheme } = useTheme();
   const scrolled = useScroll();
 
@@ -99,26 +84,18 @@ const Navbar = () => {
     >
       <div className="flex flex-col items-center space-y-6 pt-3">
         {Object.keys(Emoji).map((key, index) => (
-          <NavItem id={key} key={index} onHover={() => setHoverItem(key)}>
+          <NavItem id={key} key={index}>
             {Emoji[key]}
-            {hoverItem === key && (
-              <m.span
-                layoutId="bubble"
-                className="absolute inset-0 z-10 bg-hover"
-                style={{ borderRadius: 9999 }}
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
           </NavItem>
         ))}
       </div>
-      <div className="mt-6 flex flex-col items-center border-t border-slate-600 pt-6 dark:border-slate-800 ">
-        <Button
+      <div className="mt-6 flex flex-col items-center border-t border-slate-600 pt-6 dark:border-slate-800">
+        <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="text-sm hover:bg-hover"
+          className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hover"
         >
           {theme === "dark" ? <FiMoon /> : <FiSun />}
-        </Button>
+        </button>
       </div>
     </m.nav>
   );
