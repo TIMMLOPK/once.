@@ -1,5 +1,3 @@
-"use client";
-
 import "../styles/globals.css";
 import React from "react";
 import { Providers } from "./providers";
@@ -21,6 +19,7 @@ export const metadata: Metadata = {
     images: "https://lionceu.live/card.png",
   },
 };
+
 export default function RootLayout({
   children,
 }: {
