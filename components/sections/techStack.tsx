@@ -1,5 +1,5 @@
 import { SiPostgresql, SiPython, SiRust } from "react-icons/si";
-import { JavascriptIcon, ReactIcon, TSIcon } from "../icons/lang.js";
+import { JavascriptIcon, ReactIcon, TSIcon } from "../icons/lang";
 
 const TechBox = ({ icon, name }) => {
   return (
@@ -28,12 +28,7 @@ const TechStack = () => {
         <div className="grid gap-4 md:grid-flow-col md:grid-rows-2 md:gap-10">
           {techs.map((tech, index) => (
             <div key={index++}>
-              <TechBox
-                icon={tech.icons}
-                name={tech.name}
-                description={tech.description}
-                key={index++}
-              />
+              <TechBox icon={tech.icons} name={tech.name} key={index++} />
             </div>
           ))}
         </div>

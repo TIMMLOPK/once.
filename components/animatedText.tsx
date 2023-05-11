@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -42,7 +44,7 @@ const AnimatedTextChar = ({ text, className }) => {
       animate="visible"
       className={className}
     >
-      {letters.map((letter, index) => (
+      {letters.map((letter: string, index) => (
         <motion.span variants={child} key={index} className="md:text-[3rem]">
           {letter === " " ? "\u00A0" : letter}
         </motion.span>

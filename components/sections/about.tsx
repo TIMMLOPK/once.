@@ -1,6 +1,8 @@
-import Icon from "../avatar.js";
+"use client";
+
+import Icon from "../avatar";
 import { m } from "framer-motion";
-import { AnimatedTextChar } from "../animatedText.js";
+import { AnimatedTextChar } from "../animatedText";
 import { Caveat } from "next/font/google";
 
 const inter = Caveat({

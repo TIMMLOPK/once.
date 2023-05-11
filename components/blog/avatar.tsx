@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 
 const Avatar = ({ name = "Timmy", picture = "/icon.webp" }) => {
   return (
@@ -6,7 +7,7 @@ const Avatar = ({ name = "Timmy", picture = "/icon.webp" }) => {
       <div className="relative mr-2 h-8 w-8">
         <Image
           src={picture}
-          className="rounded-full hover:opacity-80 transition-opacity duration-200"
+          className="rounded-full transition-opacity duration-200 hover:opacity-80"
           height={32}
           width={32}
           alt={name}

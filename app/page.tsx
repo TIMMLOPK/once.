@@ -1,26 +1,18 @@
-import Layout from "../components/Layout/main.js";
-import About from "../components/sections/about.js";
-import TechStack from "../components/sections/techStack.js";
-import Project from "../components/sections/project.js";
-import GithubStats from "../components/githubStats.js";
+import Layout from "../components/Layout/main";
+import { getAllPosts } from "../utils/api";
 import { FiGithub, FiInstagram } from "react-icons/fi";
-import Link from "next/link";
 import { FaDiscord } from "react-icons/fa";
-import { Line } from "../components/icons/line.js";
-import ToolTip from "../components/shared/tooltip.js";
-import Blog from "../components/sections/blog.js";
-import { getAllPosts } from "../utils/api.js";
-import { useEffect } from "react";
-import { useRouter } from "next/router.js";
+import { Line } from "../components/icons/line";
+import About from "../components/sections/about";
+import TechStack from "../components/sections/techStack";
+import Project from "../components/sections/project";
+import GithubStats from "../components/githubStats";
+import Link from "next/link";
+import ToolTip from "../components/shared/tooltip";
+import Blog from "../components/sections/blog";
 
-const Home = ({ allPosts }) => {
-  const hash = useRouter().asPath.split("#")[1];
-  useEffect(() => {
-    if (hash) {
-      const el = document.getElementById(hash);
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [hash]);
+async function Home() {
+  const allPosts = await getPosts();
   return (
     <Layout>
       <section
@@ -95,9 +87,9 @@ const Home = ({ allPosts }) => {
       </section>
     </Layout>
   );
-};
+}
 
-export const getStaticProps = async () => {
+async function getPosts() {
   const allPosts = getAllPosts([
     "title",
     "date",
@@ -107,9 +99,7 @@ export const getStaticProps = async () => {
     "description",
   ]);
 
-  return {
-    props: { allPosts },
-  };
-};
+  return allPosts;
+}
 
 export default Home;

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
@@ -63,9 +65,7 @@ const Project = () => {
             viewport={{ once: true }}
             key={index++}
           >
-            <ProjectCard data={project} key={index++}>
-              {project.children}
-            </ProjectCard>
+            <ProjectCard data={project} key={index++} />
           </m.div>
         ))}
       </div>

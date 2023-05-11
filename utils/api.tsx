@@ -2,13 +2,24 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
+interface Post {
+  title: string;
+  description: string;
+  coverImage: string;
+  date: string;
+  ogImage: {
+    url: string;
+  };
+  slug: string;
+  content: string;
+}
 const postsDirectory = join(process.cwd(), "posts");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug, fields = []) {
+export function getPostBySlug(slug: string, fields: string[] = []) {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -29,10 +40,10 @@ export function getPostBySlug(slug, fields = []) {
     }
   });
 
-  return items;
+  return items as Post;
 }
 
-export function getAllPosts(fields = []) {
+export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))

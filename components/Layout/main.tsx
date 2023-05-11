@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "../navbar";
 import Footer from "../footer";
 import { AnimatePresence, m } from "framer-motion";
@@ -9,7 +11,13 @@ const variants = {
   exit: { opacity: 0, x: -0, y: 20 },
 };
 
-const Layout = ({ children, className }) => {
+const Layout = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
     <AnimatePresence mode="wait">
       <main className={cn("container mx-auto px-5", className)}>

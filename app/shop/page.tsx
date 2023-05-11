@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Icon from "../components/avatar";
-import Title from "../components/title";
+import Icon from "../../components/avatar";
+import Title from "../../components/title";
 
-import AlipayHK from "../public/shop/alipayhk.png";
-import FPS from "../public/shop/fps.svg";
-import Payme from "../public/shop/payme.png";
+import AlipayHK from "../../public/shop/alipayhk.png";
+import FPS from "../../public/shop/fps.svg";
+import Payme from "../../public/shop/payme.png";
 
 const Payment = ({ icon, text }) => {
   return (
@@ -29,7 +29,7 @@ const Shop = () => {
       <section>
         <div className="py-8 md:flex md:space-x-10">
           <div className="mt-8 flex items-center justify-center md:mt-0">
-            <Icon src="/shop/icon.webp" alt="murasaki" />
+            <Icon src="/shop/icon.webp" />
           </div>
           <section className="ml-1 mt-8">
             <h1 className="my-7 font-serif text-4xl">@murasaki_jpstore</h1>

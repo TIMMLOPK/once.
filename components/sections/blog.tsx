@@ -1,3 +1,5 @@
+"use client";
+
 import { Post } from "../blog/posts";
 import HighlightPost from "../blog/highlightPost";
 import { useReducer } from "react";

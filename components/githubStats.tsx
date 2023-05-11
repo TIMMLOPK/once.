@@ -1,12 +1,22 @@
+"use client";
+
 import useSWR from "swr";
 import { useState, useEffect } from "react";
+
+interface GithubStats {
+  followers: number;
+  public_repos: number;
+}
 
 const GithubStats = () => {
   const { data: user, isLoading } = useSWR(
     "https://api.github.com/users/TIMMLOPK",
     (...args) => fetch(...args).then((res) => res.json())
   );
-  const [stats, setStats] = useState({});
+  const [stats, setStats] = useState<GithubStats>({
+    followers: 0,
+    public_repos: 0,
+  });
 
   useEffect(() => {
     if (user) {

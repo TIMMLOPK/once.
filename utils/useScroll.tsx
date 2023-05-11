@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 const useScroll = () => {
   const [scroll, setScroll] = useState(false);
 
-  const handleScroll = useCallback((timer) => {
+  const handleScroll = useCallback((timer: NodeJS.Timeout) => {
     setScroll(true);
     clearTimeout(timer);
     timer = setTimeout(() => {
@@ -12,7 +12,7 @@ const useScroll = () => {
   }, []);
 
   useEffect(() => {
-    let timer;
+    let timer: NodeJS.Timeout;
     window.addEventListener("scroll", () => handleScroll(timer));
     return () => {
       window.removeEventListener("scroll", () => handleScroll(timer));

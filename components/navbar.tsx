@@ -1,19 +1,27 @@
+"use client";
+
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useCallback, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import ToolTip from "./shared/tooltip";
 
 const NavItem = ({ children, id }) => {
   const router = useRouter();
-  const scrollTo = useCallback((id) => {
-    if (router.pathname === "/") {
+  const pathName = usePathname();
+  const scrollTo = useCallback((id: string) => {
+    if (pathName === "/") {
       const el = document.getElementById(id.toLowerCase());
       el.scrollIntoView({ behavior: "smooth" });
     } else {
       router.push(`/#${id.toLowerCase()}`);
+
+      setTimeout(() => {
+        const el = document.getElementById(id.toLowerCase());
+        el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
   }, []);
 
