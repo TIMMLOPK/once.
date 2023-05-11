@@ -4,15 +4,11 @@ import "../styles/globals.css";
 import React from "react";
 import { Providers } from "./providers";
 import type { Metadata } from "next";
-// import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "once.",
   description: "ONCE: A profile website for Timmy",
-  icons: [
-    { rel: "icon", url: "/favicon.ico" },
-    { rel: "apple-touch-icon", url: "/favicon.ico" },
-  ],
   openGraph: {
     title: "once",
     description: "ONCE: A profile website for Timmy",
@@ -34,6 +30,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <Providers>
         <body>{children}</body>
+        <Analytics />
       </Providers>
     </html>
   );

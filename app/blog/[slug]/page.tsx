@@ -1,5 +1,3 @@
-// import ErrorPage from "next/error";
-// import Head from "next/head";
 import { getPostBySlug, getAllPosts } from "../../../utils/api";
 import markdownToHtml from "../../../utils/markdownToHtml";
 import PostBody from "../../../components/blog/postBody";
@@ -8,22 +6,12 @@ import Layout from "../../../components/Layout/main";
 
 export default async function Post({ params }) {
   const { post, morePosts } = await getPost(params);
-  const title = `${post.title} | ONCE`;
-
-  // if (!post?.slug) {
-  //     return <ErrorPage statusCode={404} />;
-  // }
 
   return (
     <Layout className="px-0">
       <div className="container mx-auto max-w-4xl p-8">
         <>
           <article className="mb-32">
-            {/* <Head>
-                            <title>{title}</title>
-                            <meta property="og:image" content={post.ogImage.url} />
-                            <meta property="og:description" content={post.description} />
-                        </Head> */}
             <div className="mx-auto max-w-3xl">
               <PostHeader
                 title={post.title}
@@ -77,15 +65,17 @@ export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const posts = getAllPosts(["slug"]);
-
-  // return {
-  //     paths: posts.map((post) => {
-  //         return {
-  //             params: {
-  //                 slug: post.slug,
-  //             },
-  //         };
-  //     }),
-  // };
   return posts.map((post) => post.slug);
+}
+
+export async function generateMetadata({ params }) {
+  const { post } = await getPost(params);
+
+  return {
+    title: `${post.title} | ONCE`,
+    openGraph: {
+      images: post.ogImage.url,
+      description: post.description,
+    },
+  };
 }

@@ -23,7 +23,7 @@ const NavItem = ({ children, id }) => {
         el.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, []);
+  }, [pathName, router]);
 
   return (
     <ToolTip text={id} position="left">
