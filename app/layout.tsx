@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "once",
     description: "ONCE: A profile website for Timmy",
-    images: "https://lionceu.live/card.png",
+    images: "https://ionce.me/card.png",
   },
   twitter: {
     card: "summary_large_image",
     title: "once",
     description: "ONCE: A profile website for Timmy",
-    images: "https://lionceu.live/card.png",
+    images: "https://ionce.me/card.png",
   },
 };
 

@@ -93,7 +93,7 @@ const projects = [
   {
     title: "ONCE",
     children: "A profile website",
-    link: "https://lionceu.live/",
+    link: "https://ionce.me/",
     github: "https://github.com/TIMMLOPK/once.",
   },
   {
