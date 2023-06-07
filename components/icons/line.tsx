@@ -18,7 +18,7 @@ const variants = {
 
 export const Line = () => {
   const ref = useRef(null);
-  const inview = useInView(ref);
+  const inview = useInView(ref, { once: true });
   return (
     <motion.svg
       className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"

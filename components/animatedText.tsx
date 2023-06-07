@@ -3,7 +3,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const AnimatedTextChar = ({ text, className }) => {
+const AnimatedTextChar = ({
+  text,
+  className,
+}: {
+  text: string;
+  className?: string;
+}) => {
   const letters = Array.from(text);
 
   const container = {
@@ -53,7 +59,13 @@ const AnimatedTextChar = ({ text, className }) => {
   );
 };
 
-const AnimatedTextWord = ({ text }) => {
+const AnimatedTextWord = ({
+  text,
+  className,
+}: {
+  text: string;
+  className?: string;
+}) => {
   const words = text.split(" ");
 
   const container = {
@@ -93,11 +105,7 @@ const AnimatedTextWord = ({ text }) => {
       animate="visible"
     >
       {words.map((word, index) => (
-        <motion.span
-          variants={child}
-          style={{ marginRight: "5px" }}
-          key={index}
-        >
+        <motion.span variants={child} className={className} key={index}>
           {word}
         </motion.span>
       ))}

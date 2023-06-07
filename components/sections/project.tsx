@@ -24,7 +24,7 @@ const ProjectCard = ({ data }) => {
         />
         {github && (
           <Link href={github} passHref aria-label="Open in new tab">
-            <ToolTip text="Open Source" position="left">
+            <ToolTip text="Open Source" position="left" offset={10}>
               <button className="absolute bottom-2 left-2 inline-flex items-center rounded-full bg-hover p-1.5 text-gray-400 transition hover:text-white">
                 <BsGithub />
               </button>
@@ -100,7 +100,6 @@ const projects = [
     title: "CSS Website",
     children: "CSS website",
     github: "https://github.com/TIMMLOPK/once",
-    link: "https://timmlopk.github.io/once/",
   },
   {
     title: "Discord RPC.rs",

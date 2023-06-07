@@ -20,8 +20,10 @@ const Layout = ({
 }) => {
   return (
     <AnimatePresence mode="wait">
-      <main className={cn("container mx-auto px-5", className)}>
+      <div className="fixed bottom-4 z-10 flex w-full justify-center">
         <Navbar />
+      </div>
+      <main className={cn("container mx-auto px-5", className)}>
         <m.div
           initial="hidden"
           animate="enter"

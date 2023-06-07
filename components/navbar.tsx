@@ -7,29 +7,30 @@ import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
 import { usePathname, useRouter } from "next/navigation";
 import ToolTip from "./shared/tooltip";
+import { cn } from "../utils/cn";
 
 const NavItem = ({ children, id }) => {
   const router = useRouter();
   const pathName = usePathname();
-  const scrollTo = useCallback((id: string) => {
-    if (pathName === "/") {
-      const el = document.getElementById(id.toLowerCase());
-      el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      router.push(`/#${id.toLowerCase()}`);
+  const scrollTo = useCallback(
+    (id: string) => {
+      if (pathName !== "/") {
+        router.push(`/#${id.toLowerCase()}`);
+      }
 
-      setTimeout(() => {
-        const el = document.getElementById(id.toLowerCase());
-        el.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
-  }, [pathName, router]);
+      const el = document.getElementById(id.toLowerCase());
+
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth" });
+    },
+    [pathName, router]
+  );
 
   return (
-    <ToolTip text={id} position="left">
+    <ToolTip text={id} position="top" hideArrow offset={10}>
       <button
         onClick={() => scrollTo(id)}
-        className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hover"
+        className="flex cursor-pointer items-center justify-center rounded-full border border-transparent p-1 text-base transition hover:bg-hover dark:hover:border-zinc-800"
       >
         {children}
       </button>
@@ -46,7 +47,7 @@ const Emoji = {
 
 const variants = {
   open: {
-    x: 0,
+    y: 0,
     transition: {
       delay: 0.2,
       type: "spring",
@@ -54,7 +55,7 @@ const variants = {
     },
   },
   closed: {
-    x: 40,
+    y: 45,
     transition: {
       delay: 0,
       type: "spring",
@@ -72,38 +73,37 @@ const Navbar = () => {
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    if (scrolled) {
-      setShowNav(false);
-    } else {
-      setShowNav(true);
-    }
+    setShowNav(!scrolled);
   }, [scrolled]);
 
   if (!mounted) return null;
 
   return (
     <m.nav
-      className="fixed right-2 top-[25%] z-10 h-[330px] rounded-lg border bg-black bg-opacity-80 p-1 text-white shadow-lg backdrop-blur-lg backdrop-filter dark:border-zinc-800"
+      className={cn(
+        "rounded-full border",
+        "border border-solid border-navbar bg-navbar p-2 shadow-navbar backdrop-blur-[16px] dark:border-zinc-700 dark:bg-navbarDark"
+      )}
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 2 }}
       onMouseEnter={() => setShowNav(true)}
     >
-      <div className="flex flex-col items-center space-y-6 pt-3">
+      <div className="flex flex-row items-center space-x-6">
         {Object.keys(Emoji).map((key, index) => (
           <NavItem id={key} key={index}>
             {Emoji[key]}
           </NavItem>
         ))}
-      </div>
-      <div className="mt-6 flex flex-col items-center border-t border-slate-600 pt-6 dark:border-slate-800">
-        <button
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="flex cursor-pointer items-center justify-center rounded-full p-2 text-sm hover:bg-hover"
-        >
-          {theme === "dark" ? <FiMoon /> : <FiSun />}
-        </button>
+        <div className="-ml-4 border-l border-slate-500 dark:border-slate-600">
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="mx-2 flex cursor-pointer items-center justify-center rounded-full border border-transparent p-1 text-base text-white transition hover:bg-hover dark:hover:border-slate-500"
+          >
+            {theme === "dark" ? <FiMoon /> : <FiSun />}
+          </button>
+        </div>
       </div>
     </m.nav>
   );

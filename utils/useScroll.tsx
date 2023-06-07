@@ -8,7 +8,7 @@ const useScroll = () => {
     clearTimeout(timer);
     timer = setTimeout(() => {
       setScroll(false);
-    }, 800);
+    }, 1000);
   }, []);
 
   useEffect(() => {
