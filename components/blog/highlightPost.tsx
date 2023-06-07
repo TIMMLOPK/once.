@@ -3,7 +3,19 @@ import Avatar from "./avatar";
 import PostTitle from "./postTitle";
 import React from "react";
 
-const HighlightPost = ({ slug, title, coverImage, date, description }) => {
+const HighlightPost = ({
+  slug,
+  title,
+  coverImage,
+  date,
+  description,
+}: {
+  slug: string;
+  title: string;
+  coverImage: string;
+  date: string;
+  description: string;
+}) => {
   return (
     <div className="flex flex-col lg:flex-row lg:space-x-8">
       <CoverImage title={title} src={coverImage} slug={slug} />

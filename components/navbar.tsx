@@ -9,7 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 import ToolTip from "./shared/tooltip";
 import { cn } from "../utils/cn";
 
-const NavItem = ({ children, id }) => {
+const NavItem = ({ children, id, ...props }) => {
   const router = useRouter();
   const pathName = usePathname();
   const scrollTo = useCallback(
@@ -30,7 +30,8 @@ const NavItem = ({ children, id }) => {
     <ToolTip text={id} position="top" hideArrow offset={10}>
       <button
         onClick={() => scrollTo(id)}
-        className="flex cursor-pointer items-center justify-center rounded-full border border-transparent p-1 text-base transition hover:bg-hover dark:hover:border-zinc-800"
+        {...props}
+        className="flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-1 text-base transition hover:border-zinc-200 hover:bg-hover dark:hover:border-slate-500"
       >
         {children}
       </button>
@@ -38,12 +39,12 @@ const NavItem = ({ children, id }) => {
   );
 };
 
-const Emoji = {
-  About: "🏡",
-  Tech: "🔧",
-  Projects: "🗂️",
-  Blog: "📝",
-};
+const Label = [
+  { label: "About", emoji: "🏡" },
+  { label: "Tech", emoji: "🔧" },
+  { label: "Projects", emoji: "🗂️" },
+  { label: "Blog", emoji: "📝" },
+];
 
 const variants = {
   open: {
@@ -81,25 +82,25 @@ const Navbar = () => {
   return (
     <m.nav
       className={cn(
-        "rounded-full border",
-        "border border-solid border-navbar bg-navbar p-2 shadow-navbar backdrop-blur-[16px] dark:border-zinc-700 dark:bg-navbarDark"
+        "z-20 rounded-full border",
+        "border border-solid border-zinc-400 bg-navbar p-2 shadow-navbar backdrop-blur-[16px] dark:border-zinc-700 dark:bg-navbarDark"
       )}
       variants={variants}
       initial="closed"
       animate={showNav ? "open" : "closed"}
-      transition={{ duration: 2 }}
+      transition={{ duration: 0.5 }}
       onMouseEnter={() => setShowNav(true)}
     >
       <div className="flex flex-row items-center space-x-6">
-        {Object.keys(Emoji).map((key, index) => (
-          <NavItem id={key} key={index}>
-            {Emoji[key]}
+        {Label.map((label, index) => (
+          <NavItem id={label.label} key={index}>
+            {label.emoji}
           </NavItem>
         ))}
-        <div className="-ml-4 border-l border-slate-500 dark:border-slate-600">
+        <div className="border-l border-slate-500 dark:border-slate-600">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="mx-2 flex cursor-pointer items-center justify-center rounded-full border border-transparent p-1 text-base text-white transition hover:bg-hover dark:hover:border-slate-500"
+            className="ml-2 flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-2 text-base text-white transition hover:border-t hover:border-zinc-200 hover:bg-hover dark:hover:border-slate-500"
           >
             {theme === "dark" ? <FiMoon /> : <FiSun />}
           </button>

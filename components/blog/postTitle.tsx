@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { cn } from "../../utils/cn";
 
-const PostTitle = ({ title, slug, size }) => {
+const PostTitle = ({
+  title,
+  slug,
+  size,
+}: {
+  title: string;
+  slug?: string;
+  size: string;
+}) => {
   return (
     <h1 className={cn("mt-4 font-bold leading-snug md:mt-0", size)}>
       {slug ? (

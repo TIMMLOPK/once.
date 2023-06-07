@@ -2,7 +2,7 @@ import Image from "next/image";
 import Avatar from "./avatar";
 import React from "react";
 
-const PostTitle = ({ children }) => {
+const PostTitle = ({ children }: { children: React.ReactNode }) => {
   return (
     <h1 className="mb-12 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl md:leading-none">
       {children}
@@ -10,7 +10,15 @@ const PostTitle = ({ children }) => {
   );
 };
 
-const PostHeader = ({ title, coverImage, date }) => {
+const PostHeader = ({
+  title,
+  coverImage,
+  date,
+}: {
+  title: string;
+  coverImage: string;
+  date: string;
+}) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>

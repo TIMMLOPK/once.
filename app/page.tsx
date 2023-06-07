@@ -11,7 +11,7 @@ import Link from "next/link";
 import ToolTip from "../components/shared/tooltip";
 import Blog from "../components/sections/blog";
 
-async function Home() {
+export default async function Home() {
   const allPosts = await getPosts();
   return (
     <Layout>
@@ -101,5 +101,3 @@ async function getPosts() {
 
   return allPosts;
 }
-
-export default Home;

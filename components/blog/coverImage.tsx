@@ -2,7 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const CoverImage = ({ title, src, slug }) => {
+const CoverImage = ({
+  title,
+  src,
+  slug,
+}: {
+  title: string;
+  src: string;
+  slug?: string;
+}) => {
   const image = (
     <Image
       src={src}

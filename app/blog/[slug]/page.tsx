@@ -3,6 +3,7 @@ import markdownToHtml from "../../../utils/markdownToHtml";
 import PostBody from "../../../components/blog/postBody";
 import PostHeader from "../../../components/blog/postHeader";
 import Layout from "../../../components/Layout/main";
+import { Metadata } from "next";
 
 export default async function Post({ params }) {
   const { post, morePosts } = await getPost(params);
@@ -68,7 +69,7 @@ export async function generateStaticParams() {
   return posts.map((post) => post.slug);
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
   const { post } = await getPost(params);
 
   return {

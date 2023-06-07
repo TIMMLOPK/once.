@@ -3,7 +3,19 @@ import Avatar from "./avatar";
 import CoverImage from "./coverImage";
 import PostTitle from "./postTitle";
 
-export const PostPreview = ({ title, coverImage, date, description, slug }) => {
+export const PostPreview = ({
+  title,
+  coverImage,
+  date,
+  description,
+  slug,
+}: {
+  title: string;
+  coverImage: string;
+  date: string;
+  description: string;
+  slug: string;
+}) => {
   return (
     <div className="p-8">
       <div className="mb-5">
@@ -23,11 +35,11 @@ export const PostPreview = ({ title, coverImage, date, description, slug }) => {
   );
 };
 
-export const Post = ({ posts }) => {
+export const Post = ({ posts }: { posts: any }) => {
   return (
     <div className="container mx-auto space-y-6 sm:space-y-12">
       <div className="grid grid-cols-1 justify-center gap-6 md:grid-cols-3">
-        {posts.map((post) => (
+        {posts.map((post: any) => (
           <PostPreview
             key={post.slug}
             title={post.title}

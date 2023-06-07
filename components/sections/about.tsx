@@ -1,7 +1,8 @@
 "use client";
 
 import Icon from "../avatar";
-import { m } from "framer-motion";
+import { useRef } from "react";
+import { m, useInView } from "framer-motion";
 import { AnimatedTextChar } from "../animatedText";
 import { Caveat } from "next/font/google";
 
@@ -18,22 +19,24 @@ const TypeWriter = () => {
   );
 };
 
-const transition = {
-  type: "spring",
-  stiffness: 200,
-  mass: 0.2,
-  damping: 20,
-};
-
 const variants = {
   initial: {
     opacity: 0,
-    y: 10,
+    y: 20,
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 100,
+    },
   },
   enter: {
     opacity: 1,
     y: 0,
-    transition,
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 100,
+    },
   },
 };
 
@@ -48,12 +51,19 @@ const ChatBubble = ({ children }) => {
 };
 
 const About = () => {
+  const ref = useRef();
+  const inview = useInView(ref, { once: true });
   return (
     <div>
       <div className="relative mb-16 md:ml-10">
         <Icon src="/icon.webp" />
         <div className="absolute left-40 top-40">
-          <m.div initial="initial" animate="enter" variants={variants}>
+          <m.div
+            initial="initial"
+            animate={inview ? "enter" : "initial"}
+            variants={variants}
+            ref={ref}
+          >
             <ChatBubble>
               <TypeWriter />
             </ChatBubble>

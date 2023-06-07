@@ -5,6 +5,21 @@ import Title from "../../components/title";
 import AlipayHK from "../../public/shop/alipayhk.png";
 import FPS from "../../public/shop/fps.svg";
 import Payme from "../../public/shop/payme.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "@murasaki_jpstore",
+  description: "日本代購🤍💙",
+  openGraph: {
+    title: "@murasaki_jpstore",
+    description: "日本代購🤍💙",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "@murasaki_jpstore",
+    description: "日本代購🤍💙",
+  },
+};
 
 const Payment = ({ icon, text }) => {
   return (
