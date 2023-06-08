@@ -20,7 +20,7 @@ const HighlightPost = ({
       <div className="flex w-full flex-col justify-between">
         <div className="flex h-full flex-col justify-between">
           <PostTitle title={title} slug={slug} className="text-3xl" />
-          <div className="flex flex-col justify-between mt-6 md:mt-0">
+          <div className="mt-6 flex flex-col justify-between md:mt-0">
             <div className="flex items-center">
               <Avatar />
               <div className="ml-4 text-sm text-gray-500 dark:text-gray-300">

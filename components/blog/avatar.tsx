@@ -13,7 +13,9 @@ const Avatar = ({ name = "Timmy", picture = "/icon.webp" }) => {
           alt={name}
         />
       </div>
-      <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">{name}</div>
+      <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+        {name}
+      </div>
     </div>
   );
 };

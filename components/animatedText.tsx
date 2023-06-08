@@ -99,10 +99,10 @@ const AnimatedTextWord = ({
 
   return (
     <motion.div
-      style={{ overflow: "hidden", display: "flex", fontSize: "2rem" }}
       variants={container}
       initial="hidden"
       animate="visible"
+      className="overflow-hidde flex text-[2rem]"
     >
       {words.map((word, index) => (
         <motion.span variants={child} className={className} key={index}>

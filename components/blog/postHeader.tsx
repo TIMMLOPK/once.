@@ -16,9 +16,9 @@ const PostHeader = ({
   return (
     <div>
       <div className="mx-14">
-        <div className="flex items-center mb-8 text-sm text-gray-500 dark:text-gray-300 font-bold">
+        <div className="mb-8 flex items-center text-sm font-bold text-gray-500 dark:text-gray-300">
           <p>Blog</p>
-          <span className="mx-2 w-1 h-1 rounded-full bg-gray-500 dark:bg-gray-300"></span>
+          <span className="mx-2 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-300"></span>
           <div>
             <p>{date}</p>
           </div>
@@ -26,7 +26,7 @@ const PostHeader = ({
         <h1 className="mb-4 text-left text-3xl font-black leading-relaxed tracking-tighter md:text-5xl">
           {title}
         </h1>
-        <div className="mb-8 text-xl leading-relaxed font-medium md:text-2xl">
+        <div className="mb-8 text-xl font-medium leading-relaxed md:text-2xl">
           {description}
         </div>
         <div className="flex items-center">
@@ -39,7 +39,7 @@ const PostHeader = ({
           alt={`Cover Image for ${title}`}
           width={2000}
           height={1000}
-          className="rounded-lg shadow-small border border-gray-200 dark:border-gray-700"
+          className="rounded-lg border border-gray-200 shadow-small dark:border-gray-700"
         />
       </div>
     </div>

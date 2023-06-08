@@ -43,7 +43,7 @@ async function getPost(params) {
     post: {
       ...post,
       content,
-    }
+    },
   };
 }
 

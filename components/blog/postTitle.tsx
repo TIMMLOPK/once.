@@ -8,7 +8,7 @@ const PostTitle = ({
 }: {
   title: string;
   slug?: string;
-  className: string
+  className: string;
 }) => {
   return (
     <h1 className={cn("mt-4 font-bold leading-snug md:mt-0", className)}>
