@@ -32,14 +32,13 @@ const Blog = ({ posts }) => {
           I write about my experiences and what I learn.
         </p>
       </div>
-      <div className="mt-10 flex">
+      <div className="mt-10">
         <div className="container mx-auto space-y-6 p-6 sm:space-y-12">
           <HighlightPost
             slug={posts[0].slug}
             title={posts[0].title}
             coverImage={posts[0].coverImage}
             date={posts[0].date}
-            description={posts[0].description}
           />
           <hr className="my-28 min-w-full border-gray-300 dark:border-gray-700" />
           <Post posts={state.posts} />

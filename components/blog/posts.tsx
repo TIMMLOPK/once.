@@ -21,7 +21,7 @@ export const PostPreview = ({
       <div className="mb-5">
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div>
-      <PostTitle title={title} slug={slug} size="text-2xl" />
+      <PostTitle title={title} slug={slug} className="text-2xl" />
       <div className="mt-5 flex flex-col justify-between">
         <p className="mb-4 leading-relaxed">{description}</p>
         <div className="flex items-center">

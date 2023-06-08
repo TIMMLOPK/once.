@@ -6,33 +6,22 @@ import Layout from "../../../components/Layout/main";
 import { Metadata } from "next";
 
 export default async function Post({ params }) {
-  const { post, morePosts } = await getPost(params);
+  const { post } = await getPost(params);
 
   return (
     <Layout className="px-0">
       <div className="container mx-auto max-w-4xl p-8">
-        <>
-          <article className="mb-32">
-            <div className="mx-auto max-w-3xl">
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-              />
-              <PostBody content={post.content} />
-            </div>
-            {morePosts.length > 0 && (
-              <div className="mt-8 min-w-full">
-                <h3 className="mb-4 text-2xl font-bold">More Posts</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3">
-                  {/* {morePosts.map((post) => (
-
-                    ))} */}
-                </div>
-              </div>
-            )}
-          </article>
-        </>
+        <article className="mb-32">
+          <PostHeader
+            title={post.title}
+            coverImage={post.coverImage}
+            date={post.date}
+            description={post.description}
+          />
+          <div className="mx-auto max-w-3xl">
+            <PostBody content={post.content} />
+          </div>
+        </article>
       </div>
     </Layout>
   );
@@ -46,19 +35,15 @@ async function getPost(params) {
     "content",
     "ogImage",
     "coverImage",
+    "description",
   ]);
-  const posts = getAllPosts(["title", "date", "slug", "coverImage"]);
   const content = await markdownToHtml(post.content || "");
 
-  const otherPosts = posts.filter((p) => p.slug !== post.slug);
-
-  const morePosts = otherPosts.sort(() => 0.5 - Math.random()).slice(0, 3);
   return {
     post: {
       ...post,
       content,
-    },
-    morePosts,
+    }
   };
 }
 

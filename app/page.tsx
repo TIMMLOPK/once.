@@ -82,7 +82,7 @@ export default async function Home() {
         <Project />
         <Line />
       </section>
-      <section className="relative min-h-screen md:flex" id="blog">
+      <section className="relative min-h-screen" id="blog">
         <Blog posts={allPosts} />
       </section>
     </Layout>

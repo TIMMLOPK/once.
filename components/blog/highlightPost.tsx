@@ -8,26 +8,23 @@ const HighlightPost = ({
   title,
   coverImage,
   date,
-  description,
 }: {
   slug: string;
   title: string;
   coverImage: string;
   date: string;
-  description: string;
 }) => {
   return (
     <div className="flex flex-col lg:flex-row lg:space-x-8">
       <CoverImage title={title} src={coverImage} slug={slug} />
-      <div className="flex w-full flex-col justify-between lg:col-span-5">
+      <div className="flex w-full flex-col justify-between">
         <div className="flex h-full flex-col justify-between">
-          <PostTitle title={title} slug={slug} size="text-3xl" />
-          <div className="mt-5 flex flex-col justify-between">
-            <p className="mb-4 text-lg leading-relaxed">{description}</p>
+          <PostTitle title={title} slug={slug} className="text-3xl" />
+          <div className="flex flex-col justify-between mt-6 md:mt-0">
             <div className="flex items-center">
               <Avatar />
-              <div className="ml-4 text-sm text-gray-700 dark:text-gray-300">
-                <p className="font-medium">{date}</p>
+              <div className="ml-4 text-sm text-gray-500 dark:text-gray-300">
+                <p className="font-bold">{date}</p>
               </div>
             </div>
           </div>
