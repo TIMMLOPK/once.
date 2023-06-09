@@ -5,3 +5,6 @@ dist
 .env
 package-lock.json
 .idea
+
+.vercel
+.env.local

@@ -15,7 +15,7 @@ const PostHeader = ({
 }) => {
   return (
     <div>
-      <div className="mx-14">
+      <div className="md:mx-14">
         <div className="mb-8 flex items-center text-sm font-bold text-gray-500 dark:text-gray-300">
           <p>Blog</p>
           <span className="mx-2 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-300"></span>
@@ -33,7 +33,7 @@ const PostHeader = ({
           <Avatar />
         </div>
       </div>
-      <div className="mb-12 md:mt-8 md:block">
+      <div className="mb-12 mt-8 md:block">
         <Image
           src={coverImage}
           alt={`Cover Image for ${title}`}

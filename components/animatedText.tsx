@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const AnimatedTextChar = ({
   text,
@@ -44,18 +44,18 @@ const AnimatedTextChar = ({
   };
 
   return (
-    <motion.div
+    <m.div
       variants={container}
       initial="hidden"
       animate="visible"
       className={className}
     >
       {letters.map((letter: string, index) => (
-        <motion.span variants={child} key={index} className="md:text-[3rem]">
+        <m.span variants={child} key={index} className="md:text-[3rem]">
           {letter === " " ? "\u00A0" : letter}
-        </motion.span>
+        </m.span>
       ))}
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -98,18 +98,18 @@ const AnimatedTextWord = ({
   };
 
   return (
-    <motion.div
+    <m.div
       variants={container}
       initial="hidden"
       animate="visible"
       className="overflow-hidde flex text-[2rem]"
     >
       {words.map((word, index) => (
-        <motion.span variants={child} className={className} key={index}>
+        <m.span variants={child} className={className} key={index}>
           {word}
-        </motion.span>
+        </m.span>
       ))}
-    </motion.div>
+    </m.div>
   );
 };
 

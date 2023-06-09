@@ -82,7 +82,7 @@ const Navbar = () => {
   return (
     <m.nav
       className={cn(
-        "z-20 rounded-full border",
+        "rounded-full border",
         "border border-solid border-zinc-400 bg-navbar p-2 shadow-navbar backdrop-blur-[16px] dark:border-zinc-700 dark:bg-navbarDark"
       )}
       variants={variants}
@@ -93,7 +93,11 @@ const Navbar = () => {
     >
       <div className="flex flex-row items-center space-x-6">
         {Label.map((label, index) => (
-          <NavItem id={label.label} key={index}>
+          <NavItem
+            id={label.label}
+            key={index}
+            aria-label={`Go to ${label.label}`}
+          >
             {label.emoji}
           </NavItem>
         ))}

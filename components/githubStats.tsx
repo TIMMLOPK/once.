@@ -27,11 +27,15 @@ const GithubStats = () => {
     }
   }, [user]);
 
+  const loading = (
+    <span className="mb-3 h-4 w-4 animate-pulse rounded-full bg-gray-400" />
+  );
+
   return (
     <div className="mt-5 flex flex-row items-center justify-center">
       <div className="mr-10 flex flex-col items-center justify-center">
         {isLoading ? (
-          <div className="mb-3 h-4 w-4 animate-pulse rounded-full bg-gray-400"></div>
+          <>{loading}</>
         ) : (
           <h3 className="text-xl font-bold">{stats.public_repos}</h3>
         )}
@@ -39,7 +43,7 @@ const GithubStats = () => {
       </div>
       <div className="flex flex-col items-center justify-center">
         {isLoading ? (
-          <div className="mb-3 h-4 w-4 animate-pulse rounded-full bg-gray-400"></div>
+          <>{loading}</>
         ) : (
           <h3 className="text-xl font-bold">{stats.followers}</h3>
         )}

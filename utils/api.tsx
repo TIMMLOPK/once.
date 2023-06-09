@@ -2,7 +2,7 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
-interface Post {
+export interface Post {
   title: string;
   description: string;
   coverImage: string;
@@ -12,6 +12,19 @@ interface Post {
   };
   slug: string;
   content: string;
+}
+
+export interface PostData {
+  id: number;
+  title: string;
+  description: string;
+  coverImage: string;
+  date: string;
+  ogImageURL: string;
+  content: string;
+  author: string;
+  authorImage: string;
+  published: boolean;
 }
 const postsDirectory = join(process.cwd(), "posts");
 
