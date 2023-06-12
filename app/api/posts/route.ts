@@ -5,6 +5,7 @@ export async function GET() {
   let posts;
   try {
     posts = (await sql`SELECT * FROM posts`).rows;
+    console.log(posts);
   } catch (e: any) {
     if (e.message === `relation "posts" does not exist`) {
       console.log(
