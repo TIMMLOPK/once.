@@ -10,13 +10,15 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.6",
     "@vercel/analytics": "^1.0.1",
     "@vercel/postgres": "^0.3.0",
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.16",
     "gray-matter": "^4.0.3",
-    "next": "13.4.4",
+    "next": "13.4.5",
+    "next-auth": "^4.22.1",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
