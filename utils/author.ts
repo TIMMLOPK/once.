@@ -8,7 +8,7 @@ const AUTHOR = [
     email: "soraruuuuuuuuuu@gmail.com",
     name: "Musicmatics",
     icon: "/shop/icon.webp",
-  }
+  },
 ];
 
 function isAuthor(email: string): boolean {

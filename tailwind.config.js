@@ -39,24 +39,12 @@ module.exports = {
           to: { opacity: 1, transform: "translateX(0)" },
         },
         rotate: {
-          from: {
-            transform: "rotate(360deg)",
-          },
-          to: {
-            transform: "rotate(0deg)",
-          },
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
         },
         typing: {
-          from: {
-            width: 0,
-            "border-right-color": "white",
-            "border-right-width": "2px",
-          },
-          to: {
-            width: "100%",
-            "border-right-color": "transparent",
-            "border-right-width": "2px",
-          },
+          from: { width: 0, "border-right-color": "white", "border-right-width": "2px", },
+          to: { width: "100%", "border-right-color": "transparent", "border-right-width": "2px", },
         },
       },
       colors: {

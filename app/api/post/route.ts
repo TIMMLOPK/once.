@@ -1,9 +1,10 @@
-import { sql } from "@vercel/postgres";
+import { db } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 import { PostData } from "../../../utils/api";
 
 export async function POST(req: Request) {
   const body: PostData = await req.json();
+  const client = await db.connect();
 
   if (!body) {
     return NextResponse.json(
@@ -47,7 +48,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    await sql`
+    await client.sql`
         INSERT INTO posts (
             title,
             description,
@@ -81,7 +82,9 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
-  const id = req.url.split("?id=")[1];
+  const url = new URL(req.url);
+  const id = url.searchParams.get("id");
+  const client = await db.connect();
 
   if (!id) {
     return NextResponse.json(
@@ -91,7 +94,7 @@ export async function DELETE(req: Request) {
   }
 
   try {
-    await sql`
+    await client.sql`
         DELETE FROM posts WHERE id = ${id}
     `;
   } catch (e: any) {
