@@ -1,4 +1,4 @@
-import Layout from "../components/Layout/main";
+import Layout from "../components/layout/main";
 import { getAllPosts } from "../utils/api";
 import { FiGithub, FiInstagram } from "react-icons/fi";
 import { FaDiscord } from "react-icons/fa";

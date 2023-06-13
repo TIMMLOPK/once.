@@ -1,10 +1,8 @@
-import { db } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 import { PostData } from "../../../utils/api";
 
 export async function POST(req: Request) {
   const body: PostData = await req.json();
-  const client = await db.connect();
 
   if (!body) {
     return NextResponse.json(
@@ -48,29 +46,22 @@ export async function POST(req: Request) {
   }
 
   try {
-    await client.sql`
-        INSERT INTO posts (
-            title,
-            description,
-            coverImage,
-            date,
-            ogImageURL,
-            content,
-            author,
-            authorImage,
-            published
-        ) VALUES (
-            ${body.title},
-            ${body.description},
-            ${body.coverImage},
-            ${body.date},
-            ${body.ogImageURL},
-            ${body.content},
-            ${body.author},
-            ${body.authorImage},
-            ${body.published}
-        )
-    `;
+    const req = await fetch(process.env.API_URL + "/post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const res = await req.json();
+
+    if (!req.ok) {
+      return NextResponse.json(
+        { error: "Something went wrong", success: false , res},
+        { status: 500 }
+      );
+    }
   } catch (e: any) {
     return NextResponse.json(
       { error: e.message, success: false },
@@ -84,7 +75,6 @@ export async function POST(req: Request) {
 export async function DELETE(req: Request) {
   const url = new URL(req.url);
   const id = url.searchParams.get("id");
-  const client = await db.connect();
 
   if (!id) {
     return NextResponse.json(
@@ -94,9 +84,9 @@ export async function DELETE(req: Request) {
   }
 
   try {
-    await client.sql`
-        DELETE FROM posts WHERE id = ${id}
-    `;
+    await fetch(process.env.API_URL + "/post/" + id, {
+      method: "DELETE",
+    });
   } catch (e: any) {
     return NextResponse.json(
       { error: e.message, success: false },

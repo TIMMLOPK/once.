@@ -2,7 +2,7 @@ import { getPostBySlug, getAllPosts } from "../../../utils/api";
 import markdownToHtml from "../../../utils/markdownToHtml";
 import PostBody from "../../../components/blog/postBody";
 import PostHeader from "../../../components/blog/postHeader";
-import Layout from "../../../components/Layout/main";
+import Layout from "../../../components/layout/main";
 import { Metadata } from "next";
 
 export default async function Post({ params }) {

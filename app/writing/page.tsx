@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useReducer, Suspense } from "react";
-import Layout from "../../components/Layout/main";
+import Layout from "../../components/layout/main";
 import markdownToHtml from "../../utils/markdownToHtml";
 import Table from "../../components/blog/writing/table";
 import usePublishPost from "../../utils/data/usePublishPost";

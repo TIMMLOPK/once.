@@ -52,23 +52,9 @@ export default function Table() {
                     <tr key={post.id}>
                       <td className="whitespace-nowrap px-6 py-4">
                         <div className="flex items-center">
-                          <div className="h-10 w-10 flex-shrink-0">
-                            <Image
-                              src={post.image}
-                              alt={post.title}
-                              width={40}
-                              height={40}
-                              className="rounded-full"
-                            />
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                              {post.title}
+                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                            {post.title}
                             </div>
-                            <div className="text-sm text-gray-500 dark:text-gray-300">
-                              {post.description}
-                            </div>
-                          </div>
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-6 py-4">
