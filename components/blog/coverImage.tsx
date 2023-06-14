@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -5,12 +7,16 @@ import React from "react";
 const CoverImage = ({
   title,
   src,
-  slug,
+  id
 }: {
   title: string;
   src: string;
-  slug?: string;
+  id?: number;
 }) => {
+
+  if (!src) return (<div className="w-full rounded-md border shadow-small transition-shadow duration-300 hover:shadow-medium dark:border-zinc-700"></div>);
+
+  
   const image = (
     <Image
       src={src}
@@ -20,10 +26,11 @@ const CoverImage = ({
       height={400}
     />
   );
+
   return (
     <div className="sm:mx-0">
-      {slug ? (
-        <Link as={`/blog/${slug}`} href="/blog/[slug]" aria-label={title}>
+      {id !== undefined ? (
+        <Link as={`/blog/${id}`} href="/blog/[id]" aria-label={title}>
           {image}
         </Link>
       ) : (

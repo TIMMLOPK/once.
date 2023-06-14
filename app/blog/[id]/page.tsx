@@ -1,4 +1,3 @@
-import { getPostBySlug, getAllPosts } from "../../../utils/api";
 import markdownToHtml from "../../../utils/markdownToHtml";
 import PostBody from "../../../components/blog/postBody";
 import PostHeader from "../../../components/blog/postHeader";
@@ -27,16 +26,10 @@ export default async function Post({ params }) {
   );
 }
 
+export const dynamicParams = true;
+
 async function getPost(params) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "content",
-    "ogImage",
-    "coverImage",
-    "description",
-  ]);
+  const post = await fetch(process.env.API_URL + "/post/" + params.id).then((res) => res.json());
   const content = await markdownToHtml(post.content || "");
 
   return {
@@ -45,14 +38,7 @@ async function getPost(params) {
       content,
     },
   };
-}
-
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const posts = getAllPosts(["slug"]);
-  return posts.map((post) => post.slug);
-}
+};
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   const { post } = await getPost(params);
@@ -60,7 +46,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   return {
     title: `${post.title} | ONCE`,
     openGraph: {
-      images: post.ogImage.url,
+      images: post.ogImageURL,
       description: post.description,
     },
   };

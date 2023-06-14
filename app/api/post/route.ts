@@ -96,3 +96,23 @@ export async function DELETE(req: Request) {
 
   return NextResponse.json({ success: true });
 }
+
+export async function GET(req: Request) {
+  const url = new URL(req.url);
+  const id = url.searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json(
+      { error: "No id provided", success: false },
+      { status: 400 }
+    );
+  }
+
+  const req2 = await fetch(process.env.API_URL + "/post/" + id).catch((e) => {
+    return NextResponse.json({ error: e.message, success: false });
+  });
+
+  const post = await req2.json();
+
+  return NextResponse.json({ post, success: true });
+}

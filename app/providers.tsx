@@ -7,7 +7,7 @@ import React from "react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system">
+    <ThemeProvider attribute="class">
       <SessionProvider>
         <LazyMotion features={domAnimation}>{children}</LazyMotion>
       </SessionProvider>

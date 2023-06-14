@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
-import { revalidatePath } from 'next/cache'
+
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  const req = await fetch(process.env.API_URL + "/posts", { next: { revalidate: 5 } }).catch((e) => {
+  const req = await fetch(process.env.API_URL + "/posts").catch((e) => {
     return NextResponse.json({ error: e.message });
   });
   const posts = await req.json();
-
-  revalidatePath("/posts");
 
   return NextResponse.json({ posts, timestamp: Date.now() });
 }

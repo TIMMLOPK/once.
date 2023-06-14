@@ -1,5 +1,4 @@
 import Layout from "../components/layout/main";
-import { getAllPosts } from "../utils/api";
 import { FiGithub, FiInstagram } from "react-icons/fi";
 import { FaDiscord } from "react-icons/fa";
 import { Line } from "../components/icons/line";
@@ -12,7 +11,6 @@ import ToolTip from "../components/shared/tooltip";
 import Blog from "../components/sections/blog";
 
 export default async function Home() {
-  const allPosts = await getPosts();
   return (
     <Layout>
       <section
@@ -83,21 +81,8 @@ export default async function Home() {
         <Line />
       </section>
       <section className="relative min-h-screen" id="blog">
-        <Blog posts={allPosts} />
+        <Blog />
       </section>
     </Layout>
   );
-}
-
-async function getPosts() {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "description",
-  ]);
-
-  return allPosts;
 }

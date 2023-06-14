@@ -2,26 +2,16 @@
 
 import { Post } from "../blog/posts";
 import HighlightPost from "../blog/highlightPost";
-import { useReducer } from "react";
+import { useState } from "react";
+import usePosts from "../../utils/data/usePosts";
 
-const Blog = ({ posts }) => {
-  const [state, dispatch] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case "LOAD_MORE":
-          return {
-            ...state,
-            posts: [
-              ...state.posts,
-              ...posts.slice(state.posts.length + 1, state.posts.length + 3),
-            ],
-          };
-        default:
-          return state;
-      }
-    },
-    { posts: posts.slice(1, 3) }
-  );
+const Blog = () => {
+  const { posts, isLoading } = usePosts();
+  const [postsToShow, setPostsToShow] = useState(3);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -35,17 +25,17 @@ const Blog = ({ posts }) => {
       <div className="mt-10">
         <div className="container mx-auto space-y-6 p-6 sm:space-y-12">
           <HighlightPost
-            slug={posts[0].slug}
+            id={posts[0].id}
             title={posts[0].title}
             coverImage={posts[0].coverImage}
             date={posts[0].date}
           />
           <hr className="my-28 min-w-full border-gray-300 dark:border-gray-700" />
-          <Post posts={state.posts} />
-          {state.posts.length < posts.length - 1 && (
+          <Post posts={posts.slice(1, postsToShow)} />
+          {posts.length > 1 && (
             <div className="flex justify-center">
               <button
-                onClick={() => dispatch({ type: "LOAD_MORE" })}
+                onClick={() => setPostsToShow(postsToShow + 3)}
                 className="rounded-full bg-black px-4 py-2 font-bold text-white"
               >
                 Load More

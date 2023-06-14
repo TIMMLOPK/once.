@@ -3,19 +3,19 @@ import { cn } from "../../utils/cn";
 
 const PostTitle = ({
   title,
-  slug,
+  id,
   className,
 }: {
   title: string;
-  slug?: string;
+  id?: number;
   className: string;
 }) => {
   return (
     <h1 className={cn("mt-4 font-bold leading-snug md:mt-0", className)}>
-      {slug ? (
+      {id !== undefined ? (
         <Link
-          as={`/blog/${slug}`}
-          href="/blog/[slug]"
+          as={`/blog/${id}`}
+          href="/blog/[id]"
           className="hover:underline"
         >
           {title}

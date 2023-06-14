@@ -2,26 +2,27 @@ import React from "react";
 import Avatar from "./avatar";
 import CoverImage from "./coverImage";
 import PostTitle from "./postTitle";
+import { PostData } from "../../utils/api";
 
 export const PostPreview = ({
   title,
   coverImage,
   date,
   description,
-  slug,
+  id,
 }: {
   title: string;
   coverImage: string;
   date: string;
   description: string;
-  slug: string;
+  id: number;
 }) => {
   return (
     <div className="p-8">
       <div className="mb-5">
-        <CoverImage slug={slug} title={title} src={coverImage} />
+        <CoverImage id={id} title={title} src={coverImage} />
       </div>
-      <PostTitle title={title} slug={slug} className="text-2xl" />
+      <PostTitle title={title} id={id} className="text-2xl" />
       <div className="mt-5 flex flex-col justify-between">
         <p className="mb-4 leading-relaxed">{description}</p>
         <div className="flex items-center">
@@ -35,18 +36,18 @@ export const PostPreview = ({
   );
 };
 
-export const Post = ({ posts }: { posts: any }) => {
+export const Post = ({ posts }: { posts: PostData[] }) => {
   return (
     <div className="container mx-auto space-y-6 sm:space-y-12">
       <div className="grid grid-cols-1 justify-center gap-6 md:grid-cols-3">
         {posts.map((post: any) => (
           <PostPreview
-            key={post.slug}
+            key={post.id}
             title={post.title}
             coverImage={post.coverImage}
             date={post.date}
             description={post.description}
-            slug={post.slug}
+            id={post.id}
           />
         ))}
       </div>
