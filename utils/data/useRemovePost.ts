@@ -1,6 +1,6 @@
 import useSWRMutation from "swr/mutation";
 
-async function removePost(url: string, { arg }: { arg: string }) {
+async function removePost(url: string, { arg }: { arg: number }) {
   await fetch(`${url}?id=${arg}`, {
     method: "DELETE",
   });
