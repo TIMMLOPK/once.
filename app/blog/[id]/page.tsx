@@ -32,7 +32,11 @@ export default async function Post({ params }) {
 export const dynamicParams = true;
 
 async function getPost(params): Promise<{ post: ReturnData }> {
-  const post = await fetch(process.env.API_URL + "/post/" + params.id).then(
+  const post = await fetch(process.env.API_URL + "/post/" + params.id, {
+    next: {
+      revalidate: 60
+    }
+  }).then(
     (res) => res.json()
   );
   const content = await markdownToHtml(post.content || "");

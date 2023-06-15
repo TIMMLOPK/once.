@@ -1,14 +1,13 @@
 "use client";
 
 import { m } from "framer-motion";
-import { cn } from "../../../utils/cn";
 import { signIn } from "next-auth/react";
 import Button from "../../shared/button";
 
 function LoginModal() {
   return (
     <div
-      className={cn("fixed inset-0 z-10 overflow-y-auto")}
+      className="fixed inset-0 z-10 overflow-y-auto"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
