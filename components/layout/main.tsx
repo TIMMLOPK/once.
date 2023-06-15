@@ -21,7 +21,7 @@ const Layout = ({
   return (
     <>
       <AnimatePresence mode="wait">
-        <main className={cn("container mx-auto px-5", className)}>
+        <main className={cn("container mx-auto px-0", className)}>
           <m.div
             initial="hidden"
             animate="enter"

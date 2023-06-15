@@ -12,7 +12,7 @@ import Blog from "../components/sections/blog";
 
 export default async function Home() {
   return (
-    <Layout>
+    <Layout className="md:px-5">
       <section
         className="relative m-2 flex min-h-screen items-center"
         id="about"
