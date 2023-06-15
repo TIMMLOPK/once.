@@ -1,20 +1,20 @@
-import { motion } from "framer-motion";
+"use client";
+
+import { m } from "framer-motion";
 import { cn } from "../../../utils/cn";
 import { signIn } from "next-auth/react";
+import Button from "../../shared/button";
 
 function LoginModal() {
   return (
     <div
-      className={cn(
-        "fixed inset-0 z-10 overflow-y-auto",
-        open ? "visible" : "invisible"
-      )}
+      className={cn("fixed inset-0 z-10 overflow-y-auto")}
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
     >
       <div className="flex min-h-screen items-center justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0">
-        <motion.div
+        <m.div
           className="fixed inset-0 z-10 bg-black opacity-60 transition-opacity"
           aria-hidden="true"
           initial={{ opacity: 0 }}
@@ -27,11 +27,11 @@ function LoginModal() {
         >
           &#8203;
         </span>
-        <motion.div
+        <m.div
           className="relative z-20 inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle"
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 100 }}
+          exit={{ opacity: 0, y: 20 }}
         >
           <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
             <div className="mt-3 text-center sm:mt-0 sm:text-left">
@@ -46,18 +46,17 @@ function LoginModal() {
                   Please sign in to continue.
                 </p>
               </div>
-              <div className="mt-8">
-                <button
-                  type="button"
-                  className="flex w-full justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              <div className="mt-2">
+                <Button
                   onClick={() => signIn("google")}
+                  className="w-full justify-center"
                 >
                   Sign in
-                </button>
+                </Button>
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

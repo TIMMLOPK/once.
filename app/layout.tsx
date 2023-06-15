@@ -8,15 +8,13 @@ export const metadata: Metadata = {
   title: "once.",
   description: "ONCE: A profile website for Timmy",
   openGraph: {
-    title: "once",
+    title: "once.",
     description: "ONCE: A profile website for Timmy",
-    images: "https://ionce.me/card.png",
   },
   twitter: {
     card: "summary_large_image",
-    title: "once",
+    title: "once.",
     description: "ONCE: A profile website for Timmy",
-    images: "https://ionce.me/card.png",
   },
 };
 
@@ -27,10 +25,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Providers>
-        <body>{children}</body>
-        <Analytics />
-      </Providers>
+      <head />
+      <body>
+        <Providers>
+          {children}
+          <Analytics />
+        </Providers>
+      </body>
     </html>
   );
 }

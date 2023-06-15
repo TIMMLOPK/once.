@@ -95,7 +95,7 @@ const Navbar = () => {
         {Label.map((label, index) => (
           <NavItem
             id={label.label}
-            key={index}
+            key={index++}
             aria-label={`Go to ${label.label}`}
           >
             {label.emoji}

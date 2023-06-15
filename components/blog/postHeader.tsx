@@ -7,11 +7,15 @@ const PostHeader = ({
   coverImage,
   date,
   description,
+  author,
+  authorImage,
 }: {
   title: string;
   coverImage: string;
   date: string;
   description: string;
+  author: string;
+  authorImage: string;
 }) => {
   return (
     <div>
@@ -30,7 +34,7 @@ const PostHeader = ({
           {description}
         </div>
         <div className="flex items-center">
-          <Avatar />
+          <Avatar name={author} picture={authorImage} />
         </div>
       </div>
       <div className="mb-12 mt-8 md:block">

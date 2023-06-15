@@ -21,9 +21,6 @@ const Layout = ({
   return (
     <>
       <AnimatePresence mode="wait">
-        <div className="fixed bottom-4 z-10 flex w-full justify-center">
-          <Navbar />
-        </div>
         <main className={cn("container mx-auto px-5", className)}>
           <m.div
             initial="hidden"
@@ -34,6 +31,9 @@ const Layout = ({
           >
             {children}
           </m.div>
+          <div className="fixed bottom-4 z-10 flex w-full justify-center">
+            <Navbar />
+          </div>
           <Footer />
         </main>
       </AnimatePresence>

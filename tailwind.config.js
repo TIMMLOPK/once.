@@ -43,8 +43,16 @@ module.exports = {
           to: { transform: "rotate(360deg)" },
         },
         typing: {
-          from: { width: 0, "border-right-color": "white", "border-right-width": "2px", },
-          to: { width: "100%", "border-right-color": "transparent", "border-right-width": "2px", },
+          from: {
+            width: 0,
+            "border-right-color": "white",
+            "border-right-width": "2px",
+          },
+          to: {
+            width: "100%",
+            "border-right-color": "transparent",
+            "border-right-width": "2px",
+          },
         },
       },
       colors: {

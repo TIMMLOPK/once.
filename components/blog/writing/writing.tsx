@@ -10,12 +10,10 @@ const WritingSection = ({
   content,
   setContent,
   markdown,
-  isError,
-  data,
-  trigger,
-  isMutating,
   preview,
+  publishHook,
 }) => {
+  const { data, isMutating, isError, trigger } = publishHook;
   return (
     <>
       <PreviewWindow

@@ -1,8 +1,8 @@
 import useSWR from "swr";
 import { fetcher } from "../fetcher";
-import { PostData } from "../api";
+import { ReturnData } from "../api";
 
-function usePosts() : { posts: PostData[], isLoading: boolean, isError: any } {
+function usePosts(): { posts: ReturnData[]; isLoading: boolean; isError: any } {
   const { data, error, isLoading } = useSWR(`/api/posts`, fetcher);
 
   return {

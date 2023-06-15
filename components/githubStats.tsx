@@ -1,7 +1,6 @@
 "use client";
 
 import useSWR from "swr";
-import { useState, useEffect } from "react";
 
 interface GithubStats {
   followers: number;
@@ -13,19 +12,6 @@ const GithubStats = () => {
     "https://api.github.com/users/TIMMLOPK",
     (...args) => fetch(...args).then((res) => res.json())
   );
-  const [stats, setStats] = useState<GithubStats>({
-    followers: 0,
-    public_repos: 0,
-  });
-
-  useEffect(() => {
-    if (user) {
-      setStats({
-        followers: user.followers,
-        public_repos: user.public_repos,
-      });
-    }
-  }, [user]);
 
   const loading = (
     <span className="mb-3 h-4 w-4 animate-pulse rounded-full bg-gray-400" />
@@ -35,19 +21,19 @@ const GithubStats = () => {
     <div className="mt-5 flex flex-row items-center justify-center">
       <div className="mr-10 flex flex-col items-center justify-center">
         {isLoading ? (
-          <>{loading}</>
+          loading
         ) : (
-          <h3 className="text-xl font-bold">{stats.public_repos}</h3>
+          <h3 className="text-xl font-bold">{user.public_repos}</h3>
         )}
-        <p className="text-sm text-gray-500">Repositories</p>
+        <p className="text-sm text-gray-400">Repositories</p>
       </div>
       <div className="flex flex-col items-center justify-center">
         {isLoading ? (
-          <>{loading}</>
+          loading
         ) : (
-          <h3 className="text-xl font-bold">{stats.followers}</h3>
+          <h3 className="text-xl font-bold">{user.followers}</h3>
         )}
-        <p className="text-sm text-gray-500">Followers</p>
+        <p className="text-sm text-gray-400">Followers</p>
       </div>
     </div>
   );
