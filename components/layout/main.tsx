@@ -2,7 +2,7 @@
 
 import Navbar from "../navbar";
 import Footer from "../footer";
-import { AnimatePresence, m } from "framer-motion";
+import { m } from "framer-motion";
 import { cn } from "../../utils/cn";
 
 const variants = {
@@ -20,23 +20,21 @@ const Layout = ({
 }) => {
   return (
     <>
-      <AnimatePresence mode="wait">
-        <main className={cn("container mx-auto", className)}>
-          <m.div
-            initial="hidden"
-            animate="enter"
-            exit="exit"
-            variants={variants}
-            transition={{ duration: 0.5, easings: "easeInOut" }}
-          >
-            {children}
-          </m.div>
-          <Footer />
-        </main>
-        <div className="fixed bottom-4 z-10 flex w-full justify-center">
-          <Navbar />
-        </div>
-      </AnimatePresence>
+      <main className={cn("container mx-auto", className)}>
+        <m.div
+          initial="hidden"
+          animate="enter"
+          exit="exit"
+          variants={variants}
+          transition={{ duration: 0.5, easings: "easeInOut" }}
+        >
+          {children}
+        </m.div>
+        <Footer />
+      </main>
+      <div className="fixed bottom-4 z-10 flex w-full justify-center">
+        <Navbar />
+      </div>
     </>
   );
 };

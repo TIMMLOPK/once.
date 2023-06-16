@@ -37,7 +37,7 @@ const PostHeader = ({
           <Avatar name={author} picture={authorImage} />
         </div>
       </div>
-      <div className="mb-12 mt-8 md:block">
+      <div className="mb-12 mt-8">
         <Image
           src={coverImage}
           alt={`Cover Image for ${title}`}

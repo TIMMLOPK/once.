@@ -1,80 +1,52 @@
-"use client";
+import React from "react";
+import GithubStats from "../githubStats";
+import Tooltip from "../shared/tooltip";
+import { FaDiscord } from "react-icons/fa";
+import { FiGithub, FiInstagram } from "react-icons/fi";
+import Link from "next/link";
 
-import Icon from "../avatar";
-import { useRef } from "react";
-import { m, useInView } from "framer-motion";
-import { AnimatedTextChar } from "../animatedText";
-import { Caveat } from "next/font/google";
-
-const inter = Caveat({
-  subsets: ["latin"],
-  variable: "--font-caveat",
-});
-
-const TypeWriter = () => {
+export const About = () => {
   return (
-    <div className="box-border inline-flex animate-typing overflow-hidden whitespace-nowrap text-white">
-      Hello, I am Timmy
-    </div>
-  );
-};
-
-const variants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-    transition: {
-      delay: 0.5,
-      type: "spring",
-      stiffness: 100,
-    },
-  },
-  enter: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.5,
-      type: "spring",
-      stiffness: 100,
-    },
-  },
-};
-
-const ChatBubble = ({ children }) => {
-  return (
-    <div className="flex max-w-[450px] flex-col items-center justify-center p-0">
-      <div className="relative min-w-[180px] rounded-3xl border border-zinc-500 bg-black py-2.5 pl-4 leading-6 text-white shadow-2xl dark:border-zinc-800">
-        {children}
+    <div className="w-full items-center justify-center md:flex">
+      <div className="md:flex md:w-full md:flex-col md:items-center md:justify-center md:p-6">
+        <h1 className="text-3xl font-bold">About me</h1>
+        <br />
+        <GithubStats />
       </div>
-    </div>
-  );
-};
-
-const About = () => {
-  const ref = useRef();
-  const inview = useInView(ref, { once: true });
-  return (
-    <div>
-      <div className="relative mb-16 md:ml-10">
-        <Icon src="/icon.webp" />
-        <div className="absolute left-40 top-40">
-          <m.div
-            initial="initial"
-            animate={inview ? "enter" : "initial"}
-            variants={variants}
-            ref={ref}
-          >
-            <ChatBubble>
-              <TypeWriter />
-            </ChatBubble>
-          </m.div>
+      <div className="mr-5 mt-8 md:flex md:w-full md:items-center md:justify-center">
+        <div className="leading-relaxed tracking-wide text-gray-900 dark:text-gray-300">
+          <p>
+            Hello, I am student from Hong Kong. I am insterested in
+            web-development and programming.
+          </p>
+          <br />
+          <div className="mt-4">
+            You may visit GitHub if you are interested in my ongoing and
+            upcoming projects. I have developed some works like Discord bot,
+            profile website and meme generator. I am glad if you appreciate
+            them. Please feel free to tell me if you have advice or questions.
+            <br />
+            <div className="mt-12 flex items-center space-x-4">
+              <Link
+                href="https://github.com/TIMMLOPK"
+                aria-label="GitHub"
+                passHref
+              >
+                <FiGithub className="h-6 w-6 text-gray-400 hover:text-black dark:hover:text-white" />
+              </Link>
+              <Link
+                href="https://www.instagram.com/tw_wu_as_tim/"
+                aria-label="Instagram"
+                passHref
+              >
+                <FiInstagram className="h-6 w-6 text-gray-400 hover:text-[#c92bb7]" />
+              </Link>
+              <Tooltip text="Timmy#2600" position="right">
+                <FaDiscord className="h-6 w-6 text-gray-400 hover:text-[#7289DA]" />
+              </Tooltip>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="invisible relative md:visible md:absolute md:inset-y-1/3 md:left-1/2">
-        <AnimatedTextChar
-          text="Everything is always once."
-          className={`${inter.className} flex overflow-hidden text-[2rem] md:m-4 md:p-10`}
-        />
       </div>
     </div>
   );

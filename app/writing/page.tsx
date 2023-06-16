@@ -18,7 +18,11 @@ interface PostBaseInfo {
 }
 
 interface InfoAction {
-  type: "TITLE_CHANGED" | "DESCRIPTION_CHANGED" | "COVER_IMAGE_CHANGED";
+  type:
+    | "TITLE_CHANGED"
+    | "DESCRIPTION_CHANGED"
+    | "COVER_IMAGE_CHANGED"
+    | "CLEAR";
   payload: string;
 }
 
@@ -40,6 +44,13 @@ function reducer(state: PostBaseInfo, action: InfoAction) {
         ...state,
         coverImage: payload,
         ogImageURL: payload,
+      };
+    case "CLEAR":
+      return {
+        title: "",
+        description: "",
+        coverImage: "",
+        ogImageURL: "",
       };
     default:
       break;
@@ -83,13 +94,13 @@ export default function Writing() {
     >
       <Tabs.List className="mb-8 flex gap-4">
         <Tabs.Trigger
-          className="rounded-md px-4 py-2 text-lg font-bold text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-hover dark:hover:text-gray-300"
+          className="rounded-md px-4 py-2 text-lg font-bold text-gray-500 hover:bg-gray-100 hover:text-gray-700 data-[state=active]:bg-gray-100 data-[state=active]:text-gray-700 dark:hover:bg-hover dark:hover:text-gray-300"
           value="writing"
         >
           Writing
         </Tabs.Trigger>
         <Tabs.Trigger
-          className="rounded-md px-4 py-2 text-lg font-bold text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-hover dark:hover:text-gray-300"
+          className="rounded-md px-4 py-2 text-lg font-bold text-gray-500 hover:bg-gray-100 hover:text-gray-700 data-[state=active]:bg-gray-100 data-[state=active]:text-gray-700 dark:hover:bg-hover dark:hover:text-gray-300"
           value="posts"
         >
           Posts

@@ -10,7 +10,7 @@ export default async function Post({ params }) {
 
   return (
     <Layout className="px-0">
-      <div className="container mx-auto max-w-4xl p-8">
+      <div className="mx-auto max-w-4xl p-8">
         <article className="mb-32">
           <PostHeader
             title={post.title}
@@ -20,7 +20,7 @@ export default async function Post({ params }) {
             author={post.author}
             authorImage={post.authorimage}
           />
-          <div className="mx-auto max-w-3xl">
+          <div className="max-w-3xl">
             <PostBody content={post.content} />
           </div>
         </article>
@@ -34,11 +34,9 @@ export const dynamicParams = true;
 async function getPost(params): Promise<{ post: ReturnData }> {
   const post = await fetch(process.env.API_URL + "/post/" + params.id, {
     next: {
-      revalidate: 60
-    }
-  }).then(
-    (res) => res.json()
-  );
+      revalidate: 60,
+    },
+  }).then((res) => res.json());
   const content = await markdownToHtml(post.content || "");
 
   return {

@@ -1,9 +1,13 @@
 import React from "react";
+import { cn } from "../../utils/cn";
 
 export const Loading = ({ className }: { className?: string }) => {
   return (
     <svg
-      className={`h-5 w-5 animate-spin text-white ${className}`}
+      className={cn(
+        "h-5 w-5 animate-spin text-gray-500 dark:text-gray-400",
+        className
+      )}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

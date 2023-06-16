@@ -51,7 +51,7 @@ const ProjectCard = ({ data }) => {
   );
 };
 
-const Project = () => {
+const Projects = () => {
   return (
     <div className="pb-20">
       <h1 className="text-2xl font-bold">🗂️ Projects</h1>
@@ -108,4 +108,4 @@ const projects = [
   },
 ];
 
-export default Project;
+export default Projects;

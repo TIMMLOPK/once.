@@ -22,17 +22,14 @@ export const PostPreview = ({
   authorImage: string;
 }) => {
   return (
-    <div className="p-8">
-      <div className="mb-5">
-        <CoverImage id={id} title={title} src={coverImage} />
-      </div>
+    <div className="space-y-5 p-8">
+      <CoverImage id={id} title={title} src={coverImage} />
       <PostTitle title={title} id={id} className="text-2xl" />
-      <div className="mt-5 flex flex-col justify-between">
-        <p className="mb-4 leading-relaxed">{description}</p>
+      <div className="flex flex-col justify-between">
         <div className="flex items-center">
           <Avatar name={author} picture={authorImage} />
-          <div className="ml-4 text-sm text-gray-700 dark:text-gray-300">
-            <p className="font-medium">{date}</p>
+          <div className="ml-4 text-sm text-gray-500 dark:text-gray-300">
+            <p className="font-bold">{date}</p>
           </div>
         </div>
       </div>
@@ -40,9 +37,9 @@ export const PostPreview = ({
   );
 };
 
-export const Post = ({ posts }: { posts: ReturnData[] }) => {
+export const Posts = ({ posts }: { posts: ReturnData[] }) => {
   return (
-    <div className="container mx-auto space-y-6 sm:space-y-12">
+    <div className="mx-auto space-y-6 sm:space-y-12">
       <div className="grid grid-cols-1 justify-center gap-6 md:grid-cols-3">
         {posts.map((post: ReturnData, index: number) => (
           <PostPreview

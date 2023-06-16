@@ -40,7 +40,7 @@ const NavItem = ({ children, id, ...props }) => {
 };
 
 const Label = [
-  { label: "About", emoji: "🏡" },
+  { label: "Home", emoji: "🏡" },
   { label: "Tech", emoji: "🔧" },
   { label: "Projects", emoji: "🗂️" },
   { label: "Blog", emoji: "📝" },

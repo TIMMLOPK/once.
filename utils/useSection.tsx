@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 export const useSection = () => {
-  const [inview, setinview] = useState("about");
+  const [inview, setinview] = useState("home");
   const observer = useRef(null);
 
   const options = {
