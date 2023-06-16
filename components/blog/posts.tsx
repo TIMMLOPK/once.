@@ -8,7 +8,6 @@ export const PostPreview = ({
   title,
   coverImage,
   date,
-  description,
   id,
   author,
   authorImage,
@@ -16,7 +15,6 @@ export const PostPreview = ({
   title: string;
   coverImage: string;
   date: string;
-  description: string;
   id: number;
   author: string;
   authorImage: string;
@@ -47,7 +45,6 @@ export const Posts = ({ posts }: { posts: ReturnData[] }) => {
             title={post.title}
             coverImage={post.coverimage}
             date={post.date}
-            description={post.description}
             id={post.id}
             author={post.author}
             authorImage={post.authorimage}
