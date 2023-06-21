@@ -1,4 +1,3 @@
-import markdownToHtml from "../../../utils/markdownToHtml";
 import PostBody from "../../../components/blog/postBody";
 import PostHeader from "../../../components/blog/postHeader";
 import Layout from "../../../components/layout/main";
@@ -37,12 +36,10 @@ async function getPost(params): Promise<{ post: ReturnData }> {
       revalidate: 60,
     },
   }).then((res) => res.json());
-  const content = await markdownToHtml(post.content || "");
 
   return {
     post: {
       ...post,
-      content,
     },
   };
 }

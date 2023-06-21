@@ -12,6 +12,11 @@
   "dependencies": {
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.6",
+    "@tiptap/extension-document": "^2.0.3",
+    "@tiptap/extension-placeholder": "^2.0.3",
+    "@tiptap/pm": "^2.0.3",
+    "@tiptap/react": "^2.0.3",
+    "@tiptap/starter-kit": "^2.0.3",
     "@vercel/analytics": "^1.0.1",
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.16",

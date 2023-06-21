@@ -24,7 +24,7 @@ function usePublishPost() {
 
   return {
     data,
-    isError: error,
+    isError: error ? true : false,
     isMutating,
     trigger,
   };

@@ -1,20 +1,24 @@
 "use client";
 
-import { useState, useCallback, useReducer, Suspense } from "react";
-import markdownToHtml from "../../utils/markdownToHtml";
+import { useReducer, Suspense, useCallback } from "react";
 import Table from "../../components/blog/writing/table";
 import usePublishPost from "../../utils/data/usePublishPost";
 import { useSession } from "next-auth/react";
-import { getAuthorName } from "../../utils/author";
-import WritingSection from "../../components/blog/writing/writing";
+import { getAuthorIcon, getAuthorName } from "../../utils/author";
 import * as Tabs from "@radix-ui/react-tabs";
 import { Loading } from "../../components/shared/loading";
+import { useEditor, EditorContent } from "@tiptap/react";
+import { BubbleMenu } from "../../components/blog/writing/bubbleMenu";
+import { StartKit } from "../../utils/editor/extensions";
+import Placeholder from "@tiptap/extension-placeholder";
+import Button from "../../components/shared/button";
 
-interface PostBaseInfo {
+interface Post {
   title: string;
   description: string;
   coverImage: string;
   ogImageURL: string;
+  content: string;
 }
 
 interface InfoAction {
@@ -22,11 +26,12 @@ interface InfoAction {
     | "TITLE_CHANGED"
     | "DESCRIPTION_CHANGED"
     | "COVER_IMAGE_CHANGED"
-    | "CLEAR";
-  payload: string;
+    | "CLEAR"
+    | "CONTENT_CHANGED";
+  payload?: string;
 }
 
-function reducer(state: PostBaseInfo, action: InfoAction) {
+function reducer(state: Post, action: InfoAction) {
   const { type, payload } = action;
   switch (type) {
     case "TITLE_CHANGED":
@@ -45,12 +50,16 @@ function reducer(state: PostBaseInfo, action: InfoAction) {
         coverImage: payload,
         ogImageURL: payload,
       };
+    case "CONTENT_CHANGED":
+      return {
+        ...state,
+        content: payload,
+      };
     case "CLEAR":
       return {
+        ...state,
         title: "",
         description: "",
-        coverImage: "",
-        ogImageURL: "",
       };
     default:
       break;
@@ -61,23 +70,64 @@ export default function Writing() {
   const [state, dispatch] = useReducer(reducer, {
     title: "",
     description: "",
-    coverImage: "",
-    ogImageURL: "",
+    content: "",
+    coverImage: "/card.png",
+    ogImageURL: "/card.png",
   });
   const { data: session, status } = useSession();
-  const [content, setContent] = useState("");
-  const [markdown, setMarkdown] = useState("");
-  const publishHook = usePublishPost();
+  const { trigger, isError, isMutating, data } = usePublishPost();
+  const error = isError || (data as any)?.error;
 
-  const preview = useCallback(() => {
-    if (content !== "") {
-      markdownToHtml(content).then((res) => {
-        setMarkdown(res);
+  const handleBlur = useCallback((field: string, e: any) => {
+    console.log(field, e.currentTarget.textContent);
+    if (field === "coverImage") {
+      dispatch({
+        type: "COVER_IMAGE_CHANGED",
+        payload: e.currentTarget.textContent,
       });
-    } else {
-      setMarkdown("");
     }
-  }, [content]);
+
+    if (field === "title") {
+      dispatch({ type: "TITLE_CHANGED", payload: e.currentTarget.textContent });
+    }
+
+    if (field === "description") {
+      dispatch({
+        type: "DESCRIPTION_CHANGED",
+        payload: e.currentTarget.textContent,
+      });
+    }
+  }, []);
+
+  const editor = useEditor({
+    editorProps: {
+      attributes: {
+        class:
+          "prose dark:prose-invert lg:prose-lg prose-a:text-blue-600 prose-img:rounded-xl prose-headings:font-display focus:outline-none",
+      },
+    },
+    extensions: [
+      StartKit,
+      Placeholder.configure({
+        placeholder: ({ node }) => {
+          if (node.type.name === "heading") {
+            return "What’s the title?";
+          }
+
+          return "Can you add some further context?";
+        },
+      }),
+    ],
+    onUpdate: ({ editor }) => {
+      const content = editor.getHTML();
+      const regex = /<[^\/>][^>]*><\/[^>]+>/g;
+      const contentWithoutEmptyTags = content.replace(regex, "");
+      if (contentWithoutEmptyTags !== "") {
+        dispatch({ type: "CONTENT_CHANGED", payload: contentWithoutEmptyTags });
+      }
+    },
+    autofocus: "end",
+  });
 
   if (!session || status === "loading") {
     return (
@@ -116,16 +166,73 @@ export default function Writing() {
           </h3>
         </div>
         <div className="my-14">
-          <WritingSection
-            state={state}
-            dispatch={dispatch}
-            content={content}
-            setContent={setContent}
-            markdown={markdown}
-            preview={preview}
-            session={session}
-            publishHook={publishHook}
-          />
+          <div className="flex items-center justify-between p-2">
+            {error ? (
+              <p className="text-red-500">
+                {data?.error || "Something went wrong"}
+              </p>
+            ) : null}
+            <Button
+              className="bg-slate-900 dark:bg-[#1d1d1d]"
+              onClick={() => {
+                trigger({
+                  title: state.title,
+                  content: state.content,
+                  author: getAuthorName(session.user.email),
+                  authorImage: getAuthorIcon(session.user.email),
+                  description: state.description,
+                  coverImage: state.coverImage,
+                  published: true,
+                  date: new Date().toLocaleDateString(),
+                  ogImageURL: state.ogImageURL,
+                }).then(() => {
+                  if (error) return;
+                  dispatch({ type: "CLEAR" });
+                  editor.commands.clearContent();
+                });
+              }}
+              loading={isMutating}
+            >
+              Publish
+            </Button>
+          </div>
+          <div className="relative min-h-[500px] w-full max-w-screen-lg border-stone-200 p-12 px-8 sm:mb-[calc(20vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg">
+            <h1
+              className="text-left text-4xl font-bold text-neutral-500 focus:outline-none"
+              suppressContentEditableWarning
+              contentEditable
+              onBlur={(e) => handleBlur("title", e)}
+            >
+              {state.title === "" ? "Untitled" : state.title}
+            </h1>
+            <p
+              className="my-4 text-left text-base font-bold text-neutral-500 focus:outline-none dark:text-neutral-300 md:text-sm"
+              suppressContentEditableWarning
+              contentEditable
+              onBlur={(e) => handleBlur("description", e)}
+            >
+              {state.description === ""
+                ? "Give a brief description of your post here."
+                : state.description}
+            </p>
+            <p className="my-4 text-sm font-bold text-gray-500 dark:text-gray-300">
+              {new Date().toLocaleDateString()}
+            </p>
+            {editor ? (
+              <div
+                onClick={() => {
+                  editor.chain().focus().run();
+                }}
+              >
+                <EditorContent editor={editor} />
+                <BubbleMenu editor={editor} />
+              </div>
+            ) : (
+              <div className="container mx-auto flex max-w-4xl justify-center p-8">
+                <Loading />
+              </div>
+            )}
+          </div>
         </div>
       </Tabs.Content>
       <Tabs.Content value="posts">
