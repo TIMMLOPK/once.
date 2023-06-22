@@ -40,7 +40,7 @@ export const Posts = ({ posts }: { posts: ReturnData[] }) => {
       <div className="grid grid-cols-1 justify-center gap-6 md:grid-cols-3">
         {posts.map((post: ReturnData, index: number) => (
           <PostPreview
-            key={index++}
+            key={index}
             title={post.title}
             coverImage={post.coverimage}
             date={post.date}

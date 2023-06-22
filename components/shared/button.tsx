@@ -13,7 +13,7 @@ export default function Button(props: ButtonProps) {
   return (
     <button
       className={cn(
-        "rounded-lg bg-blue-600 px-4 py-2.5 text-sm text-white shadow transition duration-200 ease-in",
+        "rounded-lg bg-blue-600 px-4 py-2 text-sm text-white shadow transition duration-200 ease-in",
         "hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-200",
         props.loading ? "cursor-not-allowed" : "",
         props.disabled ? "cursor-not-allowed" : "",

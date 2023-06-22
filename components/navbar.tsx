@@ -92,10 +92,10 @@ const Navbar = () => {
       onMouseEnter={() => setShowNav(true)}
     >
       <div className="flex flex-row items-center space-x-6">
-        {Label.map((label) => (
+        {Label.map((label, index) => (
           <NavItem
             id={label.label}
-            key={label.label}
+            key={index}
             aria-label={`Go to ${label.label}`}
           >
             {label.emoji}

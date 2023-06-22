@@ -24,11 +24,11 @@ interface Post {
 
 interface InfoAction {
   type:
-    | "TITLE_CHANGED"
-    | "DESCRIPTION_CHANGED"
-    | "COVER_IMAGE_CHANGED"
-    | "CLEAR"
-    | "CONTENT_CHANGED";
+  | "TITLE_CHANGED"
+  | "DESCRIPTION_CHANGED"
+  | "COVER_IMAGE_CHANGED"
+  | "CLEAR"
+  | "CONTENT_CHANGED";
   payload?: string;
 }
 
@@ -76,6 +76,7 @@ export default function Writing() {
     ogImageURL: "/card.png",
   });
   const { data: session, isLoading } = useLogin();
+  // const [postID, setPostID] = useState(0);
   const { trigger, isError, isMutating, data } = usePublishPost();
   const { isError: isDraftError, data: draftData } = useSavePost();
   const error =
@@ -142,10 +143,14 @@ export default function Writing() {
         dispatch({ type: "CONTENT_CHANGED", payload: contentWithoutEmptyTags });
       }
 
-      // saveDraft({
-      //   ...triggerData,
-      //   published: false,
-      // });
+      // if (postID === 0) {
+      //   saveDraft({
+      //     ...triggerData,
+      //     published: false,
+      //   }).then((res) => {
+      //     setPostID(res?.id || 0);
+      //   });
+      // }
     },
     autofocus: "end",
   });

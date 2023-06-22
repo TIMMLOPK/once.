@@ -63,9 +63,9 @@ const Projects = () => {
             transition={{ delay: index * 0.2, duration: 0.5, ease: "easeOut" }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            key={index++}
+            key={index}
           >
-            <ProjectCard data={project} key={index++} />
+            <ProjectCard data={project} />
           </m.div>
         ))}
       </div>

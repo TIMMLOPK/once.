@@ -51,7 +51,7 @@ const AnimatedTextChar = ({
       className={className}
     >
       {letters.map((letter: string, index) => (
-        <m.span variants={child} key={index++} className="md:text-[3rem]">
+        <m.span variants={child} key={index} className="md:text-[3rem]">
           {letter === " " ? "\u00A0" : letter}
         </m.span>
       ))}
@@ -105,7 +105,7 @@ const AnimatedTextWord = ({
       className="overflow-hidde flex text-[2rem]"
     >
       {words.map((word, index) => (
-        <m.span variants={child} className={className} key={index++}>
+        <m.span variants={child} className={className} key={index}>
           {word}
         </m.span>
       ))}

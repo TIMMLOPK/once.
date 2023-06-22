@@ -10,7 +10,7 @@ import Button from "../shared/button";
 const Blog = () => {
   const { posts, isLoading } = usePosts();
   const [postsToShow, setPostsToShow] = useState(3);
-  const publishedPosts = posts.filter((post) => post.published);
+  const publishedPosts = posts?.filter((post) => post.published);
 
   return (
     <div>

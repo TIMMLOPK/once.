@@ -45,7 +45,7 @@ export default function Table() {
                 <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-black">
                   {posts &&
                     posts.map((post, index) => (
-                      <tr key={index++}>
+                      <tr key={index}>
                         <td className="whitespace-nowrap px-6 py-4">
                           <div className="flex items-center">
                             <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
