@@ -1,5 +1,3 @@
-import React from "react";
-
 const PostBody = ({ content }: { content: string | TrustedHTML }) => {
   return (
     <div className="mx-auto max-w-2xl">

@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import usePosts from "../../../utils/data/usePosts";
+import usePosts from "../../../utils/dataHook/usePosts";
 import { getAuthorIconByName } from "../../../utils/author";
 import Button from "../../shared/button";
-import useRemovePost from "../../../utils/data/useRemovePost";
+import useRemovePost from "../../../utils/dataHook/useRemovePost";
 
 export default function Table() {
   const { posts } = usePosts();

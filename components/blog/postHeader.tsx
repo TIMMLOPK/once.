@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Avatar from "./avatar";
-import React from "react";
 
 const PostHeader = ({
   title,

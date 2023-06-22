@@ -1,7 +1,6 @@
 import CoverImage from "./coverImage";
 import Avatar from "./avatar";
 import PostTitle from "./postTitle";
-import React from "react";
 
 const HighlightPost = ({
   id,

@@ -3,13 +3,14 @@
 import { Posts } from "../blog/posts";
 import HighlightPost from "../blog/highlightPost";
 import { useState } from "react";
-import usePosts from "../../utils/data/usePosts";
+import usePosts from "../../utils/dataHook/usePosts";
 import { Loading } from "../shared/loading";
 import Button from "../shared/button";
 
 const Blog = () => {
   const { posts, isLoading } = usePosts();
   const [postsToShow, setPostsToShow] = useState(3);
+  const publishedPosts = posts.filter((post) => post.published);
 
   return (
     <div>
@@ -26,19 +27,19 @@ const Blog = () => {
             <Loading />
           </div>
         )}
-        {!isLoading && posts.length !== 0 && (
+        {!isLoading && publishedPosts.length !== 0 && (
           <div className="mx-auto space-y-6 p-6 sm:space-y-12">
             <HighlightPost
-              id={posts[0].id}
-              title={posts[0].title}
-              coverImage={posts[0].coverimage}
-              date={posts[0].date}
-              author={posts[0].author}
-              authorImage={posts[0].authorimage}
+              id={publishedPosts[0].id}
+              title={publishedPosts[0].title}
+              coverImage={publishedPosts[0].coverimage}
+              date={publishedPosts[0].date}
+              author={publishedPosts[0].author}
+              authorImage={publishedPosts[0].authorimage}
             />
             <hr className="my-28 min-w-full border-gray-300 dark:border-gray-700" />
-            <Posts posts={posts.slice(1, postsToShow)} />
-            {posts.length > postsToShow && (
+            <Posts posts={publishedPosts.slice(1, postsToShow)} />
+            {publishedPosts.length > postsToShow && (
               <div className="flex justify-center">
                 <Button
                   onClick={() => setPostsToShow(postsToShow + 3)}

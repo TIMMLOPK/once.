@@ -2,8 +2,7 @@
 
 import { useReducer, Suspense, useCallback } from "react";
 import Table from "../../components/blog/writing/table";
-import usePublishPost from "../../utils/data/usePublishPost";
-import { useSession } from "next-auth/react";
+import usePublishPost from "../../utils/dataHook/usePublishPost";
 import { getAuthorIcon, getAuthorName } from "../../utils/author";
 import * as Tabs from "@radix-ui/react-tabs";
 import { Loading } from "../../components/shared/loading";
@@ -12,6 +11,8 @@ import { BubbleMenu } from "../../components/blog/writing/bubbleMenu";
 import { StartKit } from "../../utils/editor/extensions";
 import Placeholder from "@tiptap/extension-placeholder";
 import Button from "../../components/shared/button";
+import useSavePost from "../../utils/dataHook/useSavePost";
+import useLogin from "../../utils/dataHook/useLogin";
 
 interface Post {
   title: string;
@@ -74,12 +75,16 @@ export default function Writing() {
     coverImage: "/card.png",
     ogImageURL: "/card.png",
   });
-  const { data: session, status } = useSession();
+  const { data: session, isLoading } = useLogin();
   const { trigger, isError, isMutating, data } = usePublishPost();
-  const error = isError || (data as any)?.error;
+  const { isError: isDraftError, data: draftData } = useSavePost();
+  const error =
+    isError ||
+    (data as any)?.error ||
+    isDraftError ||
+    (draftData as any)?.error;
 
   const handleBlur = useCallback((field: string, e: any) => {
-    console.log(field, e.currentTarget.textContent);
     if (field === "coverImage") {
       dispatch({
         type: "COVER_IMAGE_CHANGED",
@@ -98,6 +103,17 @@ export default function Writing() {
       });
     }
   }, []);
+
+  const triggerData = {
+    title: state.title,
+    content: state.content,
+    author: getAuthorName(session?.user.email),
+    authorImage: getAuthorIcon(session?.user.email),
+    description: state.description,
+    coverImage: state.coverImage,
+    date: new Date().toLocaleDateString(),
+    ogImageURL: state.ogImageURL,
+  };
 
   const editor = useEditor({
     editorProps: {
@@ -125,11 +141,16 @@ export default function Writing() {
       if (contentWithoutEmptyTags !== "") {
         dispatch({ type: "CONTENT_CHANGED", payload: contentWithoutEmptyTags });
       }
+
+      // saveDraft({
+      //   ...triggerData,
+      //   published: false,
+      // });
     },
     autofocus: "end",
   });
 
-  if (!session || status === "loading") {
+  if (!session || isLoading) {
     return (
       <div className="container mx-auto flex max-w-4xl justify-center p-8">
         <Loading />
@@ -169,22 +190,19 @@ export default function Writing() {
           <div className="flex items-center justify-between p-2">
             {error ? (
               <p className="text-red-500">
-                {data?.error || "Something went wrong"}
+                {data?.error || draftData?.error || "Something went wrong"}
               </p>
-            ) : null}
+            ) : (
+              <p className="text-gray-500">
+                {draftData?.success ? "Saved" : <Loading />}
+              </p>
+            )}
             <Button
-              className="bg-slate-900 dark:bg-[#1d1d1d]"
+              className="bg-slate-900 dark:bg-[#f6f1e6] dark:text-black"
               onClick={() => {
                 trigger({
-                  title: state.title,
-                  content: state.content,
-                  author: getAuthorName(session.user.email),
-                  authorImage: getAuthorIcon(session.user.email),
-                  description: state.description,
-                  coverImage: state.coverImage,
                   published: true,
-                  date: new Date().toLocaleDateString(),
-                  ogImageURL: state.ogImageURL,
+                  ...triggerData,
                 }).then(() => {
                   if (error) return;
                   dispatch({ type: "CLEAR" });
@@ -196,9 +214,9 @@ export default function Writing() {
               Publish
             </Button>
           </div>
-          <div className="relative min-h-[500px] w-full max-w-screen-lg border-stone-200 p-12 px-8 sm:mb-[calc(20vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg">
+          <div className="relative min-h-[600px] w-full max-w-screen-lg border-stone-200 p-12 px-8 sm:mb-[calc(20vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg">
             <h1
-              className="text-left text-4xl font-bold text-neutral-500 focus:outline-none"
+              className="text-left text-4xl font-bold text-neutral-800 focus:outline-none"
               suppressContentEditableWarning
               contentEditable
               onBlur={(e) => handleBlur("title", e)}

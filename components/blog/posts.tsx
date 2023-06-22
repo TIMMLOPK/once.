@@ -1,4 +1,3 @@
-import React from "react";
 import Avatar from "./avatar";
 import CoverImage from "./coverImage";
 import PostTitle from "./postTitle";
