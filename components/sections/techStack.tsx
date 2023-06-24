@@ -27,7 +27,7 @@ const TechStack = () => {
       <div className="mt-10 flex p-4 md:mt-0 md:w-full md:items-center md:justify-center md:p-0">
         <div className="grid gap-4 md:grid-flow-col md:grid-rows-2 md:gap-10">
           {techs.map((tech, index) => (
-              <TechBox icon={tech.icons} name={tech.name} key={index} />
+            <TechBox icon={tech.icons} name={tech.name} key={index} />
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import useSWRMutation from "swr/mutation";
 import { PostData } from "../api";
 
-export type PublishPostDataToSend = Omit<PostData, "id"> & { published: true };
+export type PublishPostDataToSend = Omit<PostData, "id">;
 
 async function publishPost(
   url: string,

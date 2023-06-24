@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, Suspense, useCallback } from "react";
+import { useReducer, Suspense, useCallback, useState } from "react";
 import Table from "../../components/blog/writing/table";
 import usePublishPost from "../../utils/dataHook/usePublishPost";
 import { getAuthorIcon, getAuthorName } from "../../utils/author";
@@ -13,6 +13,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import Button from "../../components/shared/button";
 import useSavePost from "../../utils/dataHook/useSavePost";
 import useLogin from "../../utils/dataHook/useLogin";
+import useDebounce from "../../utils/useDebounce";
 
 interface Post {
   title: string;
@@ -76,14 +77,15 @@ export default function Writing() {
     ogImageURL: "/card.png",
   });
   const { data: session, isLoading } = useLogin();
-  // const [postID, setPostID] = useState(0);
+  const [postID, setPostID] = useState(null);
   const { trigger, isError, isMutating, data } = usePublishPost();
-  const { isError: isDraftError, data: draftData } = useSavePost();
+  const { isError: isDraftError, data: draftData , isMutating: updating} = useSavePost();
   const error =
     isError ||
     (data as any)?.error ||
     isDraftError ||
     (draftData as any)?.error;
+  const isLoadingPost = isMutating || updating;
 
   const handleBlur = useCallback((field: string, e: any) => {
     if (field === "coverImage") {
@@ -106,15 +108,32 @@ export default function Writing() {
   }, []);
 
   const triggerData = {
-    title: state.title,
-    content: state.content,
     author: getAuthorName(session?.user.email),
     authorImage: getAuthorIcon(session?.user.email),
-    description: state.description,
-    coverImage: state.coverImage,
     date: new Date().toLocaleDateString(),
-    ogImageURL: state.ogImageURL,
   };
+
+  useDebounce(() => {
+    // if (postID === null) {
+    //   trigger({
+    //     ...state,
+    //     ...triggerData,
+    //     published: false,
+    //   }).then((res) => {
+    //     setPostID(res?.id || null);
+    //   });
+    // } else if (postID !== null) {
+    //   saveDraft({
+    //     ...state,
+    //     ...triggerData,
+    //     id: postID,
+    //     published: false,
+    //   });
+    // }
+    console.log("debounce");
+    console.log(postID);
+    setPostID("123");
+  }, 1000, state);
 
   const editor = useEditor({
     editorProps: {
@@ -142,17 +161,9 @@ export default function Writing() {
       if (contentWithoutEmptyTags !== "") {
         dispatch({ type: "CONTENT_CHANGED", payload: contentWithoutEmptyTags });
       }
-
-      // if (postID === 0) {
-      //   saveDraft({
-      //     ...triggerData,
-      //     published: false,
-      //   }).then((res) => {
-      //     setPostID(res?.id || 0);
-      //   });
-      // }
     },
     autofocus: "end",
+    editable: isLoadingPost ? false : true,
   });
 
   if (!session || isLoading) {
@@ -206,6 +217,7 @@ export default function Writing() {
               className="bg-slate-900 dark:bg-[#f6f1e6] dark:text-black"
               onClick={() => {
                 trigger({
+                  ...state,
                   published: true,
                   ...triggerData,
                 }).then(() => {

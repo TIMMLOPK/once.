@@ -1,11 +1,11 @@
 import useSWRMutation from "swr/mutation";
 import { PostData } from "../api";
 
-export type SavePostDataToSend = Omit<PostData, "id"> & { published: false };
+export type SavePostDataToSend = PostData & { published: false };
 
-async function publishPost(url: string, { arg }: { arg: SavePostDataToSend }) {
-  const data = await fetch(url, {
-    method: "POST",
+async function savePost(url: string, { arg }: { arg: SavePostDataToSend }) {
+  const data = await fetch(url + "?id=" + arg.id, {
+    method: "PUT",
     body: JSON.stringify(arg),
   });
 
@@ -17,7 +17,7 @@ async function publishPost(url: string, { arg }: { arg: SavePostDataToSend }) {
 function useSavePost() {
   const { data, error, trigger, isMutating } = useSWRMutation(
     "/api/post",
-    publishPost
+    savePost
   );
 
   return {
