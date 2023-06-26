@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { m } from "framer-motion";
 
 const AnimatedTextChar = ({
@@ -14,10 +13,10 @@ const AnimatedTextChar = ({
 
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.03, delayChildren: 0.04 * i },
-    }),
+      transition: { staggerChildren: 0.03, delayChildren: 0.04 },
+    },
   };
 
   const child = {
@@ -70,10 +69,10 @@ const AnimatedTextWord = ({
 
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.04 * i },
-    }),
+      transition: { staggerChildren: 0.12, delayChildren: 0.04 },
+    },
   };
 
   const child = {

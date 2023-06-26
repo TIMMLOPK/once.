@@ -1,4 +1,4 @@
-# LIONCEU - Personal Website
+# IONCE - Personal Website
 
 [https://www.ionce.me/](https://www.ionce.me/)
 

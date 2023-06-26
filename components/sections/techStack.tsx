@@ -4,7 +4,7 @@ import { JavascriptIcon, ReactIcon, TSIcon } from "../icons/lang";
 const TechBox = ({ icon, name }) => {
   return (
     <>
-      <div className="text-md md:0 mt-6 inline-flex place-items-center text-gray-900 dark:text-white">
+      <div className="text-md mt-6 inline-flex place-items-center text-gray-900 dark:text-white">
         <span className="mr-3 flex h-11 w-11 items-center justify-center rounded-full dark:border-t dark:border-slate-700 dark:bg-stone-950">
           <span className="w-4">{icon}</span>
         </span>
@@ -27,7 +27,7 @@ const TechStack = () => {
       <div className="mt-10 flex p-4 md:mt-0 md:w-full md:items-center md:justify-center md:p-0">
         <div className="grid gap-4 md:grid-flow-col md:grid-rows-2 md:gap-10">
           {techs.map((tech, index) => (
-            <TechBox icon={tech.icons} name={tech.name} key={index} />
+            <TechBox icon={tech.icon} name={tech.name} key={index} />
           ))}
         </div>
       </div>
@@ -37,27 +37,27 @@ const TechStack = () => {
 
 const techs = [
   {
-    icons: <SiRust />,
+    icon: <SiRust />,
     name: "Rust",
   },
   {
-    icons: <JavascriptIcon />,
+    icon: <JavascriptIcon />,
     name: "Javascript",
   },
   {
-    icons: <TSIcon />,
+    icon: <TSIcon />,
     name: "Typescript",
   },
   {
-    icons: <ReactIcon />,
+    icon: <ReactIcon />,
     name: "React",
   },
   {
-    icons: <SiPython />,
+    icon: <SiPython />,
     name: "Python",
   },
   {
-    icons: <SiPostgresql />,
+    icon: <SiPostgresql />,
     name: "PostgreSQL",
   },
 ];

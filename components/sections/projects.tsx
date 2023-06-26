@@ -8,7 +8,7 @@ import ToolTip from "../shared/tooltip";
 import { m } from "framer-motion";
 
 const ProjectCard = ({ data }) => {
-  const { title, link, children, github } = data;
+  const { title, link, text, github } = data;
   return (
     <div className="group relative m-6 items-center dark:text-white">
       <div className="relative">
@@ -16,8 +16,6 @@ const ProjectCard = ({ data }) => {
           src="/card.png"
           className="transform rounded-lg border brightness-90 transition will-change-auto group-hover:brightness-110 dark:border-zinc-700"
           style={{ transform: "translate3d(0, 0, 0)" }}
-          placeholder="blur"
-          blurDataURL="/card.png"
           width={250}
           height={120}
           alt="card"
@@ -45,7 +43,7 @@ const ProjectCard = ({ data }) => {
         </div>
       </div>
       <div className="mt-2 max-w-[230px] font-mono text-sm opacity-80">
-        {children}
+        {text}
       </div>
     </div>
   );
@@ -76,34 +74,34 @@ const Projects = () => {
 const projects = [
   {
     title: "ONCE",
-    children: "ONCE is a powerful multi-purpose Discord bot.",
+    text: "ONCE is a powerful multi-purpose Discord bot.",
     link: "https://discord.lionceu.live/",
   },
   {
     title: "Meme Generator",
-    children: "Generate an unique meme",
+    text: "Generate an unique meme",
     link: "https://meme.lionceu.live/",
     github: "https://github.com/TIMMLOPK/meme-generator",
   },
   {
     title: "npm outdated.rs",
-    children: "npm outdated checker",
+    text: "npm outdated checker",
     github: "https://github.com/TIMMLOPK/npm-outdated-rs",
   },
   {
     title: "ONCE",
-    children: "A profile website",
+    text: "A profile website",
     link: "https://ionce.me/",
     github: "https://github.com/TIMMLOPK/once.",
   },
   {
     title: "CSS Website",
-    children: "CSS website",
+    text: "CSS website",
     github: "https://github.com/TIMMLOPK/once",
   },
   {
     title: "Discord RPC.rs",
-    children: "Discord RPC for Rust",
+    text: "Discord RPC for Rust",
     github: "https://github.com/TIMMLOPK/discord-RPC",
   },
 ];

@@ -9,7 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 import ToolTip from "./shared/tooltip";
 import { cn } from "../utils/cn";
 
-const NavItem = ({ children, id, ...props }) => {
+const NavItem = ({ children, id }) => {
   const router = useRouter();
   const pathName = usePathname();
   const scrollTo = useCallback(
@@ -30,7 +30,6 @@ const NavItem = ({ children, id, ...props }) => {
     <ToolTip text={id} position="top" hideArrow offset={10}>
       <button
         onClick={() => scrollTo(id)}
-        {...props}
         className="flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-1 text-base transition hover:border-zinc-200 hover:bg-hover dark:hover:border-slate-500"
       >
         {children}
@@ -40,10 +39,10 @@ const NavItem = ({ children, id, ...props }) => {
 };
 
 const Label = [
-  { label: "Home", emoji: "🏡" },
-  { label: "Tech", emoji: "🔧" },
-  { label: "Projects", emoji: "🗂️" },
-  { label: "Blog", emoji: "📝" },
+  { name: "Home", emoji: "🏡" },
+  { name: "Tech", emoji: "🔧" },
+  { name: "Projects", emoji: "🗂️" },
+  { name: "Blog", emoji: "📝" },
 ];
 
 const variants = {
@@ -94,9 +93,9 @@ const Navbar = () => {
       <div className="flex flex-row items-center space-x-6">
         {Label.map((label, index) => (
           <NavItem
-            id={label.label}
+            id={label.name}
             key={index}
-            aria-label={`Go to ${label.label}`}
+            aria-label={`Go to ${label.name}`}
           >
             {label.emoji}
           </NavItem>
