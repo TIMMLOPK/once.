@@ -1,10 +1,9 @@
 "use client";
 
-import Icon from "../avatar";
-import { useRef } from "react";
-import { m, useInView } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimatedTextChar } from "../animatedText";
 import { Caveat } from "next/font/google";
+import Image from "next/image";
 
 const inter = Caveat({
   subsets: ["latin"],
@@ -13,7 +12,7 @@ const inter = Caveat({
 
 const TypeWriter = () => {
   return (
-    <div className="box-border inline-flex animate-typing overflow-hidden whitespace-nowrap text-white">
+    <div className="box-border inline-flex overflow-hidden whitespace-nowrap text-white">
       Hello, I am Timmy
     </div>
   );
@@ -50,26 +49,66 @@ const ChatBubble = ({ children }) => {
   );
 };
 
+const Icon = ({ src }) => {
+  return (
+    <m.div
+      className="relative flex h-[248px] w-[248px] items-center justify-center overflow-hidden rounded-full"
+      animate={{
+        y: [0, -20, 0],
+        rotateY: [
+          0,
+          0,
+          180,
+          ...Array.from({ length: 4 }, (_, i) => 180 * (i % 2)),
+          360,
+        ],
+      }}
+      transition={{
+        duration: 2.5,
+        type: "spring",
+        stiffness: 800,
+        y: {
+          delay: 0.7,
+          duration: 1.0,
+        },
+        rotateY: {
+          duration: 1.0,
+        },
+      }}
+    >
+      <Image
+        src={src}
+        alt="Picture of the author"
+        width={240}
+        height={240}
+        priority
+        className="rounded-full"
+      />
+    </m.div>
+  );
+};
+
 const Home = () => {
-  const ref = useRef();
-  const inview = useInView(ref, { once: true });
   return (
     <div>
-      <div className="relative mb-16 md:ml-10">
+      <m.div
+        className="relative mb-16 md:ml-10"
+        transition={{ when: "afterChildren", staggerChildren: 0.5 }}
+      >
         <Icon src="/icon.webp" />
         <div className="absolute left-40 top-40">
           <m.div
             initial="initial"
-            animate={inview ? "enter" : "initial"}
+            animate="enter"
             variants={variants}
-            ref={ref}
+            transition={{ duration: 0.5, easings: "easeInOut" }}
           >
             <ChatBubble>
               <TypeWriter />
             </ChatBubble>
           </m.div>
         </div>
-      </div>
+      </m.div>
       <div className="invisible relative md:visible md:absolute md:inset-y-1/3 md:left-1/2">
         <div>
           <AnimatedTextChar

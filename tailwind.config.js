@@ -12,7 +12,6 @@ module.exports = {
     extend: {
       animation: {
         rotate: "rotate 6s linear infinite",
-        typing: "typing 4.5s steps(40, end) normal",
         slideDownAndFade:
           "slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
         slideLeftAndFade:
@@ -42,23 +41,11 @@ module.exports = {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
         },
-        typing: {
-          from: {
-            width: 0,
-            "border-right-color": "white",
-            "border-right-width": "2px",
-          },
-          to: {
-            width: "100%",
-            "border-right-color": "transparent",
-            "border-right-width": "2px",
-          },
-        },
       },
       colors: {
         hover: "rgba(255, 255, 255, 0.103)",
-        navbar: "rgba( 0, 0, 0, 0.6)",
-        navbarDark: "rgba( 255, 255, 255, 0)",
+        navbar: "rgba(0, 0, 0, 0.6)",
+        navbarDark: "rgba(255, 255, 255, 0)",
       },
       dropShadow: {
         logo: "0 0 0.3rem #ffffff70",

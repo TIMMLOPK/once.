@@ -25,11 +25,11 @@ interface Post {
 
 interface InfoAction {
   type:
-  | "TITLE_CHANGED"
-  | "DESCRIPTION_CHANGED"
-  | "COVER_IMAGE_CHANGED"
-  | "CLEAR"
-  | "CONTENT_CHANGED";
+    | "TITLE_CHANGED"
+    | "DESCRIPTION_CHANGED"
+    | "COVER_IMAGE_CHANGED"
+    | "CLEAR"
+    | "CONTENT_CHANGED";
   payload?: string;
 }
 
@@ -79,7 +79,11 @@ export default function Writing() {
   const { data: session, isLoading } = useLogin();
   const [postID, setPostID] = useState(null);
   const { trigger, isError, isMutating, data } = usePublishPost();
-  const { isError: isDraftError, data: draftData , isMutating: updating} = useSavePost();
+  const {
+    isError: isDraftError,
+    data: draftData,
+    isMutating: updating,
+  } = useSavePost();
   const error =
     isError ||
     (data as any)?.error ||
@@ -113,27 +117,31 @@ export default function Writing() {
     date: new Date().toLocaleDateString(),
   };
 
-  useDebounce(() => {
-    // if (postID === null) {
-    //   trigger({
-    //     ...state,
-    //     ...triggerData,
-    //     published: false,
-    //   }).then((res) => {
-    //     setPostID(res?.id || null);
-    //   });
-    // } else if (postID !== null) {
-    //   saveDraft({
-    //     ...state,
-    //     ...triggerData,
-    //     id: postID,
-    //     published: false,
-    //   });
-    // }
-    console.log("debounce");
-    console.log(postID);
-    setPostID("123");
-  }, 1000, state);
+  useDebounce(
+    () => {
+      // if (postID === null) {
+      //   trigger({
+      //     ...state,
+      //     ...triggerData,
+      //     published: false,
+      //   }).then((res) => {
+      //     setPostID(res?.id || null);
+      //   });
+      // } else if (postID !== null) {
+      //   saveDraft({
+      //     ...state,
+      //     ...triggerData,
+      //     id: postID,
+      //     published: false,
+      //   });
+      // }
+      console.log("debounce");
+      console.log(postID);
+      setPostID("123");
+    },
+    1000,
+    state
+  );
 
   const editor = useEditor({
     editorProps: {

@@ -30,5 +30,4 @@ async function getGithubStats(): Promise<GithubStats> {
   };
 }
 
-
 export default GithubStats;

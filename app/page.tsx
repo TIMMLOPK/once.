@@ -25,6 +25,7 @@ const Section = ({
     </section>
   );
 };
+
 export default async function HomePage() {
   return (
     <Layout className="px-5">

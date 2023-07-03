@@ -30,7 +30,7 @@ const NavItem = ({ children, id }) => {
     <ToolTip text={id} position="top" hideArrow offset={10}>
       <button
         onClick={() => scrollTo(id)}
-        className="flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-1 text-base transition hover:border-zinc-200 hover:bg-hover dark:hover:border-slate-500"
+        className="flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-1 text-base transition hover:border-zinc-400/60 hover:bg-hover dark:hover:border-slate-500"
       >
         {children}
       </button>
@@ -65,30 +65,24 @@ const variants = {
 };
 
 const Navbar = () => {
-  const [showNav, setShowNav] = useState(true);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const scrolled = useScroll();
 
   useEffect(() => setMounted(true), []);
 
-  useEffect(() => {
-    setShowNav(!scrolled);
-  }, [scrolled]);
-
   if (!mounted) return null;
 
   return (
     <m.nav
       className={cn(
-        "rounded-full border",
-        "border border-solid border-zinc-400 bg-navbar p-2 shadow-navbar backdrop-blur-[16px] dark:border-zinc-700 dark:bg-navbarDark"
+        "rounded-full",
+        "bg-white/0 p-2 text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:text-zinc-200 dark:ring-white/10"
       )}
       variants={variants}
       initial="closed"
-      animate={showNav ? "open" : "closed"}
+      animate={!scrolled ? "open" : "closed"}
       transition={{ duration: 0.5 }}
-      onMouseEnter={() => setShowNav(true)}
     >
       <div className="flex flex-row items-center space-x-6">
         {Label.map((label, index) => (
@@ -100,10 +94,10 @@ const Navbar = () => {
             {label.emoji}
           </NavItem>
         ))}
-        <div className="border-l border-slate-500 dark:border-slate-600">
+        <div className="border-l border-slate-200 dark:border-slate-600">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="ml-2 flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-2 text-base text-white transition hover:border-t hover:border-zinc-200 hover:bg-hover dark:hover:border-slate-500"
+            className="ml-2 flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-2 text-base transition hover:border-t hover:border-zinc-400/60 hover:bg-hover dark:hover:border-slate-500"
           >
             {theme === "dark" ? <FiMoon /> : <FiSun />}
           </button>
