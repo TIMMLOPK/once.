@@ -26,7 +26,7 @@ const Layout = ({
           animate="enter"
           exit="exit"
           variants={variants}
-          transition={{ duration: 0.5, easings: "easeInOut" }}
+          transition={{ duration: 0.5 }}
         >
           {children}
         </m.div>

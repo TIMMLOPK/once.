@@ -3,12 +3,11 @@
 import { Posts } from "../blog/posts";
 import HighlightPost from "../blog/highlightPost";
 import { useState } from "react";
-import usePosts from "../../utils/dataHook/usePosts";
 import { Loading } from "../shared/loading";
 import Button from "../shared/button";
+import { ReturnData } from "../../utils/api";
 
-const Blog = () => {
-  const { posts, isLoading } = usePosts();
+const Blog = ({ posts }: { posts: ReturnData[] }) => {
   const [postsToShow, setPostsToShow] = useState(3);
   const publishedPosts = posts?.filter((post) => post.published);
 
@@ -22,12 +21,7 @@ const Blog = () => {
         </p>
       </div>
       <div className="mt-10">
-        {isLoading && (
-          <div className="flex justify-center">
-            <Loading />
-          </div>
-        )}
-        {!isLoading && publishedPosts.length !== 0 && (
+        {publishedPosts.length !== 0 && (
           <div className="mx-auto space-y-6 p-6 sm:space-y-12">
             <HighlightPost
               id={publishedPosts[0].id}

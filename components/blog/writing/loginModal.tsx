@@ -14,7 +14,7 @@ function LoginModal() {
     >
       <div className="flex min-h-screen items-center justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0">
         <m.div
-          className="fixed inset-0 z-10 bg-black opacity-60 transition-opacity"
+          className="fixed inset-0 z-10 bg-black/50 sm:px-0"
           aria-hidden="true"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

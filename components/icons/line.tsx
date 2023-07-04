@@ -11,7 +11,6 @@ const variants = {
     pathLength: 1,
     transition: {
       duration: 2,
-      ease: "easeInOut",
     },
   },
 };

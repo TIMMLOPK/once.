@@ -82,7 +82,6 @@ const Navbar = () => {
       variants={variants}
       initial="closed"
       animate={!scrolled ? "open" : "closed"}
-      transition={{ duration: 0.5 }}
     >
       <div className="flex flex-row items-center space-x-6">
         {Label.map((label, index) => (

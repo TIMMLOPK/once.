@@ -8,5 +8,5 @@ export async function GET() {
   });
   const posts = await req.json();
 
-  return NextResponse.json({ posts, timestamp: Date.now() });
+  return NextResponse.json({ posts });
 }

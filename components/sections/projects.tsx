@@ -1,49 +1,33 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
-import ToolTip from "../shared/tooltip";
 import { m } from "framer-motion";
 
 const ProjectCard = ({ data }) => {
   const { title, link, text, github } = data;
   return (
-    <div className="group relative m-6 items-center dark:text-white">
-      <div className="relative">
-        <Image
-          src="/card.png"
-          className="transform rounded-lg border brightness-90 transition will-change-auto group-hover:brightness-110 dark:border-zinc-700"
-          style={{ transform: "translate3d(0, 0, 0)" }}
-          width={250}
-          height={120}
-          alt="card"
-        />
-        {github && (
-          <Link href={github} passHref aria-label="Open in new tab">
-            <ToolTip text="Open Source" position="left" offset={10}>
-              <button className="absolute bottom-2 left-2 inline-flex items-center rounded-full bg-hover p-1.5 text-gray-400 transition hover:text-white">
-                <BsGithub />
-              </button>
-            </ToolTip>
+    <div className="m-6">
+      <h1 className="text-xl font-semibold">{title}</h1>
+      <p className="mt-2 max-w-[230px] font-mono text-sm opacity-80">{text}</p>
+      <div className="mt-6 flex items-center space-x-2">
+        {link && (
+          <Link href={link} passHref aria-label="Open in new tab">
+            <div className="flex items-center rounded-full text-gray-500 transition hover:text-blue-500 active:text-blue-500">
+              <MdOpenInNew />
+              <p className="ml-1 text-xs">Website</p>
+            </div>
           </Link>
         )}
-      </div>
-      <div className="relative mt-4">
-        <div className="flex items-center space-x-2">
-          <span className="font-mono text-lg font-semibold tracking-wide">
-            {title}
-          </span>
-          {link && (
-            <Link href={link} passHref aria-label="Open in new tab">
-              <MdOpenInNew className="text-gray-500 hover:text-blue-500 active:text-blue-500" />
-            </Link>
-          )}
-        </div>
-      </div>
-      <div className="mt-2 max-w-[230px] font-mono text-sm opacity-80">
-        {text}
+        {link && github && (
+          <span className="h-4 border-l border-gray-400 dark:border-gray-700" />
+        )}
+        {github && (
+          <Link href={github} passHref aria-label="Open in new tab">
+            <BsGithub className="text-gray-400 transition hover:text-gray-700 active:text-gray-700 dark:hover:text-gray-300 dark:active:text-gray-300" />
+          </Link>
+        )}
       </div>
     </div>
   );
@@ -54,11 +38,11 @@ const Projects = () => {
     <div className="pb-20">
       <h1 className="text-2xl font-bold">🗂️ Projects</h1>
       <br />
-      <div className="mt-8 grid justify-center gap-6 md:grid-cols-3 md:gap-10">
+      <div className="mt-8 grid gap-6 md:grid-cols-3 md:justify-center md:gap-10">
         {projects.map((project, index) => (
           <m.div
             initial={{ y: 100, opacity: 0 }}
-            transition={{ delay: index * 0.2, duration: 0.5, ease: "easeOut" }}
+            transition={{ delay: index * 0.2, duration: 0.5 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             key={index}
@@ -89,8 +73,8 @@ const projects = [
     github: "https://github.com/TIMMLOPK/npm-outdated-rs",
   },
   {
-    title: "ONCE",
-    text: "A profile website",
+    title: "ionce.me",
+    text: "My personal website",
     link: "https://ionce.me/",
     github: "https://github.com/TIMMLOPK/once.",
   },

@@ -6,7 +6,7 @@ const Avatar = ({ name = "Timmy", picture = "/icon.webp" }) => {
       <div className="relative mr-2 h-8 w-8">
         <Image
           src={picture}
-          className="rounded-full transition-opacity duration-200 hover:opacity-80"
+          className="rounded-full"
           height={32}
           width={32}
           alt={name}

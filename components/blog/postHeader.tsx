@@ -26,10 +26,10 @@ const PostHeader = ({
             <p>{date}</p>
           </div>
         </div>
-        <h1 className="mb-4 text-left text-3xl font-black leading-relaxed tracking-tighter md:text-5xl">
+        <h1 className="mb-4 text-left text-3xl font-bold leading-relaxed tracking-tighter md:text-5xl">
           {title}
         </h1>
-        <div className="mb-8 text-xl font-medium leading-relaxed md:text-2xl">
+        <div className="mb-8 text-lg font-medium leading-relaxed md:text-2xl">
           {description}
         </div>
         <div className="flex items-center">

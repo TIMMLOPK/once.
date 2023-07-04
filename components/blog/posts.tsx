@@ -19,15 +19,17 @@ export const PostPreview = ({
   authorImage: string;
 }) => {
   return (
-    <div className="space-y-5 p-8">
-      <CoverImage id={id} title={title} src={coverImage} />
-      <PostTitle title={title} id={id} className="text-2xl" />
-      <div className="flex flex-col justify-between">
+    <div className="space-y-6 md:p-8">
+      <div className="hidden md:block">
+        <CoverImage id={id} title={title} src={coverImage} />
+      </div>
+      <div className="space-y-6">
+        <PostTitle title={title} id={id} className="text-xl md:text-2xl" />
         <div className="flex items-center">
           <Avatar name={author} picture={authorImage} />
-          <div className="ml-4 text-sm text-gray-500 dark:text-gray-300">
-            <p className="font-bold">{date}</p>
-          </div>
+          <p className="ml-4 text-sm font-bold text-gray-500 dark:text-gray-300">
+            {date}
+          </p>
         </div>
       </div>
     </div>

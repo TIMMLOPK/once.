@@ -27,12 +27,13 @@ const Section = ({
 };
 
 export default async function HomePage() {
+  const posts = await getPosts();
   return (
     <Layout className="px-5">
       <Section id="home" className="flex items-center">
         <Home />
       </Section>
-      <Section id="about" className="px-6 md:flex md:items-center">
+      <Section id="about" className="px-6 py-20">
         <About />
       </Section>
       <Section id="tech" className="md:flex md:items-center">
@@ -42,8 +43,17 @@ export default async function HomePage() {
         <Projects />
       </Section>
       <Section id="blog" isLast>
-        <Blog />
+        <Blog posts={posts} />
       </Section>
     </Layout>
   );
+}
+
+async function getPosts() {
+  const req = await fetch(process.env.API_URL + "/posts", {
+    next: { revalidate: 60 },
+  });
+  const posts = await req.json();
+
+  return posts;
 }
