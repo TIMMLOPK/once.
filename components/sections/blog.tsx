@@ -3,7 +3,6 @@
 import { Posts } from "../blog/posts";
 import HighlightPost from "../blog/highlightPost";
 import { useState } from "react";
-import { Loading } from "../shared/loading";
 import Button from "../shared/button";
 import { ReturnData } from "../../utils/api";
 
