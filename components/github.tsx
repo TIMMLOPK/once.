@@ -6,9 +6,7 @@ interface GithubStats {
   public_repos: number;
 }
 
-const Github = async () => {
-  const user = await getGithubStats();
-
+const Github = ({ user }: { user: GithubStats }) => {
   return (
     <Link href="https://github.com/TIMMLOPK" aria-label="GitHub" passHref>
       <div className="group flex cursor-pointer items-center justify-between rounded-full border border-gray-200 px-6 py-1.5 transition hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800/60">
@@ -27,15 +25,5 @@ const Github = async () => {
     </Link>
   );
 };
-
-async function getGithubStats(): Promise<GithubStats> {
-  const res = await fetch("https://api.github.com/users/TIMMLOPK");
-  const data = await res.json();
-
-  return {
-    followers: data.followers,
-    public_repos: data.public_repos,
-  };
-}
 
 export default Github;

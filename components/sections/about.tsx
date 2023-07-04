@@ -6,7 +6,7 @@ import { FiInstagram } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
 
-export const About = () => {
+export const About = ({ user }: { user: any }) => {
   return (
     <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12">
       <div className="lg:pl-36">
@@ -47,7 +47,7 @@ export const About = () => {
           <p>Everything is always once. Don’t let time take your life away.</p>
           <br />
           <div className="mt-12 flex items-center space-x-4">
-            <Github />
+            <Github user={user} />
             <Link
               href="https://www.instagram.com/tw_wu_as_tim/"
               aria-label="Instagram"

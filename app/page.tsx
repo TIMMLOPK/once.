@@ -28,13 +28,15 @@ const Section = ({
 
 export default async function HomePage() {
   const posts = await getPosts();
+  const user = await getGithubStats();
+
   return (
     <Layout className="px-5">
       <Section id="home" className="flex items-center">
         <Home />
       </Section>
       <Section id="about" className="px-6 py-20">
-        <About />
+        <About user={user} />
       </Section>
       <Section id="tech" className="md:flex md:items-center">
         <TechStack />
@@ -56,4 +58,14 @@ async function getPosts() {
   const posts = await req.json();
 
   return posts;
+}
+
+async function getGithubStats(): Promise<{ followers: number ; public_repos: number }> {
+  const res = await fetch("https://api.github.com/users/TIMMLOPK");
+  const data = await res.json();
+
+  return {
+    followers: data.followers,
+    public_repos: data.public_repos,
+  };
 }
