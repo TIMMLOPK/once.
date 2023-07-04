@@ -10,13 +10,6 @@ const inter = Caveat({
   variable: "--font-caveat",
 });
 
-const TypeWriter = () => {
-  return (
-    <div className="box-border inline-flex overflow-hidden whitespace-nowrap text-white">
-      Hello, I am Timmy
-    </div>
-  );
-};
 
 const variants = {
   initial: {
@@ -39,11 +32,13 @@ const variants = {
   },
 };
 
-const ChatBubble = ({ children }) => {
+const ChatBubble = () => {
   return (
     <div className="flex max-w-[450px] flex-col items-center justify-center p-0">
       <div className="relative min-w-[180px] rounded-3xl border border-zinc-500 bg-black py-2.5 pl-4 leading-6 text-white shadow-2xl dark:border-zinc-800">
-        {children}
+        <div className="box-border inline-flex overflow-hidden whitespace-nowrap text-white">
+          Hello, I am Timmy
+        </div>
       </div>
     </div>
   );
@@ -52,7 +47,7 @@ const ChatBubble = ({ children }) => {
 const Icon = ({ src }) => {
   return (
     <m.div
-      className="group relative h-[248px] w-[248px] rounded-full"
+      className="group relative h-[248px] w-[248px] rounded-full flex items-center justify-center"
       animate={{
         y: [0, -20, 0],
         rotateY: [
@@ -103,9 +98,7 @@ const Home = () => {
             variants={variants}
             transition={{ duration: 0.5 }}
           >
-            <ChatBubble>
-              <TypeWriter />
-            </ChatBubble>
+            <ChatBubble />
           </m.div>
         </div>
       </m.div>

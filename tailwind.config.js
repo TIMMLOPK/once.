@@ -44,20 +44,14 @@ module.exports = {
       },
       colors: {
         hover: "rgba(255, 255, 255, 0.103)",
-        navbar: "rgba(0, 0, 0, 0.6)",
-        navbarDark: "rgba(255, 255, 255, 0)",
       },
       dropShadow: {
         logo: "0 0 0.3rem #ffffff70",
       },
       boxShadow: {
         logo: "0px 2px 8px -1px #0000001a",
-        navbar: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",
         medium: "0 8px 30px rgba(0, 0, 0, 0.12)",
-      },
-      borderColors: {
-        navbar: "rgba(255, 255, 255, 0.18)",
       },
     },
   },
