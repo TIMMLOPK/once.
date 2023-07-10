@@ -10,7 +10,7 @@ export default async function Post({ params }) {
   return (
     <Layout className="px-0">
       <div className="mx-auto max-w-4xl p-8">
-        <article className="mb-32">
+        <article className="mb-20">
           <PostHeader
             title={post.title}
             coverImage={post.coverimage}
@@ -19,9 +19,7 @@ export default async function Post({ params }) {
             author={post.author}
             authorImage={post.authorimage}
           />
-          <div className="max-w-3xl">
-            <PostBody content={post.content} />
-          </div>
+          <PostBody content={post.content} />
         </article>
       </div>
     </Layout>

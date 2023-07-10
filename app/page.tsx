@@ -60,7 +60,10 @@ async function getPosts() {
   return posts;
 }
 
-async function getGithubStats(): Promise<{ followers: number ; public_repos: number }> {
+async function getGithubStats(): Promise<{
+  followers: number;
+  public_repos: number;
+}> {
   const res = await fetch("https://api.github.com/users/TIMMLOPK");
   const data = await res.json();
 

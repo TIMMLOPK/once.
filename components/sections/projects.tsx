@@ -8,10 +8,10 @@ import { m } from "framer-motion";
 const ProjectCard = ({ data }) => {
   const { title, link, text, github } = data;
   return (
-    <div className="m-6">
+    <div className="m-6 p-4">
       <h1 className="text-xl font-semibold">{title}</h1>
-      <p className="mt-2 max-w-[230px] font-mono text-sm opacity-80">{text}</p>
-      <div className="mt-6 flex items-center space-x-2">
+      <p className="mt-4 max-w-[230px] font-mono text-sm opacity-80">{text}</p>
+      <div className="mt-8 flex items-center space-x-2">
         {link && (
           <Link href={link} passHref aria-label="Open in new tab">
             <div className="flex items-center rounded-full text-gray-500 transition hover:text-blue-500 active:text-blue-500">
@@ -42,7 +42,7 @@ const Projects = () => {
         {projects.map((project, index) => (
           <m.div
             initial={{ y: 100, opacity: 0 }}
-            transition={{ delay: index * 0.2, duration: 0.5 }}
+            transition={{ delay: index * 0.3, duration: 0.5 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             key={index}

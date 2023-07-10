@@ -44,7 +44,7 @@ export const About = ({ user }: { user: any }) => {
             you are. Life is once. Therefore, use your time to do what you want.
           </p>
           <br />
-          <p>Everything is always once. Don’t let time take your life away.</p>
+          <p>Everything is always once.</p>
           <br />
           <div className="mt-12 flex items-center space-x-4">
             <Github user={user} />

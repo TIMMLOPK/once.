@@ -10,7 +10,6 @@ const inter = Caveat({
   variable: "--font-caveat",
 });
 
-
 const variants = {
   initial: {
     opacity: 0,
@@ -47,9 +46,9 @@ const ChatBubble = () => {
 const Icon = ({ src }) => {
   return (
     <m.div
-      className="group relative h-[248px] w-[248px] rounded-full flex items-center justify-center"
+      className="group relative flex h-[248px] w-[248px] items-center justify-center rounded-full"
       animate={{
-        y: [0, -20, 0],
+        y: [0, -15, 0],
         rotateY: [
           0,
           0,
@@ -64,7 +63,7 @@ const Icon = ({ src }) => {
         stiffness: 800,
         y: {
           delay: 0.7,
-          duration: 1.0,
+          duration: 0.7,
         },
         rotateY: {
           duration: 1.0,
