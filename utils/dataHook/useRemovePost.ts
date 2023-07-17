@@ -9,7 +9,7 @@ async function removePost(url: string, { arg }: { arg: number }) {
 function useRemovePost() {
   const { data, error, trigger, isMutating } = useSWRMutation(
     "/api/post",
-    removePost
+    removePost,
   );
 
   return {

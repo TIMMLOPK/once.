@@ -6,16 +6,19 @@ import { FiInstagram } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
 
+import Display from "../../public/display.jpg";
+
 export const About = ({ user }: { user: any }) => {
   return (
     <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12">
       <div className="lg:pl-36">
         <div className="max-w-[300px]">
           <Image
-            src="/display.jpg"
+            src={Display}
             alt="Picture of a shop"
             width={500}
             height={500}
+            placeholder="blur"
             className="aspect-square rotate-3 rounded-2xl object-cover transition duration-500 ease-in-out hover:rotate-0"
           />
         </div>

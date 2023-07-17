@@ -17,7 +17,7 @@ async function savePost(url: string, { arg }: { arg: SavePostDataToSend }) {
 function useSavePost() {
   const { data, error, trigger, isMutating } = useSWRMutation(
     "/api/post",
-    savePost
+    savePost,
   );
 
   return {

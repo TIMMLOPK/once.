@@ -1,9 +1,9 @@
 "use client";
 
 import { m } from "framer-motion";
-import { AnimatedTextChar } from "../animatedText";
 import { Caveat } from "next/font/google";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 const inter = Caveat({
   subsets: ["latin"],
@@ -82,9 +82,13 @@ const Icon = ({ src }) => {
   );
 };
 
+const AnimatedTextChar = dynamic(() =>
+  import("../animatedText").then((mod) => mod.AnimatedTextChar),
+);
+
 const Home = () => {
   return (
-    <div>
+    <>
       <m.div
         className="relative mb-16 md:ml-12"
         transition={{ when: "afterChildren", staggerChildren: 0.6 }}
@@ -112,7 +116,7 @@ const Home = () => {
           <div className="h-28 w-28 translate-y-10 rounded-3xl bg-green-400 mix-blend-multiply blur-3xl dark:bg-green-900" />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

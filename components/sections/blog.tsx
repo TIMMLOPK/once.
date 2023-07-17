@@ -11,7 +11,7 @@ const Blog = ({ posts }: { posts: ReturnData[] }) => {
   const publishedPosts = posts?.filter((post) => post.published);
 
   return (
-    <div>
+    <>
       <div>
         <h1 className="text-2xl font-bold">📝 Blog</h1>
         <br />
@@ -45,7 +45,7 @@ const Blog = ({ posts }: { posts: ReturnData[] }) => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

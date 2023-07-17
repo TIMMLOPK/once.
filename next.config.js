@@ -4,11 +4,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/shop',
-        destination: 'https://www.musicamatics.com/',
+        source: "/shop",
+        destination: "https://www.musicamatics.com/",
         permanent: true,
       },
-    ]
+    ];
   },
 };
 

@@ -23,7 +23,7 @@ const NavItem = ({ children, id }) => {
       if (!el) return;
       el.scrollIntoView({ behavior: "smooth" });
     },
-    [pathName, router]
+    [pathName, router],
   );
 
   return (
@@ -77,7 +77,7 @@ const Navbar = () => {
     <m.nav
       className={cn(
         "rounded-full",
-        "bg-white/0 p-2 text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:text-zinc-200 dark:ring-white/10"
+        "bg-white/0 p-2 text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:text-zinc-200 dark:ring-white/10",
       )}
       variants={variants}
       initial="closed"

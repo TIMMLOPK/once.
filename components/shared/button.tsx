@@ -17,7 +17,7 @@ export default function Button(props: ButtonProps) {
         "hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-200",
         props.loading ? "cursor-not-allowed" : "",
         props.disabled ? "cursor-not-allowed" : "",
-        props.className
+        props.className,
       )}
       onClick={props.onClick}
       type="button"

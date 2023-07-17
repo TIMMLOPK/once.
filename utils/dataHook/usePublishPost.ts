@@ -5,7 +5,7 @@ export type PublishPostDataToSend = Omit<PostData, "id">;
 
 async function publishPost(
   url: string,
-  { arg }: { arg: PublishPostDataToSend }
+  { arg }: { arg: PublishPostDataToSend },
 ) {
   const data = await fetch(url, {
     method: "POST",
@@ -19,7 +19,7 @@ async function publishPost(
 function usePublishPost() {
   const { data, error, trigger, isMutating } = useSWRMutation(
     "/api/post",
-    publishPost
+    publishPost,
   );
 
   return {

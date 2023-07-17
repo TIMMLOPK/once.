@@ -7,14 +7,14 @@ export async function POST(req: Request) {
   if (!body) {
     return NextResponse.json(
       { error: "No body provided", success: false },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   if (!body.title || body.title.length < 1) {
     return NextResponse.json(
       { error: "Title must be at least 1 character long", success: false },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         error: "Description must be at least 1 character long",
         success: false,
       },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -34,14 +34,14 @@ export async function POST(req: Request) {
         error: "Cover image must be at least 1 character long",
         success: false,
       },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   if (!body.content || body.content.length < 1) {
     return NextResponse.json(
       { error: "Content must be at least 1 character long", success: false },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -60,13 +60,13 @@ export async function POST(req: Request) {
     if (!req.ok) {
       return NextResponse.json(
         { error: "Something went wrong", success: false },
-        { status: 500 }
+        { status: 500 },
       );
     }
   } catch (e: any) {
     return NextResponse.json(
       { error: e.message, success: false },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -80,7 +80,7 @@ export async function DELETE(req: Request) {
   if (!id) {
     return NextResponse.json(
       { error: "No id provided", success: false },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -91,7 +91,7 @@ export async function DELETE(req: Request) {
   } catch (e: any) {
     return NextResponse.json(
       { error: e.message, success: false },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -105,7 +105,7 @@ export async function PUT(req: Request) {
   if (!id) {
     return NextResponse.json(
       { error: "No id provided", success: false },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -114,14 +114,14 @@ export async function PUT(req: Request) {
   if (!body) {
     return NextResponse.json(
       { error: "No body provided", success: false },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   if (!body.title || body.title.length < 1) {
     return NextResponse.json(
       { error: "Title must be at least 1 character long", success: false },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -131,7 +131,7 @@ export async function PUT(req: Request) {
         error: "Description must be at least 1 character long",
         success: false,
       },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -141,14 +141,14 @@ export async function PUT(req: Request) {
         error: "Cover image must be at least 1 character long",
         success: false,
       },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   if (!body.content || body.content.length < 1) {
     return NextResponse.json(
       { error: "Content must be at least 1 character long", success: false },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -163,7 +163,7 @@ export async function PUT(req: Request) {
   } catch (e: any) {
     return NextResponse.json(
       { error: e.message, success: false },
-      { status: 500 }
+      { status: 500 },
     );
   }
 

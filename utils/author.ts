@@ -6,8 +6,8 @@ const AUTHOR = [
   },
   {
     email: "soraruuuuuuuuuu@gmail.com",
-    name: "Musicmatics",
-    icon: "/shop/icon.webp",
+    name: "Musicamatics",
+    icon: "/musicamatics.webp",
   },
 ];
 
