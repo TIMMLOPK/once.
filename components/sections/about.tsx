@@ -16,8 +16,7 @@ export const About = ({ user }: { user: any }) => {
           <Image
             src={Display}
             alt="Picture of a shop"
-            width={500}
-            height={500}
+            sizes="300px"
             placeholder="blur"
             className="aspect-square rotate-3 rounded-2xl object-cover transition duration-500 ease-in-out hover:rotate-0"
           />
