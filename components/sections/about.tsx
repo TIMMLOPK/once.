@@ -1,3 +1,5 @@
+"use client"
+
 import Github from "../github";
 import { FaDiscord } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
