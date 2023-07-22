@@ -47,7 +47,7 @@ export async function POST(req: Request) {
 
   let res: any;
   try {
-    const req = await fetch(process.env.API_URL + "/post", {
+    const req = await fetch(process.env.API_URL + "/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export async function DELETE(req: Request) {
   }
 
   try {
-    await fetch(process.env.API_URL + "/post/" + id, {
+    await fetch(process.env.API_URL + "/posts/" + id, {
       method: "DELETE",
     });
   } catch (e: any) {
@@ -153,7 +153,7 @@ export async function PUT(req: Request) {
   }
 
   try {
-    await fetch(process.env.API_URL + "/post/" + id, {
+    await fetch(process.env.API_URL + "/posts/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -29,7 +29,7 @@ export default async function Post({ params }) {
 export const dynamicParams = true;
 
 async function getPost(params): Promise<{ post: ReturnData }> {
-  const post = await fetch(process.env.API_URL + "/post/" + params.id, {
+  const post = await fetch(process.env.API_URL + "/posts/" + params.id, {
     next: {
       revalidate: 60,
     },
