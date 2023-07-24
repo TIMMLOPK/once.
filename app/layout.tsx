@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     title: "once.",
     description: "ONCE: A profile website for Timmy",
   },
+  metadataBase: new URL("https://ionce.me/"),
 };
 
 export default function RootLayout({

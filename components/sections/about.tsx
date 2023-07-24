@@ -1,5 +1,3 @@
-"use client"
-
 import Github from "../github";
 import { FaDiscord } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
@@ -8,10 +6,11 @@ import Image from "next/image";
 
 import Display from "../../public/display.jpg";
 
-export const About = ({ user }: { user: any }) => {
+export const About = async () => {
+  const user = await getGithubStats();
   return (
     <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12">
-      <div className="lg:pl-36">
+      <div className="lg:pl-40">
         <div className="max-w-[300px]">
           <Image
             src={Display}
@@ -58,12 +57,13 @@ export const About = ({ user }: { user: any }) => {
               <FiInstagram className="h-6 w-6 text-gray-400 hover:text-[#c92bb7]" />
             </Link>
             <button
-              onClick={() => {
-                navigator.clipboard.writeText("timmy_y");
-              }}
-              className="flex items-center space-x-2"
+              className="group flex select-all items-center space-x-2"
+              aria-label="Discord"
             >
               <FaDiscord className="h-6 w-6 text-gray-400 hover:text-[#7289DA]" />
+              <p className="invisible select-all text-sm text-[#7289DA] group-hover:visible group-focus:visible">
+                timmy_y
+              </p>
             </button>
           </div>
         </div>
@@ -71,5 +71,18 @@ export const About = ({ user }: { user: any }) => {
     </div>
   );
 };
+
+async function getGithubStats(): Promise<{
+  followers: number;
+  public_repos: number;
+}> {
+  const res = await fetch("https://api.github.com/users/TIMMLOPK");
+  const data = await res.json();
+
+  return {
+    followers: data.followers,
+    public_repos: data.public_repos,
+  };
+}
 
 export default About;

@@ -76,7 +76,7 @@ const Icon = ({ src }) => {
         width={240}
         height={240}
         priority
-        className="transform rounded-full shadow transition duration-500 ease-in-out group-hover:scale-105"
+        className="rounded-full"
       />
     </m.div>
   );
@@ -111,7 +111,7 @@ const Home = () => {
           className={`${inter.className} flex overflow-hidden text-4xl md:m-4 md:p-10`}
         />
         <div className="absolute -inset-y-5 inset-x-1/3 -z-10 -space-y-24 space-x-24">
-          <div className="h-36 w-36  translate-x-1/2 rounded-3xl bg-blue-400 mix-blend-multiply blur-3xl dark:bg-blue-900 " />
+          <div className="h-36 w-36  translate-x-1/2 rounded-3xl bg-blue-400 mix-blend-multiply blur-3xl dark:bg-blue-900" />
           <div className="h-24 w-24 -translate-x-1/2 translate-y-6 rounded-3xl bg-indigo-400 mix-blend-multiply blur-3xl dark:bg-indigo-900" />
           <div className="h-28 w-28 translate-y-10 rounded-3xl bg-green-400 mix-blend-multiply blur-3xl dark:bg-green-900" />
         </div>

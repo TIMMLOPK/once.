@@ -21,11 +21,11 @@ export const Line = () => {
   return (
     <m.svg
       className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
-      viewBox="0 0 80 16"
+      viewBox="0 0 100 14"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      width="80"
-      height="16"
+      width="100"
+      height="14"
       ref={ref}
     >
       <m.path
@@ -33,9 +33,8 @@ export const Line = () => {
         initial="hidden"
         variants={variants}
         animate={inview ? "visible" : "hidden"}
-        stroke="hsl(0, 0%, 31.2%)"
+        className="fill-none stroke-zinc-400/40 stroke-1 dark:stroke-zinc-700"
         strokeLinecap="round"
-        fill="none"
       />
     </m.svg>
   );

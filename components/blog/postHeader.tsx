@@ -18,27 +18,27 @@ const PostHeader = ({
 }) => {
   return (
     <div>
-      <div className="md:mx-14">
-        <div className="mb-8 flex items-center text-sm font-bold text-gray-500 dark:text-gray-300">
+      <div className="space-y-8">
+        <div className="flex items-center text-sm font-bold text-gray-500 dark:text-gray-300">
           <p>Blog</p>
           <span className="mx-2 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-300"></span>
           <p>{date}</p>
         </div>
-        <h1 className="mb-4 text-left text-3xl font-bold leading-relaxed tracking-tighter md:text-4xl">
+        <h1 className="text-left text-3xl font-bold leading-relaxed md:text-5xl">
           {title}
         </h1>
-        <p className="mb-8 text-base font-medium md:text-xl">{description}</p>
+        <p className="text-base font-medium md:text-lg">{description}</p>
         <div className="flex items-center">
-          <Avatar name={author} picture={authorImage} className="h-8 w-8" />
+          <Avatar name={author} picture={authorImage} />
         </div>
       </div>
-      <div className="mb-12 mt-8">
+      <div className="my-10">
         <Image
           src={coverImage}
           alt={`Cover Image for ${title}`}
           width={1500}
           height={750}
-          className="rounded-lg border border-gray-200 shadow-small dark:border-gray-700"
+          className="rounded-lg border border-zinc-200 shadow-small dark:border-zinc-700 dark:shadow-none"
         />
       </div>
     </div>

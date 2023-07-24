@@ -4,12 +4,12 @@ import { cn } from "../../utils/cn";
 const Avatar = ({ name = "Timmy", picture = "/icon.webp", className = "" }) => {
   return (
     <div className="flex items-center">
-      <div className={cn("relative mr-2 h-6 w-6 md:h-8 md:w-8", className)}>
+      <div className={cn("relative mr-2 h-8 w-8", className)}>
         <Image
           src={picture}
           className="rounded-full shadow"
-          height={32}
-          width={32}
+          height={48}
+          width={48}
           alt={name}
         />
       </div>

@@ -11,7 +11,7 @@ const PostTitle = ({
   className: string;
 }) => {
   return (
-    <h1 className={cn("mt-4 font-bold leading-snug md:mt-0", className)}>
+    <h1 className={cn("mt-4 font-bold leading-relaxed md:mt-0", className)}>
       {id !== undefined ? (
         <Link href={`/blog/${id}`} className="hover:underline">
           {title}
