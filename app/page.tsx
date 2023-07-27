@@ -69,7 +69,7 @@ export default async function HomePage() {
 const SOCIALS = [
   {
     name: "Twitter",
-    link: "https://twitter.com/0xZ0F",
+    link: "https://twitter.com/once_wu",
     icon: <FaTwitter />,
   },
   {
@@ -79,7 +79,7 @@ const SOCIALS = [
   },
   {
     name: "Discord(timmy_y)",
-    link: "/",
+    link: "https://discord.com",
     icon: <FaDiscord />,
   },
 ];
