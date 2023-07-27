@@ -11,11 +11,11 @@ export const About = async () => {
   return (
     <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12">
       <div className="lg:pl-40">
-        <div className="max-w-[300px]">
+        <div className="max-w-[300px] md:max-w-[380px]">
           <Image
             src={Display}
             alt="Picture of a shop"
-            sizes="300px"
+            sizes="380px"
             placeholder="blur"
             className="aspect-square rotate-3 rounded-2xl object-cover transition duration-500 ease-in-out hover:rotate-0"
           />

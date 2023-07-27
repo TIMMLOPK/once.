@@ -1,48 +1,32 @@
 "use client";
 
 import { FiMoon, FiSun } from "react-icons/fi";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
-import { usePathname, useRouter } from "next/navigation";
 import ToolTip from "./shared/tooltip";
 import { cn } from "../utils/cn";
+import Link from "next/link";
 
-const NavItem = ({ children, id }) => {
-  const router = useRouter();
-  const pathName = usePathname();
-  const scrollTo = useCallback(
-    (id: string) => {
-      if (pathName !== "/") {
-        router.push(`/#${id.toLowerCase()}`);
-      }
-
-      const el = document.getElementById(id.toLowerCase());
-
-      if (!el) return;
-      el.scrollIntoView({ behavior: "smooth" });
-    },
-    [pathName, router],
-  );
-
+const NavItem = ({ children, herf, name }) => {
   return (
-    <ToolTip text={id} position="top" hideArrow offset={10}>
-      <button
-        onClick={() => scrollTo(id)}
-        className="flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-1 text-base transition hover:bg-gray-400/20 dark:hover:border-slate-500 dark:hover:bg-hover"
-      >
-        {children}
-      </button>
+    <ToolTip text={name} position="top" hideArrow offset={10}>
+      <Link href={herf} passHref>
+        <button className="flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-1 text-base transition hover:bg-gray-400/20 dark:hover:border-slate-500 dark:hover:bg-hover">
+          {children}
+        </button>
+      </Link>
     </ToolTip>
   );
 };
 
 const Label = [
-  { name: "Home", emoji: "🏡" },
-  { name: "Tech", emoji: "🔧" },
-  { name: "Projects", emoji: "🗂️" },
-  { name: "Blog", emoji: "📝" },
+  { name: "Home", emoji: "🏡", herf: "/" },
+  { name: "About", emoji: "👨‍💻", herf: "/me" },
+  { name: "Tech", emoji: "🔧", herf: "/uses" },
+  { name: "Projects", emoji: "🗂️", herf: "/projects" },
+  { name: "Blog", emoji: "📝", herf: "/blog" },
 ];
 
 const variants = {
@@ -83,16 +67,19 @@ const Navbar = () => {
       initial="closed"
       animate={!scrolled ? "open" : "closed"}
     >
-      <div className="flex flex-row items-center space-x-6">
-        {Label.map((label, index) => (
-          <NavItem
-            id={label.name}
-            key={index}
-            aria-label={`Go to ${label.name}`}
-          >
-            {label.emoji}
-          </NavItem>
-        ))}
+      <div className="flex flex-row items-center space-x-4">
+        <div className="flex flex-row items-center space-x-6">
+          {Label.map((label, index) => (
+            <NavItem
+              name={label.name}
+              key={index}
+              herf={label.herf}
+              aria-label={`Go to ${label.name}`}
+            >
+              {label.emoji}
+            </NavItem>
+          ))}
+        </div>
         <div className="border-l border-slate-200 dark:border-slate-600">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

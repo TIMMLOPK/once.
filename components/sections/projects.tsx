@@ -8,7 +8,7 @@ import { m } from "framer-motion";
 const ProjectCard = ({ data }) => {
   const { title, link, text, github } = data;
   return (
-    <div className="m-6 p-4">
+    <div className="p-4 md:m-6">
       <h1 className="text-xl font-semibold">{title}</h1>
       <p className="mt-4 max-w-[230px] font-mono text-sm opacity-80">{text}</p>
       <div className="mt-8 flex items-center space-x-2">
@@ -35,9 +35,14 @@ const ProjectCard = ({ data }) => {
 
 const Projects = () => {
   return (
-    <div className="pb-20">
-      <h1 className="text-2xl font-bold">🗂️ Projects</h1>
-      <br />
+    <div className="w-full">
+      <div>
+        <h1 className="text-3xl font-bold">🗂️ Projects</h1>
+        <br />
+        <p className="text-base text-gray-600 dark:text-gray-400">
+          Some of my projects.
+        </p>
+      </div>
       <div className="mt-8 grid gap-6 md:grid-cols-3 md:justify-center md:gap-10">
         {projects.map((project, index) => (
           <m.div
