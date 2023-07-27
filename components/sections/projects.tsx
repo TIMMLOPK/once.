@@ -1,9 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
-import { m } from "framer-motion";
 
 const ProjectCard = ({ data }) => {
   const { title, link, text, github } = data;
@@ -45,15 +42,7 @@ const Projects = () => {
       </div>
       <div className="mt-8 grid gap-6 md:grid-cols-3 md:justify-center md:gap-10">
         {projects.map((project, index) => (
-          <m.div
-            initial={{ y: 100, opacity: 0 }}
-            transition={{ delay: index * 0.3, duration: 0.5 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            key={index}
-          >
-            <ProjectCard data={project} />
-          </m.div>
+          <ProjectCard data={project} key={index} />
         ))}
       </div>
     </div>
