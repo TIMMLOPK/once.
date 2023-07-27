@@ -5,7 +5,7 @@ import { BsGithub } from "react-icons/bs";
 const ProjectCard = ({ data }) => {
   const { title, link, text, github } = data;
   return (
-    <div className="p-4 md:m-6">
+    <div className="p-2 md:m-6 md:p-4">
       <h1 className="text-xl font-semibold">{title}</h1>
       <p className="mt-4 max-w-[230px] font-mono text-sm opacity-80">{text}</p>
       <div className="mt-8 flex items-center space-x-2">

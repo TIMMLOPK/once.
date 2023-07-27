@@ -33,8 +33,8 @@ const variants = {
 
 const ChatBubble = () => {
   return (
-    <div className="flex max-w-[450px] flex-col items-center justify-center p-0">
-      <div className="relative min-w-[180px] rounded-3xl border border-zinc-500 bg-black py-2.5 pl-4 leading-6 text-white shadow-2xl dark:border-zinc-800">
+    <div className="flex flex-col items-center justify-center p-0">
+      <div className="relative rounded-3xl border border-zinc-500 bg-black px-4 py-2.5 leading-6 text-white shadow-2xl dark:border-zinc-700">
         <div className="box-border inline-flex overflow-hidden whitespace-nowrap text-white">
           Hello, I am Timmy
         </div>

@@ -15,14 +15,14 @@ export const About = async () => {
           <Image
             src={Display}
             alt="Picture of a shop"
-            sizes="380px"
+            sizes="300px"
             placeholder="blur"
             className="aspect-square rotate-3 rounded-2xl object-cover transition duration-500 ease-in-out hover:rotate-0"
           />
         </div>
       </div>
       <div className="lg:order-first lg:row-span-2">
-        <div className="text-base text-zinc-600 dark:text-zinc-300">
+        <div className="text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
           <h1 className="text-2xl font-bold">👋 Hi, I&apos;m Timmy</h1>
           <br />
           <p>
@@ -57,11 +57,11 @@ export const About = async () => {
               <FiInstagram className="h-6 w-6 text-gray-400 hover:text-[#c92bb7]" />
             </Link>
             <button
-              className="group flex select-all items-center space-x-2"
+              className="group flex select-all items-center text-gray-400"
               aria-label="Discord"
             >
-              <FaDiscord className="h-6 w-6 text-gray-400 hover:text-[#7289DA]" />
-              <p className="invisible select-all text-sm text-[#7289DA] group-hover:visible group-focus:visible">
+              <FaDiscord className="h-6 w-6 transition duration-500 ease-in-out group-hover:hidden group-hover:text-[#7289DA]" />
+              <p className="hidden font-bold transition duration-500 ease-in-out group-hover:block group-hover:animate-bounce group-hover:text-[#7289DA]">
                 timmy_y
               </p>
             </button>

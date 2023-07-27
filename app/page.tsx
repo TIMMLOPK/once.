@@ -50,7 +50,7 @@ export default async function HomePage() {
                       aria-label="Open in new tab"
                       key={index}
                     >
-                      <div className="flex items-center space-x-2 rounded-full text-zinc-500 transition hover:text-blue-500 active:text-blue-500">
+                      <div className="flex items-center space-x-2 rounded-full text-zinc-500 transition hover:text-blue-500 active:text-blue-500 dark:text-zinc-400">
                         {social.icon}
                         <p className="text-xs">{social.name}</p>
                       </div>
@@ -78,7 +78,7 @@ const SOCIALS = [
     icon: <FaGithub />,
   },
   {
-    name: "Discord(timmy_y)",
+    name: "Discord (timmy_y)",
     link: "https://discord.com",
     icon: <FaDiscord />,
   },
