@@ -22,11 +22,11 @@ const Blog = async () => {
 const HomeBlog = async () => {
   const posts = await getPosts();
   return (
-    <div className="w-full">
+    <div className="w--full md:max-w-lg">
       <div className="mx-auto">
         {posts.map((post: any, index: number) => (
           <Link href={`/blog/${post.id}`} key={index}>
-            <div className="group my-4 space-y-4 md:p-6">
+            <div className="group my-4 space-y-6 md:p-6">
               <div className="flex items-center">
                 {index === 0 ? (
                   <span className="h-2 w-2 rounded-full bg-blue-500" />
@@ -37,7 +37,7 @@ const HomeBlog = async () => {
                   {post.date}
                 </p>
               </div>
-              <div className="max-w-lg space-y-2 rounded-lg p-4 group-hover:bg-gray-100 dark:group-hover:bg-hover md:p-8">
+              <div className="space-y-4 rounded-lg p-4 group-hover:bg-gray-100 dark:group-hover:bg-hover md:p-8">
                 <h1 className="text-2xl font-bold">{post.title}</h1>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   {post.description}

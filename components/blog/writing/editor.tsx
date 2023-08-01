@@ -73,14 +73,14 @@ export default function Writing() {
     ogImageURL: "/card.png",
   });
   const { data: session, isLoading } = useLogin();
-  const [postID] = useState(null);
+  const [postID, setPostID] = useState(null);
   const [shouldUpdate, setShouldUpdate] = useState(false);
   const { trigger, isError, isMutating, data } = usePublishPost();
   const {
     isError: isDraftError,
     data: draftData,
     isMutating: updating,
-    // trigger: saveDraft,
+    trigger: saveDraft,
   } = useSavePost();
   const error =
     isError ||
@@ -119,21 +119,21 @@ export default function Writing() {
     () => {
       if (postID === null && shouldUpdate) {
         console.log("publish");
-        // trigger({
-        //     ...state,
-        //     ...triggerData,
-        //     published: false,
-        // }).then((res) => {
-        //     setPostID(res?.id || null);
-        // });
+        trigger({
+          ...state,
+          ...triggerData,
+          published: false,
+        }).then((res) => {
+          setPostID(res?.id || null);
+        });
       } else if (postID !== null && shouldUpdate) {
         console.log("save draft");
-        // saveDraft({
-        //     ...state,
-        //     ...triggerData,
-        //     id: postID,
-        //     published: false,
-        // });
+        saveDraft({
+          ...state,
+          ...triggerData,
+          id: postID,
+          published: false,
+        });
       }
       console.log("debounce");
       console.log(postID);
