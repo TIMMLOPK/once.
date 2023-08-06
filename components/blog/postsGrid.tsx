@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { ReturnData } from "../../utils/api";
-import { Posts } from "../blog/posts";
-import HighlightPost from "../blog/highlightPost";
+import PostCard from "./postCard";
 import Button from "../shared/button";
 
 export const PostsGrid = ({ posts }: { posts: ReturnData[] }) => {
@@ -12,8 +11,8 @@ export const PostsGrid = ({ posts }: { posts: ReturnData[] }) => {
   return (
     <>
       {publishedPosts.length !== 0 && (
-        <div className="mx-auto space-y-6 p-6 sm:space-y-12">
-          <HighlightPost
+        <div className="space-y-6 sm:space-y-12">
+          <PostCard
             id={publishedPosts[0].id}
             title={publishedPosts[0].title}
             coverImage={publishedPosts[0].coverimage}
@@ -21,8 +20,21 @@ export const PostsGrid = ({ posts }: { posts: ReturnData[] }) => {
             author={publishedPosts[0].author}
             authorImage={publishedPosts[0].authorimage}
           />
-          <hr className="my-28 min-w-full border-gray-300 dark:border-gray-700" />
-          <Posts posts={publishedPosts.slice(1, postsToShow)} />
+          <hr className="my-28 min-w-full border-zinc-300 dark:border-zinc-700" />
+          <div className="grid grid-cols-1 justify-center gap-6 md:grid-cols-2 md:space-x-6">
+            {publishedPosts.slice(1, postsToShow).map((post) => (
+              <PostCard
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                coverImage={post.coverimage}
+                date={post.date}
+                author={post.author}
+                authorImage={post.authorimage}
+                size="small"
+              />
+            ))}
+          </div>
           {publishedPosts.length > postsToShow && (
             <div className="flex justify-center">
               <Button

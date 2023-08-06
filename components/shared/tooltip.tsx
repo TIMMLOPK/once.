@@ -18,7 +18,7 @@ const Tooltip = ({
           <TooltipPrimitive.Content
             className={cn(
               "data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade",
-              "flex h-fit w-fit select-none items-center justify-center rounded-full bg-zinc-800 px-4 py-1 text-xs text-zinc-100 will-change-[transform,opacity]",
+              "z-[999] flex h-fit w-fit select-none items-center justify-center rounded-full bg-zinc-800 px-4 py-1 text-xs text-zinc-100 will-change-[transform,opacity]",
             )}
             sideOffset={offset}
             side={position}

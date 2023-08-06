@@ -1,5 +1,5 @@
-import PostBody from "../../../components/blog/postBody";
-import PostHeader from "../../../components/blog/postHeader";
+import PostBody from "../../../components/blog/post/postBody";
+import PostHeader from "../../../components/blog/post/postHeader";
 import Layout from "../../../components/layout/main";
 import { Metadata } from "next";
 import { ReturnData } from "../../../utils/api";

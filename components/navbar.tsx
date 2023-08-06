@@ -12,10 +12,11 @@ import Link from "next/link";
 const NavItem = ({ children, herf, name }) => {
   return (
     <ToolTip text={name} position="top" hideArrow offset={10}>
-      <Link href={herf} passHref>
-        <button className="flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-1 text-base transition hover:bg-gray-400/20 dark:hover:border-slate-500 dark:hover:bg-hover">
-          {children}
-        </button>
+      <Link
+        href={herf}
+        className="cursor-pointer rounded-full border-t border-transparent p-1 text-base transition hover:bg-gray-400/20 dark:hover:border-slate-500 dark:hover:bg-hover"
+      >
+        {children}
       </Link>
     </ToolTip>
   );
@@ -60,7 +61,7 @@ const Navbar = () => {
   return (
     <m.nav
       className={cn(
-        "rounded-full",
+        "z-20 rounded-full",
         "bg-white/0 p-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10",
       )}
       variants={variants}

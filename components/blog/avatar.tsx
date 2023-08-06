@@ -1,10 +1,15 @@
 import Image from "next/image";
 import { cn } from "../../utils/cn";
 
-const Avatar = ({ name = "Timmy", picture = "/icon.webp", className = "" }) => {
+const Avatar = ({
+  name = "Timmy",
+  picture = "/icon.webp",
+  className = "",
+  imageClassName = "",
+}) => {
   return (
-    <div className="flex items-center">
-      <div className={cn("relative mr-2 h-8 w-8", className)}>
+    <div className="flex items-center space-x-2">
+      <div className={cn("relative h-8 w-8", imageClassName)}>
         <Image
           src={picture}
           className="rounded-full shadow"
@@ -13,7 +18,12 @@ const Avatar = ({ name = "Timmy", picture = "/icon.webp", className = "" }) => {
           alt={name}
         />
       </div>
-      <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+      <div
+        className={cn(
+          "text-sm font-semibold text-gray-900 dark:text-gray-100",
+          className,
+        )}
+      >
         {name}
       </div>
     </div>
