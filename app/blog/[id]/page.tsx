@@ -9,19 +9,17 @@ export default async function Post({ params }) {
 
   return (
     <Layout className="px-0">
-      <div className="mx-auto max-w-4xl p-8">
-        <article className="mb-20">
-          <PostHeader
-            title={post.title}
-            coverImage={post.coverimage}
-            date={post.date}
-            description={post.description}
-            author={post.author}
-            authorImage={post.authorimage}
-          />
-          <PostBody content={post.content} />
-        </article>
-      </div>
+      <article className="mx-auto mb-20 max-w-4xl p-8">
+        <PostHeader
+          title={post.title}
+          coverImage={post.coverimage}
+          date={post.date}
+          description={post.description}
+          author={post.author}
+          authorImage={post.authorimage}
+        />
+        <PostBody content={post.content} />
+      </article>
     </Layout>
   );
 }

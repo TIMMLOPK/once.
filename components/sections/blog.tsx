@@ -4,25 +4,24 @@ import Link from "next/link";
 const Blog = async () => {
   const posts = await getPosts();
   return (
-    <>
-      <div>
+    <div className="space-y-10">
+      <div className="space-y-4">
         <h1 className="text-3xl font-bold">📝 Blog</h1>
-        <br />
         <p className="text-base text-gray-600 dark:text-gray-400">
           I write about my experiences and what I learn.
         </p>
       </div>
-      <div className="mt-10">
+      <div>
         <PostsGrid posts={posts} />
       </div>
-    </>
+    </div>
   );
 };
 
 const HomeBlog = async () => {
   const posts = await getPosts();
   return (
-    <div className="w--full md:max-w-lg">
+    <div className="md:max-w-lg">
       <div className="mx-auto">
         {posts.map((post: any, index: number) => (
           <Link href={`/blog/${post.id}`} key={index}>

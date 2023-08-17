@@ -65,7 +65,7 @@ const Navbar = () => {
         "bg-white/0 p-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10",
       )}
       variants={variants}
-      initial="closed"
+      initial="open"
       animate={!scrolled ? "open" : "closed"}
     >
       <div className="flex flex-row items-center space-x-4">

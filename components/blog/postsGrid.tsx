@@ -11,7 +11,7 @@ export const PostsGrid = ({ posts }: { posts: ReturnData[] }) => {
   return (
     <>
       {publishedPosts.length !== 0 && (
-        <div className="space-y-6 sm:space-y-12">
+        <div className="space-y-8 sm:space-y-16">
           <PostCard
             id={publishedPosts[0].id}
             title={publishedPosts[0].title}
@@ -20,7 +20,6 @@ export const PostsGrid = ({ posts }: { posts: ReturnData[] }) => {
             author={publishedPosts[0].author}
             authorImage={publishedPosts[0].authorimage}
           />
-          <hr className="my-28 min-w-full border-zinc-300 dark:border-zinc-700" />
           <div className="grid grid-cols-1 justify-center gap-6 md:grid-cols-2 md:space-x-6">
             {publishedPosts.slice(1, postsToShow).map((post) => (
               <PostCard

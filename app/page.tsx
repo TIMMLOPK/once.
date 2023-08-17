@@ -37,12 +37,12 @@ export default async function HomePage() {
               <HomeBlog />
             </div>
             <div className="lg:pl-16 xl:pl-24">
-              <div className="rounded-lg border border-zinc-100 p-6 dark:border-zinc-800 md:max-w-lg">
+              <div className="space-y-4 rounded-lg border border-zinc-100 p-6 dark:border-zinc-800 md:max-w-lg">
                 <h1 className="text-xl font-bold">Soical Media</h1>
-                <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
                   You can find me on these social media platforms.
                 </p>
-                <div className="mt-8 flex flex-col space-y-4">
+                <div className="flex flex-col space-y-4">
                   {SOCIALS.map((social, index) => (
                     <Link
                       href={social.link}

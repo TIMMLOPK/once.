@@ -4,7 +4,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
-const Table = dynamic(() => import("../../components/blog/writing/table"));
+const Table = dynamic(() => import("../../components/blog/writing/postsTable"));
 const Editor = dynamic(() => import("../../components/blog/writing/editor"));
 
 export default function Writing() {

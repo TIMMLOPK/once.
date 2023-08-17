@@ -24,11 +24,11 @@ const PostCard = ({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl shadow-2xl dark:border-b dark:border-zinc-800 dark:shadow-none",
+        "relative overflow-hidden rounded-xl shadow-2xl dark:border-b dark:border-zinc-700 dark:shadow-none",
         size === "small" ? "max-w-xl" : "max-w-3xl",
       )}
     >
-      <div className="absolute inset-x-0 bottom-0 z-10 h-[200px] bg-gradient-to-t from-black mix-blend-multiply dark:from-zinc-900"></div>
+      <div className="absolute inset-x-0 bottom-0 z-10 h-[200px] bg-gradient-to-t from-black dark:from-zinc-900"></div>
       <div className="absolute inset-x-0 bottom-0 z-10 space-y-2 p-6 text-left md:space-y-4">
         <PostTitle
           title={title}

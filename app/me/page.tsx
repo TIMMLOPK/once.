@@ -5,13 +5,11 @@ import { Suspense } from "react";
 export default async function HomePage() {
   return (
     <Layout className="px-5">
-      <div className="mt-12 md:m-12 md:p-8">
-        <section className="relative m-2 flex min-h-screen items-center justify-center md:px-6">
-          <Suspense fallback="Loading...">
-            <About />
-          </Suspense>
-        </section>
-      </div>
+      <section className="relative mt-12 flex min-h-screen items-center justify-center md:m-12 md:px-6">
+        <Suspense fallback="Loading...">
+          <About />
+        </Suspense>
+      </section>
     </Layout>
   );
 }

@@ -17,7 +17,7 @@ const PostHeader = ({
   authorImage: string;
 }) => {
   return (
-    <div>
+    <div className="space-y-8">
       <div className="space-y-8">
         <div className="flex items-center text-sm font-bold text-gray-500 dark:text-gray-300">
           <p>Blog</p>
@@ -28,19 +28,17 @@ const PostHeader = ({
           {title}
         </h1>
         <p className="text-base font-medium md:text-lg">{description}</p>
-        <div className="flex items-center">
+        <div>
           <Avatar name={author} picture={authorImage} />
         </div>
       </div>
-      <div className="my-10">
-        <Image
-          src={coverImage}
-          alt={`Cover Image for ${title}`}
-          width={1500}
-          height={750}
-          className="rounded-lg border border-zinc-200 shadow-small dark:border-zinc-700 dark:shadow-none"
-        />
-      </div>
+      <Image
+        src={coverImage}
+        alt={`Cover Image for ${title}`}
+        width={1500}
+        height={750}
+        className="rounded-lg border border-zinc-200 shadow-small dark:border-zinc-700 dark:shadow-none"
+      />
     </div>
   );
 };
