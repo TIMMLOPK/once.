@@ -10,6 +10,10 @@ async function publishPost(
   const data = await fetch(url, {
     method: "POST",
     body: JSON.stringify(arg),
+    headers: {
+      "password": process.env.API_PASSWORD || "",
+      "Content-Type": "application/json",
+    },
   });
 
   const body = data.json();

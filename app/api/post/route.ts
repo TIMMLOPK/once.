@@ -87,6 +87,9 @@ export async function DELETE(req: Request) {
   try {
     await fetch(process.env.API_URL + "/posts/" + id, {
       method: "DELETE",
+      headers: {
+        password: process.env.API_PASSWORD || "",
+      },
     });
   } catch (e: any) {
     return NextResponse.json(
