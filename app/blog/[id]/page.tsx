@@ -2,7 +2,7 @@ import PostBody from "../../../components/blog/post/postBody";
 import PostHeader from "../../../components/blog/post/postHeader";
 import Layout from "../../../components/layout/main";
 import { Metadata } from "next";
-import { ReturnData } from "../../../utils/api";
+import { PostData } from "../../../utils/api";
 
 export default async function Post({ params }) {
   const { post } = await getPost(params);
@@ -12,11 +12,11 @@ export default async function Post({ params }) {
       <article className="mx-auto mb-20 max-w-4xl p-8">
         <PostHeader
           title={post.title}
-          coverImage={post.coverimage}
+          coverImage={post.coverImage}
           date={post.date}
           description={post.description}
           author={post.author}
-          authorImage={post.authorimage}
+          authorImage={post.authorImage}
         />
         <PostBody content={post.content} />
       </article>
@@ -26,7 +26,7 @@ export default async function Post({ params }) {
 
 export const dynamicParams = true;
 
-async function getPost(params): Promise<{ post: ReturnData }> {
+async function getPost(params): Promise<{ post: PostData }> {
   const post = await fetch(process.env.API_URL + "/posts/" + params.id, {
     next: {
       revalidate: 60,
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   return {
     title: `${post.title} | ONCE`,
     openGraph: {
-      images: post.ogimageurl,
+      images: post.ogImageURL,
       description: post.description,
     },
   };
