@@ -74,8 +74,8 @@ devDependencies:
     specifier: 8.47.0
     version: 8.47.0
   eslint-config-next:
-    specifier: 13.4.17
-    version: 13.4.17(eslint@8.47.0)(typescript@5.1.6)
+    specifier: 13.4.19
+    version: 13.4.19(eslint@8.47.0)(typescript@5.1.6)
   postcss:
     specifier: ^8.4.28
     version: 8.4.28
@@ -371,6 +371,7 @@ packages:
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -532,8 +533,8 @@ packages:
     resolution: {integrity: sha512-rSGmt25Wxk0vGzZxDWBLE8jVW/C/JN20P3IhHc2tKVajEGy/oxStD9PbqcbCz6yOub82jYAWLqnoMITnssB+3g==}
     dev: false
 
-  /@next/eslint-plugin-next@13.4.17:
-    resolution: {integrity: sha512-9hiKD44zfoYgdKFBgy60qDd9STyu85xQ3yfHDgrYedTxgCLAKHqqbd6C9qFN1UIiVZo2XF3Dh5MVYGuBYgTS8w==}
+  /@next/eslint-plugin-next@13.4.19:
+    resolution: {integrity: sha512-N/O+zGb6wZQdwu6atMZHbR7T9Np5SUFUjZqCbj0sXm+MwQO35M8TazVB4otm87GkXYs2l6OPwARd3/PUWhZBVQ==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -2064,8 +2065,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  /eslint-config-next@13.4.17(eslint@8.47.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-zDEkOzG3v4TX8CoPny5WJa8bLzzXrSo4bhAzDNtH6W0okB6H/ed1lKFPLNpCLBmSY6GKYFxfwJAYzKI5Rx/Z1w==}
+  /eslint-config-next@13.4.19(eslint@8.47.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-WE8367sqMnjhWHvR5OivmfwENRQ1ixfNE9hZwQqNCsd+iM3KnuMc1V8Pt6ytgjxjf23D+xbesADv9x3xaKfT3g==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -2073,7 +2074,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.4.17
+      '@next/eslint-plugin-next': 13.4.19
       '@rushstack/eslint-patch': 1.3.2
       '@typescript-eslint/parser': 5.60.0(eslint@8.47.0)(typescript@5.1.6)
       eslint: 8.47.0
