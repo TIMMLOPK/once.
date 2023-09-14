@@ -52,12 +52,12 @@ const projects = [
   {
     title: "ONCE",
     text: "ONCE is a powerful multi-purpose Discord bot.",
-    link: "https://discord.lionceu.live/",
+    link: "https://discord.ionce.me/",
   },
   {
     title: "Meme Generator",
     text: "Generate an unique meme",
-    link: "https://meme.lionceu.live/",
+    link: "https://meme.ionce.me/",
     github: "https://github.com/TIMMLOPK/meme-generator",
   },
   {

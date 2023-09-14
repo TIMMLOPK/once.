@@ -11,7 +11,7 @@ async function publishPost(
     method: "POST",
     body: JSON.stringify(arg),
     headers: {
-      "password": process.env.API_PASSWORD || "",
+      password: process.env.API_PASSWORD || "",
       "Content-Type": "application/json",
     },
   });
