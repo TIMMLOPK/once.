@@ -12,8 +12,8 @@ dependencies:
     specifier: ^1.0.6
     version: 1.0.6(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)
   '@tiptap/extension-document':
-    specifier: ^2.1.1
-    version: 2.1.8(@tiptap/core@2.1.8)
+    specifier: ^2.1.10
+    version: 2.1.10(@tiptap/core@2.1.8)
   '@tiptap/extension-placeholder':
     specifier: ^2.1.1
     version: 2.1.8(@tiptap/core@2.1.8)(@tiptap/pm@2.1.8)
@@ -1214,8 +1214,8 @@ packages:
       '@tiptap/core': 2.1.8(@tiptap/pm@2.1.8)
     dev: false
 
-  /@tiptap/extension-document@2.1.8(@tiptap/core@2.1.8):
-    resolution: {integrity: sha512-mLPZqd5QUv3FKo+5zOaf7dGqZPci7Myr92U1Y6Vw0V+hCRC9Emm3I/xssQYGsWXmXQuyNJ5WRlpXgag3Ae+CkA==}
+  /@tiptap/extension-document@2.1.10(@tiptap/core@2.1.8):
+    resolution: {integrity: sha512-jNlNGQIGg471DvzhADaEoRINa3LNghowrBbKK9d5wGVnbKRykNEPwjCf8zNl+m5NBmCZl3lsdznlwBk5zyh5Bg==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:
@@ -1397,7 +1397,7 @@ packages:
       '@tiptap/extension-bullet-list': 2.1.8(@tiptap/core@2.1.8)
       '@tiptap/extension-code': 2.1.8(@tiptap/core@2.1.8)
       '@tiptap/extension-code-block': 2.1.8(@tiptap/core@2.1.8)(@tiptap/pm@2.1.8)
-      '@tiptap/extension-document': 2.1.8(@tiptap/core@2.1.8)
+      '@tiptap/extension-document': 2.1.10(@tiptap/core@2.1.8)
       '@tiptap/extension-dropcursor': 2.1.8(@tiptap/core@2.1.8)(@tiptap/pm@2.1.8)
       '@tiptap/extension-gapcursor': 2.1.8(@tiptap/core@2.1.8)(@tiptap/pm@2.1.8)
       '@tiptap/extension-hard-break': 2.1.8(@tiptap/core@2.1.8)
