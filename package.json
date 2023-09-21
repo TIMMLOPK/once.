@@ -16,7 +16,7 @@
     "@tiptap/extension-placeholder": "^2.1.1",
     "@tiptap/pm": "^2.1.1",
     "@tiptap/react": "^2.1.1",
-    "@tiptap/starter-kit": "^2.1.1",
+    "@tiptap/starter-kit": "^2.1.11",
     "@vercel/analytics": "^1.0.2",
     "framer-motion": "^10.16.4",
     "next": "13.4.19",
