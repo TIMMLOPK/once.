@@ -9,35 +9,12 @@ import { cn } from "../utils/cn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NavItem = ({
-  children,
-  herf,
-  isActived,
-}: {
-  children: React.ReactNode;
-  herf: string;
-  isActived: boolean;
-}) => {
-  return (
-    <Link
-      href={herf}
-      className={cn(
-        "cursor-pointer rounded-full text-sm opacity-60",
-        "transition hover:opacity-100",
-        isActived && "font-bold opacity-100",
-      )}
-    >
-      {children}
-    </Link>
-  );
-};
-
 const Label = [
   { name: "Home", herf: "/" },
   { name: "About", herf: "/me" },
   { name: "Projects", herf: "/projects" },
   { name: "Blog", herf: "/blog" },
-];
+] as const;
 
 const variants = {
   open: {
@@ -81,14 +58,16 @@ const Navbar = () => {
       <div className="ml-4 flex items-center space-x-4">
         <ul className="flex items-center space-x-6">
           {Label.map((label, index) => (
-            <NavItem
+            <li
               key={index}
-              herf={label.herf}
-              aria-label={`Go to ${label.name}`}
-              isActived={pathName === label.herf}
+              className={cn(
+                "cursor-pointer rounded-full text-sm opacity-60",
+                "transition hover:opacity-100",
+                pathName === label.herf && "font-bold opacity-100",
+              )}
             >
-              {label.name}
-            </NavItem>
+              <Link href={label.herf}>{label.name}</Link>
+            </li>
           ))}
         </ul>
         <div className="border-l border-slate-200 dark:border-slate-600">
@@ -96,8 +75,8 @@ const Navbar = () => {
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             aria-label="Toggle theme"
             className={cn(
-              "ml-2 flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-2 text-base text-slate-500",
-              "transition hover:bg-gray-400/20 hover:text-slate-900 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-hover",
+              "ml-2 flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-2 text-base text-slate-900",
+              "darK:hover:bg-hover transition hover:bg-gray-400/20 dark:text-slate-200",
             )}
           >
             {theme === "dark" ? <FiMoon /> : <FiSun />}

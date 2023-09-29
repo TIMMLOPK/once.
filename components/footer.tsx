@@ -1,7 +1,7 @@
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <div className="mt-4 flex items-center justify-center p-4 text-center text-sm text-zinc-400">
+    <div className="mt-4 flex items-center justify-center p-4 text-center text-sm text-zinc-400 dark:text-zinc-200">
       <span>© All rights reserved {year}</span>
     </div>
   );

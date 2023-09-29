@@ -35,7 +35,7 @@ const Projects = () => {
     <div className="space-y-10">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">🗂️ Projects</h1>
-        <p className="text-base text-gray-600 dark:text-gray-400">
+        <p className="text-base text-gray-600 dark:text-gray-200">
           I make projects in my free time.
         </p>
       </div>

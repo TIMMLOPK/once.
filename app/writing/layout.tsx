@@ -12,7 +12,7 @@ export default async function RootLayout({
   const session = await getServerSession();
 
   return session && isAuthor(session.user.email) ? (
-    <Layout className="px-0">{children}</Layout>
+    <Layout>{children}</Layout>
   ) : (
     login
   );

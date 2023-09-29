@@ -26,24 +26,22 @@ const Section = ({
 
 export default async function HomePage() {
   return (
-    <Layout className="px-5">
-      <Section className="flex items-center">
+    <Layout>
+      <Section className="flex items-center lg:px-5">
         <Home />
       </Section>
-      <Section isLast className="min-h-full">
+      <Section isLast className="min-h-full px-5">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col">
-            <Suspense fallback="Loading...">
-              <HomeBlog />
-            </Suspense>
-          </div>
+          <Suspense fallback="Loading...">
+            <HomeBlog />
+          </Suspense>
           <div className="lg:pl-16 xl:pl-24">
-            <div className="space-y-4 rounded-lg border border-zinc-100 p-6 dark:border-zinc-800 md:max-w-lg">
+            <div className="rounded-lg border border-zinc-100 p-4 dark:border-zinc-800 md:max-w-lg lg:p-6">
               <h1 className="text-xl font-bold">Soical Media</h1>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-200">
                 You can find me on these social media platforms.
               </p>
-              <div className="flex flex-col space-y-4">
+              <div className="mt-6 flex flex-col space-y-4">
                 {SOCIALS.map((social, index) => (
                   <Link
                     href={social.link}
@@ -51,7 +49,7 @@ export default async function HomePage() {
                     aria-label="Open in new tab"
                     key={index}
                   >
-                    <div className="flex items-center space-x-2 rounded-full text-zinc-500 transition hover:text-blue-500 active:text-blue-500 dark:text-zinc-400">
+                    <div className="flex items-center space-x-2 rounded-full text-zinc-500 transition hover:text-blue-500 active:text-blue-500 dark:text-zinc-200">
                       {social.icon}
                       <p className="text-xs">{social.name}</p>
                     </div>

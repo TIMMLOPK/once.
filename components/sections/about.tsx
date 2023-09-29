@@ -22,7 +22,7 @@ export const About = async () => {
         </div>
       </div>
       <div className="lg:order-first lg:row-span-2">
-        <div className="text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
+        <div className="text-base leading-relaxed text-zinc-600 dark:text-zinc-100">
           <h1 className="text-2xl font-bold">👋 Hi, I&apos;m Timmy</h1>
           <br />
           <p>

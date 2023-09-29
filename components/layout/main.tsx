@@ -20,7 +20,7 @@ const Layout = ({
 }) => {
   return (
     <>
-      <main className={cn("container mx-auto", className)}>
+      <main className={cn("container", className)}>
         <m.div
           initial="hidden"
           animate="enter"

@@ -148,7 +148,7 @@ export default function Writing() {
     editorProps: {
       attributes: {
         class:
-          "prose dark:prose-invert lg:prose-lg prose-a:text-blue-600 prose-img:rounded-xl prose-headings:font-display focus:outline-none",
+          "prose prose-neutral dark:prose-invert lg:prose-lg prose-a:text-blue-600 prose-img:rounded-xl prose-headings:font-display focus:outline-none",
       },
     },
     extensions: [
@@ -182,7 +182,7 @@ export default function Writing() {
 
   return (
     <>
-      <div className="mx-auto max-w-3xl">
+      <div>
         <h1 className="text-3xl font-bold">
           Welcome Back {getAuthorName(session.user.email)}
         </h1>
