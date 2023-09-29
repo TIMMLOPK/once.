@@ -36,7 +36,7 @@ const Projects = () => {
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">🗂️ Projects</h1>
         <p className="text-base text-gray-600 dark:text-gray-400">
-          Some of my projects.
+          I make projects in my free time.
         </p>
       </div>
       <div className="grid gap-10 md:grid-cols-3 md:justify-center">

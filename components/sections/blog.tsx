@@ -56,7 +56,13 @@ async function getPosts() {
   });
   const posts = await req.json();
 
-  return posts;
+  return posts.sort((a: any, b: any) => {
+    if (a.id > b.id) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
 }
 
 export { Blog, HomeBlog };

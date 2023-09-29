@@ -10,43 +10,12 @@ const inter = Caveat({
   variable: "--font-caveat",
 });
 
-const variants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-    transition: {
-      delay: 0.5,
-      type: "spring",
-      stiffness: 100,
-    },
-  },
-  enter: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.5,
-      type: "spring",
-      stiffness: 100,
-    },
-  },
-};
-
-const ChatBubble = () => {
-  return (
-    <div className="flex flex-col items-center justify-center p-0">
-      <div className="relative min-w-[170px] rounded-3xl border border-zinc-500 bg-black px-4 py-2.5 leading-6 text-white shadow-2xl dark:border-zinc-700">
-        Hello, I am Timmy
-      </div>
-    </div>
-  );
-};
-
 const Icon = ({ src }) => {
   return (
     <m.div
-      className="group relative flex h-[248px] w-[248px] items-center justify-center rounded-full"
+      className="group relative flex h-[300px] w-[300px] items-center justify-center rounded-full"
       animate={{
-        y: [0, -15, 0],
+        y: [-40, -30, 0],
         rotateY: [
           0,
           0,
@@ -56,11 +25,11 @@ const Icon = ({ src }) => {
         ],
       }}
       transition={{
-        duration: 2.5,
+        duration: 1.5,
         type: "spring",
         stiffness: 800,
         y: {
-          delay: 0.7,
+          delay: 0.5,
           duration: 0.7,
         },
         rotateY: {
@@ -86,22 +55,8 @@ const AnimatedTextChar = dynamic(() =>
 
 const Home = () => {
   return (
-    <div className="flex">
-      <m.div
-        className="relative flex flex-col items-center justify-center"
-        transition={{ when: "afterChildren", staggerChildren: 0.6 }}
-      >
-        <Icon src="/icon.webp" />
-        <m.div
-          initial="initial"
-          animate="enter"
-          variants={variants}
-          transition={{ duration: 0.5 }}
-          className="absolute left-40 top-40"
-        >
-          <ChatBubble />
-        </m.div>
-      </m.div>
+    <div>
+      <Icon src="/icon.webp" />
       <div className="relative hidden md:absolute md:inset-y-1/3 md:left-1/2 md:flex md:flex-col md:items-center md:justify-center">
         <AnimatedTextChar
           text="Everything is always once."

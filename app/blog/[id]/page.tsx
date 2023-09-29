@@ -2,14 +2,14 @@ import PostBody from "../../../components/blog/post/postBody";
 import PostHeader from "../../../components/blog/post/postHeader";
 import Layout from "../../../components/layout/main";
 import { Metadata } from "next";
-import { PostData } from "../../../utils/api";
+import { PostData } from "../../../types/postData";
 
 export default async function Post({ params }) {
   const { post } = await getPost(params);
 
   return (
     <Layout className="px-0">
-      <article className="mx-auto mb-20 max-w-4xl p-8">
+      <article className="mx-auto mb-20 max-w-4xl space-y-12 p-8">
         <PostHeader
           title={post.title}
           coverImage={post.coverImage}

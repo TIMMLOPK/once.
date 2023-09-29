@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import usePosts from "../../../utils/dataHook/usePosts";
+import usePosts from "../../../utils/fetchHook/usePosts";
 import { getAuthorIconByName } from "../../../utils/author";
 import Button from "../../shared/button";
-import useRemovePost from "../../../utils/dataHook/useRemovePost";
+import useRemovePost from "../../../utils/fetchHook/useRemovePost";
 
 const Column = ({ children }: { children: React.ReactNode }) => {
   return (

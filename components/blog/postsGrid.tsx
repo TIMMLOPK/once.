@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PostData } from "../../utils/api";
+import { PostData } from "../../types/postData";
 import PostCard from "./postCard";
 import Button from "../shared/button";
 

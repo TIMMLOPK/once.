@@ -5,29 +5,38 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
-import ToolTip from "./shared/tooltip";
 import { cn } from "../utils/cn";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const NavItem = ({ children, herf, name }) => {
+const NavItem = ({
+  children,
+  herf,
+  isActived,
+}: {
+  children: React.ReactNode;
+  herf: string;
+  isActived: boolean;
+}) => {
   return (
-    <ToolTip text={name} position="top" hideArrow offset={10}>
-      <Link
-        href={herf}
-        className="cursor-pointer rounded-full border-t border-transparent p-1 text-base transition hover:bg-gray-400/20 dark:hover:border-slate-500 dark:hover:bg-hover"
-      >
-        {children}
-      </Link>
-    </ToolTip>
+    <Link
+      href={herf}
+      className={cn(
+        "cursor-pointer rounded-full text-sm opacity-60",
+        "transition hover:opacity-100",
+        isActived && "font-bold opacity-100",
+      )}
+    >
+      {children}
+    </Link>
   );
 };
 
 const Label = [
-  { name: "Home", emoji: "🏡", herf: "/" },
-  { name: "About", emoji: "👨‍💻", herf: "/me" },
-  { name: "Tech", emoji: "🔧", herf: "/uses" },
-  { name: "Projects", emoji: "🗂️", herf: "/projects" },
-  { name: "Blog", emoji: "📝", herf: "/blog" },
+  { name: "Home", herf: "/" },
+  { name: "About", herf: "/me" },
+  { name: "Projects", herf: "/projects" },
+  { name: "Blog", herf: "/blog" },
 ];
 
 const variants = {
@@ -52,6 +61,7 @@ const variants = {
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const pathName = usePathname();
   const scrolled = useScroll();
 
   useEffect(() => setMounted(true), []);
@@ -62,25 +72,25 @@ const Navbar = () => {
     <m.nav
       className={cn(
         "z-20 rounded-full",
-        "bg-white/0 p-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10",
+        "bg-white/60 p-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10",
       )}
       variants={variants}
       initial="open"
       animate={!scrolled ? "open" : "closed"}
     >
-      <div className="flex flex-row items-center space-x-4">
-        <div className="flex flex-row items-center space-x-6">
+      <div className="ml-4 flex items-center space-x-4">
+        <ul className="flex items-center space-x-6">
           {Label.map((label, index) => (
             <NavItem
-              name={label.name}
               key={index}
               herf={label.herf}
               aria-label={`Go to ${label.name}`}
+              isActived={pathName === label.herf}
             >
-              {label.emoji}
+              {label.name}
             </NavItem>
           ))}
-        </div>
+        </ul>
         <div className="border-l border-slate-200 dark:border-slate-600">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
