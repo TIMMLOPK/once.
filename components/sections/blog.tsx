@@ -1,5 +1,4 @@
 import { PostsGrid } from "../blog/postsGrid";
-import Link from "next/link";
 
 const Blog = async () => {
   const posts = await getPosts();
@@ -14,36 +13,6 @@ const Blog = async () => {
       <div>
         <PostsGrid posts={posts} />
       </div>
-    </div>
-  );
-};
-
-const HomeBlog = async () => {
-  const posts = await getPosts();
-  return (
-    <div className="md:max-w-lg">
-      {posts.map((post: any, index: number) => (
-        <div className="group my-4 space-y-6 md:p-6 lg:my-0" key={index}>
-          <div className="flex items-center">
-            {index === 0 ? (
-              <span className="h-2 w-2 rounded-full bg-blue-500" />
-            ) : (
-              <span className="h-3 w-1 bg-gray-300 dark:bg-gray-600" />
-            )}
-            <p className="ml-1 text-sm font-bold text-gray-500 dark:text-gray-200">
-              {post.date}
-            </p>
-          </div>
-          <Link href={`/blog/${post.id}`} passHref>
-            <div className="mt-4 space-y-4 rounded-lg p-6 group-hover:bg-gray-100 dark:group-hover:bg-hover">
-              <h1 className="text-2xl font-bold">{post.title}</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-200 lg:text-base">
-                {post.description}
-              </p>
-            </div>
-          </Link>
-        </div>
-      ))}
     </div>
   );
 };
@@ -63,4 +32,4 @@ async function getPosts() {
   });
 }
 
-export { Blog, HomeBlog };
+export { Blog };

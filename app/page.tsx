@@ -2,10 +2,6 @@ import Layout from "../components/layout/main";
 import { Line } from "../components/icons/line";
 import Home from "../components/sections/home";
 import { cn } from "../utils/cn";
-import { Suspense } from "react";
-import { HomeBlog } from "../components/sections/blog";
-import Link from "next/link";
-import { FaDiscord, FaGithub, FaTwitter } from "react-icons/fa";
 
 const Section = ({
   children,
