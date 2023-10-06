@@ -49,7 +49,7 @@ const PostCard = ({
           </div>
           <Link
             href={`/blog/${id}`}
-            className="rounded-full border border-white/10 bg-white/10 px-2 py-1 text-xs text-white/80 hover:bg-white/20 md:px-4 md:text-sm"
+            className="rounded-full border border-white/10 bg-white/10 px-2 py-1 text-xs text-white/80 transition hover:bg-white/20 hover:text-white md:px-4 md:text-sm"
           >
             Read More
           </Link>

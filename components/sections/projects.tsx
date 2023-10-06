@@ -5,13 +5,18 @@ import { BsGithub } from "react-icons/bs";
 const ProjectCard = ({ data }) => {
   const { title, link, text, github } = data;
   return (
-    <div className="px-2 py-4">
-      <h1 className="text-xl font-semibold">{title}</h1>
-      <p className="mt-4 max-w-[230px] font-mono text-sm opacity-80">{text}</p>
-      <div className="mt-8 flex items-center space-x-2">
+    <div className="px-2 py-4 ">
+      <h1 className="text-2xl font-bold">{title}</h1>
+      <p className="mt-4 font-mono text-lg opacity-70">{text}</p>
+      <div className="mt-6 flex items-center space-x-2">
         {link && (
-          <Link href={link} passHref aria-label="Open in new tab">
-            <div className="flex items-center rounded-full text-gray-500 transition hover:text-blue-500 active:text-blue-500">
+          <Link
+            href={link}
+            passHref
+            aria-label="Open in new tab"
+            className="group"
+          >
+            <div className="flex items-center rounded-full text-gray-400 transition group-hover:text-blue-500 group-active:text-blue-500 dark:text-gray-100">
               <MdOpenInNew />
               <p className="ml-1 text-xs">Website</p>
             </div>
@@ -39,7 +44,7 @@ const Projects = () => {
           I make projects in my free time.
         </p>
       </div>
-      <div className="grid gap-10 md:grid-cols-3 md:justify-center">
+      <div className=" space-y-10 md:justify-center">
         {projects.map((project, index) => (
           <ProjectCard data={project} key={index} />
         ))}

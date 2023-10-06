@@ -1,10 +1,27 @@
 import Github from "../github";
-import { FaDiscord } from "react-icons/fa";
-import { FiInstagram } from "react-icons/fi";
+import { FaDiscord, FaInstagram, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 
 import Display from "../../public/display.jpg";
+
+const socials = [
+  {
+    name: "Discord (timmy_y)",
+    link: "https://discord.com",
+    icon: <FaDiscord className="h-5 w-5" />,
+  },
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/tw_wu_as_tim/",
+    icon: <FaInstagram className="h-5 w-5" />,
+  },
+  {
+    name: "Twitter",
+    link: "https://twitter.com/once_wu",
+    icon: <FaTwitter className="h-5 w-5" />,
+  },
+];
 
 export const About = async () => {
   const user = await getGithubStats();
@@ -47,24 +64,28 @@ export const About = async () => {
           <br />
           <p>Everything is always once.</p>
           <br />
-          <div className="mt-12 flex items-center space-x-4">
-            <Github user={user} />
-            <Link
-              href="https://www.instagram.com/tw_wu_as_tim/"
-              aria-label="Instagram"
-              passHref
-            >
-              <FiInstagram className="h-6 w-6 text-gray-400 hover:text-[#c92bb7]" />
-            </Link>
-            <button
-              className="group flex select-all items-center text-gray-400"
-              aria-label="Discord"
-            >
-              <FaDiscord className="h-6 w-6 transition duration-500 ease-in-out group-hover:hidden group-hover:text-[#7289DA]" />
-              <p className="hidden font-bold transition duration-500 ease-in-out group-hover:block group-hover:animate-bounce group-hover:text-[#7289DA]">
-                timmy_y
-              </p>
-            </button>
+          <div className="mt-8 flex flex-col space-y-6">
+            <div className="flex items-center">
+              <Github user={user} />
+            </div>
+            <div className="flex items-center space-x-6">
+              {socials.map((social, index) => (
+                <Link
+                  href={social.link}
+                  passHref
+                  aria-label="Open in new tab"
+                  key={index}
+                  className="group"
+                >
+                  <div className="flex items-center space-x-2 rounded-full text-zinc-500 transition group-hover:text-blue-500 group-hover:text-opacity-100 dark:text-zinc-100">
+                    {social.icon}
+                    <p className="text-xs group-hover:text-opacity-100">
+                      {social.name}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

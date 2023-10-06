@@ -24,10 +24,12 @@ const PostHeader = ({
         <p>{date}</p>
       </div>
       <div className="space-y-6">
-        <h1 className="text-left text-3xl font-bold leading-relaxed md:text-5xl">
+        <h1 className="text-left text-3xl font-bold leading-relaxed text-gray-900 dark:text-gray-100 md:text-5xl">
           {title}
         </h1>
-        <p className="leading-none md:text-lg">{description}</p>
+        <p className="text-lg text-gray-900 dark:text-gray-100">
+          {description}
+        </p>
         <div>
           <Avatar name={author} picture={authorImage} />
         </div>

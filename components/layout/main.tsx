@@ -20,13 +20,13 @@ const Layout = ({
 }) => {
   return (
     <>
-      <main className={cn("container", className)}>
+      <main className={cn("container mx-auto", className)}>
         <m.div
           initial="hidden"
           animate="enter"
           exit="exit"
           variants={variants}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
         >
           {children}
         </m.div>

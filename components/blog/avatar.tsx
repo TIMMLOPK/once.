@@ -8,7 +8,7 @@ const Avatar = ({
   imageClassName = "",
 }) => {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center gap-x-2.5">
       <div className={cn("relative h-8 w-8", imageClassName)}>
         <Image
           src={picture}
@@ -18,14 +18,14 @@ const Avatar = ({
           alt={name}
         />
       </div>
-      <div
+      <p
         className={cn(
-          "text-sm font-semibold text-gray-900 dark:text-gray-100",
+          "text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100",
           className,
         )}
       >
         {name}
-      </div>
+      </p>
     </div>
   );
 };
