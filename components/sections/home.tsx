@@ -13,7 +13,7 @@ const inter = Caveat({
 const Icon = ({ src }) => {
   return (
     <m.div
-      className="group relative flex h-[300px] w-[300px] items-center justify-center rounded-full"
+      className="relative flex h-[300px] w-[300px] items-center justify-center rounded-full"
       animate={{
         y: [-40, -30, 0],
         rotateY: [
@@ -25,21 +25,20 @@ const Icon = ({ src }) => {
         ],
       }}
       transition={{
-        duration: 1.5,
         type: "spring",
-        stiffness: 800,
+        stiffness: 600,
         y: {
           delay: 0.5,
-          duration: 0.7,
+          duration: 1.0,
         },
         rotateY: {
-          duration: 1.0,
+          duration: 1.2,
         },
       }}
     >
       <Image
         src={src}
-        alt="Picture of the author"
+        alt="icon"
         width={240}
         height={240}
         priority
@@ -62,10 +61,10 @@ const Home = () => {
           text="Everything is always once."
           className={`${inter.className} flex overflow-hidden text-4xl md:m-4 md:p-10`}
         />
-        <div className="absolute -inset-y-5 inset-x-1/3 -z-10 -space-y-24 space-x-24">
+        <div className="absolute inset-0 -z-10 flex items-center justify-center">
           <div className="h-36 w-36  translate-x-1/2 rounded-3xl bg-blue-400 mix-blend-multiply blur-3xl dark:bg-blue-900" />
-          <div className="h-24 w-24 -translate-x-1/2 translate-y-6 rounded-3xl bg-indigo-400 mix-blend-multiply blur-3xl dark:bg-indigo-900" />
-          <div className="h-28 w-28 translate-y-10 rounded-3xl bg-green-400 mix-blend-multiply blur-3xl dark:bg-green-900" />
+          <div className="h-24 w-24 -translate-y-10 translate-x-1/2 rounded-3xl bg-indigo-400 mix-blend-multiply blur-3xl dark:bg-indigo-900" />
+          <div className="h-28 w-28 translate-y-10 rounded-3xl bg-purple-400 mix-blend-multiply blur-3xl dark:bg-purple-900" />
         </div>
       </div>
     </div>

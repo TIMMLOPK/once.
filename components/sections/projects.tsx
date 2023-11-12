@@ -5,7 +5,7 @@ import { BsGithub } from "react-icons/bs";
 const ProjectCard = ({ data }) => {
   const { title, link, text, github } = data;
   return (
-    <div className="px-2 py-4 ">
+    <div className="animate-fade-right px-2 py-4 animate-delay-500">
       <h1 className="text-2xl font-bold">{title}</h1>
       <p className="mt-4 font-mono text-lg opacity-70">{text}</p>
       <div className="mt-6 flex items-center space-x-2">
@@ -40,9 +40,6 @@ const Projects = () => {
     <div className="space-y-10">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">🗂️ Projects</h1>
-        <p className="text-base text-gray-600 dark:text-gray-200">
-          I make projects in my free time.
-        </p>
       </div>
       <div className=" space-y-10 md:justify-center">
         {projects.map((project, index) => (

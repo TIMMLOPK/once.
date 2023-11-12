@@ -6,9 +6,6 @@ const Blog = async () => {
     <div className="space-y-10">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">📝 Blog</h1>
-        <p className="text-base text-gray-600 dark:text-gray-200">
-          I write about my experiences and what I learn.
-        </p>
       </div>
       <div>
         <PostsGrid posts={posts} />

@@ -4,11 +4,17 @@ import Layout from "../../../components/layout/main";
 import { Metadata } from "next";
 import { PostData } from "../../../types/postData";
 
+const variants = {
+  hidden: { opacity: 0, x: -20 },
+  enter: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: 20 },
+};
+
 export default async function Post({ params }) {
   const { post } = await getPost(params);
 
   return (
-    <Layout className="px-0">
+    <Layout className="px-0" motionVariants={variants}>
       <article className="mx-auto mb-20 max-w-4xl space-y-12 p-8">
         <PostHeader
           title={post.title}
