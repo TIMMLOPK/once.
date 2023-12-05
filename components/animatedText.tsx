@@ -1,6 +1,6 @@
 "use client";
 
-import { m } from "framer-motion";
+import { m, useWillChange } from "framer-motion";
 
 const AnimatedTextChar = ({
   text,
@@ -10,6 +10,7 @@ const AnimatedTextChar = ({
   className?: string;
 }) => {
   const letters = Array.from(text);
+  const willChange = useWillChange();
 
   const container = {
     hidden: { opacity: 0 },
@@ -48,6 +49,7 @@ const AnimatedTextChar = ({
       initial="hidden"
       animate="visible"
       className={className}
+      style={{ willChange }}
     >
       {letters.map((letter: string, index) => (
         <m.span variants={child} key={index} className="md:text-[3rem]">
@@ -66,6 +68,7 @@ const AnimatedTextWord = ({
   className?: string;
 }) => {
   const words = text.split(" ");
+  const willChange = useWillChange();
 
   const container = {
     hidden: { opacity: 0 },
@@ -101,7 +104,8 @@ const AnimatedTextWord = ({
       variants={container}
       initial="hidden"
       animate="visible"
-      className="overflow-hidde flex text-[2rem]"
+      className="flex overflow-hidden text-[2rem]"
+      style={{ willChange }}
     >
       {words.map((word, index) => (
         <m.span variants={child} className={className} key={index}>

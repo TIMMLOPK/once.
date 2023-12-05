@@ -1,13 +1,13 @@
 "use client";
 
-import { FiMoon, FiSun } from "react-icons/fi";
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { m } from "framer-motion";
 import useScroll from "../utils/useScroll";
 import { cn } from "../utils/cn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTransition } from "react";
+import { IconMoon, IconSun } from "./icons/theme";
 
 const Label = [
   { name: "Home", herf: "/" },
@@ -36,14 +36,10 @@ const variants = {
 };
 
 const Navbar = () => {
-  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [_, startTransition] = useTransition();
   const pathName = usePathname();
   const scrolled = useScroll();
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
 
   return (
     <m.nav
@@ -72,14 +68,25 @@ const Navbar = () => {
         </ul>
         <div className="border-l border-slate-200 dark:border-slate-600">
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() =>
+              startTransition(() =>
+                setTheme(theme === "dark" ? "light" : "dark"),
+              )
+            }
             aria-label="Toggle theme"
             className={cn(
               "ml-2 flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-2 text-base text-slate-900",
               "darK:hover:bg-hover transition hover:bg-gray-400/20 dark:text-slate-200",
             )}
           >
-            {theme === "dark" ? <FiMoon /> : <FiSun />}
+            {!theme ? (
+              <IconSun />
+            ) : theme === "dark" ? (
+              <IconMoon />
+            ) : (
+              <IconSun />
+            )}
+            <span className="sr-only">Toggle theme</span>
           </button>
         </div>
       </div>

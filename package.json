@@ -17,8 +17,8 @@
     "@tiptap/react": "^2.1.11",
     "@tiptap/starter-kit": "^2.1.11",
     "@vercel/analytics": "^1.1.1",
-    "framer-motion": "^10.16.12",
-    "next": "14.0.2",
+    "framer-motion": "^10.16.14",
+    "next": "14.0.3",
     "next-auth": "^4.24.5",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
@@ -34,11 +34,11 @@
     "@types/react": "18.2.41",
     "autoprefixer": "^10.4.16",
     "eslint": "8.53.0",
-    "eslint-config-next": "14.0.2",
+    "eslint-config-next": "14.0.3",
     "postcss": "^8.4.32",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
-    "tailwindcss": "^3.3.5",
+    "tailwindcss": "^3.3.6",
     "typescript": "^5.3.2"
   }
 }
