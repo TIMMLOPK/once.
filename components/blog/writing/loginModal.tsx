@@ -1,5 +1,4 @@
-import { signIn } from "next-auth/react";
-import Button from "../../shared/button";
+import LoginButton from "./loginButton";
 
 function LoginModal() {
   return (
@@ -29,12 +28,7 @@ function LoginModal() {
               <p className="text-sm text-gray-500">
                 Please sign in to continue.
               </p>
-              <Button
-                onClick={() => signIn("google")}
-                className="w-full justify-center"
-              >
-                Sign in
-              </Button>
+              <LoginButton />
             </div>
           </div>
         </div>

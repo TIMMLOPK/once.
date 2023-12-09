@@ -183,10 +183,10 @@ export default function Writing() {
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-2xl font-bold">
           Welcome Back {getAuthorName(session.user.email)}
         </h1>
-        <h3 className="mt-4 bg-gradient-to-tr from-orange-400 to-orange-200 bg-clip-text text-2xl font-bold text-transparent">
+        <h3 className="mt-4 bg-gradient-to-tr from-orange-400 to-orange-200 bg-clip-text text-xl font-bold text-transparent">
           Let&apos;s start writing
         </h3>
       </div>

@@ -69,7 +69,7 @@ export default function Table() {
                         <Button
                           onClick={() => trigger(post.id)}
                           loading={isMutating}
-                          className="bg-red-600 px-2 py-1.5 text-xs dark:hover:bg-red-700"
+                          className="bg-red-600 px-4 py-1.5 text-sm dark:hover:bg-red-700"
                         >
                           Delete
                         </Button>
