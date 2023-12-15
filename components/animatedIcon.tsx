@@ -1,9 +1,9 @@
 "use client";
 
 import { m, useWillChange } from "framer-motion";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 
-export const AnimatedIcon = ({ src }: { src: string }) => {
+export const AnimatedIcon = ({ src }: { src: ImageProps["src"] }) => {
   const willChange = useWillChange();
   return (
     <m.div

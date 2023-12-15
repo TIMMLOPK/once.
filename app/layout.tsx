@@ -1,8 +1,8 @@
 import "../styles/globals.css";
 import React from "react";
 import { Providers } from "./providers";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "once.",
@@ -25,12 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head />
       <body>
         <Providers>
           {children}
-          <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

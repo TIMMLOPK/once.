@@ -1,39 +1,4 @@
-import Link from "next/link";
-import { MdOpenInNew } from "react-icons/md";
-import { BsGithub } from "react-icons/bs";
-
-const ProjectCard = ({ data }) => {
-  const { title, link, text, github } = data;
-  return (
-    <div className="animate-fade-right px-2 py-4 animate-delay-500">
-      <h1 className="text-2xl font-bold">{title}</h1>
-      <p className="mt-4 font-mono text-lg opacity-70">{text}</p>
-      <div className="mt-6 flex items-center space-x-2">
-        {link && (
-          <Link
-            href={link}
-            passHref
-            aria-label="Open in new tab"
-            className="group"
-          >
-            <div className="flex items-center rounded-full text-gray-400 transition group-hover:text-blue-500 group-active:text-blue-500 dark:text-gray-100">
-              <MdOpenInNew />
-              <p className="ml-1 text-xs">Website</p>
-            </div>
-          </Link>
-        )}
-        {link && github && (
-          <span className="h-4 border-l border-gray-400 dark:border-gray-700" />
-        )}
-        {github && (
-          <Link href={github} passHref aria-label="Open in new tab">
-            <BsGithub className="text-gray-400 transition hover:text-gray-700 active:text-gray-700 dark:hover:text-gray-300 dark:active:text-gray-300" />
-          </Link>
-        )}
-      </div>
-    </div>
-  );
-};
+import { ProjectCard, ProjectsContainer } from "../projectCard";
 
 const Projects = () => {
   return (
@@ -41,11 +6,11 @@ const Projects = () => {
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">🗂️ Projects</h1>
       </div>
-      <div className=" space-y-10 md:justify-center">
+      <ProjectsContainer>
         {projects.map((project, index) => (
           <ProjectCard data={project} key={index} />
         ))}
-      </div>
+      </ProjectsContainer>
     </div>
   );
 };

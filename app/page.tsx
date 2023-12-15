@@ -8,7 +8,6 @@ const Section = ({
 }: {
   children: React.ReactNode;
   className?: string;
-  isLast?: boolean;
 }) => {
   return (
     <section className={cn("relative m-2 min-h-screen", className)}>
@@ -20,7 +19,7 @@ const Section = ({
 export default async function HomePage() {
   return (
     <Layout>
-      <Section className="flex items-center lg:px-5" isLast>
+      <Section className="flex items-center lg:px-5">
         <Home />
       </Section>
     </Layout>

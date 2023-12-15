@@ -6,7 +6,7 @@ async function removePost(url: string, { arg }: { arg: number }) {
   });
 }
 
-function useRemovePost() {
+export function useRemovePost() {
   const { data, error, trigger, isMutating } = useSWRMutation(
     "/api/post",
     removePost,
@@ -19,5 +19,3 @@ function useRemovePost() {
     trigger,
   };
 }
-
-export default useRemovePost;

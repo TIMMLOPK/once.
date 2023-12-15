@@ -1,13 +1,19 @@
 "use client";
 
 import { m, useWillChange } from "framer-motion";
+import { useState } from "react";
+import { cn } from "../utils/cn";
 
 const AnimatedTextChar = ({
   text,
   className,
+  completeCallback,
+  shouldAnimate = true,
 }: {
   text: string;
   className?: string;
+  completeCallback?: () => void;
+  shouldAnimate?: boolean;
 }) => {
   const letters = Array.from(text);
   const willChange = useWillChange();
@@ -47,7 +53,8 @@ const AnimatedTextChar = ({
     <m.div
       variants={container}
       initial="hidden"
-      animate="visible"
+      animate={shouldAnimate ? "visible" : "hidden"}
+      onAnimationComplete={completeCallback}
       className={className}
       style={{ willChange }}
     >
@@ -63,9 +70,13 @@ const AnimatedTextChar = ({
 const AnimatedTextWord = ({
   text,
   className,
+  completeCallback,
+  shouldAnimate = true,
 }: {
   text: string;
   className?: string;
+  completeCallback?: () => void;
+  shouldAnimate?: boolean;
 }) => {
   const words = text.split(" ");
   const willChange = useWillChange();
@@ -103,7 +114,8 @@ const AnimatedTextWord = ({
     <m.div
       variants={container}
       initial="hidden"
-      animate="visible"
+      animate={shouldAnimate ? "visible" : "hidden"}
+      onAnimationComplete={completeCallback}
       className="flex overflow-hidden text-[2rem]"
       style={{ willChange }}
     >
@@ -116,4 +128,28 @@ const AnimatedTextWord = ({
   );
 };
 
-export { AnimatedTextChar, AnimatedTextWord };
+const HomePageTitle = ({ className }: { className?: string }) => {
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  const completeCallback = () => {
+    setShouldAnimate(true);
+  };
+
+  return (
+    <>
+      <AnimatedTextChar
+        text="once"
+        completeCallback={completeCallback}
+        shouldAnimate={!shouldAnimate}
+        className={cn(className, shouldAnimate ? "hidden" : "")}
+      />
+      <AnimatedTextChar
+        text="Everything is always once"
+        shouldAnimate={shouldAnimate}
+        className={cn(className, shouldAnimate ? "" : "hidden")}
+      />
+    </>
+  );
+};
+
+export { AnimatedTextChar, AnimatedTextWord, HomePageTitle };

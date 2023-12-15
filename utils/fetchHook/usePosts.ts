@@ -2,7 +2,11 @@ import useSWR from "swr";
 import { fetcher } from "../fetcher";
 import { PostData } from "../../types/postData";
 
-function usePosts(): { posts: PostData[]; isLoading: boolean; isError: any } {
+export function usePosts(): {
+  posts: PostData[];
+  isLoading: boolean;
+  isError: any;
+} {
   const { data, error, isLoading } = useSWR("/api/posts", fetcher);
 
   return {
@@ -11,5 +15,3 @@ function usePosts(): { posts: PostData[]; isLoading: boolean; isError: any } {
     isError: error,
   };
 }
-
-export default usePosts;

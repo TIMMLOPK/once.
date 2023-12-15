@@ -57,7 +57,7 @@ const PostCard = ({
       </div>
       <div>
         <Image
-          src={coverImage}
+          src={coverImage ?? "/card.png"}
           alt={`Cover Image for ${title}`}
           className="object-cover"
           width={size === "small" ? 600 : 1500}

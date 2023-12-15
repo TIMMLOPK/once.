@@ -20,7 +20,8 @@ async function publishPost(
 
   return body;
 }
-function usePublishPost() {
+
+export function usePublishPost() {
   const { data, error, trigger, isMutating } = useSWRMutation(
     "/api/post",
     publishPost,
@@ -33,5 +34,3 @@ function usePublishPost() {
     trigger,
   };
 }
-
-export default usePublishPost;

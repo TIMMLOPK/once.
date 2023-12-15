@@ -1,6 +1,8 @@
 import { Caveat } from "next/font/google";
-import { AnimatedTextChar } from "../animatedText";
-import { AnimatedIcon } from "../animated-icon";
+import { HomePageTitle } from "../animatedText";
+import { AnimatedIcon } from "../animatedIcon";
+
+import Icon from "../../public/icon.webp";
 
 const inter = Caveat({
   subsets: ["latin"],
@@ -10,10 +12,9 @@ const inter = Caveat({
 const Home = () => {
   return (
     <div>
-      <AnimatedIcon src="/icon.webp" />
-      <div className="relative hidden md:absolute md:inset-y-1/3 md:left-1/2 md:flex md:flex-col md:items-center md:justify-center">
-        <AnimatedTextChar
-          text="Everything is always once."
+      <AnimatedIcon src={Icon} />
+      <div className="relative inset-0 hidden md:absolute md:left-1/2 md:flex md:flex-col md:items-center md:justify-center">
+        <HomePageTitle
           className={`${inter.className} flex overflow-hidden text-4xl md:m-4 md:p-10`}
         />
         <div className="absolute inset-0 -z-10 flex items-center justify-center">

@@ -8,6 +8,7 @@ import Button from "../shared/button";
 export const PostsGrid = ({ posts }: { posts: PostData[] }) => {
   const [postsToShow, setPostsToShow] = useState(3);
   const publishedPosts = posts?.filter((post) => post.published);
+
   return (
     <>
       {publishedPosts.length !== 0 && (

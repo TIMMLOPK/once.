@@ -4,9 +4,11 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import { StartKit } from "../../../utils/editor/extensions";
 import Placeholder from "@tiptap/extension-placeholder";
 import { useReducer, useCallback, useState } from "react";
-import usePublishPost from "../../../utils/fetchHook/usePublishPost";
-import useLogin from "../../../utils/fetchHook/useLogin";
-import useSavePost from "../../../utils/fetchHook/useSavePost";
+import {
+  usePublishPost,
+  useLogin,
+  useSavePost,
+} from "../../../utils/fetchHook";
 import useDebounce from "../../../utils/useDebounce";
 import { Loading } from "../../shared/loading";
 import { BubbleMenu } from "./bubbleMenu";
