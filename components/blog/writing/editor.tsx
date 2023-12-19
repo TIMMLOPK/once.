@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "../../../components/shared/button";
 import { getAuthorIcon, getAuthorName } from "../../../utils/author";
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -6,12 +8,12 @@ import Placeholder from "@tiptap/extension-placeholder";
 import { useReducer, useCallback, useState } from "react";
 import {
   usePublishPost,
-  useLogin,
   useSavePost,
 } from "../../../utils/fetchHook";
 import useDebounce from "../../../utils/useDebounce";
 import { Loading } from "../../shared/loading";
 import { BubbleMenu } from "./bubbleMenu";
+import { Session } from "next-auth";
 
 interface Post {
   title: string;
@@ -29,6 +31,10 @@ interface InfoAction {
     | "CLEAR"
     | "CONTENT_CHANGED";
   payload?: string;
+}
+
+interface EditorProps {
+  user: Session["user"];
 }
 
 function reducer(state: Post, action: InfoAction) {
@@ -66,7 +72,7 @@ function reducer(state: Post, action: InfoAction) {
   }
 }
 
-export default function Writing() {
+export default function Editor({ user }: EditorProps) {
   const [state, dispatch] = useReducer(reducer, {
     title: "",
     description: "",
@@ -74,7 +80,6 @@ export default function Writing() {
     coverImage: "/card.png",
     ogImageURL: "/card.png",
   });
-  const { data: session, isLoading } = useLogin();
   const [postID, setPostID] = useState(null);
   const [shouldUpdate, setShouldUpdate] = useState(false);
   const { trigger, isError, isMutating, data } = usePublishPost();
@@ -112,9 +117,9 @@ export default function Writing() {
   }, []);
 
   const triggerData = {
-    author: getAuthorName(session?.user.email),
-    authorImage: getAuthorIcon(session?.user.email),
-    date: new Date().toLocaleDateString(),
+    author: getAuthorName(user.email),
+    authorImage: getAuthorIcon(user.email),
+    date: new Date().toLocaleDateString("en-GB"),
   };
 
   useDebounce(
@@ -178,15 +183,11 @@ export default function Writing() {
     editable: isLoadingPost ? false : true,
   });
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <>
       <div>
         <h1 className="text-2xl font-bold">
-          Welcome Back {getAuthorName(session.user.email)}
+          Welcome Back {getAuthorName(user.email)}
         </h1>
         <h3 className="mt-4 bg-gradient-to-tr from-orange-400 to-orange-200 bg-clip-text text-xl font-bold text-transparent">
           Let&apos;s start writing
@@ -241,7 +242,7 @@ export default function Writing() {
               : state.description}
           </p>
           <p className="my-4 text-sm font-bold text-neutral-500 dark:text-neutral-300">
-            {new Date().toLocaleDateString()}
+            {triggerData.date}
           </p>
           {editor ? (
             <div

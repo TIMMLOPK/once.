@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PostData } from "../../../types/postData";
+import { PostData } from "../../../utils/types";
 
 export async function POST(req: Request) {
   const body: PostData = await req.json();

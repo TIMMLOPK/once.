@@ -1,9 +1,11 @@
-"use client";
-
-import Image from "next/image";
-import { getAuthorIconByName } from "../../../utils/author";
 import Button from "../../shared/button";
-import { usePosts, useRemovePost } from "../../../utils/fetchHook";
+import { PostData, ServerActionResult } from "../../../utils/types";
+
+interface TableProps {
+  posts: PostData[];
+  // eslint-disable-next-line no-unused-vars
+  deletePost: (id: number) => ServerActionResult<void>;
+}
 
 const Column = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -16,10 +18,7 @@ const Column = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default function Table() {
-  const { posts, isLoading } = usePosts();
-  const { trigger, isMutating } = useRemovePost();
-
+export default function Table({ posts, deletePost }: TableProps) {
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -44,30 +43,16 @@ export default function Table() {
                         </h1>
                       </td>
                       <td className="whitespace-nowrap px-6 py-4">
-                        <div className="flex items-center">
-                          <div className="h-8 w-8 flex-shrink-0">
-                            <Image
-                              src={getAuthorIconByName(post.author)}
-                              alt={post.author}
-                              width={40}
-                              height={40}
-                              className="rounded-full"
-                            />
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                              {post.author}
-                            </div>
-                          </div>
-                        </div>
+                        <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                          {post.author}
+                        </p>
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-sm text-zinc-500 dark:text-zinc-300">
                         {post.date}
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-sm font-medium">
                         <Button
-                          onClick={() => trigger(post.id)}
-                          loading={isMutating}
+                          onClick={() => deletePost(post.id)}
                           className="bg-red-600 px-4 py-1.5 text-sm dark:hover:bg-red-700"
                         >
                           Delete
@@ -79,13 +64,6 @@ export default function Table() {
                   <tr>
                     <td className="px-6 py-4 text-sm text-zinc-700 dark:text-zinc-300">
                       No posts found
-                    </td>
-                  </tr>
-                )}
-                {isLoading && (
-                  <tr className="animate-pulse">
-                    <td className="px-6 py-4 text-sm text-zinc-700 dark:text-zinc-300">
-                      Loading...
                     </td>
                   </tr>
                 )}

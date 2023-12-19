@@ -2,7 +2,7 @@ import PostBody from "../../../components/blog/post/postBody";
 import PostHeader from "../../../components/blog/post/postHeader";
 import Layout from "../../../components/layout/main";
 import { Metadata } from "next";
-import { PostData } from "../../../types/postData";
+import { PostData } from "../../../utils/types";
 
 export default async function Post({ params }) {
   const { post } = await getPost(params);

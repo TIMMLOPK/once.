@@ -1,5 +1,5 @@
 import useSWRMutation from "swr/mutation";
-import { PostData } from "../../types/postData";
+import { PostData } from "../types";
 
 export type PublishPostDataToSend = Omit<PostData, "id">;
 
