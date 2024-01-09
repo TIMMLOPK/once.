@@ -10,16 +10,16 @@ dependencies:
     version: 1.0.4(@types/react@18.2.41)(react-dom@18.2.0)(react@18.2.0)
   '@tiptap/extension-document':
     specifier: ^2.1.15
-    version: 2.1.15(@tiptap/core@2.1.13)
+    version: 2.1.15(@tiptap/core@2.1.15)
   '@tiptap/extension-placeholder':
     specifier: ^2.1.15
-    version: 2.1.15(@tiptap/core@2.1.13)(@tiptap/pm@2.1.15)
+    version: 2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.1.15)
   '@tiptap/pm':
     specifier: ^2.1.15
     version: 2.1.15
   '@tiptap/react':
     specifier: ^2.1.15
-    version: 2.1.15(@tiptap/core@2.1.13)(@tiptap/pm@2.1.15)(react-dom@18.2.0)(react@18.2.0)
+    version: 2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.1.15)(react-dom@18.2.0)(react@18.2.0)
   '@tiptap/starter-kit':
     specifier: ^2.1.15
     version: 2.1.15(@tiptap/pm@2.1.15)
@@ -672,14 +672,6 @@ packages:
       tailwindcss: 3.4.1
     dev: true
 
-  /@tiptap/core@2.1.13(@tiptap/pm@2.1.15):
-    resolution: {integrity: sha512-cMC8bgTN63dj1Mv82iDeeLl6sa9kY0Pug8LSalxVEptRmyFVsVxGgu2/6Y3T+9aCYScxfS06EkA8SdzFMAwYTQ==}
-    peerDependencies:
-      '@tiptap/pm': ^2.0.0
-    dependencies:
-      '@tiptap/pm': 2.1.15
-    dev: false
-
   /@tiptap/core@2.1.15(@tiptap/pm@2.1.15):
     resolution: {integrity: sha512-bsSUOQ9/OrQ3O4OFrMzjbCcShwHUS0w71DZoZTkOElnUFK2fu6IjDh8kbZyIxMW+sWuvLK/KePLdHOKOl1l/3Q==}
     peerDependencies:
@@ -704,13 +696,13 @@ packages:
       '@tiptap/core': 2.1.15(@tiptap/pm@2.1.15)
     dev: false
 
-  /@tiptap/extension-bubble-menu@2.1.15(@tiptap/core@2.1.13)(@tiptap/pm@2.1.15):
+  /@tiptap/extension-bubble-menu@2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.1.15):
     resolution: {integrity: sha512-nHTeIYKruau6KL7fh1pvWBrzVXH1YE7S96RPPQ6dNwZjb9F3tXNVrIpPhR3Pafhy4LGHYvWYiZekc3Ir0dM4aQ==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
     dependencies:
-      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.15)
+      '@tiptap/core': 2.1.15(@tiptap/pm@2.1.15)
       '@tiptap/pm': 2.1.15
       tippy.js: 6.3.7
     dev: false
@@ -741,14 +733,6 @@ packages:
       '@tiptap/core': 2.1.15(@tiptap/pm@2.1.15)
     dev: false
 
-  /@tiptap/extension-document@2.1.15(@tiptap/core@2.1.13):
-    resolution: {integrity: sha512-rqlpCaVxjUmCqZhc8KYm3/21z8jhg3gphG0AO2MX78zyT0Wgw/EEDii1kFzFbTVj8VUV3JfaU1HWNVjK8hbDNQ==}
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-    dependencies:
-      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.15)
-    dev: false
-
   /@tiptap/extension-document@2.1.15(@tiptap/core@2.1.15):
     resolution: {integrity: sha512-rqlpCaVxjUmCqZhc8KYm3/21z8jhg3gphG0AO2MX78zyT0Wgw/EEDii1kFzFbTVj8VUV3JfaU1HWNVjK8hbDNQ==}
     peerDependencies:
@@ -767,13 +751,13 @@ packages:
       '@tiptap/pm': 2.1.15
     dev: false
 
-  /@tiptap/extension-floating-menu@2.1.15(@tiptap/core@2.1.13)(@tiptap/pm@2.1.15):
+  /@tiptap/extension-floating-menu@2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.1.15):
     resolution: {integrity: sha512-2qrRE2HpF2vgYK72+CbT6xrhlShw4dS2xPV6kuXaYuBHR7tiyeGusCg7CXr7mZxIdTVj/+nNj3GCtST/+A7d5w==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
     dependencies:
-      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.15)
+      '@tiptap/core': 2.1.15(@tiptap/pm@2.1.15)
       '@tiptap/pm': 2.1.15
       tippy.js: 6.3.7
     dev: false
@@ -856,13 +840,13 @@ packages:
       '@tiptap/core': 2.1.15(@tiptap/pm@2.1.15)
     dev: false
 
-  /@tiptap/extension-placeholder@2.1.15(@tiptap/core@2.1.13)(@tiptap/pm@2.1.15):
+  /@tiptap/extension-placeholder@2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.1.15):
     resolution: {integrity: sha512-a6jtylXlUUl/GmPfbBf2pVHcm60RnZWVO5V2H/WTLzzzl+jUuPKeXyS3ISyaueCOSq9zEsvOQz+DQjiFsUEhdw==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
     dependencies:
-      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.15)
+      '@tiptap/core': 2.1.15(@tiptap/pm@2.1.15)
       '@tiptap/pm': 2.1.15
     dev: false
 
@@ -905,7 +889,7 @@ packages:
       prosemirror-view: 1.31.8
     dev: false
 
-  /@tiptap/react@2.1.15(@tiptap/core@2.1.13)(@tiptap/pm@2.1.15)(react-dom@18.2.0)(react@18.2.0):
+  /@tiptap/react@2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.1.15)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-rbI2mGMxRdqBtGHb7cfSFvHy6UsibcjKqsFSbELrucrQ8/H1inHh5v5TlVYar0o9irzSH9CFGZae/7LIh6qerA==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
@@ -913,9 +897,9 @@ packages:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
-      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.15)
-      '@tiptap/extension-bubble-menu': 2.1.15(@tiptap/core@2.1.13)(@tiptap/pm@2.1.15)
-      '@tiptap/extension-floating-menu': 2.1.15(@tiptap/core@2.1.13)(@tiptap/pm@2.1.15)
+      '@tiptap/core': 2.1.15(@tiptap/pm@2.1.15)
+      '@tiptap/extension-bubble-menu': 2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.1.15)
+      '@tiptap/extension-floating-menu': 2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.1.15)
       '@tiptap/pm': 2.1.15
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
