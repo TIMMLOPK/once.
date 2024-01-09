@@ -1,4 +1,4 @@
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 const PostBody = ({ content }: { content: string }) => {
   return (

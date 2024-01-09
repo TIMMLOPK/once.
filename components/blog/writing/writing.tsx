@@ -8,10 +8,10 @@ import { PostData, ServerActionResult } from "../../../utils/types";
 import { Session } from "next-auth";
 
 interface WritingProps {
-    user: Session["user"];
-    posts: PostData[];
-    // eslint-disable-next-line no-unused-vars
-    deletePost: (id: number) => ServerActionResult<void>;
+  user: Session["user"];
+  posts: PostData[];
+  // eslint-disable-next-line no-unused-vars
+  deletePost: (id: number) => ServerActionResult<void>;
 }
 
 export default function Writing({ user, posts, deletePost }: WritingProps) {
@@ -39,10 +39,12 @@ export default function Writing({ user, posts, deletePost }: WritingProps) {
           </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content value="writing">
-          {active === "writing" && <Editor user={user}/>}
+          {active === "writing" && <Editor user={user} />}
         </Tabs.Content>
         <Tabs.Content value="posts">
-          {active === "posts" && <Table posts={posts} deletePost={deletePost} />}
+          {active === "posts" && (
+            <Table posts={posts} deletePost={deletePost} />
+          )}
         </Tabs.Content>
       </Tabs.Root>
     </div>

@@ -11,10 +11,9 @@ export interface PostData {
   published: boolean;
 }
 
-
 export type ServerActionResult<Result> = Promise<
   | Result
   | {
-      error: string
+      error: string;
     }
->
+>;
