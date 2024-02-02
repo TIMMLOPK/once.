@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import Display from "../../public/display.jpg";
+import { AnimatedTextWord } from "../animatedText";
+import { caveat } from "../../app/fonts";
 
 const socials = [
   {
@@ -43,26 +45,30 @@ export const About = async () => {
           <h1 className="text-2xl font-bold">👋 Hi, I&apos;m Timmy</h1>
           <br />
           <p>
-            What does coding mean to you? A job, a passion, a skill, or a hobby?
-            For me, it is something different. Coding is one of my ways to
-            create. It allows me to make the impossible possible. In my view, a
-            programmer is a creator. I enjoy the challenges and rewards of
-            creating something new and useful. I also appreciate the learning
-            process and the satisfaction of overcoming difficulties.
+            I am a developer who loves coding and creating 🪄. I am
+            passionate about building things that make people’s lives better. I
+            am also a fan of open source and love to contribute to the
+            community.
           </p>
           <br />
           <p>
-            Coding and living are both journeys of discovery and expression. It
-            is also growth. I have witnessed rapid changes in technology: from
-            Windows XP to 11, from iOS 4 to 16, from the dawn of the mobile era
-            to now. I understand the importance of continuously improving and
-            updating myself and not falling behind. I want to seize the
-            opportunities in this era. That’s why I value “once”. We have
-            limited time. Time is the fairest thing in the world, no matter who
-            you are. Life is once. Therefore, use your time to do what you want.
+            I created some projects that I am proud of. If you are interested,
+            you can check them out on my <Link href="/projects" className="underline decoration-dashed">🗂️ projects</Link>.
+            Also, I am writing some articles about my experience and knowledge.
+            You can check <Link href="/blog" className="underline decoration-dashed">📝 blog</Link>.
+            If you have any questions or want to chat, feel free to reach out to
+            me by way of the socials below.
           </p>
           <br />
-          <p>Everything is always once.</p>
+          <p className="z-10">
+            The world is <span className="relative mr-1"><span className="absolute -top-2 rotate-12 -right-4 text-lg animate-pulse">⚡</span>fast</span> and ever-changing. I believe that the only way to
+            keep up with the world is to keep learning. I am always learning and
+            trying to improve myself. I am also a big fan of the idea of
+            learning in public. I love to share my knowledge and experience with
+            others. Seize the day, and make it count.
+          </p>
+          <br />
+          <AnimatedTextWord text="Everything is always once." className={`${caveat.className} flex overflow-hidden text-2xl -ml-2`} />
           <br />
           <div className="mt-8 flex flex-col space-y-6">
             <div className="flex items-center">

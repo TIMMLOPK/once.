@@ -1,7 +1,7 @@
 "use client";
 
 import { m, useWillChange } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "../utils/cn";
 
 const AnimatedTextChar = ({
@@ -92,7 +92,7 @@ const AnimatedTextWord = ({
   const child = {
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
         type: "spring",
         damping: 12,
@@ -101,7 +101,7 @@ const AnimatedTextWord = ({
     },
     hidden: {
       opacity: 0,
-      x: 20,
+      y: 10,
       transition: {
         type: "spring",
         damping: 12,
@@ -116,11 +116,11 @@ const AnimatedTextWord = ({
       initial="hidden"
       animate={shouldAnimate ? "visible" : "hidden"}
       onAnimationComplete={completeCallback}
-      className="flex overflow-hidden text-[2rem]"
+      className={className}
       style={{ willChange }}
     >
       {words.map((word, index) => (
-        <m.span variants={child} className={className} key={index}>
+        <m.span variants={child} className="mx-2" key={index}>
           {word}
         </m.span>
       ))}
@@ -129,10 +129,20 @@ const AnimatedTextWord = ({
 };
 
 const HomePageTitle = ({ className }: { className?: string }) => {
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [animaing, setAnimating] = useState<string>("");
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setAnimating("once");
+    }, 200);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
 
   const completeCallback = () => {
-    setShouldAnimate(true);
+    setAnimating("Everything is always once");
   };
 
   return (
@@ -140,13 +150,13 @@ const HomePageTitle = ({ className }: { className?: string }) => {
       <AnimatedTextChar
         text="once"
         completeCallback={completeCallback}
-        shouldAnimate={!shouldAnimate}
-        className={cn(className, shouldAnimate ? "hidden" : "")}
+        shouldAnimate={animaing === "once"}
+        className={cn(className, animaing !== "once" ? "hidden" : "")}
       />
       <AnimatedTextChar
         text="Everything is always once"
-        shouldAnimate={shouldAnimate}
-        className={cn(className, shouldAnimate ? "" : "hidden")}
+        shouldAnimate={animaing === "Everything is always once"}
+        className={cn(className, animaing === "Everything is always once" ? "" : "hidden")}
       />
     </>
   );

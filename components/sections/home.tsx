@@ -1,13 +1,8 @@
-import { Caveat } from "next/font/google";
 import { HomePageTitle } from "../animatedText";
 import { AnimatedIcon } from "../animatedIcon";
+import { caveat } from "../../app/fonts";
 
 import Icon from "../../public/icon.webp";
-
-const inter = Caveat({
-  subsets: ["latin"],
-  variable: "--font-caveat",
-});
 
 const Home = () => {
   return (
@@ -15,7 +10,7 @@ const Home = () => {
       <AnimatedIcon src={Icon} />
       <div className="relative inset-0 hidden md:absolute md:left-1/2 md:flex md:flex-col md:items-center md:justify-center">
         <HomePageTitle
-          className={`${inter.className} flex overflow-hidden text-4xl md:m-4 md:p-10`}
+          className={`${caveat.className} flex overflow-hidden text-4xl md:m-4 md:p-10`}
         />
         <div className="absolute inset-0 -z-10 flex items-center justify-center">
           <div className="h-36 w-36  translate-x-1/2 rounded-3xl bg-blue-400 mix-blend-multiply blur-3xl dark:bg-blue-900" />
