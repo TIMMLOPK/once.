@@ -45,30 +45,45 @@ export const About = async () => {
           <h1 className="text-2xl font-bold">👋 Hi, I&apos;m Timmy</h1>
           <br />
           <p>
-            I am a developer who loves coding and creating 🪄. I am
-            passionate about building things that make people’s lives better. I
-            am also a fan of open source and love to contribute to the
-            community.
+            I am a developer who loves coding and creating 🪄. I am passionate
+            about building things that make people’s lives better. I am also a
+            fan of open source and love to contribute to the community.
           </p>
           <br />
           <p>
             I created some projects that I am proud of. If you are interested,
-            you can check them out on my <Link href="/projects" className="underline decoration-dashed">🗂️ projects</Link>.
-            Also, I am writing some articles about my experience and knowledge.
-            You can check <Link href="/blog" className="underline decoration-dashed">📝 blog</Link>.
-            If you have any questions or want to chat, feel free to reach out to
-            me by way of the socials below.
+            you can check them out on my{" "}
+            <Link href="/projects" className="underline decoration-dashed">
+              🗂️ projects
+            </Link>
+            . Also, I am writing some articles about my experience and
+            knowledge. You can check{" "}
+            <Link href="/blog" className="underline decoration-dashed">
+              📝 blog
+            </Link>
+            . If you have any questions or want to chat, feel free to reach out
+            to me by way of the socials below.
           </p>
           <br />
           <p className="z-10">
-            The world is <span className="relative mr-1"><span className="absolute -top-2 rotate-12 -right-4 text-lg animate-pulse">⚡</span>fast</span> and ever-changing. I believe that the only way to
-            keep up with the world is to keep learning. I am always learning and
-            trying to improve myself. I am also a big fan of the idea of
-            learning in public. I love to share my knowledge and experience with
-            others. Seize the day, and make it count.
+            The world is{" "}
+            <span className="relative mr-1">
+              <span className="absolute -right-4 -top-2 rotate-12 animate-pulse text-lg">
+                ⚡
+              </span>
+              fast
+            </span>{" "}
+            and ever-changing. I believe that the only way to keep up with the
+            world is to keep learning. I am always learning and trying to
+            improve myself. I am also a big fan of the idea of learning in
+            public. I love to share my knowledge and experience with others.
+            Seize the day, and make it count.
           </p>
           <br />
-          <AnimatedTextWord text="Everything is always once." className={`${caveat.className} flex overflow-hidden text-2xl -ml-2`} />
+          <AnimatedTextWord
+            text="Everything is always once."
+            className={`${caveat.className} -ml-2 flex overflow-hidden text-2xl`}
+          />
           <br />
           <div className="mt-8 flex flex-col space-y-6">
             <div className="flex items-center">

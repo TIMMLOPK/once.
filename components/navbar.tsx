@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTransition } from "react";
 import { IconMoon, IconSun } from "./icons/theme";
+import { useAtEdge } from "../utils/useAtEdge";
 
 const Label = [
   { name: "Home", herf: "/" },
@@ -40,6 +41,7 @@ const Navbar = () => {
   const [_, startTransition] = useTransition();
   const pathName = usePathname();
   const scrolled = useScroll();
+  const { atBottom, atTop } = useAtEdge();
 
   return (
     <m.nav
@@ -49,7 +51,7 @@ const Navbar = () => {
       )}
       variants={variants}
       initial="open"
-      animate={!scrolled ? "open" : "closed"}
+      animate={atTop || atBottom ? "open" : scrolled ? "closed" : "open"}
     >
       <div className="ml-4 flex items-center space-x-4">
         <ul className="flex items-center space-x-6">

@@ -1,24 +1,9 @@
+import { cache } from "react";
 import { PostsGrid } from "../blog/postsGrid";
+import { getPosts } from "../../utils/actions";
 
-const Blog = async () => {
+async function getSortedPosts() {
   const posts = await getPosts();
-  return (
-    <div className="space-y-10">
-      <div className="space-y-4">
-        <h1 className="text-3xl font-bold">📝 Blog</h1>
-      </div>
-      <div>
-        <PostsGrid posts={posts} />
-      </div>
-    </div>
-  );
-};
-
-async function getPosts() {
-  const req = await fetch(process.env.API_URL + "/posts", {
-    next: { revalidate: 60 },
-  });
-  const posts = await req.json();
 
   return posts.sort((a: any, b: any) => {
     if (a.id > b.id) {
@@ -29,4 +14,21 @@ async function getPosts() {
   });
 }
 
-export { Blog };
+const loadPosts = cache(async () => {
+  return await getSortedPosts();
+});
+
+export default async function Post() {
+  const posts = await loadPosts();
+
+  return (
+    <div className="space-y-10">
+      <div className="space-y-4">
+        <h1 className="text-3xl font-bold">📝 Blog</h1>
+      </div>
+      <div>
+        <PostsGrid posts={posts} />
+      </div>
+    </div>
+  );
+}

@@ -156,7 +156,10 @@ const HomePageTitle = ({ className }: { className?: string }) => {
       <AnimatedTextChar
         text="Everything is always once"
         shouldAnimate={animaing === "Everything is always once"}
-        className={cn(className, animaing === "Everything is always once" ? "" : "hidden")}
+        className={cn(
+          className,
+          animaing === "Everything is always once" ? "" : "hidden",
+        )}
       />
     </>
   );

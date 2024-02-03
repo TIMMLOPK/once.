@@ -4,8 +4,28 @@ import Layout from "../../../components/layout/main";
 import { Metadata } from "next";
 import { PostData } from "../../../utils/types";
 
+async function getPost(id: string): Promise<{ post: PostData }> {
+  const post = await fetch(process.env.API_URL + "/posts/" + id).then((res) =>
+    res.json(),
+  );
+
+  return { post };
+}
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const { post } = await getPost(params.id);
+
+  return {
+    title: `${post.title} | ONCE`,
+    openGraph: {
+      images: post.ogImageURL,
+      description: post.description,
+    },
+  };
+}
+
 export default async function Post({ params }) {
-  const { post } = await getPost(params);
+  const { post } = await getPost(params.id);
 
   return (
     <Layout className="px-0">
@@ -25,29 +45,3 @@ export default async function Post({ params }) {
 }
 
 export const dynamicParams = true;
-
-async function getPost(params): Promise<{ post: PostData }> {
-  const post = await fetch(process.env.API_URL + "/posts/" + params.id, {
-    next: {
-      revalidate: 60,
-    },
-  }).then((res) => res.json());
-
-  return {
-    post: {
-      ...post,
-    },
-  };
-}
-
-export async function generateMetadata({ params }): Promise<Metadata> {
-  const { post } = await getPost(params);
-
-  return {
-    title: `${post.title} | ONCE`,
-    openGraph: {
-      images: post.ogImageURL,
-      description: post.description,
-    },
-  };
-}

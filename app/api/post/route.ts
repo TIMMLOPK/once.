@@ -73,34 +73,6 @@ export async function POST(req: Request) {
   return NextResponse.json({ success: true, postID: res.id });
 }
 
-export async function DELETE(req: Request) {
-  const url = new URL(req.url);
-  const id = url.searchParams.get("id");
-
-  if (!id) {
-    return NextResponse.json(
-      { error: "No id provided", success: false },
-      { status: 400 },
-    );
-  }
-
-  try {
-    await fetch(process.env.API_URL + "/posts/" + id, {
-      method: "DELETE",
-      headers: {
-        password: process.env.API_PASSWORD || "",
-      },
-    });
-  } catch (e: any) {
-    return NextResponse.json(
-      { error: e.message, success: false },
-      { status: 500 },
-    );
-  }
-
-  return NextResponse.json({ success: true });
-}
-
 export async function PUT(req: Request) {
   const url = new URL(req.url);
   const id = url.searchParams.get("id");

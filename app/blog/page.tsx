@@ -1,5 +1,5 @@
 import Layout from "../../components/layout/main";
-import { Blog } from "../../components/sections/blog";
+import Blog from "../../components/sections/blog";
 
 export default async function BlogPage() {
   return (
