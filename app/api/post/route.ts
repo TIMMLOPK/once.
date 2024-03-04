@@ -47,10 +47,11 @@ export async function POST(req: Request) {
 
   let res: any;
   try {
-    const req = await fetch(process.env.API_URL + "/posts", {
+    const req = await fetch(process.env.API_URL + "/posts/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        password: process.env.API_PASSWORD,
       },
       body: JSON.stringify(body),
     });

@@ -30,10 +30,14 @@ const itemsVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 20,
+    scale: 0.9,
+    filter: "blur(10px)",
   },
   visible: {
+    scale: 1,
     opacity: 1,
     y: 0,
+    filter: "blur(0px)",
     transition: {
       duration: 0.5,
     },
@@ -88,7 +92,7 @@ export const ProjectsContainer = ({
       variants={container}
       initial="hidden"
       animate="visible"
-      className="space-y-10"
+      className="gap-8 space-y-10 md:grid md:grid-cols-2 md:space-y-0"
     >
       {children}
     </motion.div>
