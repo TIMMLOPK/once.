@@ -7,7 +7,7 @@ import { StartKit } from "../../../utils/editor/extensions";
 import Placeholder from "@tiptap/extension-placeholder";
 import { useReducer, useCallback, useState } from "react";
 import { usePublishPost, useSavePost } from "../../../utils/fetchHook";
-import useDebounce from "../../../utils/useDebounce";
+import useDebounce from "../../../utils/hooks/useDebounce";
 import { Loading } from "../../shared/loading";
 import { BubbleMenu } from "./bubbleMenu";
 import { Session } from "next-auth";
