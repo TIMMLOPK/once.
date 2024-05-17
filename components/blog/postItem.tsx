@@ -5,7 +5,6 @@ import Avatar from "./avatar";
 import Button from "../shared/button";
 import { motion } from "framer-motion";
 import { MotionImage } from "../shared/motionImage";
-import Link from "next/link";
 
 const postItem = ({
   id,
