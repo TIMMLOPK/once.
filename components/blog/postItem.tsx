@@ -23,6 +23,7 @@ const postItem = ({
   author: string;
   authorImage: string;
   size?: "small" | "large";
+  // eslint-disable-next-line no-unused-vars
   setPostId: (id: number) => void;
 }) => {
   return (
