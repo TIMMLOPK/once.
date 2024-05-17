@@ -1,5 +1,5 @@
 import useSWRMutation from "swr/mutation";
-import { PostData } from "../types";
+import { PostData } from "../../types";
 
 export type SavePostDataToSend = PostData & { published: false };
 

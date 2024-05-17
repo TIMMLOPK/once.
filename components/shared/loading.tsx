@@ -4,7 +4,7 @@ export const Loading = ({ className }: { className?: string }) => {
   return (
     <svg
       className={cn(
-        "h-5 w-5 animate-spin text-gray-500 dark:text-gray-400",
+        "h-5 w-5 animate-spin text-gray-500 dark:text-gray-500",
         className,
       )}
       xmlns="http://www.w3.org/2000/svg"

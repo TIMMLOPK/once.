@@ -7,6 +7,6 @@ import { forwardRef } from "react";
 const Component = forwardRef<
   HTMLImageElement,
   React.ComponentProps<typeof Image>
->((props, ref) => <Image {...props} ref={ref} />);
+>((props, ref) => <Image {...props} ref={ref} alt={props.alt} />);
 
 export const MotionImage = motion(Component);

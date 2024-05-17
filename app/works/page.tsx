@@ -1,7 +1,7 @@
 import Layout from "../../components/layout/main";
 import { ProjectCard, ProjectsContainer } from "../../components/project";
 
-const projects = [
+const works = [
   {
     title: "ONCE",
     text: "ONCE is a powerful multi-purpose Discord bot.",
@@ -36,16 +36,16 @@ const projects = [
   },
 ];
 
-export default function HomePage() {
+export default function WorksPage() {
   return (
     <Layout className="px-5">
       <section className="relative mt-12 min-h-screen md:m-12">
         <div className="space-y-10">
           <div className="space-y-4">
-            <h1 className="text-3xl font-bold">🗂️ Projects</h1>
+            <h1 className="text-3xl font-bold">🪄 Works</h1>
           </div>
           <ProjectsContainer>
-            {projects.map((project, index) => (
+            {works.map((project, index) => (
               <ProjectCard data={project} key={index} />
             ))}
           </ProjectsContainer>

@@ -1,5 +1,5 @@
 import Button from "../../shared/button";
-import { PostData, ServerActionResult } from "../../../utils/types";
+import { PostData, ServerActionResult } from "../../../types";
 
 interface TableProps {
   posts: PostData[];

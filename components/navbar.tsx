@@ -13,7 +13,7 @@ import { useAtEdge } from "../utils/hooks/useAtEdge";
 const Label = [
   { name: "Home", herf: "/" },
   { name: "About", herf: "/me" },
-  { name: "Projects", herf: "/projects" },
+  { name: "Works", herf: "/works" },
   { name: "Blog", herf: "/blog" },
 ] as const;
 

@@ -2,11 +2,14 @@ import Layout from "../../components/layout/main";
 import { cache } from "react";
 import { getPosts } from "../../utils/actions";
 import { PostsGrid } from "../../components/blog/postsGrid";
+import { PostData } from "../../types";
 
-async function getSortedPosts() {
+async function getSortedPosts(): Promise<PostData[]> {
   const posts = await getPosts();
 
-  return posts.sort((a: any, b: any) => {
+  const publishedPosts = posts.filter((post) => post.published);
+
+  return publishedPosts.sort((a: any, b: any) => {
     if (a.id > b.id) {
       return -1;
     } else {

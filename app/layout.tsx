@@ -7,15 +7,15 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "once.",
-  description: "ONCE: A profile website for Timmy",
+  description: "Hi, I'm Timmy. Can't wait to meet you!",
   openGraph: {
     title: "once.",
-    description: "ONCE: A profile website for Timmy",
+    description: "Hi, I'm Timmy. Can't wait to meet you!",
   },
   twitter: {
     card: "summary_large_image",
     title: "once.",
-    description: "ONCE: A profile website for Timmy",
+    description: "Hi, I'm Timmy. Can't wait to meet you!",
   },
   metadataBase: new URL("https://ionce.me/"),
 };

@@ -18,7 +18,7 @@ export async function deletePost(postId: number) {
   return revalidatePath("/");
 }
 
-async function publishPost(post: PublishPostDataToSend) {
+export async function publishPost(post: PublishPostDataToSend) {
   try {
     const res = await fetch(process.env.API_URL + "/posts", {
       method: "POST",

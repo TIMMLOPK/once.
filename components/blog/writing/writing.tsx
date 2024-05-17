@@ -4,7 +4,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { useState } from "react";
 import Editor from "./editor";
 import Table from "./postsTable";
-import { PostData, ServerActionResult } from "../../../utils/types";
+import { PostData, ServerActionResult } from "../../../types";
 import { Session } from "next-auth";
 
 interface WritingProps {

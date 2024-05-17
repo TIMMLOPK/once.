@@ -17,7 +17,7 @@ const PostHeader = ({
   authorImage: string;
 }) => {
   return (
-    <div className="relative space-y-8">
+    <div className="relative mb-4 space-y-8">
       <div className="flex items-center text-sm font-bold text-gray-500 dark:text-gray-300">
         <p>Blog</p>
         <span className="mx-2 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-300"></span>

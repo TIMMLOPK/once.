@@ -1,40 +1,42 @@
 "use client";
 
 import { useState } from "react";
-import { PostData } from "../../utils/types";
+import { PostData } from "../../types";
 import PostItem from "./postItem";
 import Button from "../shared/button";
 import { AnimatePresence } from "framer-motion";
 import { PostCard } from "./postCard";
+import { Dialog } from "@radix-ui/react-dialog";
 
 export const PostsGrid = ({ posts }: { posts: PostData[] }) => {
   const [postsToShow, setPostsToShow] = useState(3);
   const [postId, setPostId] = useState<number | null>(null);
-  const publishedPosts = posts?.filter((post) => post.published);
 
   return (
     <div>
       <AnimatePresence>
-        {postId && (
-          <PostCard
-            post={publishedPosts.find((post) => post.id === postId)}
-            onDismiss={() => setPostId(null)}
-          />
-        )}
+        <Dialog open={postId !== null} onOpenChange={() => setPostId(null)}>
+          {postId && (
+            <PostCard
+              post={posts.find((post) => post.id === postId)}
+              onDismiss={() => setPostId(null)}
+            />
+          )}
+        </Dialog>
       </AnimatePresence>
-      {publishedPosts.length !== 0 && (
+      {posts.length !== 0 && (
         <div className="space-y-8 sm:space-y-16">
           <PostItem
-            id={publishedPosts[0].id}
-            title={publishedPosts[0].title}
-            coverImage={publishedPosts[0].coverImage}
-            date={publishedPosts[0].date}
-            author={publishedPosts[0].author}
-            authorImage={publishedPosts[0].authorImage}
+            id={posts[0].id}
+            title={posts[0].title}
+            coverImage={posts[0].coverImage}
+            date={posts[0].date}
+            author={posts[0].author}
+            authorImage={posts[0].authorImage}
             setPostId={setPostId}
           />
           <div className="grid grid-cols-1 justify-center gap-6 md:grid-cols-2 md:space-x-6">
-            {publishedPosts.slice(1, postsToShow).map((post) => (
+            {posts.slice(1, postsToShow).map((post) => (
               <PostItem
                 key={post.id}
                 id={post.id}
@@ -48,7 +50,7 @@ export const PostsGrid = ({ posts }: { posts: PostData[] }) => {
               />
             ))}
           </div>
-          {publishedPosts.length > postsToShow && (
+          {posts.length > postsToShow && (
             <div className="flex justify-center">
               <Button
                 onClick={() => setPostsToShow(postsToShow + 3)}

@@ -63,7 +63,7 @@ export const ProjectCard = ({ data }: ProjectCardProps) => {
             aria-label="Open in new tab"
             className="group"
           >
-            <div className="flex items-center rounded-full text-gray-400 transition group-hover:text-blue-500 group-active:text-blue-500 dark:text-gray-100">
+            <div className="flex items-center rounded-full text-gray-500 transition group-hover:text-blue-500 group-active:text-blue-500 dark:text-gray-100">
               <MdOpenInNew />
               <p className="ml-1 text-xs">Website</p>
             </div>
@@ -74,7 +74,7 @@ export const ProjectCard = ({ data }: ProjectCardProps) => {
         )}
         {github && (
           <Link href={github} passHref aria-label="Open in new tab">
-            <BsGithub className="text-gray-400 transition hover:text-gray-700 active:text-gray-700 dark:hover:text-gray-300 dark:active:text-gray-300" />
+            <BsGithub className="text-gray-500 transition hover:text-gray-700 active:text-gray-700 dark:hover:text-gray-300 dark:active:text-gray-300" />
           </Link>
         )}
       </div>

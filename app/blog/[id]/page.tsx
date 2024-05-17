@@ -2,7 +2,7 @@ import PostBody from "../../../components/blog/post/postBody";
 import PostHeader from "../../../components/blog/post/postHeader";
 import Layout from "../../../components/layout/main";
 import { Metadata } from "next";
-import { PostData } from "../../../utils/types";
+import { PostData } from "../../../types";
 
 async function getPost(id: string): Promise<{ post: PostData }> {
   const post = await fetch(process.env.API_URL + "/posts/" + id).then((res) =>
