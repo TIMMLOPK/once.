@@ -68,8 +68,8 @@ export default async function HomePage() {
               </p>
               <br />
               <p>
-                I created some works that I am proud of. If you are
-                interested, you can check them out on my{" "}
+                I created some works that I am proud of. If you are interested,
+                you can check them out on my{" "}
                 <Link href="/works" className="underline decoration-dashed">
                   🪄 works
                 </Link>

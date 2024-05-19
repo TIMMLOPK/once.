@@ -36,7 +36,7 @@ const postItem = ({
     >
       <div className="absolute inset-x-0 bottom-0 z-10 h-[200px] bg-gradient-to-t from-black dark:from-zinc-900"></div>
       <div className="absolute inset-x-0 bottom-0 z-10 space-y-2 p-6 text-left md:space-y-4">
-        <motion.h1 className="mt-4 text-2xl font-bold leading-relaxed text-white md:mt-0">
+        <motion.h1 className="mt-4 font-bold leading-relaxed text-white md:mt-0 md:text-2xl">
           {title}
         </motion.h1>
         <div className="flex items-center justify-between">
@@ -44,7 +44,7 @@ const postItem = ({
             <Avatar
               name={author}
               picture={authorImage}
-              className="text-xs text-gray-100 md:text-sm"
+              className="text-xs md:text-sm"
               imageClassName="h-6 w-6 md:w-8 md:h-8"
             />
             <p className="text-xs text-gray-100 md:text-sm">{date}</p>

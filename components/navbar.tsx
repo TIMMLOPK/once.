@@ -2,13 +2,13 @@
 
 import { useTheme } from "next-themes";
 import { m } from "framer-motion";
-import useScroll from "../utils/hooks/useScroll";
+import useScroll from "../utils/useScroll";
 import { cn } from "../utils/cn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTransition } from "react";
 import { IconMoon, IconSun } from "./icons/theme";
-import { useAtEdge } from "../utils/hooks/useAtEdge";
+import { useAtEdge } from "../utils/useAtEdge";
 
 const Label = [
   { name: "Home", herf: "/" },
