@@ -23,7 +23,12 @@ const Avatar = ({
           alt={name}
         />
       </div>
-      <p className={cn("font-semibold leading-6 text-gray-100", className)}>
+      <p
+        className={cn(
+          "font-semibold leading-6 text-gray-900 dark:text-gray-100",
+          className,
+        )}
+      >
         {name}
       </p>
     </div>

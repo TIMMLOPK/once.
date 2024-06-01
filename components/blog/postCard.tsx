@@ -29,7 +29,7 @@ export const PostCard = ({
         <Dialog.Content asChild>
           <motion.div
             layoutId={post.id.toString()}
-            className="h-full w-full max-w-4xl overflow-hidden bg-white pl-2 shadow-2xl dark:border-b dark:border-zinc-700 dark:bg-black dark:shadow-none md:rounded-xl md:pl-6"
+            className="h-full w-full max-w-4xl overflow-hidden bg-white pl-2 dark:border-b dark:border-zinc-700 dark:bg-black md:rounded-xl md:pl-6"
           >
             <motion.div className="flex justify-end px-4 py-4">
               <div className="flex items-center space-x-2">

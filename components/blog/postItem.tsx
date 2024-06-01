@@ -29,7 +29,7 @@ const postItem = ({
   return (
     <motion.div
       className={cn(
-        "relative overflow-hidden rounded-xl shadow-2xl dark:border-b dark:border-zinc-700 dark:shadow-none",
+        "relative overflow-hidden rounded-xl dark:border-b dark:border-zinc-700",
         size === "small" ? "max-w-xl" : "max-w-3xl",
       )}
       layoutId={id.toString()}
@@ -44,7 +44,7 @@ const postItem = ({
             <Avatar
               name={author}
               picture={authorImage}
-              className="text-xs md:text-sm"
+              className="text-xs text-white md:text-sm"
               imageClassName="h-6 w-6 md:w-8 md:h-8"
             />
             <p className="text-xs text-gray-100 md:text-sm">{date}</p>
