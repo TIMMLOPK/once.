@@ -1,8 +1,7 @@
-"use client";
-
 import Navbar from "../navbar";
 import Footer from "../footer";
-import { Variants, m } from "framer-motion";
+import { Variants } from "framer-motion";
+import * as motion from "framer-motion/client";
 import { cn } from "../../utils/cn";
 
 const variants: Variants = {
@@ -23,7 +22,7 @@ const Layout = ({
   return (
     <>
       <main className={cn("container mx-auto", className)}>
-        <m.div
+        <motion.div
           initial="hidden"
           animate="enter"
           exit="exit"
@@ -31,7 +30,7 @@ const Layout = ({
           transition={{ duration: 0.3 }}
         >
           {children}
-        </m.div>
+        </motion.div>
         <Footer />
       </main>
       <div className="fixed bottom-4 z-10 flex w-full justify-center">

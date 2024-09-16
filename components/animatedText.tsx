@@ -1,6 +1,6 @@
 "use client";
 
-import { m, useWillChange } from "framer-motion";
+import * as motion from "framer-motion/client";
 import { useEffect, useState } from "react";
 import { cn } from "../utils/cn";
 
@@ -16,7 +16,6 @@ const AnimatedTextChar = ({
   shouldAnimate?: boolean;
 }) => {
   const letters = Array.from(text);
-  const willChange = useWillChange();
 
   const container = {
     hidden: { opacity: 0 },
@@ -50,20 +49,19 @@ const AnimatedTextChar = ({
   };
 
   return (
-    <m.div
+    <motion.div
       variants={container}
       initial="hidden"
       animate={shouldAnimate ? "visible" : "hidden"}
       onAnimationComplete={completeCallback}
       className={className}
-      style={{ willChange }}
     >
       {letters.map((letter: string, index) => (
-        <m.span variants={child} key={index} className="md:text-[3rem]">
+        <motion.span variants={child} key={index} className="md:text-[3rem]">
           {letter === " " ? "\u00A0" : letter}
-        </m.span>
+        </motion.span>
       ))}
-    </m.div>
+    </motion.div>
   );
 };
 
@@ -79,7 +77,6 @@ const AnimatedTextWord = ({
   shouldAnimate?: boolean;
 }) => {
   const words = text.split(" ");
-  const willChange = useWillChange();
 
   const container = {
     hidden: { opacity: 0 },
@@ -111,20 +108,19 @@ const AnimatedTextWord = ({
   };
 
   return (
-    <m.div
+    <motion.div
       variants={container}
       initial="hidden"
       animate={shouldAnimate ? "visible" : "hidden"}
       onAnimationComplete={completeCallback}
       className={className}
-      style={{ willChange }}
     >
       {words.map((word, index) => (
-        <m.span variants={child} className="mx-2" key={index}>
+        <motion.span variants={child} className="mx-2" key={index}>
           {word}
-        </m.span>
+        </motion.span>
       ))}
-    </m.div>
+    </motion.div>
   );
 };
 

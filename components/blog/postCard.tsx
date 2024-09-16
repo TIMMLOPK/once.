@@ -1,5 +1,5 @@
 import { PostData } from "../../types";
-import { motion } from "framer-motion";
+import * as motion from "framer-motion/client";
 import PostHeader from "./post/postHeader";
 import PostBody from "./post/postBody";
 import { MdClose } from "react-icons/md";

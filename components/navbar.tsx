@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { m } from "framer-motion";
+import * as motion from "framer-motion/client";
 import useScroll from "../utils/useScroll";
 import { cn } from "../utils/cn";
 import Link from "next/link";
@@ -44,7 +44,7 @@ const Navbar = () => {
   const { atBottom, atTop } = useAtEdge();
 
   return (
-    <m.nav
+    <motion.nav
       className={cn(
         "z-20 rounded-full",
         "bg-white/60 p-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10",
@@ -92,7 +92,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-    </m.nav>
+    </motion.nav>
   );
 };
 

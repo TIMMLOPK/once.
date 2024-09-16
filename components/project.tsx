@@ -1,9 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
-import { Variants, motion } from "framer-motion";
+import { Variants } from "framer-motion";
+import * as motion from "framer-motion/client";
 
 interface ProjectCardProps {
   data: {

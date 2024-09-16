@@ -1,7 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
+import * as motion from "framer-motion/client";
 import { forwardRef } from "react";
 
 const Component = forwardRef<
@@ -9,4 +7,4 @@ const Component = forwardRef<
   React.ComponentProps<typeof Image>
 >((props, ref) => <Image {...props} ref={ref} alt={props.alt} />);
 
-export const MotionImage = motion(Component);
+export const MotionImage = motion.create(Component);

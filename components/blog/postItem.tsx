@@ -1,9 +1,7 @@
-"use client";
-
 import { cn } from "../../utils/cn";
 import Avatar from "./avatar";
 import Button from "../shared/button";
-import { motion } from "framer-motion";
+import * as motion from "framer-motion/client";
 import { MotionImage } from "../shared/motionImage";
 
 const postItem = ({
