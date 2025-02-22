@@ -57,9 +57,9 @@ export function ImageCard({ src, alt, text, className }: ImageCardProps) {
 
 const ImageCards = [
   { src: "/images/001.jpg", alt: "Picture of a shop", text: "A shop^_^" },
-  { src: "/images/002.jpg", alt: "Blue sky", text: "Blue sky ☁️" },
+  { src: "/images/002.JPG", alt: "Blue sky", text: "Blue sky ☁️" },
   {
-    src: "/images/003.jpg",
+    src: "/images/003.JPG",
     alt: "A very special wall",
     text: "Really interesting wall",
   },
