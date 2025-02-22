@@ -1,6 +1,11 @@
-# IONCE - Personal Website
+This is my personal website, built with Next.js and Tailwind CSS.
 
-[https://www.ionce.me/](https://www.ionce.me/)
+Some libraries used:
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Motion](https://motion.dev/)
+- [motion-primitives](https://motion-primitives.com/)
 
 ## License
 

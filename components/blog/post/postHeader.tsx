@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Avatar from "../avatar";
+import { motion } from "motion/react";
 
 const PostHeader = ({
+  id,
   title,
   coverImage,
   date,
@@ -9,6 +11,7 @@ const PostHeader = ({
   author,
   authorImage,
 }: {
+  id: number;
   title: string;
   coverImage: string;
   date: string;
@@ -18,16 +21,19 @@ const PostHeader = ({
 }) => {
   return (
     <div className="relative mb-4 space-y-8">
-      <div className="flex items-center text-sm font-bold text-gray-500 dark:text-gray-300">
+      <div className="flex items-center text-sm font-bold text-zinc-500 dark:text-zinc-300">
         <p>Blog</p>
-        <span className="mx-2 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-300"></span>
+        <span className="mx-2 h-1 w-1 rounded-full bg-zinc-500 dark:bg-zinc-300"></span>
         <p>{date}</p>
       </div>
       <div className="space-y-6">
-        <h1 className="text-left text-3xl font-bold leading-relaxed text-gray-900 dark:text-gray-100 md:text-5xl">
+        <motion.h1
+          className="text-left text-3xl font-bold leading-relaxed text-zinc-900 dark:text-zinc-100 md:text-5xl"
+          layoutId={`dialog-title-container-${id}`}
+        >
           {title}
-        </h1>
-        <p className="text-lg text-gray-900 dark:text-gray-100">
+        </motion.h1>
+        <p className="text-lg text-zinc-900 dark:text-zinc-100">
           {description}
         </p>
         <div>

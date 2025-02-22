@@ -1,164 +1,178 @@
 "use client";
 
-import * as motion from "framer-motion/client";
 import { useEffect, useState } from "react";
-import { cn } from "../utils/cn";
+import { motion, AnimatePresence, Variants } from "motion/react";
 
-const AnimatedTextChar = ({
-  text,
-  className,
-  completeCallback,
-  shouldAnimate = true,
+const FlipCharacter = ({
+  finalChar,
+  charIndex,
+  total,
+  debug = false,
 }: {
-  text: string;
-  className?: string;
-  completeCallback?: () => void;
-  shouldAnimate?: boolean;
+  finalChar: string;
+  charIndex: number;
+  total: number;
+  debug?: boolean;
 }) => {
-  const letters = Array.from(text);
+  const [char, setChar] = useState<string | null>(null);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.03, delayChildren: 0.04 },
-    },
-  };
-
-  const child = {
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      x: -20,
-      y: 10,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-  };
-
-  return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate={shouldAnimate ? "visible" : "hidden"}
-      onAnimationComplete={completeCallback}
-      className={className}
-    >
-      {letters.map((letter: string, index) => (
-        <motion.span variants={child} key={index} className="md:text-[3rem]">
-          {letter === " " ? "\u00A0" : letter}
-        </motion.span>
-      ))}
-    </motion.div>
-  );
-};
-
-const AnimatedTextWord = ({
-  text,
-  className,
-  completeCallback,
-  shouldAnimate = true,
-}: {
-  text: string;
-  className?: string;
-  completeCallback?: () => void;
-  shouldAnimate?: boolean;
-}) => {
-  const words = text.split(" ");
-
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.04 },
-    },
-  };
-
-  const child = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 10,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-  };
-
-  return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate={shouldAnimate ? "visible" : "hidden"}
-      onAnimationComplete={completeCallback}
-      className={className}
-    >
-      {words.map((word, index) => (
-        <motion.span variants={child} className="mx-2" key={index}>
-          {word}
-        </motion.span>
-      ))}
-    </motion.div>
-  );
-};
-
-const HomePageTitle = ({ className }: { className?: string }) => {
-  const [animaing, setAnimating] = useState<string>("");
+  // Generate a random character
+  function getRandomChar() {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.";
+    return characters[Math.floor(Math.random() * characters.length)];
+  }
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setAnimating("once");
-    }, 200);
-
-    return () => {
-      clearTimeout(timeout);
-    };
+    if (!char) {
+      setChar(getRandomChar());
+    }
   }, []);
-
-  const completeCallback = () => {
-    setAnimating("Everything is always once");
+  // Container variants for debug mode
+  const containerVariants = {
+    debug: {
+      rotateX: -23,
+      rotateY: 45,
+    },
+    initial: {
+      rotateX: 0,
+      rotateY: 0,
+    },
   };
 
+  // Character variants for flipping animation
+  const charVariants: Variants = {
+    hide: {
+      rotateX: 90, // Rotate to 90 degrees (hide the current character)
+      transition: {
+        duration: 0.25,
+        ease: "easeIn",
+      },
+    },
+    show: {
+      rotateX: 0, // Rotate to 0 degrees (show the new character)
+      transition: {
+        duration: 0.25,
+        ease: "easeOut",
+        delay: Math.sin(charIndex / total) * 0.1, // Add a delay based on the character index
+      },
+    },
+    initial: {
+      rotateX: -90, // Start new character at -90 degrees (hidden)
+    },
+  };
+
+  // Update the character randomly before settling on the final character
+  useEffect(() => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
+
+    const interval = setInterval(() => {
+      setIsFlipping(true); // Start flipping animation
+      setTimeout(() => {
+        setChar(getRandomChar()); // Change the character after the first half of the flip
+      }, 125); // Halfway through the animation (150ms)
+    }, 250); // Every 300ms
+
+    const timeout = setTimeout(() => {
+      clearInterval(interval);
+      setIsFlipping(true); // Start flipping animation for the final character
+      setTimeout(() => {
+        setChar(finalChar); // Set the final character after the first half of the flip
+      }, 125); // Halfway through the animation (150ms)
+    }, 2000); // Stop after 2 seconds
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [finalChar]);
+
   return (
-    <>
-      <AnimatedTextChar
-        text="once"
-        completeCallback={completeCallback}
-        shouldAnimate={animaing === "once"}
-        className={cn(className, animaing !== "once" ? "hidden" : "")}
-      />
-      <AnimatedTextChar
-        text="Everything is always once"
-        shouldAnimate={animaing === "Everything is always once"}
-        className={cn(
-          className,
-          animaing === "Everything is always once" ? "" : "hidden",
-        )}
-      />
-    </>
+    <motion.main
+      style={{
+        perspective: "1000px",
+        lineHeight: 1,
+        verticalAlign: "baseline",
+        transformStyle: "preserve-3d",
+        display: "inline-block",
+      }}
+      animate={debug ? "debug" : "initial"}
+      exit={debug ? "debug" : "initial"}
+      variants={containerVariants}
+    >
+      <AnimatePresence mode="popLayout">
+        <motion.span
+          key={char} // Use the character as the key to trigger animations
+          variants={charVariants}
+          initial="initial"
+          animate={isFlipping ? "hide" : "show"} // Toggle between hide and show states
+          exit="hide" // Exit animation
+          onAnimationComplete={() => {
+            setIsFlipping(false); // Stop flipping animation
+            setIsAnimating(false); // Stop changing the character
+          }}
+          style={{
+            display: "inline-block",
+            position: "relative",
+            height: "0.9em",
+            lineHeight: 1,
+            verticalAlign: "middle",
+            transformStyle: "preserve-3d",
+            backfaceVisibility: "hidden",
+          }}
+        >
+          <motion.span
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "100%",
+              transform: "translate(-50%, -50%) translateZ(0.45em)",
+              backfaceVisibility: "hidden",
+            }}
+          >
+            {char}
+          </motion.span>
+        </motion.span>
+      </AnimatePresence>
+    </motion.main>
   );
 };
 
-export { AnimatedTextChar, AnimatedTextWord, HomePageTitle };
+const AnimatedText = ({ messages }: { messages: string[] }) => {
+  const [message, setMessage] = useState(messages[0]);
+  const changeMessage = () => {
+    const nextIndex = (messages.indexOf(message) + 1) % messages.length;
+    const newMessage = messages[nextIndex];
+    setMessage(newMessage);
+  };
+
+  useEffect(() => {
+    if (message === messages[messages.length - 1]) return;
+    const interval = setInterval(() => {
+      changeMessage();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [messages, message]);
+
+  return (
+    <div className="flex">
+      <div className="relative flex gap-4">
+        {Array.from(message).map((char, index) => (
+          <FlipCharacter
+            key={index}
+            finalChar={char}
+            charIndex={index}
+            total={message.length}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export { AnimatedText };

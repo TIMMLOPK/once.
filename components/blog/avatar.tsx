@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cn } from "../../utils/cn";
+import { cn } from "@/lib/cn";
 
 const Avatar = ({
   name = "Timmy",
@@ -25,7 +25,7 @@ const Avatar = ({
       </div>
       <p
         className={cn(
-          "font-semibold leading-6 text-gray-900 dark:text-gray-100",
+          "font-semibold leading-6 text-zinc-900 dark:text-zinc-100",
           className,
         )}
       >

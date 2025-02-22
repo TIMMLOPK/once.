@@ -1,4 +1,4 @@
-import { cn } from "../../utils/cn";
+import { cn } from "@/lib/cn";
 import { Loading } from "./loading";
 
 interface ButtonProps {

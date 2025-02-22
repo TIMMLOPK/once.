@@ -1,22 +1,37 @@
 "use client";
 
-import Image, { ImageProps } from "next/image";
-import { useState } from "react";
-import { cn } from "../utils/cn";
+import { cn } from "@/lib/cn";
+import { PixelDots } from "./pixel/pixelDots";
 
-export const AnimatedIcon = ({ src }: { src: ImageProps["src"] }) => {
-  const [isLoaded, setLoaded] = useState(false);
+interface AnimatedIconProps {
+  src: string;
+  width?: number;
+  height?: number;
+  className?: string;
+  dotSize?: number;
+  spacing?: number;
+  onHover?: (hovered: boolean) => void;
+}
+
+export function AnimatedIcon({
+  src,
+  onHover,
+  width = 200,
+  height = 200,
+  className,
+  dotSize = 5,
+  spacing = 0,
+}: AnimatedIconProps) {
   return (
-    <Image
-      src={src}
-      alt="icon"
-      width={240}
-      height={240}
-      onLoad={() => setLoaded(true)}
-      className={cn(
-        "relative mx-8 h-[240px] w-[240px] scale-150 rounded-full duration-1000",
-        isLoaded ? "scale-100 opacity-100 blur-0" : "opacity-0 blur-3xl",
-      )}
-    />
+    <div className={cn("relative inline-block", className)}>
+      <PixelDots
+        src={src}
+        dotSize={dotSize}
+        width={width}
+        height={height}
+        spacing={spacing}
+        onHover={onHover}
+      />
+    </div>
   );
-};
+}

@@ -1,71 +1,56 @@
-import { PostData } from "../../types";
-import * as motion from "framer-motion/client";
-import PostHeader from "./post/postHeader";
-import PostBody from "./post/postBody";
-import { MdClose } from "react-icons/md";
-import Link from "next/link";
-import { LuExternalLink } from "react-icons/lu";
-import * as Dialog from "@radix-ui/react-dialog";
+"use client";
 
-export const PostCard = ({
-  post,
-  onDismiss,
-}: {
-  post: PostData;
-  onDismiss: () => void;
-}) => {
+import { PostData } from "@/lib/types/post";
+import PostBody from "./post/postBody";
+
+import {
+  MorphingDialog,
+  MorphingDialogTrigger,
+  MorphingDialogContent,
+  MorphingDialogTitle,
+  MorphingDialogSubtitle,
+  MorphingDialogClose,
+  MorphingDialogContainer,
+} from "@/components/motions/card-layout";
+
+export function PostCard({ post }: { post: PostData }) {
   return (
-    <Dialog.Portal>
-      <div className="fixed inset-0 z-50 flex items-center justify-center md:py-2">
-        <Dialog.Overlay asChild>
-          <motion.div
-            className="fixed inset-0 -z-10 bg-black bg-opacity-50 dark:bg-opacity-70"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          />
-        </Dialog.Overlay>
-        <Dialog.Content asChild>
-          <motion.div
-            layoutId={post.id.toString()}
-            className="h-full w-full max-w-4xl overflow-hidden bg-white pl-2 dark:border-b dark:border-zinc-700 dark:bg-black md:rounded-xl md:pl-6"
-          >
-            <motion.div className="flex justify-end px-4 py-4">
-              <div className="flex items-center space-x-2">
-                <Link href={`/blog/${post.id}`} passHref>
-                  <button
-                    className="rounded-full bg-gray-100 p-2 dark:bg-zinc-800"
-                    aria-label="Open in new tab"
-                  >
-                    <LuExternalLink />
-                    <span className="sr-only">Open in new tab</span>
-                  </button>
-                </Link>
-                <button
-                  onClick={() => onDismiss()}
-                  className="z-10 rounded-full bg-gray-100 p-2 dark:bg-zinc-800"
-                  aria-label="Close"
-                >
-                  <MdClose />
-                  <span className="sr-only">Close</span>
-                </button>
-              </div>
-            </motion.div>
-            <motion.div className="h-[calc(100%-4rem)] overflow-y-auto p-4">
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-                authorImage={post.authorImage}
-                description={post.description}
-              />
+    <MorphingDialog
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        damping: 24,
+      }}
+    >
+      <MorphingDialogTrigger>
+        <div className="flex select-none flex-col space-y-1 p-4">
+          <div className="flex flex-col items-start justify-center space-y-0">
+            <MorphingDialogTitle className="text-base font-medium text-zinc-800 underline decoration-zinc-400 hover:decoration-2 dark:text-zinc-50">
+              {post.title}
+            </MorphingDialogTitle>
+            <MorphingDialogSubtitle className="text-sm text-zinc-600 dark:text-zinc-400">
+              {post.description}
+            </MorphingDialogSubtitle>
+          </div>
+        </div>
+      </MorphingDialogTrigger>
+      <MorphingDialogContainer>
+        <MorphingDialogContent className="relative overflow-auto rounded-lg border bg-white dark:border-zinc-800 dark:bg-black lg:w-3/4">
+          <div className="relative p-6">
+            <MorphingDialogTitle className="text-2xl font-bold text-zinc-800 dark:text-zinc-50">
+              {post.title}
+            </MorphingDialogTitle>
+            <MorphingDialogSubtitle className="text-sm text-zinc-600 dark:text-zinc-400">
+              {post.description}
+            </MorphingDialogSubtitle>
+            <div className="mt-2 overflow-auto border-t border-dashed pt-2 text-sm text-zinc-700 lg:h-[450px]">
+              <div className="pointer-events-none absolute bottom-0 left-0 h-12 w-full bg-white to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_top,white,transparent)] dark:bg-neutral-900" />
               <PostBody content={post.content} />
-            </motion.div>
-          </motion.div>
-        </Dialog.Content>
-      </div>
-    </Dialog.Portal>
+            </div>
+          </div>
+          <MorphingDialogClose className="text-zinc-500" />
+        </MorphingDialogContent>
+      </MorphingDialogContainer>
+    </MorphingDialog>
   );
-};
+}

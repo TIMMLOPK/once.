@@ -1,67 +1,62 @@
-"use client";
-
-import { useState } from "react";
-import { PostData } from "../../types";
-import PostItem from "./postItem";
-import Button from "../shared/button";
-import { AnimatePresence } from "framer-motion";
+import { PostData } from "@/lib/types/post";
 import { PostCard } from "./postCard";
-import { Dialog } from "@radix-ui/react-dialog";
+import { AnimatedBackground } from "@/components/motions/animatedBackground";
+import { cn } from "@/lib/cn";
+import { caveat } from "@/app/fonts";
 
 export const PostsGrid = ({ posts }: { posts: PostData[] }) => {
-  const [postsToShow, setPostsToShow] = useState(3);
-  const [postId, setPostId] = useState<number | null>(null);
+  const groupedPosts = posts.reduce((acc: Record<string, PostData[]>, post) => {
+    // Convert dd/mm/yyyy to yyyy-mm-dd for proper Date parsing
+    const [day, month, year] = post.date.split("/");
+    const dateObj = new Date(`${year}-${month}-${day}`);
+
+    const time = dateObj.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+    });
+
+    if (!acc[time]) {
+      acc[time] = [];
+    }
+
+    acc[time].push(post);
+    return acc;
+  }, {}) as Record<string, PostData[]>;
 
   return (
-    <div>
-      <AnimatePresence>
-        <Dialog open={postId !== null} onOpenChange={() => setPostId(null)}>
-          {postId && (
-            <PostCard
-              post={posts.find((post) => post.id === postId)}
-              onDismiss={() => setPostId(null)}
-            />
-          )}
-        </Dialog>
-      </AnimatePresence>
-      {posts.length !== 0 && (
-        <div className="space-y-8 sm:space-y-16">
-          <PostItem
-            id={posts[0].id}
-            title={posts[0].title}
-            coverImage={posts[0].coverImage}
-            date={posts[0].date}
-            author={posts[0].author}
-            authorImage={posts[0].authorImage}
-            setPostId={setPostId}
-          />
-          <div className="grid grid-cols-1 justify-center gap-6 md:grid-cols-2 md:space-x-6">
-            {posts.slice(1, postsToShow).map((post) => (
-              <PostItem
-                key={post.id}
-                id={post.id}
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-                authorImage={post.authorImage}
-                size="small"
-                setPostId={setPostId}
-              />
-            ))}
+    <div className="flex flex-col space-y-5">
+      {Object.entries(groupedPosts).map(([time]) => (
+        <div
+          key={time}
+          className="relative flex flex-col space-x-2 md:flex-row"
+        >
+          <h2
+            className={cn(
+              `${caveat.className} min-w-20 font-bold text-zinc-400 dark:text-zinc-200`,
+              "uppercase",
+            )}
+          >
+            {time}
+          </h2>
+          <div className="flex grow flex-col space-y-4">
+            <AnimatedBackground
+              className="rounded-lg bg-zinc-100 dark:bg-zinc-800"
+              transition={{
+                type: "spring",
+                bounce: 0.2,
+                duration: 0.6,
+              }}
+              enableHover
+            >
+              {groupedPosts[time].map((post) => (
+                <div data-id={`card-${post.id}`} key={post.id}>
+                  <PostCard post={post} />
+                </div>
+              ))}
+            </AnimatedBackground>
           </div>
-          {posts.length > postsToShow && (
-            <div className="flex justify-center">
-              <Button
-                onClick={() => setPostsToShow(postsToShow + 3)}
-                className="rounded-full bg-black text-white dark:bg-white dark:text-black"
-              >
-                Load More
-              </Button>
-            </div>
-          )}
         </div>
-      )}
+      ))}
     </div>
   );
 };
