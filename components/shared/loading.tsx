@@ -1,11 +1,11 @@
-import { cn } from "@/lib/cn";
+import { cn } from '@/lib/cn'
 
 export const Loading = ({ className }: { className?: string }) => {
   return (
     <svg
       className={cn(
-        "h-5 w-5 animate-spin text-zinc-500 dark:text-zinc-500",
-        className,
+        'h-5 w-5 animate-spin text-zinc-500 dark:text-zinc-500',
+        className
       )}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -25,5 +25,5 @@ export const Loading = ({ className }: { className?: string }) => {
         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
       ></path>
     </svg>
-  );
-};
+  )
+}

@@ -1,23 +1,23 @@
-import Navbar from "@/components/navbar";
-import { cn } from "@/lib/cn";
-import Footer from "../footer";
+import Navbar from '@/components/navbar'
+import { cn } from '@/lib/cn'
+import Footer from '../footer'
 
 const Layout = ({
   children,
   className,
-  activeSection,
+  activeSection
 }: {
-  children: React.ReactNode;
-  className?: string;
-  activeSection?: string;
+  children: React.ReactNode
+  className?: string
+  activeSection?: string
 }) => {
   return (
     <>
-      <main className={cn("container", className)}>{children}</main>
+      <main className={cn('container', className)}>{children}</main>
       <Navbar activeSection={activeSection} />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

@@ -1,16 +1,16 @@
-"use client";
+'use client'
 
-import { cn } from "@/lib/cn";
-import { PixelDots } from "./pixel/pixelDots";
+import { cn } from '@/lib/cn'
+import { PixelDots } from './pixel/pixelDots'
 
 interface AnimatedIconProps {
-  src: string;
-  width?: number;
-  height?: number;
-  className?: string;
-  dotSize?: number;
-  spacing?: number;
-  onHover?: (hovered: boolean) => void;
+  src: string
+  width?: number
+  height?: number
+  className?: string
+  dotSize?: number
+  spacing?: number
+  onHover?: (hovered: boolean) => void
 }
 
 export function AnimatedIcon({
@@ -20,10 +20,10 @@ export function AnimatedIcon({
   height = 200,
   className,
   dotSize = 5,
-  spacing = 0,
+  spacing = 0
 }: AnimatedIconProps) {
   return (
-    <div className={cn("relative inline-block", className)}>
+    <div className={cn('relative inline-block', className)}>
       <PixelDots
         src={src}
         dotSize={dotSize}
@@ -33,5 +33,5 @@ export function AnimatedIcon({
         onHover={onHover}
       />
     </div>
-  );
+  )
 }

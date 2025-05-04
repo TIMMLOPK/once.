@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { PostData } from "@/lib/types/post";
-import PostBody from "./post/postBody";
+import { PostData } from '@/lib/types/post'
+import PostBody from './post/postBody'
 
 import {
   MorphingDialog,
@@ -10,16 +10,16 @@ import {
   MorphingDialogTitle,
   MorphingDialogSubtitle,
   MorphingDialogClose,
-  MorphingDialogContainer,
-} from "@/components/motions/card-layout";
+  MorphingDialogContainer
+} from '@/components/motions/card-layout'
 
 export function PostCard({ post }: { post: PostData }) {
   return (
     <MorphingDialog
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 200,
-        damping: 24,
+        damping: 24
       }}
     >
       <MorphingDialogTrigger>
@@ -52,5 +52,5 @@ export function PostCard({ post }: { post: PostData }) {
         </MorphingDialogContent>
       </MorphingDialogContainer>
     </MorphingDialog>
-  );
+  )
 }

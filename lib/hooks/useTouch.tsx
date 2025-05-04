@@ -1,22 +1,22 @@
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from 'react'
 
 export const useTouch = () => {
-  const [supportTouch, setSupportTouch] = useState(false);
+  const [supportTouch, setSupportTouch] = useState(false)
 
   useLayoutEffect(() => {
     const onChange = (e: MediaQueryListEvent) => {
-      setSupportTouch(e.matches);
-    };
+      setSupportTouch(e.matches)
+    }
 
-    const mq = matchMedia("(pointer: coarse) and (hover: none)");
-    mq.addEventListener("change", onChange);
+    const mq = matchMedia('(pointer: coarse) and (hover: none)')
+    mq.addEventListener('change', onChange)
 
-    setSupportTouch(mq.matches);
+    setSupportTouch(mq.matches)
 
     return () => {
-      mq.removeEventListener("change", onChange);
-    };
-  }, []);
+      mq.removeEventListener('change', onChange)
+    }
+  }, [])
 
-  return supportTouch;
-};
+  return supportTouch
+}

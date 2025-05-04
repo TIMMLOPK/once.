@@ -1,43 +1,43 @@
-import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
-import { caveat } from "@/app/fonts";
-import { cn } from "@/lib/cn";
-import { CardStack } from "@/components/motions/cardStack";
-import { FaDiscord, FaInstagram, FaTwitter } from "react-icons/fa";
-import { Arrow1 } from "@/components/shared/icons";
-import { motion } from "motion/react";
+import Link from 'next/link'
+import Image, { StaticImageData } from 'next/image'
+import { caveat } from '@/app/fonts'
+import { cn } from '@/lib/cn'
+import { CardStack } from '@/components/motions/cardStack'
+import { FaDiscord, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { Arrow1 } from '@/components/shared/icons'
+import { motion } from 'motion/react'
 
 const socials = [
   {
-    name: "Discord (timmy_y)",
-    link: "https://discord.com",
-    icon: <FaDiscord className="h-5 w-5" />,
+    name: 'Discord (timmy_y)',
+    link: 'https://discord.com',
+    icon: <FaDiscord className="h-5 w-5" />
   },
   {
-    name: "Instagram",
-    link: "https://www.instagram.com/tw_wu_as_tim/",
-    icon: <FaInstagram className="h-5 w-5" />,
+    name: 'Instagram',
+    link: 'https://www.instagram.com/tw_wu_as_tim/',
+    icon: <FaInstagram className="h-5 w-5" />
   },
   {
-    name: "Twitter",
-    link: "https://twitter.com/once_wu",
-    icon: <FaTwitter className="h-5 w-5" />,
-  },
-];
+    name: 'Twitter',
+    link: 'https://twitter.com/once_wu',
+    icon: <FaTwitter className="h-5 w-5" />
+  }
+]
 
 interface ImageCardProps {
-  src: string | StaticImageData;
-  alt: string;
-  text: string;
-  className?: string;
+  src: string | StaticImageData
+  alt: string
+  text: string
+  className?: string
 }
 
 export function ImageCard({ src, alt, text, className }: ImageCardProps) {
   return (
     <div
       className={cn(
-        "flex flex-col rounded-md border bg-white px-2.5 pb-4 pt-2.5 shadow-lg dark:border-zinc-800 dark:bg-black",
-        className,
+        'flex flex-col rounded-md border bg-white px-2.5 pb-4 pt-2.5 shadow-lg dark:border-zinc-800 dark:bg-black',
+        className
       )}
     >
       <Image
@@ -52,18 +52,18 @@ export function ImageCard({ src, alt, text, className }: ImageCardProps) {
         {text}
       </p>
     </div>
-  );
+  )
 }
 
 const ImageCards = [
-  { src: "/images/001.jpg", alt: "Picture of a shop", text: "A shop^_^" },
-  { src: "/images/002.JPG", alt: "Blue sky", text: "Blue sky ☁️" },
+  { src: '/images/001.jpg', alt: 'Picture of a shop', text: 'A shop^_^' },
+  { src: '/images/002.JPG', alt: 'Blue sky', text: 'Blue sky ☁️' },
   {
-    src: "/images/003.JPG",
-    alt: "A very special wall",
-    text: "Really interesting wall",
-  },
-];
+    src: '/images/003.JPG',
+    alt: 'A very special wall',
+    text: 'Really interesting wall'
+  }
+]
 
 export function AboutSection() {
   const blurSlideVariants = {
@@ -71,36 +71,36 @@ export function AboutSection() {
       hidden: { opacity: 0 },
       visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.05 },
+        transition: { staggerChildren: 0.05 }
       },
       exit: {
-        transition: { staggerChildren: 0.05, staggerDirection: 1 },
-      },
+        transition: { staggerChildren: 0.05, staggerDirection: 1 }
+      }
     },
     item: {
       hidden: {
         opacity: 0,
-        filter: "blur(10px) brightness(0%)",
-        y: 0,
+        filter: 'blur(10px) brightness(0%)',
+        y: 0
       },
       visible: {
         opacity: 1,
         y: 0,
-        filter: "blur(0px) brightness(100%)",
+        filter: 'blur(0px) brightness(100%)',
         transition: {
-          duration: 0.4,
-        },
+          duration: 0.4
+        }
       },
       exit: {
         opacity: 0,
         y: -30,
-        filter: "blur(10px) brightness(0%)",
+        filter: 'blur(10px) brightness(0%)',
         transition: {
-          duration: 0.4,
-        },
-      },
-    },
-  };
+          duration: 0.4
+        }
+      }
+    }
+  }
 
   return (
     <section
@@ -117,7 +117,7 @@ export function AboutSection() {
             <p
               className={`${caveat.className} max-w-40 text-xl font-bold text-zinc-400`}
             >
-              I am also interested in{" "}
+              I am also interested in{' '}
               <span className="text-black dark:text-white">Photography</span>
             </p>
           </div>
@@ -133,14 +133,14 @@ export function AboutSection() {
             initial="hidden"
             whileInView="visible"
           >
-            I am{" "}
-            <span className="font-bold text-black dark:text-white">Timmy</span>{" "}
-            , a{" "}
+            I am{' '}
+            <span className="font-bold text-black dark:text-white">Timmy</span>{' '}
+            , a{' '}
             <span className="font-bold text-black dark:text-white">
               developer
-            </span>{" "}
+            </span>{' '}
             who loves coding and creating 🪄. I am passionate about building
-            something{" "}
+            something{' '}
             <span className="font-bold text-black dark:text-white">
               amazing
             </span>
@@ -152,12 +152,12 @@ export function AboutSection() {
             whileInView="visible"
           >
             I am dedicated to learning new technologies and improving my skills.
-            Recently, I have been working with{" "}
-            <span className="font-bold text-black dark:text-white">React</span>{" "}
-            and{" "}
+            Recently, I have been working with{' '}
+            <span className="font-bold text-black dark:text-white">React</span>{' '}
+            and{' '}
             <span className="font-bold text-black dark:text-white">
               Next.js
-            </span>{" "}
+            </span>{' '}
             to create web applications.
           </motion.p>
           <motion.p
@@ -192,7 +192,7 @@ export function AboutSection() {
                       opacity: 0,
                       y: Math.random() * 100 - 50,
                       rotate: Math.random() * 90 - 45,
-                      scale: 0.8,
+                      scale: 0.8
                     },
                     visible: {
                       opacity: 1,
@@ -200,10 +200,10 @@ export function AboutSection() {
                       rotate: 0,
                       scale: 1,
                       transition: {
-                        type: "spring",
-                        stiffness: 100,
-                      },
-                    },
+                        type: 'spring',
+                        stiffness: 100
+                      }
+                    }
                   }}
                   initial="hidden"
                   whileInView="visible"
@@ -219,5 +219,5 @@ export function AboutSection() {
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

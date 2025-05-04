@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Avatar from "../avatar";
-import { motion } from "motion/react";
+import Image from 'next/image'
+import Avatar from '../avatar'
+import { motion } from 'motion/react'
 
 const PostHeader = ({
   id,
@@ -9,15 +9,15 @@ const PostHeader = ({
   date,
   description,
   author,
-  authorImage,
+  authorImage
 }: {
-  id: number;
-  title: string;
-  coverImage: string;
-  date: string;
-  description: string;
-  author: string;
-  authorImage: string;
+  id: number
+  title: string
+  coverImage: string
+  date: string
+  description: string
+  author: string
+  authorImage: string
 }) => {
   return (
     <div className="relative mb-4 space-y-8">
@@ -48,7 +48,7 @@ const PostHeader = ({
         className="aspect-video rounded-lg border border-zinc-200 shadow-small dark:border-zinc-700 dark:shadow-none"
       />
     </div>
-  );
-};
+  )
+}
 
-export default PostHeader;
+export default PostHeader

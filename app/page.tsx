@@ -1,21 +1,21 @@
-"use client";
+'use client'
 
-import { AnimatedIcon } from "@/components/animatedIcon";
-import Layout from "@/components/layout/main";
-import { AnimatedText } from "@/components/animatedText";
-import { AboutSection } from "@/components/sections/about";
-import { useActiveSection } from "@/lib/hooks/useActiveSection";
-import Link from "next/link";
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
-import { cn } from "@/lib/cn";
+import { AnimatedIcon } from '@/components/animatedIcon'
+import Layout from '@/components/layout/main'
+import { AnimatedText } from '@/components/animatedText'
+import { AboutSection } from '@/components/sections/about'
+import { useActiveSection } from '@/lib/hooks/useActiveSection'
+import Link from 'next/link'
+import { AnimatePresence, motion } from 'motion/react'
+import { useEffect, useState } from 'react'
+import { cn } from '@/lib/cn'
 
 interface LabelWithArrowProps {
-  href: string;
-  children: string;
-  activeId: string;
-  id: string;
-  setLabel: (id: string) => void;
+  href: string
+  children: string
+  activeId: string
+  id: string
+  setLabel: (id: string) => void
 }
 
 function LabelWithArrow({
@@ -23,7 +23,7 @@ function LabelWithArrow({
   children,
   activeId,
   id,
-  setLabel,
+  setLabel
 }: LabelWithArrowProps) {
   return (
     <Link
@@ -32,10 +32,10 @@ function LabelWithArrow({
       className="inline-flex cursor-pointer rounded-full px-2 py-1 pl-4 text-sm opacity-60"
       onMouseEnter={() => setLabel(id)}
       onClick={() => {
-        if (href === "/") {
+        if (href === '/') {
           document.querySelector("[data-section='about']")?.scrollIntoView({
-            behavior: "smooth",
-          });
+            behavior: 'smooth'
+          })
         }
       }}
       key={id}
@@ -47,11 +47,11 @@ function LabelWithArrow({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{
               opacity: 1,
-              scale: 1,
+              scale: 1
             }}
             exit={{
               opacity: 0,
-              scale: 0.95,
+              scale: 0.95
             }}
             className="absolute left-0"
           >
@@ -71,44 +71,44 @@ function LabelWithArrow({
       </AnimatePresence>
       <motion.div
         className={cn(
-          "relative inline-block bg-[length:250%_100%,auto] bg-clip-text font-atariClassicChunky text-[15px]",
-          "text-transparent [--base-color:#a1a1aa] [--base-gradient-color:#000]",
-          "[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))] [background-repeat:no-repeat,padding-box]",
-          "dark:[--base-color:#71717a] dark:[--base-gradient-color:#ffffff] dark:[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))]",
+          'relative inline-block bg-[length:250%_100%,auto] bg-clip-text font-atariClassicChunky text-[15px]',
+          'text-transparent [--base-color:#a1a1aa] [--base-gradient-color:#000]',
+          '[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))] [background-repeat:no-repeat,padding-box]',
+          'dark:[--base-color:#71717a] dark:[--base-gradient-color:#ffffff] dark:[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))]'
         )}
-        initial={{ backgroundPosition: "100% center" }}
-        whileHover={{ backgroundPosition: "0% center" }}
+        initial={{ backgroundPosition: '100% center' }}
+        whileHover={{ backgroundPosition: '0% center' }}
         transition={{
           duration: 1,
-          ease: "linear",
+          ease: 'linear'
         }}
         style={
           {
-            "--spread": `${children.length * 2}px`,
-            backgroundImage: `var(--bg), linear-gradient(var(--base-color), var(--base-color))`,
+            '--spread': `${children.length * 2}px`,
+            backgroundImage: `var(--bg), linear-gradient(var(--base-color), var(--base-color))`
           } as React.CSSProperties
         }
       >
         {children}
       </motion.div>
     </Link>
-  );
+  )
 }
 
 export default function HomePage() {
-  const activeSection = useActiveSection();
+  const activeSection = useActiveSection()
 
-  const [label, setLabel] = useState<string>("about");
-  const [isIconHovered, setIsIconHovered] = useState(false);
-  const [messages, setMessages] = useState<string[]>(["Hi, I am Timmy."]);
+  const [label, setLabel] = useState<string>('about')
+  const [isIconHovered, setIsIconHovered] = useState(false)
+  const [messages, setMessages] = useState<string[]>(['Hi, I am Timmy.'])
 
   useEffect(() => {
     if (isIconHovered) {
-      setMessages(["...", "You found me!"]);
+      setMessages(['...', 'You found me!'])
     } else {
-      setMessages(["Hi, I am Timmy."]);
+      setMessages(['Hi, I am Timmy.'])
     }
-  }, [isIconHovered]);
+  }, [isIconHovered])
 
   return (
     <Layout
@@ -124,7 +124,7 @@ export default function HomePage() {
           <div className="mt-10 flex max-w-lg flex-col space-y-10 px-4">
             <h1
               className={cn(
-                "flex items-center font-atariClassicChunky text-xl",
+                'flex items-center font-atariClassicChunky text-xl'
               )}
             >
               <AnimatedText messages={messages} />
@@ -180,5 +180,5 @@ export default function HomePage() {
       </section>
       <AboutSection />
     </Layout>
-  );
+  )
 }

@@ -1,35 +1,35 @@
-import PostBody from "@/components/blog/post/postBody";
-import PostHeader from "@/components/blog/post/postHeader";
-import Layout from "@/components/layout/main";
-import { Metadata } from "next";
-import { PostData } from "@/lib/types/post";
+import PostBody from '@/components/blog/post/postBody'
+import PostHeader from '@/components/blog/post/postHeader'
+import Layout from '@/components/layout/main'
+import { Metadata } from 'next'
+import { PostData } from '@/lib/types/post'
 
 async function getPost(id: string): Promise<{ post: PostData }> {
-  const post = await fetch(process.env.API_URL + "/posts/" + id).then((res) =>
-    res.json(),
-  );
+  const post = await fetch(process.env.API_URL + '/posts/' + id).then(res =>
+    res.json()
+  )
 
-  return { post };
+  return { post }
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
+export async function generateMetadata(props: {
+  params: Promise<{ id: string }>
 }): Promise<Metadata> {
-  const { post } = await getPost(params.id);
+  const params = await props.params
+  const { post } = await getPost(params.id)
 
   return {
     title: `${post.title} | ONCE`,
     openGraph: {
       images: post.ogImageURL,
-      description: post.description,
-    },
-  };
+      description: post.description
+    }
+  }
 }
 
-export default async function Post({ params }: { params: { id: string } }) {
-  const { post } = await getPost(params.id);
+export default async function Post(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params
+  const { post } = await getPost(params.id)
 
   return (
     <Layout className="px-0">
@@ -46,7 +46,7 @@ export default async function Post({ params }: { params: { id: string } }) {
         <PostBody content={post.content} />
       </article>
     </Layout>
-  );
+  )
 }
 
-export const dynamicParams = true;
+export const dynamicParams = true

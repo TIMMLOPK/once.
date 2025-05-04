@@ -1,58 +1,57 @@
-import { AnimatedGroup } from "@/components/motions/animatedGroup";
-import Layout from "@/components/layout/main";
-import { ProjectCard } from "@/components/project";
-import { cn } from "@/lib/cn";
-import { SectionTitle } from "@/components/shared/sectionTitle";
+import { AnimatedGroup } from '@/components/motions/animatedGroup'
+import Layout from '@/components/layout/main'
+import { ProjectCard } from '@/components/project'
+import { SectionTitle } from '@/components/shared/sectionTitle'
 
 const works = [
   {
-    title: "ONCE AI",
-    text: "A powerful AI assistant. It can help you with anything.",
-    link: "https://ai.ionce.me/",
-    image: "/works/once-ai.png",
+    title: 'ONCE AI',
+    text: 'A powerful AI assistant. It can help you with anything.',
+    link: 'https://ai.ionce.me/',
+    image: '/works/once-ai.png'
   },
   {
-    title: "ONCE - Discord Bot",
-    text: "ONCE is a powerful multi-purpose Discord bot. It has a lot of features, such as logging, fun, utility, and more.",
-    link: "https://discord.ionce.me/",
-    image: "/works/once-dcbot.png",
+    title: 'ONCE - Discord Bot',
+    text: 'ONCE is a powerful multi-purpose Discord bot. It has a lot of features, such as logging, fun, utility, and more.',
+    link: 'https://discord.ionce.me/',
+    image: '/works/once-dcbot.png'
   },
   {
-    title: "Meme Generator",
-    text: "Generate an unique meme. It developed with nextui(A pretty and customizable UI library).",
-    link: "https://meme.ionce.me/",
-    github: "https://github.com/TIMMLOPK/meme-generator",
-    image: "/works/meme-generator.png",
+    title: 'Meme Generator',
+    text: 'Generate an unique meme. It developed with nextui(A pretty and customizable UI library).',
+    link: 'https://meme.ionce.me/',
+    github: 'https://github.com/TIMMLOPK/meme-generator',
+    image: '/works/meme-generator.png'
   },
   {
-    title: "npm outdated.rs",
-    text: "npm outdated checker",
-    github: "https://github.com/TIMMLOPK/npm-outdated-rs",
+    title: 'npm outdated.rs',
+    text: 'npm outdated checker',
+    github: 'https://github.com/TIMMLOPK/npm-outdated-rs'
   },
   {
-    title: "ionce.me",
-    text: "My personal website developed with nextjs and tailwindcss.",
-    link: "https://ionce.me/",
-    github: "https://github.com/TIMMLOPK/once.",
+    title: 'ionce.me',
+    text: 'My personal website developed with nextjs and tailwindcss.',
+    link: 'https://ionce.me/',
+    github: 'https://github.com/TIMMLOPK/once.'
   },
   {
-    title: "ONCE",
-    text: "Old version of my personal website",
-    github: "https://github.com/TIMMLOPK/once",
+    title: 'ONCE',
+    text: 'Old version of my personal website',
+    github: 'https://github.com/TIMMLOPK/once'
   },
   {
-    title: "Discord RPC.rs",
-    text: "Discord RPC for Rust",
-    github: "https://github.com/TIMMLOPK/discord-RPC",
-  },
-];
+    title: 'Discord RPC.rs',
+    text: 'Discord RPC for Rust',
+    github: 'https://github.com/TIMMLOPK/discord-RPC'
+  }
+]
 
 export default function WorksPage() {
-  const sortedByTitle = works.sort((a, b) => a.title.localeCompare(b.title));
+  const sortedByTitle = works.sort((a, b) => a.title.localeCompare(b.title))
   const sortedWorks = {
-    withImage: sortedByTitle.filter((project) => project.image),
-    withoutImage: sortedByTitle.filter((project) => !project.image),
-  };
+    withImage: sortedByTitle.filter(project => project.image),
+    withoutImage: sortedByTitle.filter(project => !project.image)
+  }
   return (
     <Layout className="mx-4 md:mx-auto">
       <section className="relative mt-12 min-h-screen md:m-12">
@@ -62,7 +61,7 @@ export default function WorksPage() {
             className="flex flex-col space-y-6"
             preset="scale"
             variants={{
-              container: { visible: { transition: { staggerChildren: 0.1 } } },
+              container: { visible: { transition: { staggerChildren: 0.1 } } }
             }}
           >
             {sortedWorks.withImage.map((project, index) => (
@@ -93,7 +92,7 @@ export default function WorksPage() {
             className="grid grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-3"
             preset="scale"
             variants={{
-              container: { visible: { transition: { staggerChildren: 0.1 } } },
+              container: { visible: { transition: { staggerChildren: 0.1 } } }
             }}
           >
             {sortedWorks.withoutImage.map((project, index) => (
@@ -103,5 +102,5 @@ export default function WorksPage() {
         </div>
       </section>
     </Layout>
-  );
+  )
 }

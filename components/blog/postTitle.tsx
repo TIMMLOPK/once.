@@ -1,18 +1,18 @@
-import { cn } from "@/lib/cn";
+import { cn } from '@/lib/cn'
 
 const PostTitle = ({
   title,
-  className,
+  className
 }: {
-  title: string;
-  id?: number;
-  className?: string;
+  title: string
+  id?: number
+  className?: string
 }) => {
   return (
-    <h1 className={cn("mt-4 font-bold leading-relaxed md:mt-0", className)}>
+    <h1 className={cn('mt-4 font-bold leading-relaxed md:mt-0', className)}>
       {title}
     </h1>
-  );
-};
+  )
+}
 
-export default PostTitle;
+export default PostTitle

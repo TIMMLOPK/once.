@@ -1,20 +1,20 @@
-import Image from "next/image";
-import { cn } from "@/lib/cn";
+import Image from 'next/image'
+import { cn } from '@/lib/cn'
 
 const Avatar = ({
-  name = "Timmy",
-  picture = "/icon.webp",
-  className = "",
-  imageClassName = "",
+  name = 'Timmy',
+  picture = '/icon.webp',
+  className = '',
+  imageClassName = ''
 }: {
-  name: string;
-  picture: string;
-  className?: string;
-  imageClassName?: string;
+  name: string
+  picture: string
+  className?: string
+  imageClassName?: string
 }) => {
   return (
     <div className="flex items-center gap-x-2.5">
-      <div className={cn("relative h-8 w-8", imageClassName)}>
+      <div className={cn('relative h-8 w-8', imageClassName)}>
         <Image
           src={picture}
           className="rounded-full"
@@ -25,14 +25,14 @@ const Avatar = ({
       </div>
       <p
         className={cn(
-          "font-semibold leading-6 text-zinc-900 dark:text-zinc-100",
-          className,
+          'font-semibold leading-6 text-zinc-900 dark:text-zinc-100',
+          className
         )}
       >
         {name}
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Avatar;
+export default Avatar

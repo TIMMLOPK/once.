@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react'
 import {
   motion,
   useMotionTemplate,
@@ -8,17 +8,17 @@ import {
   useSpring,
   useTransform,
   MotionStyle,
-  SpringOptions,
-} from "motion/react";
+  SpringOptions
+} from 'motion/react'
 
 export type TiltProps = {
-  children: React.ReactNode;
-  className?: string;
-  style?: MotionStyle;
-  rotationFactor?: number;
-  isRevese?: boolean;
-  springOptions?: SpringOptions;
-};
+  children: React.ReactNode
+  className?: string
+  style?: MotionStyle
+  rotationFactor?: number
+  isRevese?: boolean
+  springOptions?: SpringOptions
+}
 
 export function Tilt({
   children,
@@ -26,67 +26,67 @@ export function Tilt({
   style,
   rotationFactor = 15,
   isRevese = false,
-  springOptions,
+  springOptions
 }: TiltProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null)
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
 
-  const xSpring = useSpring(x, springOptions);
-  const ySpring = useSpring(y, springOptions);
+  const xSpring = useSpring(x, springOptions)
+  const ySpring = useSpring(y, springOptions)
 
   const rotateX = useTransform(
     ySpring,
     [-0.5, 0.5],
     isRevese
       ? [rotationFactor, -rotationFactor]
-      : [-rotationFactor, rotationFactor],
-  );
+      : [-rotationFactor, rotationFactor]
+  )
   const rotateY = useTransform(
     xSpring,
     [-0.5, 0.5],
     isRevese
       ? [-rotationFactor, rotationFactor]
-      : [rotationFactor, -rotationFactor],
-  );
+      : [rotationFactor, -rotationFactor]
+  )
 
-  const transform = useMotionTemplate`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  const transform = useMotionTemplate`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
 
   useEffect(() => {
-    let animationFrameId: number;
+    let animationFrameId: number
 
     const animate = () => {
-      const time = Date.now() * 0.0001;
-      const xPos = Math.sin(time) * 0.5;
-      const yPos = Math.cos(time) * 0.5;
+      const time = Date.now() * 0.0001
+      const xPos = Math.sin(time) * 0.5
+      const yPos = Math.cos(time) * 0.5
 
-      x.set(xPos);
-      y.set(yPos);
+      x.set(xPos)
+      y.set(yPos)
 
-      animationFrameId = requestAnimationFrame(animate);
-    };
+      animationFrameId = requestAnimationFrame(animate)
+    }
 
-    animate();
+    animate()
 
     return () => {
       if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
+        cancelAnimationFrame(animationFrameId)
       }
-    };
-  }, [x, y]);
+    }
+  }, [x, y])
 
   return (
     <motion.div
       ref={ref}
       className={className}
       style={{
-        transformStyle: "preserve-3d",
+        transformStyle: 'preserve-3d',
         ...style,
-        transform,
+        transform
       }}
     >
       {children}
     </motion.div>
-  );
+  )
 }

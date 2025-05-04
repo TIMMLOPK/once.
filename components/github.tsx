@@ -1,23 +1,23 @@
-import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
+import Link from 'next/link'
+import { FaGithub } from 'react-icons/fa'
 
 interface GithubStats {
-  followers: number;
-  public_repos: number;
+  followers: number
+  public_repos: number
 }
 
 async function getGithubStats(): Promise<GithubStats> {
-  const res = await fetch("https://api.github.com/users/TIMMLOPK");
-  const data = await res.json();
+  const res = await fetch('https://api.github.com/users/TIMMLOPK')
+  const data = await res.json()
 
   return {
     followers: data.followers,
-    public_repos: data.public_repos,
-  };
+    public_repos: data.public_repos
+  }
 }
 
 export async function Github() {
-  const user = await getGithubStats();
+  const user = await getGithubStats()
   return (
     <Link href="https://github.com/TIMMLOPK" aria-label="GitHub" passHref>
       <div className="group flex cursor-pointer items-center justify-between">
@@ -35,5 +35,5 @@ export async function Github() {
         </div>
       </div>
     </Link>
-  );
+  )
 }

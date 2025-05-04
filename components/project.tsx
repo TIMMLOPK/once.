@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { BsGithub } from "react-icons/bs";
-import Image from "next/image";
-import { cn } from "@/lib/cn";
-import { Tilt } from "@/components/motions/tilt";
+import Link from 'next/link'
+import { BsGithub } from 'react-icons/bs'
+import Image from 'next/image'
+import { cn } from '@/lib/cn'
+import { Tilt } from '@/components/motions/tilt'
 
 interface ProjectCardProps {
   data: {
-    title: string;
-    text: string;
-    link?: string;
-    github?: string;
-    image?: string;
-  };
-  className?: string;
+    title: string
+    text: string
+    link?: string
+    github?: string
+    image?: string
+  }
+  className?: string
 }
 
 export const ProjectCard = ({ data, className }: ProjectCardProps) => {
-  const { title, link, text, github, image } = data;
+  const { title, link, text, github, image } = data
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn('space-y-4', className)}>
       {image && (
         <Tilt className="m-2">
           <div className="group w-[200px] rounded-lg border p-1 shadow-xl dark:border-zinc-800 dark:shadow-white/20">
@@ -63,5 +63,5 @@ export const ProjectCard = ({ data, className }: ProjectCardProps) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
