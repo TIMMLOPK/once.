@@ -46,7 +46,7 @@ export function ImageCard({ src, alt, text, className }: ImageCardProps) {
         sizes="200px"
         width={200}
         height={200}
-        className="h-[250px] w-[250px] rounded object-cover"
+        className="h-[250px] w-[250px] rounded-sm object-cover"
       />
       <p className={`${caveat.className} mt-4 text-center text-xl font-bold`}>
         {text}

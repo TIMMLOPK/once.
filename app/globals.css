@@ -1,6 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-atariClassicChunky: var(--font-atari-classic-chunky);
+  --font-silkScreen: var(--font-silkscreen);
+  --font-workBench: var(--font-workbench);
+  --font-vt323: var(--font-vt323);
+
+  --color-hover: rgba(255, 255, 255, 0.103);
+
+  --drop-shadow-logo: 0 0 0.3rem #ffffff70;
+
+  --shadow-logo: 0px 2px 8px -1px #0000001a;
+  --shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility bg-inherit {
+  background: inherit;
+}
 
 @layer base {
   body {
@@ -11,11 +50,5 @@
 
   ::selection {
     background-color: #3d94ff42;
-  }
-}
-
-@layer components {
-  .bg-inherit {
-    background: inherit;
   }
 }

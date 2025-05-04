@@ -29,7 +29,7 @@ export const ProjectCard = ({ data, className }: ProjectCardProps) => {
               alt={title}
               width={400}
               height={100}
-              className="rounded-md object-cover dark:brightness-75 group-hover:dark:brightness-100"
+              className="rounded-md object-cover dark:brightness-75 dark:group-hover:brightness-100"
             />
           </div>
         </Tilt>
