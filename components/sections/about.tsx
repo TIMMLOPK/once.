@@ -186,7 +186,7 @@ export function AboutSection() {
                 passHref
                 className="group cursor-pointer"
               >
-                <motion.div
+                <motion.span
                   variants={{
                     hidden: {
                       opacity: 0,
@@ -212,7 +212,7 @@ export function AboutSection() {
                 >
                   {social.icon}
                   <span>{social.name}</span>
-                </motion.div>
+                </motion.span>
               </Link>
             ))}
           </div>

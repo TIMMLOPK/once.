@@ -69,7 +69,7 @@ function LabelWithArrow({
           </motion.div>
         )}
       </AnimatePresence>
-      <motion.div
+      <motion.p
         className={cn(
           'relative inline-block bg-[length:250%_100%,auto] bg-clip-text font-atariClassicChunky text-[15px]',
           'text-transparent [--base-color:#a1a1aa] [--base-gradient-color:#000]',
@@ -90,7 +90,7 @@ function LabelWithArrow({
         }
       >
         {children}
-      </motion.div>
+      </motion.p>
     </Link>
   )
 }
@@ -120,14 +120,17 @@ export default function HomePage() {
         data-section="hero"
       >
         <div className="px-4">
-          <AnimatedIcon src="./icon.webp" onHover={setIsIconHovered} />
+          <AnimatedIcon src="./icon.webp" onHover={setIsIconHovered} aria-label="Animated pixelated icon of Timmy Wu" />
           <div className="mt-10 flex max-w-lg flex-col space-y-10 px-4">
             <h1
               className={cn(
-                'flex items-center font-atariClassicChunky text-xl'
+                'flex items-center font-atariClassicChunky text-xl relative gap-4'
               )}
             >
               <AnimatedText messages={messages} />
+            </h1>
+            <h1 className='sr-only'>
+              {messages}
             </h1>
           </div>
           <div className="relative mt-10 flex flex-col space-y-4 px-4">

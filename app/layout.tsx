@@ -8,15 +8,15 @@ import { AtariClassicChunky, silkscreen, vt323, workbench } from './fonts'
 
 export const metadata: Metadata = {
   title: 'once.',
-  description: "Hi, I'm Timmy. Can't wait to meet you!",
+  description: "Welcome to the portfolio of Timmy Wu, a developer passionate about coding, creating amazing things, and exploring technologies like React and Next.js.",
   openGraph: {
     title: 'once.',
-    description: "Hi, I'm Timmy. Can't wait to meet you!"
+    description: "Welcome to the portfolio of Timmy Wu, a developer passionate about coding, creating amazing things, and exploring technologies like React and Next.js."
   },
   twitter: {
     card: 'summary_large_image',
     title: 'once.',
-    description: "Hi, I'm Timmy. Can't wait to meet you!"
+    description: "Welcome to the portfolio of Timmy Wu, a developer passionate about coding, creating amazing things, and exploring technologies like React and Next.js."
   },
   metadataBase: new URL('https://ionce.me/')
 }
@@ -28,6 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html
+    suppressHydrationWarning
       lang="en"
       className={`${AtariClassicChunky.variable} ${silkscreen.variable} ${workbench.variable} ${vt323.variable}`}
     >

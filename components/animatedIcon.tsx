@@ -11,6 +11,7 @@ interface AnimatedIconProps {
   dotSize?: number
   spacing?: number
   onHover?: (hovered: boolean) => void
+  'aria-label'?: string
 }
 
 export function AnimatedIcon({
@@ -20,10 +21,11 @@ export function AnimatedIcon({
   height = 200,
   className,
   dotSize = 5,
-  spacing = 0
+  spacing = 0,
+  'aria-label': ariaLabel
 }: AnimatedIconProps) {
   return (
-    <div className={cn('relative inline-block', className)}>
+    <div className={cn('relative inline-block', className)} aria-label={ariaLabel}>
       <PixelDots
         src={src}
         dotSize={dotSize}
