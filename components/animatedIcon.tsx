@@ -25,7 +25,10 @@ export function AnimatedIcon({
   'aria-label': ariaLabel
 }: AnimatedIconProps) {
   return (
-    <div className={cn('relative inline-block', className)} aria-label={ariaLabel}>
+    <div
+      className={cn('relative inline-block', className)}
+      aria-label={ariaLabel}
+    >
       <PixelDots
         src={src}
         dotSize={dotSize}

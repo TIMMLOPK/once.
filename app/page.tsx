@@ -71,9 +71,9 @@ function LabelWithArrow({
       </AnimatePresence>
       <motion.p
         className={cn(
-          'relative inline-block bg-[length:250%_100%,auto] bg-clip-text font-atariClassicChunky text-[15px]',
+          'font-atariClassicChunky relative inline-block bg-[length:250%_100%,auto] bg-clip-text text-[15px]',
           'text-transparent [--base-color:#a1a1aa] [--base-gradient-color:#000]',
-          '[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))] [background-repeat:no-repeat,padding-box]',
+          '[background-repeat:no-repeat,padding-box] [--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))]',
           'dark:[--base-color:#71717a] dark:[--base-gradient-color:#ffffff] dark:[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))]'
         )}
         initial={{ backgroundPosition: '100% center' }}
@@ -120,18 +120,20 @@ export default function HomePage() {
         data-section="hero"
       >
         <div className="px-4">
-          <AnimatedIcon src="./icon.webp" onHover={setIsIconHovered} aria-label="Animated pixelated icon of Timmy Wu" />
+          <AnimatedIcon
+            src="./icon.webp"
+            onHover={setIsIconHovered}
+            aria-label="Animated pixelated icon of Timmy Wu"
+          />
           <div className="mt-10 flex max-w-lg flex-col space-y-10 px-4">
             <h1
               className={cn(
-                'flex items-center font-atariClassicChunky text-xl relative gap-4'
+                'font-atariClassicChunky relative flex items-center gap-4 text-xl'
               )}
             >
               <AnimatedText messages={messages} />
             </h1>
-            <h1 className='sr-only'>
-              {messages}
-            </h1>
+            <h1 className="sr-only">{messages}</h1>
           </div>
           <div className="relative mt-10 flex flex-col space-y-4 px-4">
             <LabelWithArrow

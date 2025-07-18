@@ -11,7 +11,6 @@ function getRandomChar() {
   return characters[Math.floor(Math.random() * characters.length)]
 }
 
-
 type FlipCharacterProps = {
   finalChar: string
   charIndex: number
@@ -19,14 +18,8 @@ type FlipCharacterProps = {
   debug?: boolean
 }
 
-
 const FlipCharacter = memo(
-  ({
-    finalChar,
-    charIndex,
-    total,
-    debug = false
-  }: FlipCharacterProps) => {
+  ({ finalChar, charIndex, total, debug = false }: FlipCharacterProps) => {
     const [char, setChar] = useState<string | null>(null)
     const [isFlipping, setIsFlipping] = useState(false)
 
@@ -80,7 +73,6 @@ const FlipCharacter = memo(
       let timeoutId: NodeJS.Timeout | null = null
 
       const startAnimation = () => {
-
         intervalId = setInterval(() => {
           setIsFlipping(true) // Start flipping animation
           setTimeout(() => {

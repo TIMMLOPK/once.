@@ -1,7 +1,7 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { motion } from 'motion/react'
+import { motion, Variants } from 'motion/react'
 import useScroll from '@/lib/hooks/useScroll'
 import { cn } from '@/lib/cn'
 import Link from 'next/link'
@@ -53,7 +53,7 @@ const variants = {
   hidden: {
     y: 100
   }
-}
+} satisfies Variants
 
 function Navbar({ activeSection }: { activeSection?: string }) {
   const { theme, setTheme } = useTheme()
@@ -66,7 +66,7 @@ function Navbar({ activeSection }: { activeSection?: string }) {
     <motion.nav
       className={cn(
         'fixed inset-x-0 bottom-5 z-50 m-auto flex w-fit items-center justify-center rounded-full',
-        'bg-white/60 p-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10'
+        'bg-white/60 p-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10'
       )}
       variants={variants}
       initial="hidden"
@@ -96,7 +96,7 @@ function Navbar({ activeSection }: { activeSection?: string }) {
               href={label.herf}
               data-id={typeof label === 'string' ? label : label.herf}
               className={cn(
-                'flex w-16 cursor-pointer items-center justify-center rounded-full p-2 font-silkScreen text-sm opacity-60',
+                'font-silkScreen flex w-16 cursor-pointer items-center justify-center rounded-full p-2 text-sm opacity-60',
                 'transition hover:opacity-100',
                 label.herf === '/' && 'mr-2 h-8 w-8 p-1',
                 pathName === label.herf && 'font-bold opacity-100'
@@ -125,7 +125,7 @@ function Navbar({ activeSection }: { activeSection?: string }) {
         aria-label="Toggle theme"
         className={cn(
           'flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-2 text-base text-zinc-900 dark:text-zinc-100',
-          'transition hover:bg-zinc-100 dark:hover:bg-hover dark:hover:bg-zinc-800'
+          'dark:hover:bg-hover transition hover:bg-zinc-100 dark:hover:bg-zinc-800'
         )}
       >
         {!theme ? <IconSun /> : theme === 'dark' ? <IconMoon /> : <IconSun />}

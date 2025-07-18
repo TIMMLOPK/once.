@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Avatar from '../avatar'
 import { motion } from 'motion/react'
@@ -28,7 +30,7 @@ const PostHeader = ({
       </div>
       <div className="space-y-6">
         <motion.h1
-          className="text-left text-3xl font-bold leading-relaxed text-zinc-900 dark:text-zinc-100 md:text-5xl"
+          className="text-left text-3xl leading-relaxed font-bold text-zinc-900 md:text-5xl dark:text-zinc-100"
           layoutId={`dialog-title-container-${id}`}
         >
           {title}
@@ -45,7 +47,7 @@ const PostHeader = ({
         alt={`Cover Image for ${title}`}
         width={1440}
         height={700}
-        className="aspect-video rounded-lg border border-zinc-200 shadow-small dark:border-zinc-700 dark:shadow-none"
+        className="shadow-small aspect-video rounded-lg border border-zinc-200 dark:border-zinc-700 dark:shadow-none"
       />
     </div>
   )

@@ -36,7 +36,7 @@ export function ImageCard({ src, alt, text, className }: ImageCardProps) {
   return (
     <div
       className={cn(
-        'flex flex-col rounded-md border bg-white px-2.5 pb-4 pt-2.5 shadow-lg dark:border-zinc-800 dark:bg-black',
+        'flex flex-col rounded-md border bg-white px-2.5 pt-2.5 pb-4 shadow-lg dark:border-zinc-800 dark:bg-black',
         className
       )}
     >
@@ -112,7 +112,7 @@ export function AboutSection() {
           <div className="relative h-[350px] max-w-[300px] space-y-12 md:max-w-[380px]">
             <CardStack items={ImageCards} />
           </div>
-          <div className="absolute -top-4 flex -translate-x-1 -rotate-12 md:right-0 md:top-0 md:-translate-y-14 md:rotate-6">
+          <div className="absolute -top-4 flex -translate-x-1 -rotate-12 md:top-0 md:right-0 md:-translate-y-14 md:rotate-6">
             <Arrow1 className="h-12 w-12 text-zinc-400 dark:text-zinc-200" />
             <p
               className={`${caveat.className} max-w-40 text-xl font-bold text-zinc-400`}
@@ -173,7 +173,7 @@ export function AboutSection() {
             variants={blurSlideVariants.item}
             initial="hidden"
             whileInView="visible"
-            className="flex items-center space-x-2 font-vt323 text-xl font-bold text-black dark:text-white"
+            className="font-vt323 flex items-center space-x-2 text-xl font-bold text-black dark:text-white"
           >
             <span>#AI</span>
             <span>#Web</span>

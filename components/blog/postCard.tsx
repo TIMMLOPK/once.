@@ -23,7 +23,7 @@ export function PostCard({ post }: { post: PostData }) {
       }}
     >
       <MorphingDialogTrigger>
-        <div className="flex select-none flex-col space-y-1 p-4">
+        <div className="flex flex-col space-y-1 p-4 select-none">
           <div className="flex flex-col items-start justify-center space-y-0">
             <MorphingDialogTitle className="text-base font-medium text-zinc-800 underline decoration-zinc-400 hover:decoration-2 dark:text-zinc-50">
               {post.title}
@@ -35,7 +35,7 @@ export function PostCard({ post }: { post: PostData }) {
         </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative overflow-auto rounded-lg border bg-white dark:border-zinc-800 dark:bg-black lg:w-3/4">
+        <MorphingDialogContent className="relative overflow-auto rounded-lg border bg-white lg:w-3/4 dark:border-zinc-800 dark:bg-black">
           <div className="relative p-6">
             <MorphingDialogTitle className="text-2xl font-bold text-zinc-800 dark:text-zinc-50">
               {post.title}

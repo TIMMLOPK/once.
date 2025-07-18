@@ -25,7 +25,7 @@ const Avatar = ({
       </div>
       <p
         className={cn(
-          'font-semibold leading-6 text-zinc-900 dark:text-zinc-100',
+          'leading-6 font-semibold text-zinc-900 dark:text-zinc-100',
           className
         )}
       >

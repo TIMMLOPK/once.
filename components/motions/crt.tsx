@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { motion, Variants } from 'motion/react'
 import { useTheme } from 'next-themes'
 
 const CRTEffect = ({ children }: { children: React.ReactNode }) => {
@@ -19,7 +19,7 @@ const CRTEffect = ({ children }: { children: React.ReactNode }) => {
         ease: 'linear'
       }
     }
-  }
+  } satisfies Variants
 
   const textShadowVariants = {
     animate: {
@@ -42,7 +42,7 @@ const CRTEffect = ({ children }: { children: React.ReactNode }) => {
         ease: 'linear'
       }
     }
-  }
+  } satisfies Variants
 
   return (
     <motion.div

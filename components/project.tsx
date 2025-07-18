@@ -46,7 +46,7 @@ export const ProjectCard = ({ data, className }: ProjectCardProps) => {
         ) : (
           <h1 className="font-workBench text-2xl font-medium">{title}</h1>
         )}
-        <p className="mt-4 max-w-72 font-vt323 text-lg text-zinc-400 md:max-w-full">
+        <p className="font-vt323 mt-4 max-w-72 text-lg text-zinc-400 md:max-w-full">
           {text}
         </p>
         <div className="mt-6 flex items-center space-x-2">
