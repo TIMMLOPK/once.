@@ -5,8 +5,13 @@ import { SectionTitle } from '@/components/shared/sectionTitle'
 
 const works = [
   {
+    title: 'TrustedText',
+    text: 'High-performance AI text detection using neural networks with contrastive learning.',
+    github: 'https://github.com/theoncetimes/trustedText'
+  },
+  {
     title: 'ONCE AI',
-    text: 'A powerful AI assistant. It can help you with anything.',
+    text: 'A powerful AI Agentic Assistant. It can help you with anything.',
     link: 'https://ai.ionce.me/',
     image: '/works/once-ai.png'
   },
@@ -17,16 +22,16 @@ const works = [
     image: '/works/once-dcbot.png'
   },
   {
+    title: 'iTab - Google Chrome Built-in AI Challenge 2025',
+    text: 'Chrome extension that connects your tabs and protects your data using on-device AI.',
+    link: 'https://youtu.be/sXpLd4q0e9Y?si=v_Ni1-zxnW1ubKgm',
+    youtubeUrl: 'https://www.youtube.com/embed/sXpLd4q0e9Y?si=3urDjGYJAQqpZSqz'
+  },
+  {
     title: 'Meme Generator',
     text: 'Generate an unique meme. It developed with nextui(A pretty and customizable UI library).',
     link: 'https://meme.ionce.me/',
-    github: 'https://github.com/TIMMLOPK/meme-generator',
-    image: '/works/meme-generator.png'
-  },
-  {
-    title: 'npm outdated.rs',
-    text: 'npm outdated checker',
-    github: 'https://github.com/TIMMLOPK/npm-outdated-rs'
+    github: 'https://github.com/TIMMLOPK/meme-generator'
   },
   {
     title: 'ionce.me',
@@ -35,9 +40,9 @@ const works = [
     github: 'https://github.com/TIMMLOPK/once.'
   },
   {
-    title: 'ONCE',
-    text: 'Old version of my personal website',
-    github: 'https://github.com/TIMMLOPK/once'
+    title: 'npm outdated.rs',
+    text: 'npm outdated checker',
+    github: 'https://github.com/TIMMLOPK/npm-outdated-rs'
   },
   {
     title: 'Discord RPC.rs',
@@ -47,10 +52,9 @@ const works = [
 ]
 
 export default function WorksPage() {
-  const sortedByTitle = works.sort((a, b) => a.title.localeCompare(b.title))
   const sortedWorks = {
-    withImage: sortedByTitle.filter(project => project.image),
-    withoutImage: sortedByTitle.filter(project => !project.image)
+    withImage: works.filter(project => project.image || project.youtubeUrl),
+    withoutImage: works.filter(project => !project.image && !project.youtubeUrl)
   }
   return (
     <Layout className="mx-4 md:mx-auto">

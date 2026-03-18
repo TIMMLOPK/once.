@@ -3,25 +3,48 @@ import { PostCard } from './postCard'
 import { AnimatedBackground } from '@/components/motions/animatedBackground'
 import { cn } from '@/lib/cn'
 import { caveat } from '@/app/fonts'
+import PostBody from './post/postBody'
 
-export const PostsGrid = ({ posts }: { posts: PostData[] }) => {
-  const groupedPosts = posts.reduce((acc: Record<string, PostData[]>, post) => {
-    // Convert dd/mm/yyyy to yyyy-mm-dd for proper Date parsing
-    const [day, month, year] = post.date.split('/')
-    const dateObj = new Date(`${year}-${month}-${day}`)
+async function getPostContent(slug: string) {
+  try {
+    const { default: MDXContent } = await import(`@/content/posts/${slug}.mdx`)
+    return (
+      <PostBody>
+        <MDXContent />
+      </PostBody>
+    )
+  } catch {
+    return null
+  }
+}
 
-    const time = dateObj.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long'
-    })
+export const PostsGrid = async ({ posts }: { posts: PostData[] }) => {
+  const postsWithContent = await Promise.all(
+    posts.map(async post => ({
+      post,
+      content: await getPostContent(post.slug)
+    }))
+  )
 
-    if (!acc[time]) {
-      acc[time] = []
-    }
+  const groupedPosts = postsWithContent.reduce(
+    (acc: Record<string, typeof postsWithContent>, { post, content }) => {
+      const [day, month, year] = post.date.split('/')
+      const dateObj = new Date(`${year}-${month}-${day}`)
 
-    acc[time].push(post)
-    return acc
-  }, {}) as Record<string, PostData[]>
+      const time = dateObj.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long'
+      })
+
+      if (!acc[time]) {
+        acc[time] = []
+      }
+
+      acc[time].push({ post, content })
+      return acc
+    },
+    {}
+  )
 
   return (
     <div className="flex flex-col space-y-5">
@@ -48,9 +71,9 @@ export const PostsGrid = ({ posts }: { posts: PostData[] }) => {
               }}
               enableHover
             >
-              {groupedPosts[time].map(post => (
-                <div data-id={`card-${post.id}`} key={post.id}>
-                  <PostCard post={post} />
+              {groupedPosts[time].map(({ post, content }) => (
+                <div data-id={`card-${post.slug}`} key={post.slug}>
+                  <PostCard post={post} content={content} />
                 </div>
               ))}
             </AnimatedBackground>

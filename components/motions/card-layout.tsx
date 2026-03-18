@@ -199,6 +199,9 @@ function MorphingDialogContent({
       document.body.classList.remove('overflow-hidden')
       triggerRef.current?.focus()
     }
+    return () => {
+      document.body.classList.remove('overflow-hidden')
+    }
   }, [isOpen, triggerRef])
 
   useClickOutside(containerRef, () => {

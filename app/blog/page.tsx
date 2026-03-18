@@ -1,31 +1,10 @@
 import Layout from '@/components/layout/main'
-// import { cache } from "react";
-// import { getPosts } from "@/app/actions";
 import { PostsGrid } from '@/components/blog/postsGrid'
-import { PostData } from '@/lib/types/post'
+import { getAllPosts } from '@/lib/posts'
 import { SectionTitle } from '@/components/shared/sectionTitle'
-// import { PostData } from "@/lib/types/post";
-
-// async function getSortedPosts(): Promise<PostData[]> {
-//   const posts = await getPosts();
-
-//   const publishedPosts = posts.filter((post: PostData) => post.published);
-
-//   return publishedPosts.sort((a: any, b: any) => {
-//     if (a.id > b.id) {
-//       return -1;
-//     } else {
-//       return 1;
-//     }
-//   });
-// }
-
-// const loadPosts = cache(async () => {
-//   return await getSortedPosts();
-// });
 
 export default async function BlogPage() {
-  const posts = [] as PostData[]
+  const posts = await getAllPosts()
 
   if (posts.length === 0) {
     return (
@@ -42,6 +21,7 @@ export default async function BlogPage() {
       </Layout>
     )
   }
+
   return (
     <Layout className="mx-4 md:mx-auto">
       <section className="relative mt-12 min-h-screen overflow-y-hidden md:m-12">

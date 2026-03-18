@@ -71,7 +71,7 @@ function LabelWithArrow({
       </AnimatePresence>
       <motion.p
         className={cn(
-          'font-atariClassicChunky relative inline-block bg-[length:250%_100%,auto] bg-clip-text text-[15px]',
+          'font-atariClassicChunky relative inline-block bg-size-[250%_100%,auto] bg-clip-text text-[15px]',
           'text-transparent [--base-color:#a1a1aa] [--base-gradient-color:#000]',
           '[background-repeat:no-repeat,padding-box] [--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))]',
           'dark:[--base-color:#71717a] dark:[--base-gradient-color:#ffffff] dark:[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))]'
@@ -112,7 +112,7 @@ export default function HomePage() {
 
   return (
     <Layout
-      className="mx-auto max-h-[100dvh] overflow-hidden"
+      className="mx-auto max-h-dvh overflow-hidden"
       activeSection={activeSection}
     >
       <section

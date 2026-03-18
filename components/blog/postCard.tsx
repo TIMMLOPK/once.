@@ -1,7 +1,8 @@
 'use client'
 
 import { PostData } from '@/lib/types/post'
-import PostBody from './post/postBody'
+import Link from 'next/link'
+import { ReactNode } from 'react'
 
 import {
   MorphingDialog,
@@ -13,7 +14,13 @@ import {
   MorphingDialogContainer
 } from '@/components/motions/card-layout'
 
-export function PostCard({ post }: { post: PostData }) {
+export function PostCard({
+  post,
+  content
+}: {
+  post: PostData
+  content?: ReactNode
+}) {
   return (
     <MorphingDialog
       transition={{
@@ -35,18 +42,27 @@ export function PostCard({ post }: { post: PostData }) {
         </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative overflow-auto rounded-lg border bg-white lg:w-3/4 dark:border-zinc-800 dark:bg-black">
+        <MorphingDialogContent className="relative max-h-[85vh] overflow-y-auto rounded-lg border bg-white lg:w-3/4 dark:border-zinc-800 dark:bg-black">
           <div className="relative p-6">
-            <MorphingDialogTitle className="text-2xl font-bold text-zinc-800 dark:text-zinc-50">
-              {post.title}
-            </MorphingDialogTitle>
-            <MorphingDialogSubtitle className="text-sm text-zinc-600 dark:text-zinc-400">
-              {post.description}
-            </MorphingDialogSubtitle>
-            <div className="mt-2 overflow-auto border-t border-dashed pt-2 text-sm text-zinc-700 lg:h-[450px]">
-              <div className="pointer-events-none absolute bottom-0 left-0 h-12 w-full bg-white to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_top,white,transparent)] dark:bg-neutral-900" />
-              <PostBody content={post.content} />
+            <div className="mb-4 flex items-start justify-between gap-4">
+              <div>
+                <MorphingDialogTitle className="text-2xl font-bold text-zinc-800 dark:text-zinc-50">
+                  {post.title}
+                </MorphingDialogTitle>
+                <MorphingDialogSubtitle className="text-sm text-zinc-600 dark:text-zinc-400">
+                  {post.description}
+                </MorphingDialogSubtitle>
+              </div>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="mt-6 shrink-0 text-sm text-zinc-400 hover:text-zinc-700 hover:underline dark:text-zinc-500 dark:hover:text-zinc-300"
+              >
+                Open full page ↗
+              </Link>
             </div>
+            {content && (
+              <div className="border-t border-dashed pt-4">{content}</div>
+            )}
           </div>
           <MorphingDialogClose className="text-zinc-500" />
         </MorphingDialogContent>

@@ -125,7 +125,7 @@ function Navbar({ activeSection }: { activeSection?: string }) {
         aria-label="Toggle theme"
         className={cn(
           'flex cursor-pointer items-center justify-center rounded-full border-t border-transparent p-2 text-base text-zinc-900 dark:text-zinc-100',
-          'dark:hover:bg-hover transition hover:bg-zinc-100 dark:hover:bg-zinc-800'
+          'dark:hover:bg-hover transition hover:bg-zinc-100'
         )}
       >
         {!theme ? <IconSun /> : theme === 'dark' ? <IconMoon /> : <IconSun />}
