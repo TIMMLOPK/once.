@@ -54,7 +54,7 @@ export function PostCard({
                 </MorphingDialogSubtitle>
               </div>
               <Link
-                href={`/blog/${post.slug}`}
+                href={`/writing/${post.slug}`}
                 className="mt-6 shrink-0 text-sm text-zinc-400 hover:text-zinc-700 hover:underline dark:text-zinc-500 dark:hover:text-zinc-300"
               >
                 Open full page ↗

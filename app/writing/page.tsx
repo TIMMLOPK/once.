@@ -3,7 +3,7 @@ import { PostsGrid } from '@/components/writing/postsGrid'
 import { getAllPosts } from '@/lib/posts'
 import { SectionTitle } from '@/components/shared/sectionTitle'
 
-export default async function BlogPage() {
+export default async function WritingPage() {
   const posts = await getAllPosts()
 
   if (posts.length === 0) {
