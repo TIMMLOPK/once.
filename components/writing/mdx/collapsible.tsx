@@ -18,10 +18,10 @@ export function Collapsible({
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   return (
-    <CanvasBox>
+    <CanvasBox className="group/collapsible">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between px-4 py-3 text-left transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/60"
+        className="flex w-full items-center justify-between px-4 py-3 text-left transition-colors"
         aria-expanded={isOpen}
       >
         <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
@@ -30,7 +30,7 @@ export function Collapsible({
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
-          className="text-xs text-zinc-400"
+          className="text-xs text-zinc-400 transition-transform group-hover/collapsible:scale-110 group-hover/collapsible:text-zinc-900 dark:group-hover/collapsible:text-zinc-100"
         >
           ↓
         </motion.span>

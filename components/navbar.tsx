@@ -28,7 +28,7 @@ const Label = [
     herf: '/'
   },
   { name: 'Works', herf: '/works' },
-  { name: 'Blog', herf: '/blog' }
+  { name: 'Writing', herf: '/writing' }
 ] as const
 
 const variants = {
@@ -65,7 +65,7 @@ function Navbar({ activeSection }: { activeSection?: string }) {
   return (
     <motion.nav
       className={cn(
-        'fixed inset-x-0 bottom-5 z-50 m-auto flex w-fit items-center justify-center rounded-full',
+        'fixed inset-x-0 bottom-5 z-50 m-auto flex w-66 items-center justify-center rounded-full',
         'bg-white/60 p-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10'
       )}
       variants={variants}
@@ -85,7 +85,7 @@ function Navbar({ activeSection }: { activeSection?: string }) {
       dragDirectionLock
       style={{ touchAction: 'none' }}
     >
-      <div className="relative flex items-center space-x-1">
+      <div className="relative flex items-center space-x-2">
         <AnimatedBackground
           className="rounded-full bg-zinc-100 dark:bg-zinc-800"
           enableHover
@@ -96,9 +96,9 @@ function Navbar({ activeSection }: { activeSection?: string }) {
               href={label.herf}
               data-id={typeof label === 'string' ? label : label.herf}
               className={cn(
-                'font-silkScreen flex w-16 cursor-pointer items-center justify-center rounded-full p-2 text-sm opacity-60',
+                'font-silkScreen flex w-18 cursor-pointer items-center justify-center rounded-full p-2 text-sm opacity-60',
                 'transition hover:opacity-100',
-                label.herf === '/' && 'mr-2 h-8 w-8 p-1',
+                label.herf === '/' && 'mr-2 size-8 p-1',
                 pathName === label.herf && 'font-bold opacity-100'
               )}
               onClick={() => {

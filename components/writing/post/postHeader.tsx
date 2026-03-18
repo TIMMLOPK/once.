@@ -16,14 +16,16 @@ const PostHeader = ({
   return (
     <div className="space-y-8">
       {/* Navigation & meta row */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1">
+      <div className="flex flex-wrap items-center justify-between">
+        <div className="flex max-w-full items-center gap-1">
           <Link href="/">
             <span className="font-silkScreen text-zinc-400 dark:text-zinc-500">
-              Blog/
+              Writing/
             </span>
           </Link>
-          <span className="font-serif">{title}</span>
+          <span className="max-w-full overflow-hidden font-serif text-ellipsis whitespace-nowrap">
+            {title}
+          </span>
         </div>
         <div
           className={cn(

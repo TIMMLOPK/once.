@@ -1,9 +1,16 @@
-import { Caveat, Silkscreen, Workbench, VT323 } from 'next/font/google'
+import { Caveat, Silkscreen, Workbench, VT323, DM_Mono } from 'next/font/google'
 import localfont from 'next/font/local'
 
 export const caveat = Caveat({
   subsets: ['latin'],
   variable: '--font-caveat'
+})
+
+export const dmMono = DM_Mono({
+  subsets: ['latin'],
+  variable: '--font-dmMono',
+  weight: ['300', '400', '500'],
+  display: 'swap'
 })
 
 export const silkscreen = Silkscreen({

@@ -1,0 +1,232 @@
+---
+title: 'Understanding AVL Trees: Self-Balancing Binary Search Trees'
+description: 'Learn how AVL trees maintain balance through rotations, ensuring O(log n) operations with interactive visualizations.'
+coverImage: '/images/blog/avl-tree.jpg'
+date: '18/03/2026'
+author: 'TIMMLOPK'
+---
+
+Binary search trees are powerful data structures, but they can become unbalanced, leading to degraded performance. AVL trees solve this problem by maintaining balance automatically. Let's explore how they work.
+
+**The Problem with Regular BSTs**
+
+In a standard Binary Search Tree (BST), operations like search, insert, and delete can degrade from O(log n) to O(n) if the tree becomes unbalanced. Consider inserting values in sorted order: `1, 2, 3, 4, 5`. The result is essentially a linked list:
+
+<SkewedBST values={[1, 2, 3, 4, 5]} />
+
+Searching for 5 in this tree requires 5 comparisons instead of the optimal 3.
+
+**What is an AVL Tree?**
+
+An AVL tree (named after inventors **A**delson-**V**elsky and **L**andis) is a self-balancing binary search tree. For each node, the **balance factor** — the difference between the heights of left and right subtrees — must be -1, 0, or 1.
+
+**Balance Factor**
+
+<BalanceFactorDemo />
+
+The balance factor is calculated as:
+
+```
+Balance Factor = Height(Left Subtree) - Height(Right Subtree)
+```
+
+- **Balance Factor = 0**: Left and right subtrees have equal height
+- **Balance Factor = +1**: Left subtree is one level taller (acceptable)
+- **Balance Factor = -1**: Right subtree is one level taller (acceptable)
+- **Balance Factor ≥ +2 or ≤ -2**: Tree is unbalanced, needs rotation
+
+**How AVL Trees Maintain Balance**
+
+When an insertion or deletion causes a node's balance factor to exceed the allowed range, the tree performs **rotations** to restore balance. There are four types of rotations:
+
+**1. Right Rotation (LL Case)**
+
+Used when the left subtree of the left child is too tall.
+
+<Collapsible title="Right Rotation Algorithm">
+1. Let `y` be the left child of `x`.
+2. Make `y's` right subtree the left subtree of `x`.
+3. Make `x` the right child of `y`.
+4. Update heights.
+5. Return `y` as the new root.
+</Collapsible>
+
+**2. Left Rotation (RR Case)**
+
+Used when the right subtree of the right child is too tall.
+
+<Collapsible title="Left Rotation Algorithm">
+1. Let `y` be the right child of `x`.
+2. Make `y's` left subtree the right subtree of `x`.
+3. Make `x` the left child of `y`.
+4. Update heights.
+5. Return `y` as the new root.
+</Collapsible>
+
+**3. Left-Right Rotation (LR Case)**
+
+Used when the right subtree of the left child is too tall. This is a combination:
+
+1. First, perform a left rotation on the left child
+2. Then, perform a right rotation on the root
+
+**4. Right-Left Rotation (RL Case)**
+
+Used when the left subtree of the right child is too tall. This is a combination:
+
+1. First, perform a right rotation on the right child
+2. Then, perform a left rotation on the root
+
+**Interactive AVL Tree**
+
+Try it yourself! Insert values and watch how the tree automatically balances itself. The numbers next to each node show the balance factor.
+
+<CanvasBox>
+  <AVLTree />
+</CanvasBox>
+
+**Tips**
+
+- Try inserting values in sorted order (1, 2, 3, 4, 5) to see rotations in action
+- Watch the balance factors change as you insert/delete
+
+**Implementation**
+
+Here's a TypeScript implementation of an AVL tree:
+
+```typescript
+interface AVLNode {
+  value: number
+  left: AVLNode | null
+  right: AVLNode | null
+  height: number
+}
+
+function getHeight(node: AVLNode | null): number {
+  return node ? node.height : 0
+}
+
+function getBalance(node: AVLNode | null): number {
+  return node ? getHeight(node.left) - getHeight(node.right) : 0
+}
+
+function updateHeight(node: AVLNode): void {
+  node.height = 1 + Math.max(getHeight(node.left), getHeight(node.right))
+}
+
+function rightRotate(y: AVLNode): AVLNode {
+  const x = y.left!
+  const T2 = x.right
+
+  // Perform rotation
+  x.right = y
+  y.left = T2
+
+  // Update heights
+  updateHeight(y)
+  updateHeight(x)
+
+  return x
+}
+
+function leftRotate(x: AVLNode): AVLNode {
+  const y = x.right!
+  const T2 = y.left
+
+  // Perform rotation
+  y.left = x
+  x.right = T2
+
+  // Update heights
+  updateHeight(x)
+  updateHeight(y)
+
+  return y
+}
+
+function insert(node: AVLNode | null, value: number): AVLNode {
+  // Standard BST insertion
+  if (!node) return { value, left: null, right: null, height: 1 }
+
+  if (value < node.value) {
+    node.left = insert(node.left, value)
+  } else if (value > node.value) {
+    node.right = insert(node.right, value)
+  } else {
+    return node // Duplicates not allowed
+  }
+
+  // Update height
+  updateHeight(node)
+
+  // Get balance factor
+  const balance = getBalance(node)
+
+  // Left Left Case
+  if (balance > 1 && value < node.left!.value) {
+    return rightRotate(node)
+  }
+
+  // Right Right Case
+  if (balance < -1 && value > node.right!.value) {
+    return leftRotate(node)
+  }
+
+  // Left Right Case
+  if (balance > 1 && value > node.left!.value) {
+    node.left = leftRotate(node.left!)
+    return rightRotate(node)
+  }
+
+  // Right Left Case
+  if (balance < -1 && value < node.right!.value) {
+    node.right = rightRotate(node.right!)
+    return leftRotate(node)
+  }
+
+  return node
+}
+```
+
+**Time Complexity**
+
+| Operation | Average Case | Worst Case |
+| --------- | ------------ | ---------- |
+| Search    | O(log n)     | O(log n)   |
+| Insert    | O(log n)     | O(log n)   |
+| Delete    | O(log n)     | O(log n)   |
+
+The key advantage of AVL trees is that **worst-case performance is guaranteed** to be O(log n), unlike regular BSTs which can degrade to O(n).
+
+**Space Complexity**
+
+- **O(n)** for storing n nodes
+- Each node requires O(1) extra space for the height field
+
+**When to Use AVL Trees**
+
+**Good use cases:**
+
+- Frequent lookups with occasional insertions/deletions
+- When worst-case performance guarantees are important
+- Database indexing
+- In-memory sorting
+
+**Consider alternatives:**
+
+- Red-Black trees if insertions/deletions are more frequent than lookups (they require fewer rotations)
+- B-trees for disk-based storage
+- Hash tables for O(1) average-case lookup (but no ordering)
+
+## Summary
+
+AVL trees are elegant data structures that automatically maintain balance through rotations. By ensuring the balance factor of every node stays within [-1, 0, 1], they guarantee O(log n) performance for all operations.
+
+Key takeaways:
+
+1. AVL trees are self-balancing BSTs
+2. Balance factor = height(left) - height(right)
+3. Four rotation types handle different imbalance cases
+4. All operations are guaranteed O(log n)
+
+Try the interactive visualization above to see AVL trees in action!

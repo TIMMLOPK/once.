@@ -4,7 +4,13 @@ import { Providers } from './providers'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import { AtariClassicChunky, silkscreen, vt323, workbench } from './fonts'
+import {
+  AtariClassicChunky,
+  silkscreen,
+  vt323,
+  workbench,
+  dmMono
+} from './fonts'
 
 export const metadata: Metadata = {
   title: 'once.',
@@ -33,7 +39,7 @@ export default function RootLayout({
     <html
       suppressHydrationWarning
       lang="en"
-      className={`${AtariClassicChunky.variable} ${silkscreen.variable} ${workbench.variable} ${vt323.variable}`}
+      className={`${AtariClassicChunky.variable} ${silkscreen.variable} ${workbench.variable} ${vt323.variable} ${dmMono.variable}`}
     >
       <head />
       <body>

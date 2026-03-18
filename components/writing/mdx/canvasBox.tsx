@@ -9,7 +9,7 @@ export function CanvasBox({
   return (
     <div
       className={cn(
-        'not-prose relative my-4 overflow-hidden rounded-xl border-t border-b border-gray-400 bg-white sm:border-r sm:border-l sm:border-none sm:shadow-sm dark:bg-[#11110E]',
+        'not-prose relative my-4 overflow-hidden rounded-xl border border-[#d8d2ca] bg-[#f0ece6] text-xs leading-relaxed text-[#2c2520] dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300',
         className
       )}
       {...props}

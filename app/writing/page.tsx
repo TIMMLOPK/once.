@@ -1,5 +1,5 @@
 import Layout from '@/components/layout/main'
-import { PostsGrid } from '@/components/blog/postsGrid'
+import { PostsGrid } from '@/components/writing/postsGrid'
 import { getAllPosts } from '@/lib/posts'
 import { SectionTitle } from '@/components/shared/sectionTitle'
 
@@ -10,7 +10,7 @@ export default async function BlogPage() {
     return (
       <Layout className="mx-4 md:mx-auto">
         <section className="relative mt-12 min-h-screen overflow-y-hidden md:m-12">
-          <SectionTitle>Blog</SectionTitle>
+          <SectionTitle>Writing</SectionTitle>
           <div className="mt-10 space-y-1">
             <p className="font-vt323">There are no posts yet.</p>
             <p className="font-vt323">
@@ -25,7 +25,7 @@ export default async function BlogPage() {
   return (
     <Layout className="mx-4 md:mx-auto">
       <section className="relative mt-12 min-h-screen overflow-y-hidden md:m-12">
-        <SectionTitle>Blog</SectionTitle>
+        <SectionTitle>Writing</SectionTitle>
         <PostsGrid posts={posts} />
       </section>
     </Layout>

@@ -1,13 +1,11 @@
 import type { MDXComponents } from 'mdx/types'
 import type { ReactElement } from 'react'
 import type { BundledLanguage } from 'shiki'
-import { Collapsible } from '@/components/blog/mdx/collapsible'
-import {
-  CodeBlock,
-  CodeBlockFilename,
-  CodeBlockHeader,
-  CodeBlockTitle
-} from '@/components/blog/mdx/codeBlock'
+import { Collapsible } from '@/components/writing/mdx/collapsible'
+import { CodeBlock } from '@/components/writing/mdx/codeBlock'
+import { AVLTree, BalanceFactorDemo } from '@/components/writing/mdx/avlTree'
+import { CanvasBox } from '@/components/writing/mdx/canvasBox'
+import { SkewedBST } from '@/components/writing/mdx/skewedBst'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -63,18 +61,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         'text') as BundledLanguage
       const code = String(codeEl?.props?.children ?? '').trimEnd()
       // return <CodeBlock code={code} language={lang} showLineNumbers={false} />
-      return (
-        <CodeBlock code={code} language={lang}>
-          <CodeBlockHeader>
-            <CodeBlockTitle>
-              <CodeBlockFilename>{lang}</CodeBlockFilename>
-            </CodeBlockTitle>
-            {/* <CodeBlockActions>
-            <CodeBlockCopyButton onCopy={() => {}} />
-            </CodeBlockActions> */}
-          </CodeBlockHeader>
-        </CodeBlock>
-      )
+      return <CodeBlock code={code} language={lang} />
     },
     img: ({ src, alt }) => (
       // eslint-disable-next-line @next/next/no-img-element
@@ -89,9 +76,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <hr className="my-8 border-0 border-t border-zinc-200 dark:border-zinc-800" />
     ),
     table: ({ children }) => (
-      <div className="my-6 overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
+      <CanvasBox>
         <table className="w-full text-sm">{children}</table>
-      </div>
+      </CanvasBox>
     ),
     th: ({ children }) => (
       <th className="border-b border-zinc-200 bg-zinc-50 px-4 py-2.5 text-left font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100">
@@ -104,6 +91,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </td>
     ),
     Collapsible,
+    AVLTree,
+    BalanceFactorDemo,
+    CanvasBox,
+    SkewedBST,
     ...components
   }
 }

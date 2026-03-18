@@ -153,12 +153,12 @@ export default function HomePage() {
               Works
             </LabelWithArrow>
             <LabelWithArrow
-              href="/blog"
+              href="/writing"
               activeId={label}
-              id="blog"
+              id="writing"
               setLabel={setLabel}
             >
-              Blog
+              Writing
             </LabelWithArrow>
           </div>
         </div>
