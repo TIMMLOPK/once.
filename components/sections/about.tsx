@@ -4,24 +4,26 @@ import { caveat } from '@/app/fonts'
 import { cn } from '@/lib/cn'
 import { CardStack } from '@/components/motions/cardStack'
 import { FaDiscord, FaInstagram, FaTwitter } from 'react-icons/fa'
-import { Arrow1 } from '@/components/shared/icons'
-import { motion } from 'motion/react'
+import { motion, type Variants } from 'motion/react'
 
 const socials = [
   {
-    name: 'Discord (timmy_y)',
+    name: 'Discord',
+    handle: 'timmy_y',
     link: 'https://discord.com',
-    icon: <FaDiscord className="h-5 w-5" />
+    icon: <FaDiscord className="size-4" />
   },
   {
     name: 'Instagram',
+    handle: 'tw_wu_as_tim',
     link: 'https://www.instagram.com/tw_wu_as_tim/',
-    icon: <FaInstagram className="h-5 w-5" />
+    icon: <FaInstagram className="size-4" />
   },
   {
     name: 'Twitter',
+    handle: 'once_wu',
     link: 'https://twitter.com/once_wu',
-    icon: <FaTwitter className="h-5 w-5" />
+    icon: <FaTwitter className="size-4" />
   }
 ]
 
@@ -65,158 +67,184 @@ const ImageCards = [
   }
 ]
 
-export function AboutSection() {
-  const blurSlideVariants = {
-    container: {
-      hidden: { opacity: 0 },
-      visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.05 }
-      },
-      exit: {
-        transition: { staggerChildren: 0.05, staggerDirection: 1 }
-      }
-    },
-    item: {
-      hidden: {
-        opacity: 0,
-        filter: 'blur(10px) brightness(0%)',
-        y: 0
-      },
-      visible: {
-        opacity: 1,
-        y: 0,
-        filter: 'blur(0px) brightness(100%)',
-        transition: {
-          duration: 0.4
-        }
-      },
-      exit: {
-        opacity: 0,
-        y: -30,
-        filter: 'blur(10px) brightness(0%)',
-        transition: {
-          duration: 0.4
-        }
-      }
-    }
-  }
+type StatValue = { text: string; href?: string }
 
+const stats: { label: string; values: StatValue[] }[] = [
+  { label: 'Class', values: [{ text: 'Developer' }] },
+  { label: 'Skills', values: [{ text: 'AI' }, { text: 'Web' }] },
+  {
+    label: 'Stack',
+    values: [{ text: 'React' }, { text: 'Next.js' }, { text: 'Rust' }]
+  },
+  {
+    label: 'Quests',
+    values: [
+      { text: 'ONCE AI', href: 'https://ai.ionce.me/' },
+      {
+        text: 'TrustedText',
+        href: 'https://github.com/theoncetimes/trustedText'
+      }
+    ]
+  },
+  { label: 'Side quest', values: [{ text: 'Photography' }] }
+]
+
+const reveal: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } }
+}
+
+const line: Variants = {
+  hidden: { opacity: 0, x: -8 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.3 } }
+}
+
+function Highlight({ children }: { children: React.ReactNode }) {
+  return <span className="text-black dark:text-white">{children}</span>
+}
+
+function Prompt() {
+  return (
+    <span className="text-zinc-400 dark:text-zinc-600" aria-hidden="true">
+      &gt;{' '}
+    </span>
+  )
+}
+
+function ProfileCard() {
+  return (
+    <motion.div
+      className="overflow-hidden rounded-md border border-zinc-300 bg-white/70 shadow-lg backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/70"
+      variants={reveal}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+    >
+      <div className="flex items-center justify-between border-b border-zinc-300 px-4 py-2 dark:border-zinc-700">
+        <h2 className="font-atariClassicChunky text-xs md:text-sm">
+          Player: Timmy
+        </h2>
+        <div className="flex gap-1.5" aria-hidden="true">
+          <span className="size-2 bg-zinc-300 dark:bg-zinc-600" />
+          <span className="size-2 bg-zinc-300 dark:bg-zinc-600" />
+          <span className="size-2 bg-black dark:bg-white" />
+        </div>
+      </div>
+      <dl className="space-y-3 px-4 py-4">
+        {stats.map(stat => (
+          <motion.div
+            key={stat.label}
+            variants={line}
+            className="grid grid-cols-[6.5rem_1fr] items-baseline gap-2"
+          >
+            <dt className="font-silkScreen text-xs text-zinc-400 uppercase dark:text-zinc-500">
+              {stat.label}
+            </dt>
+            <dd className="font-vt323 flex flex-wrap gap-x-3 gap-y-1 text-xl leading-none">
+              {stat.values.map(value =>
+                value.href ? (
+                  <Link
+                    key={value.text}
+                    href={value.href}
+                    className="underline decoration-zinc-400 decoration-dashed underline-offset-4 hover:decoration-solid"
+                  >
+                    {value.text}
+                  </Link>
+                ) : (
+                  <span key={value.text}>{value.text}</span>
+                )
+              )}
+            </dd>
+          </motion.div>
+        ))}
+      </dl>
+    </motion.div>
+  )
+}
+
+function Bio() {
+  return (
+    <motion.div
+      className="font-vt323 space-y-3 text-xl leading-snug text-zinc-500 dark:text-zinc-400"
+      variants={reveal}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+    >
+      <motion.p variants={line}>
+        <Prompt />
+        I&apos;m <Highlight>Timmy</Highlight>, a developer who loves building
+        things for the <Highlight>web</Highlight> and experimenting with{' '}
+        <Highlight>AI</Highlight>.
+      </motion.p>
+      <motion.p variants={line}>
+        <Prompt />
+        Lately I&apos;ve been working on <Highlight>ONCE AI</Highlight>, an
+        agentic assistant, and <Highlight>TrustedText</Highlight>, which detects
+        AI-written text using contrastive learning.
+      </motion.p>
+      <motion.p variants={line}>
+        <Prompt />
+        Most of what I build uses <Highlight>React</Highlight> and{' '}
+        <Highlight>Next.js</Highlight>, with some <Highlight>Rust</Highlight> on
+        the side.
+      </motion.p>
+      <motion.p variants={line}>
+        <Prompt />
+        Got a project in mind or want to collaborate? Say hi
+        <span
+          className="ml-1 inline-block h-[0.9em] w-[0.5em] translate-y-[0.1em] animate-pulse bg-black dark:bg-white"
+          aria-hidden="true"
+        />
+      </motion.p>
+    </motion.div>
+  )
+}
+
+function Socials() {
+  return (
+    <div className="flex flex-wrap gap-3">
+      {socials.map(social => (
+        <Link
+          key={social.name}
+          href={social.link}
+          aria-label={`${social.name} (${social.handle})`}
+          className={cn(
+            'font-silkScreen flex items-center gap-2 border border-zinc-300 px-3 py-2 text-xs text-zinc-500',
+            'shadow-[3px_3px_0_0] shadow-zinc-300 transition-all',
+            'hover:-translate-y-0.5 hover:text-black hover:shadow-[4px_4px_0_0]',
+            'active:translate-y-0 active:shadow-[1px_1px_0_0]',
+            'dark:border-zinc-700 dark:text-zinc-400 dark:shadow-zinc-700 dark:hover:text-white'
+          )}
+        >
+          {social.icon}
+          <span>{social.handle}</span>
+        </Link>
+      ))}
+    </div>
+  )
+}
+
+export function AboutSection() {
   return (
     <section
-      className="relative m-10 mt-12 flex min-h-screen items-center justify-center md:m-12 md:px-6"
+      className="relative mx-4 flex min-h-screen items-center justify-center py-24 md:mx-12"
       data-section="about"
     >
-      <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12">
-        <div className="relative md:pl-10">
-          <div className="relative h-[350px] max-w-[300px] space-y-12 md:max-w-[380px]">
+      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
+        <div className="space-y-8">
+          <ProfileCard />
+          <Bio />
+          <Socials />
+        </div>
+        <div className="relative mx-auto">
+          <p className="font-silkScreen mb-6 text-center text-xs text-zinc-400 uppercase dark:text-zinc-500">
+            Side quest: photography
+          </p>
+          <div className="relative h-[350px] w-[300px]">
             <CardStack items={ImageCards} />
           </div>
-          <div className="absolute -top-4 flex -translate-x-1 -rotate-12 md:top-0 md:right-0 md:-translate-y-14 md:rotate-6">
-            <Arrow1 className="h-12 w-12 text-zinc-400 dark:text-zinc-200" />
-            <p
-              className={`${caveat.className} max-w-40 text-xl font-bold text-zinc-400`}
-            >
-              I am also interested in{' '}
-              <span className="text-black dark:text-white">Photography</span>
-            </p>
-          </div>
         </div>
-        <motion.div
-          className="relative space-y-4 font-medium text-zinc-400 lg:order-first lg:row-span-2"
-          variants={blurSlideVariants.container}
-          initial="hidden"
-          whileInView="visible"
-        >
-          <motion.p
-            variants={blurSlideVariants.item}
-            initial="hidden"
-            whileInView="visible"
-          >
-            I am{' '}
-            <span className="font-bold text-black dark:text-white">Timmy</span>{' '}
-            , a{' '}
-            <span className="font-bold text-black dark:text-white">
-              developer
-            </span>{' '}
-            who loves coding and creating 🪄. I am passionate about building
-            something{' '}
-            <span className="font-bold text-black dark:text-white">
-              amazing
-            </span>
-            .
-          </motion.p>
-          <motion.p
-            variants={blurSlideVariants.item}
-            initial="hidden"
-            whileInView="visible"
-          >
-            I am dedicated to learning new technologies and improving my skills.
-            Recently, I have been working with{' '}
-            <span className="font-bold text-black dark:text-white">React</span>{' '}
-            and{' '}
-            <span className="font-bold text-black dark:text-white">
-              Next.js
-            </span>{' '}
-            to create web applications.
-          </motion.p>
-          <motion.p
-            variants={blurSlideVariants.item}
-            initial="hidden"
-            whileInView="visible"
-          >
-            I am always open to new opportunities and challenges. If you have a
-            project in mind or want to collaborate, feel free to reach out to
-            me.
-          </motion.p>
-          <motion.div
-            variants={blurSlideVariants.item}
-            initial="hidden"
-            whileInView="visible"
-            className="font-vt323 flex items-center space-x-2 text-xl font-bold text-black dark:text-white"
-          >
-            <span>#AI</span>
-            <span>#Web</span>
-          </motion.div>
-          <div className="flex space-x-4 border-t border-dashed border-zinc-400 pt-4 text-xs md:text-base">
-            {socials.map((social, index) => (
-              <Link
-                key={index}
-                href={social.link}
-                passHref
-                className="group cursor-pointer"
-              >
-                <motion.span
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      y: Math.random() * 100 - 50,
-                      rotate: Math.random() * 90 - 45,
-                      scale: 0.8
-                    },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      rotate: 0,
-                      scale: 1,
-                      transition: {
-                        type: 'spring',
-                        stiffness: 100
-                      }
-                    }
-                  }}
-                  initial="hidden"
-                  whileInView="visible"
-                  whileHover={{ scale: 1.1 }}
-                  className="flex items-center space-x-2 group-hover:text-black dark:group-hover:text-white"
-                >
-                  {social.icon}
-                  <span>{social.name}</span>
-                </motion.span>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )

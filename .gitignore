@@ -8,3 +8,5 @@ package-lock.json
 
 .vercel
 .env.local
+
+.DS_Store

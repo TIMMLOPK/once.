@@ -128,7 +128,8 @@ function Navbar({ activeSection }: { activeSection?: string }) {
           'dark:hover:bg-hover transition hover:bg-zinc-100'
         )}
       >
-        {!theme ? <IconSun /> : theme === 'dark' ? <IconMoon /> : <IconSun />}
+        <IconSun className="dark:hidden" />
+        <IconMoon className="hidden dark:block" />
         <span className="sr-only">Toggle theme</span>
       </button>
     </motion.nav>

@@ -1,187 +1,124 @@
 'use client'
 
-import { AnimatedIcon } from '@/components/animatedIcon'
 import Layout from '@/components/layout/main'
-import { AnimatedText } from '@/components/animatedText'
+import { ScrambleText } from '@/components/scrambleText'
 import { AboutSection } from '@/components/sections/about'
+import { SolarSystem, type Planet } from '@/components/pixel/solarSystem'
 import { useActiveSection } from '@/lib/hooks/useActiveSection'
-import Link from 'next/link'
-import { AnimatePresence, motion } from 'motion/react'
-import { useEffect, useState } from 'react'
-import { cn } from '@/lib/cn'
+import { useState } from 'react'
+import { flushSync } from 'react-dom'
+import { useTheme } from 'next-themes'
 
-interface LabelWithArrowProps {
-  href: string
-  children: string
-  activeId: string
-  id: string
-  setLabel: (id: string) => void
-}
+const scrollToAbout = () =>
+  document.querySelector("[data-section='about']")?.scrollIntoView({
+    behavior: 'smooth'
+  })
 
-function LabelWithArrow({
-  href,
-  children,
-  activeId,
-  id,
-  setLabel
-}: LabelWithArrowProps) {
-  return (
-    <Link
-      href={href}
-      passHref
-      className="inline-flex cursor-pointer rounded-full px-2 py-1 pl-4 text-sm opacity-60"
-      onMouseEnter={() => setLabel(id)}
-      onClick={() => {
-        if (href === '/') {
-          document.querySelector("[data-section='about']")?.scrollIntoView({
-            behavior: 'smooth'
-          })
-        }
-      }}
-      key={id}
-    >
-      <AnimatePresence>
-        {activeId === id && (
-          <motion.div
-            layoutId="arrow"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{
-              opacity: 1,
-              scale: 1
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.95
-            }}
-            className="absolute left-0"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 16 16"
-              className="rotate-180 text-black dark:text-white"
-            >
-              <path
-                fill="currentColor"
-                d="M6 4h1v1H6v1H5v1H4v2h1v1h1v1h1v1h2V4H6z"
-              />
-            </svg>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <motion.p
-        className={cn(
-          'font-atariClassicChunky relative inline-block bg-size-[250%_100%,auto] bg-clip-text text-[15px]',
-          'text-transparent [--base-color:#a1a1aa] [--base-gradient-color:#000]',
-          '[background-repeat:no-repeat,padding-box] [--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))]',
-          'dark:[--base-color:#71717a] dark:[--base-gradient-color:#ffffff] dark:[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))]'
-        )}
-        initial={{ backgroundPosition: '100% center' }}
-        whileHover={{ backgroundPosition: '0% center' }}
-        transition={{
-          duration: 1,
-          ease: 'linear'
-        }}
-        style={
-          {
-            '--spread': `${children.length * 2}px`,
-            backgroundImage: `var(--bg), linear-gradient(var(--base-color), var(--base-color))`
-          } as React.CSSProperties
-        }
-      >
-        {children}
-      </motion.p>
-    </Link>
-  )
-}
+const planets: Planet[] = [
+  {
+    id: 'about',
+    label: 'About',
+    href: '/',
+    onClick: scrollToAbout,
+    orbit: 165,
+    radius: 19,
+    speed: 0.32,
+    phase: 0.6,
+    color: { light: '206,92,58', dark: '240,124,86' }
+  },
+  {
+    id: 'works',
+    label: 'Works',
+    href: '/works',
+    orbit: 238,
+    radius: 24,
+    speed: 0.2,
+    phase: 2.8,
+    ring: true,
+    color: { light: '196,146,56', dark: '232,190,106' }
+  },
+  {
+    id: 'writing',
+    label: 'Writing',
+    href: '/writing',
+    orbit: 310,
+    radius: 21,
+    speed: 0.13,
+    phase: 4.6,
+    moon: true,
+    color: { light: '52,122,192', dark: '96,165,230' }
+  }
+]
 
 export default function HomePage() {
   const activeSection = useActiveSection()
+  const [isSunHovered, setIsSunHovered] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
 
-  const [label, setLabel] = useState<string>('about')
-  const [isIconHovered, setIsIconHovered] = useState(false)
-  const [messages, setMessages] = useState<string[]>(['Hi, I am Timmy.'])
-
-  useEffect(() => {
-    if (isIconHovered) {
-      setMessages(['...', 'You found me!'])
-    } else {
-      setMessages(['Hi, I am Timmy.'])
+  const toggleTheme = ({ x, y }: { x: number; y: number }) => {
+    const next = resolvedTheme === 'dark' ? 'light' : 'dark'
+    if (
+      !document.startViewTransition ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      setTheme(next)
+      return
     }
-  }, [isIconHovered])
+    const transition = document.startViewTransition(() => {
+      flushSync(() => setTheme(next))
+    })
+    // percentages of the viewport, so browser zoom can't shift the origin
+    const cx = (x / innerWidth) * 100
+    const cy = (y / innerHeight) * 100
+    // circle() % radii are relative to the viewport diagonal / sqrt(2)
+    const reference = Math.hypot(innerWidth, innerHeight) / Math.SQRT2
+    const farthest = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    )
+    const radius = (farthest / reference) * 100
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0% at ${cx}% ${cy}%)`,
+            `circle(${radius}% at ${cx}% ${cy}%)`
+          ]
+        },
+        {
+          duration: 700,
+          easing: 'ease-in-out',
+          pseudoElement: '::view-transition-new(root)'
+        }
+      )
+    })
+  }
 
   return (
     <Layout
       className="mx-auto max-h-dvh overflow-hidden"
       activeSection={activeSection}
     >
-      <section
-        className="relative m-2 flex min-h-screen items-center lg:px-5"
-        data-section="hero"
-      >
-        <div className="px-4">
-          <AnimatedIcon
-            src="./icon.webp"
-            onHover={setIsIconHovered}
-            aria-label="Animated pixelated icon of Timmy Wu"
-          />
-          <div className="mt-10 flex max-w-lg flex-col space-y-10 px-4">
-            <h1
-              className={cn(
-                'font-atariClassicChunky relative flex items-center gap-4 text-xl'
-              )}
-            >
-              <AnimatedText messages={messages} />
+      <section className="relative h-dvh w-full" data-section="hero">
+        <SolarSystem
+          planets={planets}
+          sunSrc="/icon.webp"
+          onSunHover={setIsSunHovered}
+          onSunClick={toggleTheme}
+          sunClickLabel="Toggle light and dark mode"
+          sunLabel={
+            <h1 className="font-atariClassicChunky text-base md:text-lg">
+              <ScrambleText
+                text={isSunHovered ? 'You found me!' : 'Hi, I am Timmy.'}
+              />
             </h1>
-            <h1 className="sr-only">{messages}</h1>
-          </div>
-          <div className="relative mt-10 flex flex-col space-y-4 px-4">
-            <LabelWithArrow
-              href="/"
-              activeId={label}
-              id="about"
-              setLabel={setLabel}
-            >
-              About
-            </LabelWithArrow>
-            <LabelWithArrow
-              href="/works"
-              activeId={label}
-              id="works"
-              setLabel={setLabel}
-            >
-              Works
-            </LabelWithArrow>
-            <LabelWithArrow
-              href="/writing"
-              activeId={label}
-              id="writing"
-              setLabel={setLabel}
-            >
-              Writing
-            </LabelWithArrow>
-          </div>
-        </div>
-        {/* <button className="absolute bottom-10 left-0 right-0 flex justify-center mb-4" onClick={() => {
-          document.querySelector("[data-section='about']")?.scrollIntoView({
-            behavior: "smooth",
-          });
-        }}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 8 8"
-            className="animate-bounce text-zinc-400"
-          >
-            <circle cx="1" cy="3" r="0.4" fill="currentColor" />
-            <circle cx="7" cy="3" r="0.4" fill="currentColor" />
-            <circle cx="2" cy="4" r="0.4" fill="currentColor" />
-            <circle cx="6" cy="4" r="0.4" fill="currentColor" />
-            <circle cx="3" cy="5" r="0.4" fill="currentColor" />
-            <circle cx="5" cy="5" r="0.4" fill="currentColor" />
-            <circle cx="4" cy="6" r="0.4" fill="currentColor" />
-          </svg>
-        </button> */}
+          }
+          hint={
+            <p className="font-silkScreen text-xs text-zinc-400 dark:text-zinc-500">
+              pick a planet to explore
+            </p>
+          }
+        />
       </section>
       <AboutSection />
     </Layout>
