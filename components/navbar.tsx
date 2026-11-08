@@ -65,7 +65,7 @@ function Navbar({ activeSection }: { activeSection?: string }) {
   return (
     <motion.nav
       className={cn(
-        'fixed inset-x-0 bottom-5 z-50 m-auto flex w-66 items-center justify-center rounded-full',
+        'fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] z-50 m-auto flex w-66 items-center justify-center rounded-full',
         'bg-white/60 p-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-[16px] dark:bg-zinc-800/0 dark:ring-white/10'
       )}
       variants={variants}

@@ -1,7 +1,7 @@
 import './globals.css'
 import React from 'react'
 import { Providers } from './providers'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import {
   AtariClassicChunky,
   silkscreen,
@@ -26,6 +26,10 @@ export const metadata: Metadata = {
       'Welcome to the portfolio of Timmy Wu, a developer passionate about coding, creating amazing things, and exploring technologies like React and Next.js.'
   },
   metadataBase: new URL('https://ionce.me/')
+}
+
+export const viewport: Viewport = {
+  viewportFit: 'cover'
 }
 
 export default function RootLayout({
